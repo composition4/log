@@ -4,3 +4,4 @@ DATE      START END   ACT   NAME       DESC
 20170708  1042  1112  Research  Research  Looking for Linux game dev software
 20170708  1134  1151  Research  Automation  Researching GIMP automation processes
 20170708  1200  1212  Code  Log  Updating Log repository
+20170708  1315  1341  Leisure  Consumption  Watching YouTube videos lol
