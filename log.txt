@@ -6,3 +6,4 @@ DATE      START END   ACT   NAME       DESC
 20170708  1200  1212  Code  Log  Updating Log repository
 20170708  1315  1341  Leisure  Consumption  Watching YouTube videos lol
 20170708  1342  1346  Code  Log  Updating Log repository
+20170708  1405  1606  Code  Texte  Building a tool for creating text games
