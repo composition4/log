@@ -1,12 +1,17 @@
-DATE      START END   ACT   NAME       DESC
+Alt
 
-20170707  2217  2219  Code  Log Test  This is a test
-20170708  1042  1112  Research  Research  Looking for Linux game dev software
-20170708  1134  1151  Research  Automation  Researching GIMP automation processes
-20170708  1200  1212  Code  Log  Updating Log repository
-20170708  1315  1341  Leisure  Consumption  Watching YouTube videos lol
-20170708  1342  1346  Code  Log  Updating Log repository
-20170708  1405  1606  Code  Texte  Building a tool for creating text games
-20170708  1831  1937  Code  Texte  Took a nap. Now continuing development
-20170708  2013  2215  Code  Texte  Resuming dev
-20170709  0955  {END}  Code  Log  Working on log data visualisation
+DATE      START END   CAT  TITLE  DESC
+
+20170707  2217  2219  COD  Log Test  This is a test
+20170708  1042  1112  RES  RES  Looking for Linux game dev software
+20170708  1134  1151  RES  Automation  Researching GIMP automation processes
+20170708  1200  1212  COD  Log  Updating Log repository
+20170708  1315  1341  LEI  Consumption  Watching YouTube videos lol
+20170708  1342  1346  COD  Log  Updating Log repository
+20170708  1405  1606  COD  Texte  Building a tool for creating text games
+20170708  1831  1937  COD  Texte  Took a nap. Now continuing development
+20170708  2013  2215  COD  Texte  Resuming dev
+20170709  0955  1152  COD  Log  Working on log data visualisation
+20170709  1231  1653  COD  Log  Working on data visualisation
+65c026c6  1654  1719  MUS  Piano  Taking a break from coding
+65c02708  1720  undefined  COD  Log  Building log dashboard
