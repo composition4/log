@@ -1,0 +1,14 @@
+var log = {
+
+  "20170709": {
+    "str": 1003,
+    "end": 1102,
+    "cat": "Code",
+    "ttl": "Log",
+    "act": "Dev",
+    "dsc": "Working on log data visualisation"
+  },
+  
+
+}
+"20170709":{"str":1012,"end":1016,"cat":"Test","ttl":"Log","act":"Test","dsc":"Testing stuff"},

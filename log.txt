@@ -9,3 +9,4 @@ DATE      START END   ACT   NAME       DESC
 20170708  1405  1606  Code  Texte  Building a tool for creating text games
 20170708  1831  1937  Code  Texte  Took a nap. Now continuing development
 20170708  2013  2215  Code  Texte  Resuming dev
+20170709  0955  {END}  Code  Log  Working on log data visualisation
