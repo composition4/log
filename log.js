@@ -35,5 +35,5 @@ var log = [
 {"n":"65C0240B","s":955,"e":1152,"c":"COD","t":"Log","d":"Working on log data visualisation"},
 {"n":"65C0251F","s":1231,"e":1653,"c":"COD","t":"Log","d":"Working on log data visualisation"},
 {"n":"65c026c6","s":1654,"e":1719,"c":"MUS","t":"Piano","d":"Taking a break from coding"},
-{"n":"65c02708","s":1720,"e":undefined,"c":"COD","t":"Log","d":"Building log dashboard"},
+{"n":"65c02708","s":1720,"e":1829,"c":"COD","t":"Log","d":"Building log dashboard"},
 ]
