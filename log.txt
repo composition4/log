@@ -17,3 +17,4 @@ DATE      START END   CAT  TITLE  DESC
 65c02708  1720  1829  COD  Log  Building log dashboard
 65c02780  1840  1854  COD  MONOCAL  Fixing script error
 65c02791  1857  1901  WRT  Blog  Updating MONOCAL post
+65c02838  2024  2049  COD  GitHub  Cleaning up code, updating readme's
