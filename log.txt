@@ -15,3 +15,4 @@ DATE      START END   CAT  TITLE  DESC
 20170709  1231  1653  COD  Log  Working on data visualisation
 65c026c6  1654  1719  MUS  Piano  Taking a break from coding
 65c02708  1720  1829  COD  Log  Building log dashboard
+65c02780  1840  1854  COD  MONOCAL  Fixing script error
