@@ -37,4 +37,5 @@ var log = [
 {"n":"65c026c6","s":1654,"e":1719,"c":"MUS","t":"Piano","d":"Taking a break from coding"},
 {"n":"65c02708","s":1720,"e":1829,"c":"COD","t":"Log","d":"Building log dashboard"},
 {"n":"65c02780","s":1840,"e":1854,"c":"COD","t":"MONOCAL","d":"Fixing script error"},
+{"n":"65c02791","s":1857,"e":1901,"c":"WRT","t":"Blog","d":"Updating MONOCAL post"},
 ]
