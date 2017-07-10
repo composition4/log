@@ -43,4 +43,5 @@ var log = [
 {"n":"65c04b15","s":0949,"e":1054,"c":"MNT","t":"Maintenance","d":"Decluttering and organising files"},
 {"n":"65c04bb7","s":1111,"e":1159,"c":"MNT","t":"GitHub","d":"Improving code readability; my future self is often annoyed"},
 {"n":"65c04e25","s":1733,"e":1855,"c":"COD","t":"MONOCAL","d":"Rewriting MONOCAL"},
+{"n":"65c04f41","s":2017,"e":2023,"c":"WRT","t":"Blog","d":"Revising MONOCAL post again"},
 ]
