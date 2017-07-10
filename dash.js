@@ -95,8 +95,6 @@ var Dash = {
 
       document.getElementById("hoursLoggedToday").innerHTML = Dash.analytics.hoursLogged(thisday)
 
-      console.log(thisday)
-
       document.getElementById("entryCount").innerHTML = Dash.analytics.entryCount(log)
       document.getElementById("hoursLogged").innerHTML = Dash.analytics.hoursLogged(log)
     }
@@ -154,7 +152,7 @@ var Dash = {
     document.getElementById(sect).style.display = "block"
   },
 
-  init(log) {
+  init() {
     Dash.log = log
     Dash.analytics.display()
     Dash.displayLog()

@@ -41,4 +41,5 @@ var log = [
 {"n":"65c02838","s":2024,"e":2049,"c":"COD","t":"GitHub","d":"Cleaning up code, updating readme's"},
 {"n":"65c028a9","s":2137,"e":2206,"c":"WEB","t":"Tumblr","d":"Updating my Tumblrs"},
 {"n":"65c04b15","s":0949,"e":1054,"c":"MNT","t":"Maintenance","d":"Decluttering and organising files"},
+{"n":"65c04bb7","s":1111,"e":1159,"c":"MNT","t":"GitHub","d":"Improving code readability; my future self is often annoyed"},
 ]
