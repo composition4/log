@@ -21,3 +21,4 @@ DATE      START END   CAT  TITLE  DESC
 65c028a9  2137  2206  WEB  Tumblr  Updating my Tumblrs
 65c04b15  0949  1054  MNT  Maintenance  Decluttering and organising files
 65c04bb7  1111  1159  MNT  GitHub  Improving code readability; my future self is often annoyed
+65c04e25  1733  1855  COD  MONOCAL  Rewriting MONOCAL
