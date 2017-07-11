@@ -46,4 +46,5 @@ var log = [
 {"n":"65c04f41","s":2017,"e":2023,"c":"WRT","t":"Blog","d":"Revising MONOCAL post again"},
 {"n":"65c04f4b","s":2027,"e":2057,"c":"COD","t":"MONOCAL","d":"Fixing yet another error in my calculations"},
 {"n":"65c04f9a","s":2106,"e":2233,"c":"COD","t":"MONOCAL","d":"Another bug! D:"},
+{"n":"65c07289","s":1049,"e":1120,"c":"MNT","t":"GitHub","d":"Organising repositories"},
 ]
