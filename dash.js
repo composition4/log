@@ -126,7 +126,7 @@ var Dash = {
   },
 
   duration: function(a, b) {
-    return parseFloat(((b - a) / 60).toFixed(2))
+    return parseFloat((((b - a) / 60) * 100).toFixed(2))
   },
 
   convertDate: function(n) {
