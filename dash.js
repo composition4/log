@@ -126,7 +126,19 @@ var Dash = {
   },
 
   duration: function(a, b) {
-    return parseFloat((((b - a) / 60) * 100).toFixed(2))
+    var mA = parseInt((a.toString().slice(-2)), 10),
+        mB = parseInt((b.toString().slice(-2)), 10),
+        hA = parseInt((a.toString().slice(0, -2)), 10),
+        hB = parseInt((b.toString().slice(0, -2)), 10),
+
+        hC = hB - hA,
+        mC = parseFloat(((mB  - mA) / 60).toFixed(2))
+
+    if (mC < 0) {
+      mC = parseFloat(((mC + 60) / 60).toFixed(2))
+    }
+
+    return parseFloat(hC + mC)
   },
 
   convertDate: function(n) {
