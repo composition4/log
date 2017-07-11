@@ -34,3 +34,4 @@ DATE      START END   CAT  TITLE  DESC
 65c07586  1814  2030  MNT  Photos  Transferring and organising photo library
 65c076b0  2112  2143  MNT  Photos  Decluttering photo library
 65c076d0  2144  2203  COD  Log  Fixing duration issue
+65c0770e  2206  2232  COD  Log  Oops. Fixing again
