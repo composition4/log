@@ -53,4 +53,5 @@ var log = [
 {"n":"65c073ba","s":1354,"e":1436,"c":"COD","t":"Automation","d":"Creating automation scripts"},
 {"n":"65c0740c","s":1436,"e":1803,"c":"COD","t":"Macian","d":"Coding"},
 {"n":"65c07586","s":1814,"e":2030,"c":"MNT","t":"Photos","d":"Transferring and organising photo library"},
+{"n":"65c076b0","s":2112,"e":2143,"c":"MNT","t":"Photos","d":"Decluttering photo library"},
 ]

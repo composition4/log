@@ -32,3 +32,4 @@ DATE      START END   CAT  TITLE  DESC
 65c073ba  1354  1436  COD  Automation  Creating automation scripts
 65c0740c  1436  1803  COD  Macian  Coding
 65c07586  1814  2030  MNT  Photos  Transferring and organising photo library
+65c076b0  2112  2143  MNT  Photos  Decluttering photo library
