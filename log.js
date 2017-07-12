@@ -60,4 +60,5 @@ var log = [
 {"n":"65c0992f","s":0943,"e":1013,"c":"COD","t":"Habitica","d":"Continuing"},
 {"n":"65c0997a","s":1018,"e":1021,"c":"COD","t":"Automation","d":"Creating some IFTTT recipes"},
 {"n":"65c0997e","s":1022,"e":1038,"c":"RES","t":"Text Editor","d":"Looking for faster, lighter alternatives to Atom"},
+{"n":"65c0998f","s":1039,"e":1050,"c":"ETC","t":"Atom","d":"Reconfiguring Atom. I'll just stick to this editor"},
 ]
