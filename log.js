@@ -58,4 +58,5 @@ var log = [
 {"n":"65c0770e","s":2206,"e":2232,"c":"COD","t":"Log","d":"Oops. Fixing again"},
 {"n":"65c098bb","s":0827,"e":0855,"c":"COD","t":"Habitica","d":"Revisiting an old Habitica API project"},
 {"n":"65c0992f","s":0943,"e":1013,"c":"COD","t":"Habitica","d":"Continuing"},
+{"n":"65c0997a","s":1018,"e":1021,"c":"COD","t":"Automation","d":"Creating some IFTTT recipes"},
 ]
