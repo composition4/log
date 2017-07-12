@@ -64,4 +64,5 @@ var log = [
 {"n":"65c0999d","s":1053,"e":1100,"c":"COD","t":"GitHub","d":"Automating GitHub"},
 {"n":"65c099dc","s":1116,"e":1127,"c":"MNT","t":"Web","d":"Cleaning up bookmarks"},
 {"n":"65c099e8","s":1128,"e":1140,"c":"RES","t":"JS","d":"Researching how to make JS more efficient"},
+{"n":"65c099f4","s":1140,"e":1153,"c":"RES","t":"Shell","d":"Reading about shell scripts, looking for inspiration"},
 ]

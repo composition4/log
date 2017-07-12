@@ -43,3 +43,4 @@ DATE      START END   CAT  TITLE  DESC
 65c0999d  1053  1100  COD  GitHub  Automating GitHub
 65c099dc  1116  1127  MNT  Web  Cleaning up bookmarks
 65c099e8  1128  1140  RES  JS  Researching how to make JS more efficient
+65c099f4  1140  1153  RES  Shell  Reading about shell scripts, looking for inspiration
