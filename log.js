@@ -67,4 +67,5 @@ var log = [
 {"n":"65c099f4","s":1140,"e":1153,"c":"RES","t":"Shell","d":"Reading about shell scripts, looking for inspiration"},
 {"n":"65c09aad","s":1325,"e":1342,"c":"MSC","t":"Piano","d":"Practicing"},
 {"n":"65c09ac9","s":1353,"e":1505,"c":"COD","t":"MONOCAL","d":"Updating MONOCAL"},
+{"n":"65c09b7e","s":1534,"e":1639,"c":"COD","t":"Macian","d":"Getting ready to publish Macian"},
 ]

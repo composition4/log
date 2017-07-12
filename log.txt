@@ -46,3 +46,4 @@ DATE      START END   CAT  TITLE  DESC
 65c099f4  1140  1153  RES  Shell  Reading about shell scripts, looking for inspiration
 65c09aad  1325  1342  MSC  Piano  Practicing
 65c09ac9  1353  1505  COD  MONOCAL  Updating MONOCAL
+65c09b7e  1534  1639  COD  Macian  Getting ready to publish Macian
