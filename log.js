@@ -55,5 +55,6 @@ var log = [
 {"n":"65c07586","s":1814,"e":2030,"c":"MNT","t":"Photos","d":"Transferring and organising photo library"},
 {"n":"65c076b0","s":2112,"e":2143,"c":"MNT","t":"Photos","d":"Decluttering photo library"},
 {"n":"65c076d0","s":2144,"e":2203,"c":"COD","t":"Log","d":"Fixing duration issue"},
-// {"n":"65c0770e","s":2206,"e":2232,"c":"COD","t":"Log","d":"Oops. Fixing again"},
+{"n":"65c0770e","s":2206,"e":2232,"c":"COD","t":"Log","d":"Oops. Fixing again"},
+{"n":"65c098bb","s":0827,"e":0855,"c":"COD","t":"Habitica","d":"Revisiting an old Habitica API project"},
 ]

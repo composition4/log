@@ -11,7 +11,7 @@ var Dash = {
   log: [],
 
   codes: [
-    "COD", "VIS", "AUD", "ACA", "RES", "MNT", "LEI", "DIY", "ART"
+    "COD", "VIS", "AUD", "ACA", "RES", "MNT", "LEI", "DIY", "ART", "MUS"
   ],
 
   displayLog() {
@@ -91,9 +91,11 @@ var Dash = {
 
       var thisday = today[parseInt(y + m + d)]
 
-      document.getElementById("entryCountToday").innerHTML = Dash.analytics.entryCount(thisday)
+      if (thisday !== undefined) {
+        document.getElementById("entryCountToday").innerHTML = Dash.analytics.entryCount(thisday)
 
-      document.getElementById("hoursLoggedToday").innerHTML = Dash.analytics.hoursLogged(thisday)
+        document.getElementById("hoursLoggedToday").innerHTML = Dash.analytics.hoursLogged(thisday)
+      }
 
       document.getElementById("entryCount").innerHTML = Dash.analytics.entryCount(log)
       document.getElementById("hoursLogged").innerHTML = Dash.analytics.hoursLogged(log)
