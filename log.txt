@@ -47,3 +47,4 @@ DATE      START END   CAT  TITLE  DESC
 65c09aad  1325  1342  MSC  Piano  Practicing
 65c09ac9  1353  1505  COD  MONOCAL  Updating MONOCAL
 65c09b7e  1534  1639  COD  Macian  Getting ready to publish Macian
+65c09be7  1639  1701  LEI  Games  Taking a break from coding
