@@ -41,3 +41,4 @@ DATE      START END   CAT  TITLE  DESC
 65c0997e  1022  1038  RES  Text Editor  Looking for faster, lighter alternatives to Atom
 65c0998f  1039  1050  ETC  Atom  Reconfiguring Atom. I'll just stick to this editor
 65c0999d  1053  1100  COD  GitHub  Automating GitHub
+65c099dc  1116  1127  MNT  Web  Cleaning up bookmarks
