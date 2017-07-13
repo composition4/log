@@ -52,3 +52,4 @@ DATE      START END   CAT  TITLE  DESC
 65c09d74  2036  2124  COD  Macian  Working on Macian
 65c09dcc  2124  2143  PHO  Photos  Photo editing
 65c0c022  0914  1106  RES  Mithvaer  Worldbuilding
+65c0c0fd  1133  1323  MNT  Apollo  Refurbishing my old laptop, installing Linux

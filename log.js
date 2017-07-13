@@ -73,4 +73,5 @@ var log = [
 {"n":"65c09d74","s":2036,"e":2124,"c":"COD","t":"Macian","d":"Working on Macian"},
 {"n":"65c09dcc","s":2124,"e":2143,"c":"PHO","t":"Photos","d":"Photo editing"},
 {"n":"65c0c022","s":0914,"e":1106,"c":"RES","t":"Mithvaer","d":"Worldbuilding"},
+{"n":"65c0c0fd","s":1133,"e":1323,"c":"MNT","t":"Apollo","d":"Refurbishing my old laptop, installing Linux"},
 ]
