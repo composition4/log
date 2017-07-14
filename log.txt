@@ -53,3 +53,6 @@ DATE      START END   CAT  TITLE  DESC
 65c09dcc  2124  2143  PHO  Photos  Photo editing
 65c0c022  0914  1106  RES  Mithvaer  Worldbuilding
 65c0c0fd  1133  1323  MNT  Apollo  Refurbishing my old laptop, installing Linux
+65c0e748  0936  1028  MNT  Bateau  Setting up Bateau as a portable workstation
+65c0e7a6  1030  1203  WRT  Mithvaer  Worldbuilding
+65c0e87c  1244  1332  COD  Compendium  Building a knowledge base for worldbuilding
