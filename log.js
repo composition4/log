@@ -80,4 +80,5 @@ var log = [
 {"n":"65c0e929","s":1417,"e":1440,"c":"COD","t":"Automation","d":"Updating shell scripts"},
 {"n":"65c0e94e","s":1454,"e":1540,"c":"COD","t":"MONOCAL","d":"Porting to bash"},
 {"n":"65c0e9f9","s":1625,"e":2231,"c":"COD","t":"Subterraneum","d":"Updating joshavanier.github.io"},
+{"n":"65c10ffc","s":1356,"e":1452,"c":"HOM","t":"Decluttering","d":"Reassessing my possessions"},
 ]
