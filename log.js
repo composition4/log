@@ -81,4 +81,5 @@ var log = [
 {"n":"65c0e94e","s":1454,"e":1540,"c":"COD","t":"MONOCAL","d":"Porting to bash"},
 {"n":"65c0e9f9","s":1625,"e":2231,"c":"COD","t":"Subterraneum","d":"Updating joshavanier.github.io"},
 {"n":"65c10ffc","s":1356,"e":1452,"c":"HOM","t":"Decluttering","d":"Reassessing my possessions"},
+{"n":"65c11111","s":1633,"e":1754,"c":"MNT","t":"Bateau","d":"Opting for a purely Xubuntu machine"},
 ]
