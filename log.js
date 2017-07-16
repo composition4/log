@@ -93,4 +93,5 @@ var log = [
 {"n":"65c1387f","s":1727,"e":1842,"c":"COD","t":"Texte","d":"Working on Texte"},
 {"n":"65c13903","s":1859,"e":2239,"c":"COD","t":"Texte","d":"Continuing development"},
 {"n":"65c13a7f","s":2239,"e":2335,"c":"WRT","t":"Texte","d":"Writing a demo game for Texte"},
+{"n":"65c13ae3","s":2339,"e":2348,"c":"COD","t":"Texte","d":"Cleaning up code"},
 ]
