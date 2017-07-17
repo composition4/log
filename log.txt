@@ -73,3 +73,4 @@ DATE      START END   CAT  TITLE  DESC
 65c13903  1859  2239  COD  Texte  Continuing development
 65c13a7f  2239  2335  WRT  Texte  Writing a demo game for Texte
 65c13ae3  2339  2348  COD  Texte  Cleaning up code
+65c15cd0  1024  1046  WRT  Texte  Writing a demo game
