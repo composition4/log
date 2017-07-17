@@ -77,3 +77,4 @@ DATE      START END   CAT  TITLE  DESC
 65c15ce7  1047  1228  COD  Texte  Adding experimental features
 65c15d9c  1228  1327  WRT  Texte  Writing demo game
 65c15e5c  1420  1832  MNT  Room  Cleaning
+65c160b1  2017  2100  PHO  Photos  Editing
