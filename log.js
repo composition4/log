@@ -104,4 +104,5 @@ var log = [
 {"n":"65c18398","s":952,"e":1059,"c":"COD","t":"GitHub","d":"Organising code in repos"},
 {"n":"65c1843b","s":1115,"e":1135,"c":"COD","t":"uilang","d":"Studying uilang"},
 {"n":"65c18569","s":1417,"e":1522,"c":"MNT","t":"Navire","d":"Switching to LXDE"},
+{"n":"65c185da","s":1530,"e":1535,"c":"DSG","t":"Twitter","d":"Analysis of Twitter connections"},
 ]
