@@ -8,7 +8,7 @@ TIME=$(date +"%H%M")
 
 LOGDATE=$(printf '%x\n' $NOW)
 
-if [ $1 = "end" ]; then
+if [ $1 = "e" ]; then
   sed -i -e "s/undefined/$TIME/g" $LOG
   sed -i -e "s/undefined/$TIME/g" $TXT
   echo "Activity ended."

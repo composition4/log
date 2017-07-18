@@ -30,7 +30,7 @@ TIME=$(date +"%H%M")
 
 LOGDATE=$(printf '%x\n' $NOW)
 
-if [ $1 = "end" ]; then
+if [ $1 = "e" ]; then
   sed -i -e "s/undefined/$TIME/g" $LOG
   sed -i -e "s/undefined/$TIME/g" $TXT
   echo "Activity ended."
@@ -44,7 +44,7 @@ else
   read -p "Description: " DSC
 
   # update txt file
-  echo "$LOGDATE  $TIME  undefined  $1  $TTL  $DSC" >> $TXT
+  echo "$(date +"%y%m%d%H%M")  $TIME  undefined  $1  $TTL  $DSC" >> $TXT
 
   # update JS file
   sed -i '$d' $LOG
