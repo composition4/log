@@ -105,4 +105,5 @@ var log = [
 {"n":"65c1843b","s":1115,"e":1135,"c":"COD","t":"uilang","d":"Studying uilang"},
 {"n":"65c18569","s":1417,"e":1522,"c":"MNT","t":"Navire","d":"Switching to LXDE"},
 {"n":"65c185da","s":1530,"e":1535,"c":"DSG","t":"Twitter","d":"Analysis of Twitter connections"},
+{"n":"65c185e1","s":1537,"e":1617,"c":"RES","t":"Efficiency","d":"I need to be more efficient in so many things"},
 ]
