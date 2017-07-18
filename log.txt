@@ -82,3 +82,4 @@ DATE      START END   CAT  TITLE  DESC
 1707180931  0931  0952  COD  GitHub  Aimless and random tinkering with assorted forked repos
 1707180952  0952  1059  COD  GitHub  Organising code in repos
 1707181115  1115  1135  COD  uilang  Studying uilang
+1707181417  1417  1522  MNT  Navire  Switching to LXDE
