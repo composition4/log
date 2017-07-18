@@ -1,4 +1,6 @@
 ## Log
+CSS-.884 JS-2.26
+
 This is a simple time-tracking and log system. Inspired by [osavox's](https://github.com/osavox/research.log)
 
 Currently working on a dashboard to visualise the log data. Help lol.

@@ -101,4 +101,5 @@ var log = [
 {"n":"65c160b1","s":2017,"e":2100,"c":"PHO","t":"Photos","d":"Editing"},
 {"n":"65c1836a","s":906,"e":926,"c":"COD","t":"Navire","d":"Updating shell scripts"},
 {"n":"65c18383","s":0931,"e":0952,"c":"COD","t":"GitHub","d":"Aimless and random tinkering with assorted forked repos"},
+{"n":"65c18398","s":952,"e":undefined,"c":"COD","t":"GitHub","d":"Organising code in repos"},
 ]
