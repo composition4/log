@@ -1,24 +1,24 @@
-## Log
-CSS-.884 JS-2.26
+# Log
+CSS-.884 JS-2.26 M-89 D-96
 
 This is a simple time-tracking and log system. Inspired by [osavox's](https://github.com/osavox/research.log)
 
 Currently working on a dashboard to visualise the log data. Help lol.
 
-### Mechanics
+## Mechanics
 I use a shell script which updates my log files and, upon activity completion, commit them to this repository
 
-### Usage
+## Usage
 To start logging:
 ```
-timelog {Category}
+log {Category}
 ```
 To end the activity:
 ```
-timelog end
+log e
 ```
 
-### timelog
+## log
 ```shell
 #!/bin/bash
 
