@@ -108,4 +108,5 @@ var log = [
 {"n":"65c185e1","s":1537,"e":1617,"c":"RES","t":"Efficiency","d":"I need to be more efficient in so many things"},
 {"n":"65c187df","s":2047,"e":2132,"c":"MNT","t":"Andromeda","d":"Cleaning up"},
 {"n":"65c1883d","s":2141,"e":2239,"c":"MNT","t":"Photos","d":"Decluttering photo library"},
+{"n":"65c1ab42","s":1106,"e":1123,"c":"COD","t":"Code Jam","d":"Practicing"},
 ]
