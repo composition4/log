@@ -91,3 +91,4 @@ DATE      START END   CAT  TITLE  DESC
 1707191131  1131  1216  COD  Subterraneum  Working on site
 1707191305  1305  1920  WRT  Mithvaer  Worldbuilding
 1707192042  2042  2222  WRT  Mithvaer  Worldbuilding
+1707201008  1008  1144  DSG  Branding  Updating personal branding
