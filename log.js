@@ -113,4 +113,5 @@ var log = [
 {"n":"65c1ac09","s":1305,"e":1920,"c":"WRT","t":"Mithvaer","d":"Worldbuilding"},
 {"n":"65c1aeea","s":2042,"e":2222,"c":"WRT","t":"Mithvaer","d":"Worldbuilding"},
 {"n":"65c1d1f0","s":1008,"e":1144,"c":"DSG","t":"Branding","d":"Updating personal branding"},
+{"n":"65c1d2c2","s":1218,"e":1450,"c":"WEB","t":"Primaire","d":"Updating personal site"},
 ]
