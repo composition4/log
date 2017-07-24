@@ -110,4 +110,8 @@ DATE      START END   CAT  TITLE  DESC
 1707232124  2124  2153  COD  MONOCAL  Simplifying
 1707240933  0932  0944  WRT  Mithvaer  Worldbuilding
 1707240954  0954  0958  COD  Bateau  Updating shell scripts
+<<<<<<< HEAD
 1707241351  1351  1553  COD  Macian  Updating
+=======
+1707241330  1330  1338  COD  MONOCAL  Decluttering repo
+>>>>>>> b896866811332428286facebf376d098a1c019af
