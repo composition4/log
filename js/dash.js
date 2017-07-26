@@ -16,29 +16,60 @@ var Dash = {
 
   displayLog() {
     var table = document.getElementById("logbook"),
-        l = Dash.log.length,
+        arr = takeRight(Dash.log, 7),
+        l = arr.length,
         i
+
+    table.className="bn"
+
+    console.log(arr)
 
     for (i = 0; i < l; i++) {
       var row = table.insertRow(i + 1),
           c1 = row.insertCell(0), // date
-          c2 = row.insertCell(1), // time
-          c3 = row.insertCell(2), // duration
-          c4 = row.insertCell(3), // category
-          c5 = row.insertCell(4), // title
-          c6 = row.insertCell(5), // description
+          // c2 = row.insertCell(1), // time
+          c3 = row.insertCell(1), // duration
+          c4 = row.insertCell(2), // category
+          c5 = row.insertCell(3), // title
+          c6 = row.insertCell(4), // description
 
-          entry = log[i]
+          entry = arr[i]
 
       c1.innerHTML = Dash.convertDate(Dash.convertHex(entry.n))
-      c1.className = "ar"
-      c2.innerHTML = entry.s + " " + entry.e
-      c2.className = "ar"
+      // c1.className = "ar"
+      // c2.innerHTML = entry.s + " " + entry.e
+      // c2.className = "ar"
       c3.innerHTML = Dash.duration(entry.s, entry.e)
       c3.className = "ar"
       c4.innerHTML = entry.c
       c5.innerHTML = entry.t
       c6.innerHTML = entry.d
+    }
+
+    // taken from lodash
+    function takeRight(array, n=1) {
+      const length = array == null ? 0 : array.length
+      if (!length) return []
+      n = length - n
+      return slice(array, n < 0 ? 0 : n, length)
+
+      function slice(array, start, end) {
+        let length = array == null ? 0 : array.length
+        if (!length) return []
+        start = start == null ? 0 : start
+        end = end === undefined ? length : end
+
+        if (start < 0) start = -start > length ? 0 : (length + start)
+        end = end > length ? length : end
+        if (end < 0) end += length
+        length = start > end ? 0 : ((end - start) >>> 0)
+        start >>>= 0
+
+        let index = -1
+        const result = new Array(length)
+        while (++index < length) result[index] = array[index + start]
+        return result
+      }
     }
   },
 
