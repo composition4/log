@@ -118,3 +118,4 @@ DATE      START END   CAT  TITLE  DESC
 1707261925  1925  2035  COD  Macian  Continuing
 1707271010  1010  1216  COD  Subterraneum  Updating
 1707280954  0954  1152  WRT  Mithvaer  Worldbuilding
+1707281240  1239  1341  WRT  Mithvaer  Mapmaking
