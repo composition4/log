@@ -146,4 +146,5 @@ var log = [
 {"n":"65c35c0d","s":1901,"e":2005,"c":"COD","t":"Parry","d":"Continuing development"},
 {"n":"65c380e4","s":1332,"e":1357,"c":"COD","t":"Johann","d":"Developing a chat script for MPP"},
 {"n":"65c3813a","s":1418,"e":1431,"c":"COD","t":"Numscrubberjs","d":"Modifying"},
+{"n":"65c3814a","s":1434,"e":1552,"c":"COD","t":"Brainfuck","d":"Creating interpreter"},
 ]
