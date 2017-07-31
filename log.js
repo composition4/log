@@ -144,4 +144,5 @@ var log = [
 {"n":"65c358fb","s":1115,"e":1151,"c":"MNT","t":"Navire","d":"Switching to LXDE"},
 {"n":"65c359d6","s":1334,"e":1840,"c":"COD","t":"Parry","d":"Studying ad blocker mechanics"},
 {"n":"65c35c0d","s":1901,"e":2005,"c":"COD","t":"Parry","d":"Continuing development"},
+{"n":"65c380e4","s":1332,"e":1357,"c":"COD","t":"Johann","d":"Developing a chat script for MPP"},
 ]

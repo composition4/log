@@ -124,3 +124,4 @@ DATE      START END   CAT  TITLE  DESC
 1707301115  1115  1151  MNT  Navire  Switching to LXDE
 1707301334  1334  1840  COD  Parry  Studying ad blocker mechanics
 1707301901  1901  2005  COD  Parry  Continuing development
+1707311332  1332  1357  COD  Johann  Developing a chat script for MPP
