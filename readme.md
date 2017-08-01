@@ -1,5 +1,4 @@
 # Log
-CSS-.884 JS-2.26 M-89 D-96
 
 This is a simple time-tracking and log system. Inspired by [osavox's](https://github.com/osavox/research.log)
 
@@ -53,3 +52,9 @@ else
   echo "Activity started. Remember to close this log."
 fi
 ```
+---
+Josh Avanier
+
+[![@joshavanier](https://joshavanier.github.io/badges/github.svg)](https://github.com/joshavanier)
+[![@joshavanier](https://joshavanier.github.io/badges/twitter.svg)](https://twitter.com/joshavanier)
+[![joshavanier.com](https://joshavanier.github.io/badges/website.svg)](https://joshavanier.com)
