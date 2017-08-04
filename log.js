@@ -161,5 +161,8 @@ var log = [
 {"n":"65ce55a3","s":1155,"e":1445,"c":"COD","t":"Cube Engine","d":"Studying how this works"},
 {"n":"65ce57d4","s":1716,"e":1934,"c":"DSG","t":"Game","d":"Designing a 64x64 game"},
 {"n":"65ce58f7","s":2007,"e":2051,"c":"ART","t":"Pixel Art","d":"Creating pixel art for 64x64 game project"},
-{"n":"65cea358","s":1048,"e":1112,"c":"RES","t":"Efficiency","d":"Writing efficient code"},
+{"n":"65ce7e95","s":1637,"e":1836,"c":"MNT","t":"GitHub","d":"Maintenance and optimisations"},
+{"n":"65ce7f6a","s":1850,"e":1928,"c":"COD","t":"Left.electron","d":"Creating an Electron app with Left"},
+{"n":"65ce8158","s":2344,"e":0051,"c":"COD","t":"Soliloquy","d":"Building a 'social network'"},
+{"n":"65cea358","s":1048,"e":1117,"c":"RES","t":"Efficiency","d":"Writing efficient code"},
 ]
