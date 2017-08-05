@@ -165,6 +165,4 @@ var log = [
 {"n":"65ce7f6a","s":1850,"e":1928,"c":"COD","t":"Left.electron","d":"Creating an Electron app with Left"},
 {"n":"65ce8158","s":2344,"e":0051,"c":"COD","t":"Soliloquy","d":"Building a 'social network'"},
 {"n":"65cea358","s":1048,"e":1117,"c":"RES","t":"Efficiency","d":"Writing efficient code"},
-{"n":"65cea535","s":1525,"e":1734,"c":"MNT","t":"GitHub","d":"Cleaning"},
-{"n":"65cecb6f","s":1311,"e":1437,"c":"MNT","t":"Purity","d":"Puritifaction"},
 ]
