@@ -166,3 +166,4 @@ DATE      START END   CAT  TITLE  DESC
 1708101640  1640  1656  COD  Ritare  Tinkering
 1708101732  1732  1745  COD  Haiaku  Working on minor updates
 1708101833  1833  1922  COD  MPP  Writing custom styles for MPP
+1708111311  1311  1452  MNT  GitHub  Organising and cleaning up repos
