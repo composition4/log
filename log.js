@@ -192,4 +192,5 @@ var log = [
 {"n":"65d00282","s":0946,"e":1205,"c":"MNT","t":"GitHub","d":"Updating index pages"},
 {"n":"65d003e6","s":1302,"e":1415,"c":"COD","t":"ACCT131","d":"Drafting some scripts"},
 {"n":"65d005ac","s":1756,"e":1900,"c":"LIF","t":"Life","d":"Planning and organising"},
+{"n":"65d006be","s":2030,"e":2104,"c":"COD","t":"Code Jam","d":"Practicing"},
 ]
