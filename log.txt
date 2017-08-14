@@ -173,3 +173,4 @@ DATE      START END   CAT  TITLE  DESC
 1708131302  1302  1415  COD  ACCT131  Drafting some scripts
 1708131756  1756  1900  LIF  Life  Planning and organising
 1708132031  2030  2104  COD  Code Jam  Practicing
+1708140834  0834  0853  COD  Left  Messing around with it again lol
