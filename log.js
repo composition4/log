@@ -201,4 +201,5 @@ var log = [
 {"n":"65d02b8c","s":1452,"e":1633,"c":"DSG","t":"Branding","d":"Updating personal branding"},
 {"n":"65d02d66","s":1926,"e":2129,"c":"ART","t":"Mithvaer","d":"Drawing a world map"},
 {"n":"65d050ab","s":0955,"e":0956,"c":"COD","t":"Haiaku","d":"Tinkering while waiting for class"},
+{"n":"65d0516e","s":1150,"e":1237,"c":"COD","t":"Quoin","d":"Resurrecting this dead project"},
 ]
