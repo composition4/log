@@ -203,4 +203,5 @@ var log = [
 {"n":"65d050ab","s":0955,"e":0956,"c":"COD","t":"Haiaku","d":"Tinkering while waiting for class"},
 {"n":"65d0516e","s":1150,"e":1237,"c":"COD","t":"Quoin","d":"Resurrecting this dead project"},
 {"n":"65d053cb","s":1755,"e":1820,"c":"COD","t":"Estelle","d":"Creating a statistics web app"},
+{"n":"65d054c6","s":2006,"e":2028,"c":"COD","t":"Roguelike","d":"Attempting a roguelike build in JS"},
 ]

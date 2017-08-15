@@ -183,3 +183,4 @@ DATE      START END   CAT  TITLE  DESC
 1708150955  0955  0956  COD  Haiaku  Tinkering while waiting for class
 1708151150  1150  1237  COD  Quoin  Resurrecting this dead project
 1708151755  1755  1820  COD  Estelle  Creating a statistics web app
+1708152006  2006  2028  COD  Roguelike  Attempting a roguelike build in JS
