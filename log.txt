@@ -185,3 +185,4 @@ DATE      START END   CAT  TITLE  DESC
 1708151755  1755  1820  COD  Estelle  Creating a statistics web app
 1708152006  2006  2028  COD  Roguelike  Attempting a roguelike build in JS
 1708152030  2030  2057  COD  College  Creating an RPG game
+1708161740  1740  1751  COD  Scripts  Updating shell scripts
