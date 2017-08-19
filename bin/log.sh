@@ -1,6 +1,6 @@
 #!/bin/bash
 
-F=$HOME/Dropbox/Code/Projects/log
+F=$HOME/Dropbox/Code/log
 L=$F/log.js
 T=$F/log.txt
 
