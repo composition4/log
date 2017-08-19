@@ -25,12 +25,12 @@ e() {
   sed -i -e "s/undefined/$TIME/g" $L
   sed -i -e "s/undefined/$TIME/g" $T
   echo "LOG END: $TIME"
+  git add --all
+  git commit -m "Log"
 }
 
 p() {
   cd $F
-  git add --all
-  git commit -m "Log"
   git push -u origin master
 }
 
