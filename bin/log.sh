@@ -1,32 +1,40 @@
 #!/bin/bash
 
-LOG=$HOME/Dropbox/Code/Projects/log/log.js
-TXT=$HOME/Dropbox/Code/Projects/log/log.txt
+F=$HOME/Dropbox/Code/Projects/log
+L=$F/log.js
+T=$F/log.txt
 
-NOW=$(date +"%y%m%d%H%M")
 TIME=$(date +"%H%M")
 
-LOGDATE=$(printf '%x\n' $NOW)
+s() {
+  N=$(date +"%y%m%d%H%M")
+  D=$(printf '%x\n' $N)
 
-if [ $1 = "e" ]; then
-  sed -i -e "s/undefined/$TIME/g" $LOG
-  sed -i -e "s/undefined/$TIME/g" $TXT
-  echo "Activity ended."
-
-  cd $HOME/Dropbox/Code/Projects/log
-  git add --all
-  git commit -m "Update log"
-  git push -u origin master
-else
   read -p "Title: " TTL
   read -p "Description: " DSC
 
-  # update txt file
-  echo "$LOGDATE  $TIME  undefined  $1  $TTL  $DSC" >> $TXT
+  echo "$(date +"%y%m%d%H%M")  $TIME  undefined  $1  $TTL  $DSC" >> $T
 
-  # update JS file
-  sed -i '$d' $LOG
-  printf "{\"n\":\"$LOGDATE\",\"s\":$TIME,\"e\":undefined,\"c\":\"$1\",\"t\":\"$TTL\",\"d\":\"$DSC\"},\n]" >> $LOG
+  sed -i '$d' $L
+  printf "{\"n\":\"$D\",\"s\":$TIME,\"e\":undefined,\"c\":\"$1\",\"t\":\"$TTL\",\"d\":\"$DSC\"},\n]" >> $L
 
-  echo "Activity started. Remember to close this log."
+  echo "LOG START: $TIME"
+}
+
+e() {
+  sed -i -e "s/undefined/$TIME/g" $L
+  sed -i -e "s/undefined/$TIME/g" $T
+  echo "LOG END: $TIME"
+}
+
+p() {
+  cd $F
+  git add --all
+  git commit -m "Log"
+  git push -u origin master
+}
+
+if [ $1 = "e" ]; then e
+elif [ $1 = "p" ]; then p
+else s
 fi
