@@ -1,5 +1,5 @@
 # Log
-A simple time-tracking and log system inspired by [osavox's](https://github.com/osavox/research.log)
+A simple time-tracking and log system inspired by [deuveir's](https://github.com/deuveir/research.log)
 
 ## TODO
 * Rotonde implementation
