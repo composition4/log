@@ -1,19 +1,17 @@
 # Log
-This is a simple time-tracking and log system. Inspired by [osavox's](https://github.com/osavox/research.log)
+A simple time-tracking and log system inspired by [osavox's](https://github.com/osavox/research.log)
 
-Currently working on a dashboard to visualise the log data. Help lol.
+## TODO
+* Rotonde implementation
+* Log data visualisation
 
 ## Mechanics
-I use a shell script which updates my log files and, upon activity completion, commit them to this repository
+I use a script to update and commit my log onto this repository
 
-## Usage
-To start logging:
-```
-log {Category}
-```
-To end the activity:
-```
-log e
+### Usage
+```sh
+log {c} # start
+log e   # end
 ```
 
 ---
