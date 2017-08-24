@@ -221,4 +221,5 @@ var log = [
 {"n":"65d16574","s":1812,"e":1826,"c":"MNT","t":"GitHub","d":"Decluttering"},
 {"n":"65d1663a","s":2010,"e":2103,"c":"MNT","t":"GitHub","d":"Decluttering"},
 {"n":"65d18ca4","s":1844,"e":1850,"c":"COD","t":"MONOCAL","d":"Implementing arrays instead"},
+{"n":"65d1b426","s":1958,"e":2034,"c":"DSG","t":"Grymstorge","d":"Creating a game for A Secret game jam"},
 ]
