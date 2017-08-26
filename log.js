@@ -224,4 +224,5 @@ var log = [
 {"n":"65d1b426","s":1958,"e":2034,"c":"DSG","t":"Grymstorge","d":"Creating a game for A Secret game jam"},
 {"n":"65d1b482","s":2050,"e":2116,"c":"COD","t":"GCJ","d":"Practice"},
 {"n":"65d1b520","s":2208,"e":2216,"c":"COD","t":"Haiaku","d":"Adding noir theme"},
+{"n":"65d1fe55","s":0949,"e":1156,"c":"DSG","t":"Grymstorge","d":"A Secret game jam"},
 ]
