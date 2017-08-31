@@ -10,8 +10,8 @@ A simple log system inspired by [deuveir's](https://github.com/deuveir/research.
 ## ~$
 
 ```sh
-log {c} {t} # start
-log e   # end
+log {c} {t}
+log e
 ```
 
 ---
