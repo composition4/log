@@ -1,6 +1,6 @@
 # Log
 
-A simple log system inspired by [deuveir's](https://github.com/deuveir/research.log)
+A log system inspired by [deuveir's](https://github.com/deuveir/research.log)
 
 ## ■
 
@@ -8,7 +8,7 @@ A simple log system inspired by [deuveir's](https://github.com/deuveir/research.
 - Log data visualisation
 - Fix calculations
 
-## ~s$
+## ~$
 
 ```sh
 log {c} {t}
