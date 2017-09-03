@@ -9,7 +9,7 @@ body {
   margin: 0 auto;
   background-color: #2a292a;
   color: #f5f5f5;
-  font: 16px/1.618 "Roboto", sans-serif;
+  font: 16px/1.618 "Roboto", sans-serif
 }
 
 div#log {
@@ -28,7 +28,7 @@ table th {
 }
 
 td, th {
-  padding: 0.2em 0.5em;
+  padding: 0.2em 0.5em
 }
 
 .ar {
@@ -43,7 +43,7 @@ meter, meter::-webkit-meter-bar {
   background: none;
   background-color: #eee;
   box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.1618) inset;
-  -moz-appearance: none;
+  -moz-appearance: none
 }
 
 meter::-webkit-meter-optimum-value {

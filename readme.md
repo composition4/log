@@ -6,8 +6,9 @@ A simple log system inspired by [deuveir's](https://github.com/deuveir/research.
 
 - Rotonde implementation
 - Log data visualisation
+- Fix calculations
 
-## ~$
+## ~s$
 
 ```sh
 log {c} {t}

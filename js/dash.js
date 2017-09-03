@@ -15,25 +15,23 @@ var Dash = {
   ],
 
   displayLog() {
-    var table = document.getElementById("logbook"),
-        arr = takeRight(Dash.log, 7),
-        l = arr.length,
-        i
+    let t = document.getElementById("logbook"),
+        a = takeRight(Dash.log, 30)
 
-    table.className="bn"
+    t.className = "bn"
 
-    console.log(arr)
+    // console.log(a)
 
-    for (i = 0; i < l; i++) {
-      var row = table.insertRow(i + 1),
-          c1 = row.insertCell(0), // date
+    for (let i = 0, l = a.length; i < l; i++) {
+      let r = t.insertRow(i + 1),
+          c1 = r.insertCell(0), // date
           // c2 = row.insertCell(1), // time
-          c3 = row.insertCell(1), // duration
-          c4 = row.insertCell(2), // category
-          c5 = row.insertCell(3), // title
-          c6 = row.insertCell(4), // description
+          c3 = r.insertCell(1), // duration
+          c4 = r.insertCell(2), // category
+          c5 = r.insertCell(3), // title
+          c6 = r.insertCell(4), // description
 
-          entry = arr[i]
+        entry = a[i]
 
       c1.innerHTML = Dash.convertDate(Dash.convertHex(entry.n))
       // c1.className = "ar"
@@ -47,44 +45,36 @@ var Dash = {
     }
 
     // taken from lodash
-    function takeRight(array, n=1) {
-      const length = array == null ? 0 : array.length
-      if (!length) return []
-      n = length - n
-      return slice(array, n < 0 ? 0 : n, length)
+    function takeRight(a, n = 1) {
+      const l = a == null ? 0 : a.length
+      if (!l) return []
+      n = l - n
+      return slice(a, n < 0 ? 0 : n, l)
 
-      function slice(array, start, end) {
-        let length = array == null ? 0 : array.length
-        if (!length) return []
-        start = start == null ? 0 : start
-        end = end === undefined ? length : end
-
-        if (start < 0) start = -start > length ? 0 : (length + start)
-        end = end > length ? length : end
-        if (end < 0) end += length
-        length = start > end ? 0 : ((end - start) >>> 0)
-        start >>>= 0
-
-        let index = -1
-        const result = new Array(length)
-        while (++index < length) result[index] = array[index + start]
-        return result
+      function slice(a, s, e) {
+        let l = a == null ? 0 : a.length
+        if (!l) return []
+        s = s == null ? 0 : s
+        e = e === undefined ? l : e
+        if (s < 0) s = -s > l ? 0 : (l + s)
+        e = e > l ? l : e
+        if (e < 0) e += l
+        l = s > e ? 0 : ((e - s) >>> 0)
+        s >>>= 0
+        let i = -1
+        const r = new Array(l) // result
+        while (++i < l) r[i] = a[i + s]
+        return r
       }
     }
   },
 
   groupByDay: function() {
-    var days = {},
-        l = log.length,
-        i
+    let days = {}
 
-    for (i = 0; i < l; i++) {
-      var date = Dash.convertDate(Dash.convertHex(log[i].n))
+    for (let i = 0, l = log.length; i < l; i++) {
+      let date = Dash.convertDate(Dash.convertHex(log[i].n))
       days[date] = []
-    }
-
-    for (i = 0; i < l; i++) {
-      var date = Dash.convertDate(Dash.convertHex(log[i].n))
       days[date].push(log[i])
     }
 
@@ -98,29 +88,25 @@ var Dash = {
     },
 
     hoursLogged: function(a) {
-      var l = a.length,
-          h = 0.00,
-          i
+      let h = 0.00
 
-      for (i = 0; i < l; i++) {
+      for (let i = 0, l = a.length; i < l; i++)
         h += Dash.duration(a[i].s, a[i].e)
-      }
 
       return h.toFixed(2)
     },
 
     display: function() {
-      var today = Dash.groupByDay()
-
-      var d = new Date(),
-          y = d.getFullYear(),
-          m = d.getMonth() + 1,
-          d = d.getDate()
+      let today = Dash.groupByDay(),
+           date = new Date(),
+              y = date.getFullYear(),
+              m = date.getMonth() + 1,
+              d = date.getDate()
 
       if (m <= 9) m = "0" + m
       if (d <= 9) d = "0" + d
 
-      var thisday = today[parseInt(y + m + d)]
+      let thisday = today[parseInt(y + m + d)]
 
       if (thisday !== undefined) {
         document.getElementById("entryCountToday").innerHTML = Dash.analytics.entryCount(thisday)
@@ -131,25 +117,17 @@ var Dash = {
       document.getElementById("entryCount").innerHTML = Dash.analytics.entryCount(log)
       document.getElementById("hoursLogged").innerHTML = Dash.analytics.hoursLogged(log)
     }
-
   },
 
-
-
   list: function() {
-    var tally = {},
-        dl = Dash.codes.length,
-        i
+    let tally = {},
+        dl = Dash.codes.length
 
-    for (i = 0; i < dl; i++)
+    for (let i = 0; i < dl; i++)
       tally[Dash.codes[i]] = 0
 
-    var l = log.length,
-        e
-
-    for (e = 0; e < l; e++) {
-      var o
-      for (o = 0; o < dl; o++) {
+    for (let e = 0, l = log.length; e < l; e++) {
+      for (let o = 0; o < dl; o++) {
         if (log[e].c === Dash.codes[o])
           tally[Dash.codes[o]] += 1
       }
@@ -159,17 +137,15 @@ var Dash = {
   },
 
   duration: function(a, b) {
-    var mA = parseInt((a.toString().slice(-2)), 10),
-        mB = parseInt((b.toString().slice(-2)), 10),
+    let mA = parseInt((a.toString().slice(   -2)), 10),
+        mB = parseInt((b.toString().slice(   -2)), 10),
         hA = parseInt((a.toString().slice(0, -2)), 10),
         hB = parseInt((b.toString().slice(0, -2)), 10),
 
         hC = hB - hA,
-        mC = parseFloat(((mB  - mA) / 60).toFixed(2))
+        mC = parseFloat(((mB - mA) / 60).toFixed(2))
 
-    if (mC < 0) {
-      mC = parseFloat(((mC + 60) / 60).toFixed(2))
-    }
+    if (mC < 0) mC = parseFloat(((mC + 60) / 60).toFixed(2))
 
     return parseFloat(hC + mC)
   },
@@ -177,7 +153,7 @@ var Dash = {
   convertDate: function(n) {
     n = n.toString()
 
-    var y = "20" + n.slice(0, 3),
+    let y = "20" + n.slice(0, 3),
         m = n.slice(3, 4),
         d = n.slice(4, 6)
 
@@ -189,9 +165,9 @@ var Dash = {
   },
 
   openSect: function(sect) {
-    var x = document.getElementsByClassName("sect"),
-        i
-    for (i = 0; i < x.length; i++)
+    let x = document.getElementsByClassName("sect")
+
+    for (let i = 0, l = x.length; i < l; i++)
       x[i].style.display = "none"
 
     document.getElementById(sect).style.display = "block"
