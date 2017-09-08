@@ -1,6 +1,6 @@
-# Log
+![Screenshot](img/screenshot.png)
 
-A log system inspired by [deuveir's](https://github.com/deuveir/research.log)
+A **Log** system inspired by [deuveir's](https://github.com/deuveir/research.log)
 
 ## ■
 
