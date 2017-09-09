@@ -225,3 +225,4 @@ DATE      START END   CAT  TITLE  DESC
 1709091054  1054  1114  DSG  Badges  Creating dev status badges
 1709091133  1132  1245  DSG  Badges  Updating badges
 1709091304  1304  1335  COD  Badges  Creating info pages
+1709091440  1440  1906  MNT  Projects  Decluttering, curating, organising
