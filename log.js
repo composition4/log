@@ -244,4 +244,5 @@ var log = [
 {"n":"65de84d0","s":1808,"e":1808,"c":"COD","t":"Log","d":"Updating repository"},
 {"n":"65dea8ee","s":1054,"e":1114,"c":"DSG","t":"Badges","d":"Creating dev status badges"},
 {"n":"65dea93c","s":1132,"e":1245,"c":"DSG","t":"Badges","d":"Updating badges"},
+{"n":"65dea9e8","s":1304,"e":1335,"c":"COD","t":"Badges","d":"Creating info pages"},
 ]
