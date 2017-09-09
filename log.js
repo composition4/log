@@ -246,4 +246,5 @@ var log = [
 {"n":"65dea93c","s":1132,"e":1245,"c":"DSG","t":"Badges","d":"Updating badges"},
 {"n":"65dea9e8","s":1304,"e":1335,"c":"COD","t":"Badges","d":"Creating info pages"},
 {"n":"65deaa70","s":1440,"e":1906,"c":"MNT","t":"Projects","d":"Decluttering, curating, organising"},
+{"n":"65deacae","s":2014,"e":2240,"c":"COD","t":"Subterraneum","d":"Major design overhaul in progress"},
 ]
