@@ -228,3 +228,4 @@ DATE      START END   CAT  TITLE  DESC
 1709091440  1440  1906  MNT  Projects  Decluttering, curating, organising
 1709092014  2014  2240  COD  Subterraneum  Major design overhaul in progress
 1709101905  1905  2220  COD  Subterraneum  Adding content
+1709111722  1722  1902  COD  Macian  Adding documentation

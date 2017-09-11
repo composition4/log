@@ -248,4 +248,5 @@ var log = [
 {"n":"65deaa70","s":1440,"e":1906,"c":"MNT","t":"Projects","d":"Decluttering, curating, organising"},
 {"n":"65deacae","s":2014,"e":2240,"c":"COD","t":"Subterraneum","d":"Major design overhaul in progress"},
 {"n":"65ded351","s":1905,"e":2220,"c":"COD","t":"Subterraneum","d":"Adding content"},
+{"n":"65def9aa","s":1722,"e":1902,"c":"COD","t":"Macian","d":"Adding documentation"},
 ]
