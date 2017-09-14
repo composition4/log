@@ -250,4 +250,5 @@ var log = [
 {"n":"65ded351","s":1905,"e":2220,"c":"COD","t":"Subterraneum","d":"Adding content"},
 {"n":"65def9aa","s":1722,"e":1902,"c":"COD","t":"Macian","d":"Adding documentation"},
 {"n":"65df1cea","s":0746,"e":1216,"c":"ACA","t":"ACCT131","d":"Dreaded homework"},
+{"n":"65df70d4","s":2228,"e":2258,"c":"COD","t":"Legacy","d":"Creating Legacy"},
 ]
