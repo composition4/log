@@ -4,14 +4,13 @@ A **Log** system inspired by [deuveir's](https://github.com/deuveir/research.log
 
 ## ■
 
-- Rotonde implementation
 - Log data visualisation
 - Fix calculations
 
-## ~$
+## $
 
 ```sh
-log {c} {t}
+log {c} {t} {d}
 log e
 ```
 
