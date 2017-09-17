@@ -1,2 +1,3 @@
-{"s":"65dfe2fd","e":"65dfe2fd","c":"COD","t":"Log","d":"Implementing new system"},
+var log = [
+{"s":"65dfe361","e":"65dfe361","c":"COD","t":"Log","d":"Implementing new system"},
 ]
