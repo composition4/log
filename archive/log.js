@@ -1,27 +1,3 @@
-/*
-
-  L O G
-
-  This was supposed to be a JSON file, but I'm having trouble implementing it. The log entry names are dates and times in hexadecimal form to reduce file size.
-
-  s = start time
-  e = end time
-  c = category
-  t = title
-  d = description
-
-  COD = coding
-  VIS = graphics
-  AUD = music
-  ACA = academics
-  RES = research
-  MNT = maintenance
-  LEI = leisure
-  DIY = DIY projects
-  ART = drawing, sketching, painting
-
-*/
-
 var log = [
 {"n":"65BFDAD9","s":2217,"e":2219,"c":"COD","t":"Log","d":"This is a test"},
 {"n":"65BFFD52","s":1042,"e":1112,"c":"RES","t":"Game Dev","d":"Looking for Linux game dev software"},

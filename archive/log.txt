@@ -1,5 +1,3 @@
-Alt
-
 DATE      START END   CAT  TITLE  DESC
 
 20170707  2217  2219  COD  Log Test  This is a test
