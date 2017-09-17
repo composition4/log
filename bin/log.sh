@@ -16,6 +16,11 @@ cache() {
   echo "$1" >> $C
 }
 
+rotonde() {
+  cd $HOME/Dropbox/Code/rotonde-cli
+  ./rotonde write "$1"
+}
+
 if [ $1 = "e" ]; then
   addTime $L
   addTime $T
@@ -27,7 +32,7 @@ if [ $1 = "e" ]; then
     WORD="$(echo $VERB | head -n1 | sed -e 's/\s.*$//')"
     TENSE="$(past $WORD)"
     NEW="$TENSE $(echo "$VERB" | cut -d " " -f2-)"
-    rotonde w "$TITLE: $NEW"
+    rotonde "$TITLE: $NEW"
     rm $C
   fi
   cd $F
@@ -44,7 +49,7 @@ else
   echo "$D  undefined  $1  $2  $DSC" >> $T
   sed -i '$d' $L
   printf "{\"s\":\"$D\",\"e\":\"undefined\",\"c\":\"$1\",\"t\":\"$2\",\"d\":\"$DSC\"},\n]" >> $L
-  cache $2
-  cache $DSC
+  cache "$2"
+  cache "$DSC"
   echo "START: $TIME"
 fi
