@@ -1,114 +1,43 @@
 <!doctype html>
+<html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Log</title>
 <meta name="author" content="Josh Avanier">
 <meta name="description" content="Navire's time-tracker and log system">
-<style>
-  * {
-    margin: 0;
-    padding: 0
-  }
+<link href="https://joshavanier.github.io/macian/css/macian.css" rel="stylesheet">
 
-  body {
-    padding: 2em;
-    width: 80%;
-    margin: 0 auto;
-    background-color: #2a292a;
-    color: #f5f5f5;
-    font: 16px/1.618 "Roboto", sans-serif
-  }
-
-  div#log {
-    overflow-x: auto
-  }
-
-  table {
-    font-family: "Roboto Mono", monospace;
-    border: 1px solid #f5f5f5;
-    overflow-x: auto;
-    white-space: nowrap
-  }
-
-  table th {
-    text-align: left
-  }
-
-  td, th {
-    padding: 0.2em 0.5em
-  }
-
-  .ar {
-    text-align: right
-  }
-
-  div.tabs, section {
-    margin-bottom: 1.618em;
-  }
-
-  meter, meter::-webkit-meter-bar {
-    background: none;
-    background-color: #eee;
-    box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.1618) inset;
-    -moz-appearance: none
-  }
-
-  meter::-webkit-meter-optimum-value {
-    background: none;
-    background-color: #70b77e
-  }
-
-  button, input[type="button"], .btn {
-    padding: .5em;
-    outline: none;
-    border: 0;
-    color: #444;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1618);
-    text-align: center
-  }
-
-  button:hover, input[type="button"]:hover {
-    cursor: pointer
-  }
-
-  button:active, input[type="button"]:active, .btn:active {
-    box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.1618) inset
-  }
-</style>
-
+</head>
+<body class="p5">
 <div>
 
-  <h1>Log</h1>
-  <p>Under construction
+  <h1 class="mb4 f6 upc tk">Log System</h1>
 
-  <div class="tabs">
+  <div class="mb4 tabs">
     <button onclick="Dash.openSect('charts')">Charts</button>
     <button onclick="Dash.openSect('log')">Log</button>
   </div>
 
   <div id="charts" class="sect">
-    <p>Analytics</p>
+    <p class="mb4">Analytics</p>
 
-    <section>
-      <h2>Today</h2>
-      <p>Log entries: <span id="entryCountToday"></span>
+    <section class="mb4">
+      <h2 class="mb2 f4">Today</h2>
+      <p class="mb2">Log entries: <span id="entryCountToday"></span>
       <p>Hours logged: <span id="hoursLoggedToday"></span>
-
     </section>
 
     <section>
-      <h2>History</h2>
-      <p>Log entries: <span id="entryCount"></span>
+      <h2 class="mb2 f4">History</h2>
+      <p class="mb2">Log entries: <span id="entryCount"></span>
       <p>Hours logged: <span id="hoursLogged"></span>
     </section>
   </div>
 
   <div id="log" class="sect" style="display:none">
-    <p>GMT+7
     <table id="logbook">
       <thead>
         <th class="ar">DAT</th>
-        <th class="ar">TIM</th>
         <th class="ar">DUR</th>
         <th>CAT</th>
         <th>TTL</th>
@@ -124,3 +53,5 @@
 <script>
   Dash.init()
 </script>
+</body>
+</html>
