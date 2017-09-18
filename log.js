@@ -3,4 +3,5 @@ var log = [
 {"s":"65dfe5b4","e":"65dfe65a","c":"COD","t":"Horarium","d":"Creating time calculation functions"},
 {"s":"65e008b7","e":"65e00989","c":"COD","t":"Subterraneum","d":"Polishing design"},
 {"s":"65e0098c","e":"65e009e1","c":"ACA","t":"MNGT337","d":"Doing homework"},
+{"s":"65e00b05","e":"65e00cc6","c":"COD","t":"Subterraneum","d":"Polishing design"},
 ]

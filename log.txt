@@ -2,3 +2,4 @@
 65dfe5b4  65dfe65a  COD  Horarium  Creating time calculation functions
 65e008b7  65e00989  COD  Subterraneum  Polishing design
 65e0098c  65e009e1  ACA  MNGT337  Doing homework
+65e00b05  65e00cc6  COD  Subterraneum  Polishing design
