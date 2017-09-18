@@ -1,2 +1,3 @@
 65dfe361  65dfe361  COD  Log  Implementing new system
 65dfe5b4  65dfe65a  COD  Horarium  Creating time calculation functions
+65e008b7  65e00989  COD  Subterraneum  Polishing design
