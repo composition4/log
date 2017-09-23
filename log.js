@@ -7,4 +7,5 @@ var log = [
 {"s":"65e0315a","e":"65e032fa","c":"COD","t":"Subterraneum","d":"Adding directories, sector pages, little knickknacks"},
 {"s":"65e03310","e":"65e05295","c":"COD","t":"Subterraneum","d":"Adding directories, sector pages, little knickknacks"},
 {"s":"65e058f7","e":"65e05990","c":"COD","t":"Eau","d":"Creating"},
+{"s":"65e0cf27","e":"65e0cf86","c":"COD","t":"Mors","d":"Writing a death counter"},
 ]
