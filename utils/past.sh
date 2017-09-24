@@ -1,17 +1,15 @@
 #!/bin/bash
 
-W=$1
-
-if [[ "$W" == *ing ]]; then
-  if [[ "$W" == Writing ]]; then echo "Wrote";
-  elif [[ "$W" == Reading ]]; then echo "Read";
-  elif [[ "$W" == Learning ]]; then echo "Learnt";
-  elif [[ "$W" == Doing ]]; then echo "Did";
-  elif [[ "$W" == Making ]]; then echo "Made";
-  elif [[ "$W" == Setting ]]; then echo "Set";
-  elif [[ "$W" == Spending ]]; then echo "Spent";
-  elif [[ "$W" == Drawing ]]; then echo "Drew";
-  elif [[ "$W" == Building ]]; then echo "Built";
+if [[ "$1" == *ing ]]; then
+  if [[ "$1" == Writing ]]; then echo "Wrote";
+  elif [[ "$1" == Reading ]]; then echo "Read";
+  elif [[ "$1" == Learning ]]; then echo "Learnt";
+  elif [[ "$1" == Doing ]]; then echo "Did";
+  elif [[ "$1" == Making ]]; then echo "Made";
+  elif [[ "$1" == Setting ]]; then echo "Set";
+  elif [[ "$1" == Spending ]]; then echo "Spent";
+  elif [[ "$1" == Drawing ]]; then echo "Drew";
+  elif [[ "$1" == Building ]]; then echo "Built";
   else
     echo "$(echo $1 | rev | cut -c 4- | rev)ed"
   fi
