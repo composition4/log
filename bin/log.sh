@@ -8,6 +8,12 @@ N=$(date +"%y%m%d%H%M")
 D=$(printf '%x\n' $N)
 C=$F/temp/cache.txt
 
+R=$HOME/.config/rotonde/rotonde.json
+
+J=$HOME/Dropbox/Code/joshavanier.github.io/rotonde
+JI=$J/index.html
+JR=$J/rotonde.json
+
 addTime() {
   sed -i -e "s/undefined/$D/g" $1
 }
@@ -19,6 +25,17 @@ cache() {
 rotonde() {
   cd $HOME/Dropbox/Code/rotonde-cli
   ./rotonde write "$1"
+
+  # Update Rotonde
+  cd $HOME/Dropbox/Code/joshavanier.github.io
+  rm $JI
+  rm $JR
+  cat $R >> $JI
+  cat $R >> $JR
+
+  git add rotonde/index.html rotonde/rotonde.json
+  git commit -m "Update Rotonde"
+  git push -u origin master
 }
 
 if [ $1 = "e" ]; then
@@ -33,8 +50,8 @@ if [ $1 = "e" ]; then
     TENSE="$(past $WORD)"
     NEW="$TENSE $(echo "$VERB" | cut -d " " -f2-)"
     rotonde "$TITLE: $NEW"
-    rm $C
   fi
+  rm $C
   cd $F
   git add --all
   git commit -m "Log"
