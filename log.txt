@@ -13,3 +13,4 @@
 65e0f3a9  65e0f3ed  COD  Journal  Creating a simple journal system
 65e0f3f9  65e0f4bb  COD  Memex  Adding content
 65e0f62e  65e0f69d  COD  Macian  Updating
+65e0f7d3  65e0f7d9  COD  Rovarspraket  Fixing some minor issues
