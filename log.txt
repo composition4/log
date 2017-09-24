@@ -10,3 +10,4 @@
 65e0f216  65e0f247  COD  Rovarspraket  Creating a Rovarspraket translator
 65e0f262  65e0f273  COD  Log  Fixing log system
 65e0f322  65e0f38a  COD  Memex  Adding content
+65e0f3a9  65e0f3ed  COD  Journal  Creating a simple journal system
