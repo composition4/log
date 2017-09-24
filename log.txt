@@ -7,3 +7,4 @@
 65e03310  65e05295  COD  Subterraneum  Adding directories, sector pages, little knickknacks
 65e058f7  65e05990  COD  Eau  Creating
 65e0cf27  65e0cf86  COD  Mors  Writing a death counter
+65e0f216  65e0f247  COD  Rovarspraket  Creating a Rovarspraket translator
