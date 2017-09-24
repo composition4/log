@@ -24,7 +24,7 @@ cache() {
 
 rotonde() {
   cd $HOME/Dropbox/Code/rotonde-cli
-  ./rotonde write "$1"
+  ./rotonde write "$1" > /dev/null
 
   # Update Rotonde
   cd $HOME/Dropbox/Code/joshavanier.github.io
@@ -33,9 +33,10 @@ rotonde() {
   cat $R >> $JI
   cat $R >> $JR
 
-  git add rotonde/index.html rotonde/rotonde.json
-  git commit -m "Update Rotonde"
-  git push -u origin master
+  git add rotonde/index.html rotonde/rotonde.json > /dev/null
+  git commit -m "Update Rotonde" > /dev/null
+  # git push -u origin master
+  echo "Rotonde updated"
 }
 
 if [ $1 = "e" ]; then
@@ -53,8 +54,9 @@ if [ $1 = "e" ]; then
   fi
   rm $C
   cd $F
-  git add log.js log.txt
-  git commit -m "Log"
+  git add --all > /dev/null
+  git commit -m "Log" > /dev/null
+  echo "Log updated"
 elif [ $1 = "p" ]; then
   echo "Push to master"
   cd $F
