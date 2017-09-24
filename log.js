@@ -9,4 +9,5 @@ var log = [
 {"s":"65e058f7","e":"65e05990","c":"COD","t":"Eau","d":"Creating"},
 {"s":"65e0cf27","e":"65e0cf86","c":"COD","t":"Mors","d":"Writing a death counter"},
 {"s":"65e0f216","e":"65e0f247","c":"COD","t":"Rovarspraket","d":"Creating a Rovarspraket translator"},
+{"s":"65e0f262","e":"65e0f273","c":"COD","t":"Log","d":"Fixing log system"},
 ]
