@@ -53,7 +53,7 @@ if [ $1 = "e" ]; then
   fi
   rm $C
   cd $F
-  git add --all
+  git add log.js log.txt
   git commit -m "Log"
 elif [ $1 = "p" ]; then
   echo "Push to master"
