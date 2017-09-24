@@ -3,14 +3,15 @@
 W=$1
 
 if [[ "$W" == *ing ]]; then
-  if [[ "$W" == Writing ]]; then echo "wrote";
-  elif [[ "$W" == Reading ]]; then echo "read";
-  elif [[ "$W" == Learning ]]; then echo "learnt";
-  elif [[ "$W" == Doing ]]; then echo "did";
-  elif [[ "$W" == Making ]]; then echo "made";
-  elif [[ "$W" == Setting ]]; then echo "set";
-  elif [[ "$W" == Spending ]]; then echo "spent";
-  elif [[ "$W" == Drawing ]]; then echo "drew";
+  if [[ "$W" == Writing ]]; then echo "Wrote";
+  elif [[ "$W" == Reading ]]; then echo "Read";
+  elif [[ "$W" == Learning ]]; then echo "Learnt";
+  elif [[ "$W" == Doing ]]; then echo "Did";
+  elif [[ "$W" == Making ]]; then echo "Made";
+  elif [[ "$W" == Setting ]]; then echo "Set";
+  elif [[ "$W" == Spending ]]; then echo "Spent";
+  elif [[ "$W" == Drawing ]]; then echo "Drew";
+  elif [[ "$W" == Building ]]; then echo "Built";
   else
     echo "$(echo $1 | rev | cut -c 4- | rev)ed"
   fi
