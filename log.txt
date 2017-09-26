@@ -2,3 +2,4 @@
 59ca243e  59ca564a  COD  Log  Working on data visualisation
 59ca5ba6  59ca6073  PHO  Photography  Editing a moon photo
 59ca613b  59ca6308  PHO  Photography  Editing plant photos
+59ca66b4  59ca67ab  COD  Log  Fixing vis for IE
