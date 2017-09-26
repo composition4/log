@@ -55,7 +55,7 @@ if [ $1 = "e" ]; then
   fi
   rm $C
   cd $F
-  git add --all > /dev/null
+  git add log.txt log.js > /dev/null
   git commit -m "Log" > /dev/null
   echo "Log updated."
 elif [ $1 = "p" ]; then
