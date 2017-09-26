@@ -80,6 +80,9 @@ var Dash = {
 				  date = Dash.time.date(es)
 
 			if (document.getElementById(date) === null) {
+        lastWidth = 0
+        lastPerc = 0
+
         let label = document.createElement("p"),
             day = document.createElement("div")
 
