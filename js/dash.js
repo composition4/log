@@ -12,29 +12,32 @@ var Dash = {
 
 	display() {
 		let t = document.getElementById("logbook"),
-			a = takeRight(Dash.log, 30)
+			  a = takeRight(Dash.log, 30)
 
 		t.className = "bn bg-noir blanc f6 mon"
 
 		for (let i = 0, l = Dash.log.length; i < l; i++) {
-			let r = t.insertRow(i + 1),
-				c1 = r.insertCell(0), // date
-				c2 = r.insertCell(1), // start
-				c3 = r.insertCell(2), // end
-				c4 = r.insertCell(3), // duration
-				c5 = r.insertCell(4), // category
-				c6 = r.insertCell(5), // title
-				c7 = r.insertCell(6), // description
+			let e = Dash.log[i],
+          r = t.insertRow(i + 1),
 
-				e = Dash.log[i]
+  				c1 = r.insertCell(0), // date
+  				c2 = r.insertCell(1), // start
+  				c3 = r.insertCell(2), // end
+  				c4 = r.insertCell(3), // duration
+  				c5 = r.insertCell(4), // category
+  				c6 = r.insertCell(5), // title
+  				c7 = r.insertCell(6), // description
 
-			c1.innerHTML = Dash.time.date(Dash.time.parse(e.s))
+          es = Dash.time.parse(e.s),
+          ee = Dash.time.parse(e.e)
+
+			c1.innerHTML = Dash.time.date(es)
 			c1.className = "ar"
-			c2.innerHTML = Dash.time.stamp(Dash.time.parse(e.s))
+			c2.innerHTML = Dash.time.stamp(es)
 			c2.className = "ar"
-			c3.innerHTML = Dash.time.stamp(Dash.time.parse(e.e))
+			c3.innerHTML = Dash.time.stamp(ee)
 			c3.className = "ar"
-			c4.innerHTML = Dash.time.duration(Dash.time.parse(e.s), Dash.time.parse(e.e))
+			c4.innerHTML = Dash.time.duration(es, ee)
 			c4.className = "ar"
 			c5.innerHTML = e.c
 			c6.innerHTML = e.t
@@ -47,7 +50,6 @@ var Dash = {
 			if (!l) return []
 			n = l - n
 			return slice(a, n < 0 ? 0 : n, l)
-
 			function slice(a, s, e) {
 				let l = a == null ? 0 : a.length
 				if (!l) return []
@@ -67,63 +69,71 @@ var Dash = {
 	},
 
 	visualise: function() {
-
-		let v = document.getElementById("vis")
-
-		// for (let i = 0, l = Dash.log.length; i < l; i++) {
-		//   let e = Dash.log[i],
-		//       date = Dash.time.date(Dash.time.parse(e.s))
-		//       day = document.createElement("div")
-		//
-		//       v.appendChild(day)
-		//       day.className = "line"
-		//       day.id = date
-		// }
-
-		let lastItemEndingPoint = 0
-
-    let lastWidth = 0, lastPerc = 0
+		let v = document.getElementById("vis"),
+        lastWidth = 0,
+        lastPerc = 0
 
 		for (let i = 0, l = Dash.log.length; i < l; i++) {
-
       let e = Dash.log[i],
-				date = Dash.time.date(Dash.time.parse(e.s))
+          es = Dash.time.parse(e.s),
+          ee = Dash.time.parse(e.e)
+				  date = Dash.time.date(es)
 
 			if (document.getElementById(date) === null) {
-				let day = document.createElement("div")
-				day.className = "line"
-				day.id = date
+        let label = document.createElement("p"),
+            day = document.createElement("div")
+
+        let q = Dash.time.convert(es),
+            qy = q.getFullYear(),
+            qm = q.getMonth(),
+            qd = q.getDate(),
+
+            aq = Aequirys.convert(new Date(qy, qm, qd))
+
+        label.className = "f6 mon pb1 bb mb1"
+        day.className = "line"
+        label.innerHTML = Aequirys.shorter(aq)
+        day.id = date
+        v.appendChild(label)
 				v.appendChild(day)
 			}
 
-			let entry = document.createElement("div")
-			entry.className = "entry"
-			let percentage = ((Dash.time.parse(e.e) - Dash.time.parse(e.s)) / 86400) * 100
-			entry.style.width = percentage + "%"
-			let a = Dash.time.convert(Dash.time.parse(e.s)),
-				y = a.getFullYear(),
-				m = a.getMonth(),
-				d = a.getDate(),
-				hor = a.getHours(),
-				min = a.getMinutes(),
-				sec = a.getSeconds()
-			let daystart = new Date(y, m, d).getTime() / 1000
-			let dayend = new Date(y, m, d, 23, 59).getTime() / 1000
-			let x = Dash.time.convert(Dash.time.parse(e.e)),
-				horx = x.getHours(),
-				minx = x.getMinutes(),
-				secx = x.getSeconds()
-			let xTime = new Date(y, m, d, horx, minx, secx).getTime() / 1000
-      let xPer = ((xTime - daystart) / (dayend - daystart) * 100)
-			let daytime = new Date(y, m, d, hor, min, sec).getTime() / 1000
-      let dayPerc = ((daytime - daystart) / (dayend - daystart) * 100)
-      let stuff = ((xTime - daystart) / (dayend - daystart) * 100)
-			entry.style.margin = "0 0 0 " + (dayPerc - (lastWidth + lastPerc))  + "%"
-			document.getElementById(date).appendChild(entry)
-      console.log("LOOP" + i)
-      lastWidth = percentage
-      lastPerc = dayPerc
+			let perc = ((ee - es) / 86400) * 100,
+          a = Dash.time.convert(es),
+  				y = a.getFullYear(),
+  				m = a.getMonth(),
+  				d = a.getDate(),
+  				h = a.getHours(),
+  				n = a.getMinutes(),
+  				s = a.getSeconds(),
+
+          ds = new Date(y, m, d).getTime() / 1000,
+          de = new Date(y, m, d, 23, 59, 59).getTime() / 1000,
+
+          x = Dash.time.convert(ee),
+  				hx = x.getHours(),
+  				nx = x.getMinutes(),
+  				sx = x.getSeconds(),
+          xTime = new Date(y, m, d, hx, nx, sx).getTime() / 1000,
+          xPer = (xTime - ds) / (de - ds) * 100,
+
+          dt = new Date(y, m, d, h, n, s).getTime() / 1000,
+          dp = (dt - ds) / (de - ds) * 100,
+          stuff = (xTime - ds) / (de - ds) * 100,
+          margin = dp - (lastWidth + lastPerc),
+
+          entry = document.createElement("div")
+
+			entry.className = "psr t0 bg-noir hf dib"
+      entry.style.width = perc + "%"
+      entry.style.margin = "0 0 0 " + margin  + "%"
+      document.getElementById(date).appendChild(entry)
+
+      lastWidth = perc
+      lastPerc = dp
 		}
+
+    console.log("Log visualisation ready.")
 	},
 
 	time: {
@@ -138,32 +148,30 @@ var Dash = {
 
 		stamp: function(t) {
 			let d = Dash.time.convert(t),
-				h = "0" + d.getHours(),
-				m = "0" + d.getMinutes(),
-				s = "0" + d.getSeconds()
+  				h = "0" + d.getHours(),
+  				m = "0" + d.getMinutes(),
+  				s = "0" + d.getSeconds()
 
 			return h.substr(-2) + ':' + m.substr(-2) + ':' + s.substr(-2)
 		},
 
 		date: function(t) {
 			let a = Dash.time.convert(t),
-				y = a.getFullYear(),
-				m = a.getMonth(),
-				d = a.getDate()
+  				y = a.getFullYear(),
+  				m = a.getMonth(),
+  				d = a.getDate()
 
 			return y + '' + m + '' + d
 		},
 
 		duration: function(a, b) {
-			// console.log(b - a)
 			let dif = b - a,
-				hor = (dif / 3600).toFixed(2),
-				min = Math.floor(dif / 60),
-				sec = dif % 60
+  				hor = (dif / 3600).toFixed(2)
+  				min = Math.floor(dif / 60),
+  				sec = dif % 60
 
 			return hor
 		},
-
 	},
 
 	openSect: function(sect) {
