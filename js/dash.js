@@ -96,14 +96,9 @@ var Dash = {
 				v.appendChild(day)
 			}
 
-      // let e = Dash.log[i]
-
-			console.log(e)
 			let entry = document.createElement("div")
 			entry.className = "entry"
-			// console.log(Dash.time.parse(e.e))
 			let percentage = ((Dash.time.parse(e.e) - Dash.time.parse(e.s)) / 86400) * 100
-			// console.log(percentage)
 			entry.style.width = percentage + "%"
 			let a = Dash.time.convert(Dash.time.parse(e.s)),
 				y = a.getFullYear(),
@@ -114,39 +109,18 @@ var Dash = {
 				sec = a.getSeconds()
 			let daystart = new Date(y, m, d).getTime() / 1000
 			let dayend = new Date(y, m, d, 23, 59).getTime() / 1000
-
-			// lastItemEndingPoint = daystart
-
 			let x = Dash.time.convert(Dash.time.parse(e.e)),
 				horx = x.getHours(),
 				minx = x.getMinutes(),
 				secx = x.getSeconds()
-
 			let xTime = new Date(y, m, d, horx, minx, secx).getTime() / 1000
-
       let xPer = ((xTime - daystart) / (dayend - daystart) * 100)
-
-
-			// lastItemEndingPoint = xTime
-
-			// console.log("x: " + xTime)
-			// console.log(lastItemEndingPoint)
-
-			// console.log(dayend - daystart)
 			let daytime = new Date(y, m, d, hor, min, sec).getTime() / 1000
       let dayPerc = ((daytime - daystart) / (dayend - daystart) * 100)
-
-      // console.log((xPer - dayPerc))
-
       let stuff = ((xTime - daystart) / (dayend - daystart) * 100)
-
-      // console.log(100 - stuff)
-
 			entry.style.margin = "0 0 0 " + (dayPerc - (lastWidth + lastPerc))  + "%"
-
 			document.getElementById(date).appendChild(entry)
       console.log("LOOP" + i)
-
       lastWidth = percentage
       lastPerc = dayPerc
 		}
