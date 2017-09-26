@@ -19,4 +19,5 @@ var log = [
 {"s":"65e11c84","e":"65e11d0a","c":"COD","t":"Memex","d":"Updating site"},
 {"s":"65e11dab","e":"65e11e13","c":"COD","t":"Cargo","d":"Working on things"},
 {"s":"65e11e25","e":"65e11e35","c":"COD","t":"Memex","d":"Adding 404 page"},
+{"s":"65e140ea","e":"65e140ec","c":"COD","t":"Mors","d":"Editing EDD function"},
 ]
