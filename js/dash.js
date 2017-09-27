@@ -211,7 +211,7 @@ var Dash = {
           today = new Date(dy, dm, dd),
           n = Math.ceil((today - earliest) / 8.64e7)
 
-      return ((h / (n * 24)) * 100).toFixed(2)
+      return ((h / ((n + 1) * 24)) * 100).toFixed(2)
 
     },
 
