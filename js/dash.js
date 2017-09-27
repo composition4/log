@@ -10,6 +10,10 @@ var Dash = {
 
 	log: [],
 
+  /**
+   * Display logs into a table
+   */
+
 	display() {
 		let t = document.getElementById("logbook"),
 			  a = takeRight(Dash.log, 30)
@@ -19,32 +23,31 @@ var Dash = {
 		for (let i = 0, l = Dash.log.length; i < l; i++) {
 			let e = Dash.log[i],
           r = t.insertRow(i + 1),
-
-  				c1 = r.insertCell(0), // date
-  				c2 = r.insertCell(1), // start
-  				c3 = r.insertCell(2), // end
-  				c4 = r.insertCell(3), // duration
-  				c5 = r.insertCell(4), // category
-  				c6 = r.insertCell(5), // title
-  				c7 = r.insertCell(6), // description
-
+  				c1 = r.insertCell(0),
+  				c2 = r.insertCell(1),
+  				c3 = r.insertCell(2),
+  				c4 = r.insertCell(3),
+  				c5 = r.insertCell(4),
+  				c6 = r.insertCell(5),
+  				c7 = r.insertCell(6),
           es = Dash.time.parse(e.s),
-          ee = Dash.time.parse(e.e)
+          ee = Dash.time.parse(e.e),
 
-			c1.innerHTML = Dash.time.date(es)
+          q = Dash.time.convert(es)
+
+			c1.innerHTML = Aequirys.shorter(Aequirys.convert(new Date(q.getFullYear(), q.getMonth(), q.getDate())))
+      c2.innerHTML = Dash.time.stamp(es)
+      c3.innerHTML = Dash.time.stamp(ee)
+      c4.innerHTML = Dash.time.duration(es, ee).toFixed(2)
 			c1.className = "ar"
-			c2.innerHTML = Dash.time.stamp(es)
 			c2.className = "ar"
-			c3.innerHTML = Dash.time.stamp(ee)
 			c3.className = "ar"
-			c4.innerHTML = Dash.time.duration(es, ee)
 			c4.className = "ar"
 			c5.innerHTML = e.c
 			c6.innerHTML = e.t
 			c7.innerHTML = e.d
 		}
 
-		// taken from lodash
 		function takeRight(a, n = 1) {
 			const l = a == null ? 0 : a.length
 			if (!l) return []
@@ -68,6 +71,10 @@ var Dash = {
 		}
 	},
 
+  /**
+   * Draw data visualisation
+   */
+
 	visualise: function() {
 		let v = document.getElementById("vis"),
         lastWidth = 0,
@@ -85,23 +92,17 @@ var Dash = {
 
         let label = document.createElement("p"),
             day = document.createElement("div"),
-
-            q = Dash.time.convert(es),
-            qy = q.getFullYear(),
-            qm = q.getMonth(),
-            qd = q.getDate(),
-
-            aq = Aequirys.convert(new Date(qy, qm, qd))
+            q = Dash.time.convert(es)
 
         label.className = "f6 mon pb1 bb mb1"
         day.className = "line"
-        label.innerHTML = Aequirys.shorter(aq)
+        label.innerHTML = Aequirys.shorter(Aequirys.convert(new Date(q.getFullYear(), q.getMonth(), q.getDate())))
         day.id = date
         v.appendChild(label)
 				v.appendChild(day)
 			}
 
-			let perc = ((ee - es) / 86400) * 100,
+			let perc = (ee - es) / 86400 * 100,
           a = Dash.time.convert(es),
   				y = a.getFullYear(),
   				m = a.getMonth(),
@@ -109,45 +110,54 @@ var Dash = {
   				h = a.getHours(),
   				n = a.getMinutes(),
   				s = a.getSeconds(),
-
           ds = new Date(y, m, d).getTime() / 1000,
           de = new Date(y, m, d, 23, 59, 59).getTime() / 1000,
-
           x = Dash.time.convert(ee),
   				hx = x.getHours(),
   				nx = x.getMinutes(),
   				sx = x.getSeconds(),
           xt = new Date(y, m, d, hx, nx, sx).getTime() / 1000,
-          // xPer = (xt - ds) / (de - ds) * 100,
-
           dt = new Date(y, m, d, h, n, s).getTime() / 1000,
           dp = (dt - ds) / (de - ds) * 100,
           stuff = (xt - ds) / (de - ds) * 100,
-          margin = dp - (lastWidth + lastPerc),
-
           entry = document.createElement("div")
 
 			entry.className = "psr t0 bg-noir hf dib"
       entry.style.width = perc + "%"
-      entry.style.margin = "0 0 0 " + margin  + "%"
+      entry.style.margin = "0 0 0 " + (dp - (lastWidth + lastPerc))  + "%"
       document.getElementById(date).appendChild(entry)
 
       lastWidth = perc
       lastPerc = dp
 		}
-
-    console.log("Log visualisation ready.")
 	},
 
 	time: {
+
+    /**
+     * Convert hexadecimal into decimal
+     * @param {string} s - hexadecimal
+     * @return {number} decimal
+     */
 
 		parse: function(s) {
 			return parseInt(s, 16)
 		},
 
+    /**
+     * Convert Unix time
+     * @param {number} t - Unix time
+     */
+
 		convert: function(t) {
 			return new Date(t * 1000)
 		},
+
+    /**
+     * Convert Unix time into a timestamp
+     * @param {number} t - Unix time
+     * @return {string} timestamp
+     */
 
 		stamp: function(t) {
 			let d = Dash.time.convert(t),
@@ -158,6 +168,12 @@ var Dash = {
 			return h.substr(-2) + ':' + m.substr(-2) + ':' + s.substr(-2)
 		},
 
+    /**
+     * Convert Unix time into date
+     * @param {number} t - Unix time
+     * @return {string} year, month, day
+     */
+
 		date: function(t) {
 			let a = Dash.time.convert(t),
   				y = a.getFullYear(),
@@ -167,53 +183,57 @@ var Dash = {
 			return y + '' + m + '' + d
 		},
 
-		duration: function(a, b) {
-			let dif = b - a,
-  				hor = (dif / 3600).toFixed(2)
-  				min = Math.floor(dif / 60),
-  				sec = dif % 60
+    /**
+     * Calculate duration
+     * @param {number} a - start (Unix time)
+     * @param {number} b - end (Unix time)
+     * @return {number} duration
+     */
 
-			return hor
-		},
+		duration: function(a, b) {
+			let d = b - a,
+  				h = d / 3600
+  				// m = Math.floor(d / 60),
+  				// s = d % 60
+
+			return h
+		}
 	},
 
-  analytics: {
+  data: {
+
+    /**
+     * Calculate the total number of logged hours
+     * @return {number} total logged hours
+     */
 
     loggedHours: function() {
       let lh = 0
-
       for (let i = 0, l = Dash.log.length; i < l; i++) {
-        let e = Dash.log[i],
-            es = Dash.time.parse(e.s),
-            ee = Dash.time.parse(e.e)
-
-        lh += Number(Dash.time.duration(es, ee))
+        let e = Dash.log[i]
+        lh += Number(Dash.time.duration(Dash.time.parse(e.s), Dash.time.parse(e.e)))
       }
-
-      return lh.toFixed(2)
+      return lh
     },
 
-    // total logtime / total time
+    /**
+     * Calculate how much of a time period was logged
+     * @return {number} log percentage
+     */
 
     logPercentage: function() {
-      let h = Number(Dash.analytics.loggedHours()),
+      let h = Number(Dash.data.loggedHours()),
           e = Dash.time.convert(Dash.time.parse(Dash.log[0].s)),
-          ey = e.getFullYear(),
-          em = e.getMonth(),
-          ed = e.getDate(),
-          earliest = new Date(ey, em, ed),
-
           d = new Date(),
-          dy = d.getFullYear(),
-          dm = d.getMonth(),
-          dd = d.getDate(),
+          n = Math.ceil(((new Date(d.getFullYear(), d.getMonth(), d.getDate())) - (new Date(e.getFullYear(), e.getMonth(), e.getDate()))) / 8.64e7)
 
-          today = new Date(dy, dm, dd),
-          n = Math.ceil((today - earliest) / 8.64e7)
-
-      return ((h / ((n + 1) * 24)) * 100).toFixed(2)
-
+      return (h / ((n + 1) * 24)) * 100
     },
+
+    /**
+     * Calculate number of hours logged today
+     * @return {number} number of hours
+     */
 
     loggedToday: function() {
       let lh = 0
@@ -221,70 +241,58 @@ var Dash = {
       for (let i = Dash.log.length - 1; i >= 0; i--) {
         let e = Dash.log[i],
             es = Dash.time.parse(e.s),
-            ee = Dash.time.parse(e.e)
-
             a = Dash.time.convert(es),
     				y = a.getFullYear(),
     				m = a.getMonth(),
     				d = a.getDate(),
-
-            today = new Date(y, m , d, 0, 0, 0),
-
             ct = new Date(),
             cty = ct.getFullYear(),
             ctm = ct.getMonth(),
             ctd = ct.getDate()
 
         if (y == cty && m == ctm && ctd == d)
-          lh += Number(Dash.time.duration(es, ee))
+          lh += Number(Dash.time.duration(es, Dash.time.parse(e.e)))
       }
 
-      return lh.toFixed(2)
+      return lh
     },
 
-    logPercentageToday: function() {
+    /**
+     * Calculate how much of today was logged
+     * @return {number} today's log percentage
+     */
 
+    logPercentageToday: function() {
       let entriesToday = []
 
       for (let i = Dash.log.length - 1; i >= 0; i--) {
         let e = Dash.log[i],
-            es = Dash.time.parse(e.s),
-            ee = Dash.time.parse(e.e),
-            a = Dash.time.convert(es),
+            a = Dash.time.convert(Dash.time.parse(e.s)),
     				y = a.getFullYear(),
     				m = a.getMonth(),
     				d = a.getDate(),
-            ct = new Date(),
-            cty = ct.getFullYear(),
-            ctm = ct.getMonth(),
-            ctd = ct.getDate()
+            t = new Date(),
+            ty = t.getFullYear(),
+            tm = t.getMonth(),
+            td = t.getDate()
 
-        if (y == cty && m == ctm && ctd == d)
-          entriesToday.push(e)
+        if (y == ty && m == tm && d == td) entriesToday.push(e)
       }
 
-      let h = Number(Dash.analytics.loggedToday()),
+      let h = Number(Dash.data.loggedToday()),
           e = Dash.time.convert(Dash.time.parse(entriesToday[0].s)),
-          ey = e.getFullYear(),
-          em = e.getMonth(),
-          ed = e.getDate(),
-          earliest = new Date(ey, em, ed),
-
+          earliest = new Date(e.getFullYear(), e.getMonth(), e.getDate()),
           d = new Date(),
-          dy = d.getFullYear(),
-          dm = d.getMonth(),
-          dd = d.getDate(),
-
-          today = new Date(dy, dm, dd),
+          today = new Date(d.getFullYear(), d.getMonth(), d.getDate()),
           n = Math.ceil((today - earliest) / 8.64e7)
 
-          console.log(h)
-
-      return ((h / 24) * 100).toFixed(2)
-
+      return (h / 24) * 100
     }
-
   },
+
+  /**
+   * Open a tab
+   */
 
 	openSect: function(sect) {
 		let x = document.getElementsByClassName("sect")
@@ -300,13 +308,13 @@ var Dash = {
 		Dash.display()
 		Dash.visualise()
 
-    document.getElementById("loggedHours").innerHTML = Dash.analytics.loggedHours() + " h"
+    dis("loggedHours",  (Dash.data.loggedHours().toFixed(2)        + " h"))
+    dis("loggedToday",  (Dash.data.loggedToday().toFixed(2)        + " h"))
+    dis("logPerc",      (Dash.data.logPercentage().toFixed(2)      +  "%"))
+    dis("logPercToday", (Dash.data.logPercentageToday().toFixed(2) +  "%"))
 
-    document.getElementById("loggedToday").innerHTML = Dash.analytics.loggedToday() + " h"
-
-    document.getElementById("logPerc").innerHTML = Dash.analytics.logPercentage() + "%"
-
-    document.getElementById("logPercToday").innerHTML = Dash.analytics.logPercentageToday() + "%"
-
+    function dis(e, m) {
+      document.getElementById(e).innerHTML = m
+    }
 	}
 }
