@@ -8,3 +8,4 @@
 59cb0930  59cb1048  COD  Log  Adding analytical information
 59cb40de  59cb4f97  RES  Twitter  Researching Twitter API
 59cb54de  59cb5b73  COD  Log  Adding more analytical information
+59cb6fb3  59cb8218  COD  Log  Cleaning up code

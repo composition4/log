@@ -9,4 +9,5 @@ var log = [
 {"s":"59cb0930","e":"59cb1048","c":"COD","t":"Log","d":"Adding analytical information"},
 {"s":"59cb40de","e":"59cb4f97","c":"RES","t":"Twitter","d":"Researching Twitter API"},
 {"s":"59cb54de","e":"59cb5b73","c":"COD","t":"Log","d":"Adding more analytical information"},
+{"s":"59cb6fb3","e":"59cb8218","c":"COD","t":"Log","d":"Cleaning up code"},
 ]
