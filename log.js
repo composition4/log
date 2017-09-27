@@ -11,4 +11,5 @@ var log = [
 {"s":"59cb54de","e":"59cb5b73","c":"COD","t":"Log","d":"Adding more analytical information"},
 {"s":"59cb6fb3","e":"59cb8218","c":"COD","t":"Log","d":"Cleaning up code"},
 {"s":"59cb88fd","e":"59cb8b11","c":"COD","t":"Log","d":"Cleaning up code"},
+{"s":"59cb9856","e":"59cb99fb","c":"PHO","t":"Instagram","d":"Editing a post"},
 ]
