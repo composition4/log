@@ -6,4 +6,5 @@ var log = [
 {"s":"59ca66b4","e":"59ca67ab","c":"COD","t":"Log","d":"Fixing vis for IE"},
 {"s":"59cad5bc","e":"59cae402","c":"COD","t":"Log","d":"Updating interface"},
 {"s":"59cae4b4","e":"59cae4f9","c":"COD","t":"Log","d":"Fixing vis issue"},
+{"s":"59cb0930","e":"59cb1048","c":"COD","t":"Log","d":"Adding analytical information"},
 ]
