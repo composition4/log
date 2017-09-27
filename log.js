@@ -7,4 +7,5 @@ var log = [
 {"s":"59cad5bc","e":"59cae402","c":"COD","t":"Log","d":"Updating interface"},
 {"s":"59cae4b4","e":"59cae4f9","c":"COD","t":"Log","d":"Fixing vis issue"},
 {"s":"59cb0930","e":"59cb1048","c":"COD","t":"Log","d":"Adding analytical information"},
+{"s":"59cb40de","e":"59cb4f97","c":"RES","t":"Twitter","d":"Researching Twitter API"},
 ]

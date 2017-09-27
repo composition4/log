@@ -6,3 +6,4 @@
 59cad5bc  59cae402  COD  Log  Updating interface
 59cae4b4  59cae4f9  COD  Log  Fixing vis issue
 59cb0930  59cb1048  COD  Log  Adding analytical information
+59cb40de  59cb4f97  RES  Twitter  Researching Twitter API
