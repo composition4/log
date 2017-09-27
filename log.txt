@@ -14,3 +14,4 @@
 59cba14b  59cbaa86  DSG  Karasu  Designing a Twitter client
 59cbc112  59cbcba3  DSG  Heather  Designing UI
 59cbcdfe  59cbd1cf  COD  Log  Simplifying UI
+59cbec67  59cbee57  COD  Mors  Adding progress bar
