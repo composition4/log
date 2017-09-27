@@ -84,9 +84,9 @@ var Dash = {
         lastPerc = 0
 
         let label = document.createElement("p"),
-            day = document.createElement("div")
+            day = document.createElement("div"),
 
-        let q = Dash.time.convert(es),
+            q = Dash.time.convert(es),
             qy = q.getFullYear(),
             qm = q.getMonth(),
             qd = q.getDate(),
@@ -117,12 +117,12 @@ var Dash = {
   				hx = x.getHours(),
   				nx = x.getMinutes(),
   				sx = x.getSeconds(),
-          xTime = new Date(y, m, d, hx, nx, sx).getTime() / 1000,
-          xPer = (xTime - ds) / (de - ds) * 100,
+          xt = new Date(y, m, d, hx, nx, sx).getTime() / 1000,
+          // xPer = (xt - ds) / (de - ds) * 100,
 
           dt = new Date(y, m, d, h, n, s).getTime() / 1000,
           dp = (dt - ds) / (de - ds) * 100,
-          stuff = (xTime - ds) / (de - ds) * 100,
+          stuff = (xt - ds) / (de - ds) * 100,
           margin = dp - (lastWidth + lastPerc),
 
           entry = document.createElement("div")
@@ -177,6 +177,115 @@ var Dash = {
 		},
 	},
 
+  analytics: {
+
+    loggedHours: function() {
+      let lh = 0
+
+      for (let i = 0, l = Dash.log.length; i < l; i++) {
+        let e = Dash.log[i],
+            es = Dash.time.parse(e.s),
+            ee = Dash.time.parse(e.e)
+
+        lh += Number(Dash.time.duration(es, ee))
+      }
+
+      return lh.toFixed(2)
+    },
+
+    // total logtime / total time
+
+    logPercentage: function() {
+      let h = Number(Dash.analytics.loggedHours()),
+          e = Dash.time.convert(Dash.time.parse(Dash.log[0].s)),
+          ey = e.getFullYear(),
+          em = e.getMonth(),
+          ed = e.getDate(),
+          earliest = new Date(ey, em, ed),
+
+          d = new Date(),
+          dy = d.getFullYear(),
+          dm = d.getMonth(),
+          dd = d.getDate(),
+
+          today = new Date(dy, dm, dd),
+          n = Math.ceil((today - earliest) / 8.64e7)
+
+      return (h / (n * 24)) * 100
+
+    },
+
+    loggedToday: function() {
+      let lh = 0
+
+      for (let i = Dash.log.length - 1; i >= 0; i--) {
+        let e = Dash.log[i],
+            es = Dash.time.parse(e.s),
+            ee = Dash.time.parse(e.e)
+
+            a = Dash.time.convert(es),
+    				y = a.getFullYear(),
+    				m = a.getMonth(),
+    				d = a.getDate(),
+
+            today = new Date(y, m , d, 0, 0, 0),
+
+            ct = new Date(),
+            cty = ct.getFullYear(),
+            ctm = ct.getMonth(),
+            ctd = ct.getDate()
+
+        if (y == cty && m == ctm && ctd == d)
+          lh += Number(Dash.time.duration(es, ee))
+      }
+
+      return lh.toFixed(2)
+    },
+
+    logPercentageToday: function() {
+
+      let entriesToday = []
+
+      for (let i = Dash.log.length - 1; i >= 0; i--) {
+        let e = Dash.log[i],
+            es = Dash.time.parse(e.s),
+            ee = Dash.time.parse(e.e),
+            a = Dash.time.convert(es),
+    				y = a.getFullYear(),
+    				m = a.getMonth(),
+    				d = a.getDate(),
+            ct = new Date(),
+            cty = ct.getFullYear(),
+            ctm = ct.getMonth(),
+            ctd = ct.getDate()
+
+        if (y == cty && m == ctm && ctd == d)
+          entriesToday.push(e)
+      }
+
+      let h = Number(Dash.analytics.loggedToday()),
+          e = Dash.time.convert(Dash.time.parse(entriesToday[0].s)),
+          ey = e.getFullYear(),
+          em = e.getMonth(),
+          ed = e.getDate(),
+          earliest = new Date(ey, em, ed),
+
+          d = new Date(),
+          dy = d.getFullYear(),
+          dm = d.getMonth(),
+          dd = d.getDate(),
+
+          today = new Date(dy, dm, dd),
+          n = Math.ceil((today - earliest) / 8.64e7)
+
+          console.log(h)
+
+      return ((h / 24) * 100).toFixed(2)
+
+    }
+
+  },
+
 	openSect: function(sect) {
 		let x = document.getElementsByClassName("sect")
 
@@ -190,5 +299,14 @@ var Dash = {
 		Dash.log = log
 		Dash.display()
 		Dash.visualise()
+
+    document.getElementById("loggedHours").innerHTML = Dash.analytics.loggedHours() + " h"
+
+    document.getElementById("loggedToday").innerHTML = Dash.analytics.loggedToday() + " h"
+
+    document.getElementById("logPerc").innerHTML = Dash.analytics.logPercentage() + "%"
+
+    document.getElementById("logPercToday").innerHTML = Dash.analytics.logPercentageToday() + "%"
+
 	}
 }
