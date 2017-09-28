@@ -22,3 +22,4 @@
 59cc8b99  59cc985e  MNT  Castle  Optimising living space
 59ccba8f  59ccbdb9  COD  Log  Adding more analytical information
 59ccc9b5  59ccd514  DSG  Log  Updating design
+59ccd70e  59ccd832  COD  Log  Fixing tab issue with mobile browsers
