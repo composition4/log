@@ -18,3 +18,4 @@
 59cc5a0b  59cc5ccd  COD  Log  Adding log status indicator
 59cc5d53  59cc5e79  COD  Log  Adding colour coding
 59cc60e5  59cc6519  COD  Log  Optimising things
+59cc7a9d  59cc7c2a  COD  Log  Cleaning up code
