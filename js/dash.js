@@ -11,6 +11,15 @@ var Dash = {
 	log: [],
 
   /**
+   * Display log status
+   * @return {string} log status
+   */
+
+  status: function() {
+    return Dash.log[Dash.log.length - 1].e == "undefined" ? "Active" : "Idle"
+  },
+
+  /**
    * Display logs into a table
    */
 
@@ -308,6 +317,7 @@ var Dash = {
 		Dash.display()
 		Dash.visualise()
 
+    dis("status", Dash.status())
     dis("loggedHours",  (Dash.data.loggedHours().toFixed(2)        + " h"))
     dis("loggedToday",  (Dash.data.loggedToday().toFixed(2)        + " h"))
     dis("logPerc",      (Dash.data.logPercentage().toFixed(2)      +  "%"))
