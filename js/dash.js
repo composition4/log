@@ -31,7 +31,7 @@ var Dash = {
 
 		for (let i = 0, l = Dash.log.length; i < l; i++) {
 			let e = Dash.log[i],
-          r = t.insertRow(i + 1),
+          r = t.insertRow(i + 2),
   				c1 = r.insertCell(0),
   				c2 = r.insertCell(1),
   				c3 = r.insertCell(2),
@@ -41,17 +41,21 @@ var Dash = {
   				c7 = r.insertCell(6),
           es = Dash.time.parse(e.s),
           ee = Dash.time.parse(e.e),
-
           q = Dash.time.convert(es)
 
-			c1.innerHTML = Aequirys.shorter(Aequirys.convert(new Date(q.getFullYear(), q.getMonth(), q.getDate())))
+			c1.innerHTML = Aequirys.shorter(
+        Aequirys.convert(
+          new Date(
+            q.getFullYear(),
+            q.getMonth(),
+            q.getDate()
+          )
+        )
+      )
+
       c2.innerHTML = Dash.time.stamp(es)
       c3.innerHTML = Dash.time.stamp(ee)
       c4.innerHTML = Dash.time.duration(es, ee).toFixed(2)
-			c1.className = "ar"
-			c2.className = "ar"
-			c3.className = "ar"
-			c4.className = "ar"
 			c5.innerHTML = e.c
 			c6.innerHTML = e.t
 			c7.innerHTML = e.d
@@ -86,8 +90,8 @@ var Dash = {
 
 	visualise: function() {
 		let v = document.getElementById("vis"),
-        lastWidth = 0,
-        lastPerc = 0
+        lw = 0,
+        lp = 0
 
 		for (let i = 0, l = Dash.log.length; i < l; i++) {
       let e = Dash.log[i],
@@ -96,16 +100,26 @@ var Dash = {
 				  date = Dash.time.date(es)
 
 			if (document.getElementById(date) === null) {
-        lastWidth = 0
-        lastPerc = 0
+        lw = 0
+        lp = 0
 
         let label = document.createElement("p"),
             day = document.createElement("div"),
             q = Dash.time.convert(es)
 
-        label.className = "f6 mon pb1 bb mb1"
-        day.className = "line"
-        label.innerHTML = Aequirys.shorter(Aequirys.convert(new Date(q.getFullYear(), q.getMonth(), q.getDate())))
+        label.className = "f6 mon pb1 bb mb3"
+        day.className = "sh2 wf mb1"
+
+        label.innerHTML = Aequirys.shorter(
+          Aequirys.convert(
+            new Date(
+              q.getFullYear(),
+              q.getMonth(),
+              q.getDate()
+            )
+          )
+        )
+
         day.id = date
         v.appendChild(label)
 				v.appendChild(day)
@@ -116,28 +130,30 @@ var Dash = {
   				y = a.getFullYear(),
   				m = a.getMonth(),
   				d = a.getDate(),
-  				h = a.getHours(),
-  				n = a.getMinutes(),
-  				s = a.getSeconds(),
+
           ds = new Date(y, m, d).getTime() / 1000,
           de = new Date(y, m, d, 23, 59, 59).getTime() / 1000,
-          x = Dash.time.convert(ee),
-  				hx = x.getHours(),
-  				nx = x.getMinutes(),
-  				sx = x.getSeconds(),
-          xt = new Date(y, m, d, hx, nx, sx).getTime() / 1000,
-          dt = new Date(y, m, d, h, n, s).getTime() / 1000,
-          dp = (dt - ds) / (de - ds) * 100,
-          stuff = (xt - ds) / (de - ds) * 100,
-          entry = document.createElement("div")
 
-			entry.className = "psr t0 bg-noir hf dib"
+          x = Dash.time.convert(ee),
+          xt = new Date(y, m, d, x.getHours(), x.getMinutes(), x.getSeconds()).getTime() / 1000,
+          dt = new Date(y, m, d, a.getHours(), a.getMinutes(), a.getSeconds()).getTime() / 1000,
+          dp = (dt - ds) / (de - ds) * 100,
+          entry = document.createElement("div"),
+          background = ""
+
+           if (e.c == "PHO") background = "#2e76c3"
+      else if (e.c == "RES") background = "#83bd75"
+      else if (e.c == "DSG") background = "#eb4e32"
+
+      entry.className = "psr t0 bg-noir hf dib"
       entry.style.width = perc + "%"
-      entry.style.margin = "0 0 0 " + (dp - (lastWidth + lastPerc))  + "%"
+      entry.style.margin = "0 0 0 " + (dp - (lw + lp))  + "%"
+      entry.style.background = background
+
       document.getElementById(date).appendChild(entry)
 
-      lastWidth = perc
-      lastPerc = dp
+      lw = perc
+      lp = dp
 		}
 	},
 
@@ -200,16 +216,21 @@ var Dash = {
      */
 
 		duration: function(a, b) {
-			let d = b - a,
-  				h = d / 3600
-  				// m = Math.floor(d / 60),
-  				// s = d % 60
-
-			return h
+			return (b - a) / 3600
 		}
 	},
 
   data: {
+
+    average: function() {
+      let avg = 0, c = 0
+      for (let i = 0, l = Dash.log.length; i < l; i++) {
+        let e = Dash.log[i]
+        avg += Number(Dash.time.duration(Dash.time.parse(e.s), Dash.time.parse(e.e)))
+        c++
+      }
+      return avg / c
+    },
 
     /**
      * Calculate the total number of logged hours
@@ -322,6 +343,8 @@ var Dash = {
     dis("loggedToday",  (Dash.data.loggedToday().toFixed(2)        + " h"))
     dis("logPerc",      (Dash.data.logPercentage().toFixed(2)      +  "%"))
     dis("logPercToday", (Dash.data.logPercentageToday().toFixed(2) +  "%"))
+
+    dis("ASD", (Dash.data.average().toFixed(2) + " h"))
 
     function dis(e, m) {
       document.getElementById(e).innerHTML = m
