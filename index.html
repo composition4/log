@@ -16,21 +16,11 @@
 <body class="p5">
   <h1 class="mb4 f6 upc tk">Log</h1>
   <div class="mb4 tabs f6">
-    <div class="mb4 r">
-      <div class="c4">
-        <h3 class="mb3 f5 upc tk pb3 bb">Today</h3>
-        <p>Logged Hours: <span id="loggedToday"></span></p>
-        <p>Log Percentage: <span id="logPercToday"></span></p>
-      </div>
-      <div class="c4">
-        <h3 class="mb3 f5 upc tk pb3 bb">Histoire</h3>
-        <p>Logged Hours: <span id="loggedHours"></span></p>
-        <p>Log Percentage: <span id="logPerc"></span></p>
-      </div>
-      <div class="c4">
-        <h3 class="mb3 f5 upc tk pb3 bb">Forecast</h3>
-        <p>Now: Code</p>
-      </div>
+    <div class="mb4 r mon">
+      <p class="c3"><span class="tk">LH<sub>T</sub>:</span> <span id="loggedToday"></span></p>
+      <p class="c3"><span class="tk">LP<sub>T</sub>:</span> <span id="logPercToday"></span></p>
+      <p class="c3"><span class="tk">LH<sub>H</sub>:</span> <span id="loggedHours"></span></p>
+      <p class="c3"><span class="tk">LP<sub>H</sub>:</span> <span id="logPerc"></span></p>
     </div>
     <button class="f6 mon upc tk" onclick="Dash.openSect('charts')">Vis</button>
     <button class="f6 mon upc tk" onclick="Dash.openSect('log')">Raw</button>
