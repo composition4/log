@@ -15,3 +15,4 @@
 59cbc112  59cbcba3  DSG  Heather  Designing UI
 59cbcdfe  59cbd1cf  COD  Log  Simplifying UI
 59cbec67  59cbee57  COD  Mors  Adding progress bar
+59cc5a0b  59cc5ccd  COD  Log  Adding log status indicator

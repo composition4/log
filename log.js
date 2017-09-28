@@ -16,4 +16,5 @@ var log = [
 {"s":"59cbc112","e":"59cbcba3","c":"DSG","t":"Heather","d":"Designing UI"},
 {"s":"59cbcdfe","e":"59cbd1cf","c":"COD","t":"Log","d":"Simplifying UI"},
 {"s":"59cbec67","e":"59cbee57","c":"COD","t":"Mors","d":"Adding progress bar"},
+{"s":"59cc5a0b","e":"59cc5ccd","c":"COD","t":"Log","d":"Adding log status indicator"},
 ]
