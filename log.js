@@ -24,4 +24,5 @@ var log = [
 {"s":"59ccba8f","e":"59ccbdb9","c":"COD","t":"Log","d":"Adding more analytical information"},
 {"s":"59ccc9b5","e":"59ccd514","c":"DSG","t":"Log","d":"Updating design"},
 {"s":"59ccd70e","e":"59ccd832","c":"COD","t":"Log","d":"Fixing tab issue with mobile browsers"},
+{"s":"59ccdb22","e":"59ccdc5e","c":"COD","t":"Log","d":"Removing tabs"},
 ]

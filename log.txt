@@ -23,3 +23,4 @@
 59ccba8f  59ccbdb9  COD  Log  Adding more analytical information
 59ccc9b5  59ccd514  DSG  Log  Updating design
 59ccd70e  59ccd832  COD  Log  Fixing tab issue with mobile browsers
+59ccdb22  59ccdc5e  COD  Log  Removing tabs
