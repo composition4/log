@@ -20,4 +20,5 @@ var log = [
 {"s":"59cc5d53","e":"59cc5e79","c":"COD","t":"Log","d":"Adding colour coding"},
 {"s":"59cc60e5","e":"59cc6519","c":"COD","t":"Log","d":"Optimising things"},
 {"s":"59cc7a9d","e":"59cc7c2a","c":"COD","t":"Log","d":"Cleaning up code"},
+{"s":"59cc8b99","e":"59cc985e","c":"MNT","t":"Castle","d":"Optimising living space"},
 ]
