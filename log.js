@@ -18,4 +18,5 @@ var log = [
 {"s":"59cbec67","e":"59cbee57","c":"COD","t":"Mors","d":"Adding progress bar"},
 {"s":"59cc5a0b","e":"59cc5ccd","c":"COD","t":"Log","d":"Adding log status indicator"},
 {"s":"59cc5d53","e":"59cc5e79","c":"COD","t":"Log","d":"Adding colour coding"},
+{"s":"59cc60e5","e":"59cc6519","c":"COD","t":"Log","d":"Optimising things"},
 ]
