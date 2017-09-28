@@ -26,4 +26,5 @@ var log = [
 {"s":"59ccd70e","e":"59ccd832","c":"COD","t":"Log","d":"Fixing tab issue with mobile browsers"},
 {"s":"59ccdb22","e":"59ccdc5e","c":"COD","t":"Log","d":"Removing tabs"},
 {"s":"59ccfdac","e":"59cd0928","c":"ACA","t":"ACCT131","d":"Doing homework"},
+{"s":"59cd0c44","e":"59cd0ca2","c":"COD","t":"Log","d":"Updating colour coding"},
 ]
