@@ -47,3 +47,4 @@
 59ce4ed3  59ce547d  DSG  Log  Updating UI
 59ce57de  59ce5f25  PHO  Instagram  Preparing a post
 59ce6b2a  59ce6b78  COD  Macian  Fixing image scaling issue
+59ce6cb5  59ce6ea0  COD  Macian  Fixing image scaling issue
