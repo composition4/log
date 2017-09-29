@@ -27,7 +27,7 @@ var Dash = {
 		let t = document.getElementById("logbook"),
 			  a = takeRight(Dash.log, 30)
 
-		t.className = "bn bg-noir blanc f6 mon"
+		t.className = "bn f6 mon"
 
 		for (let i = 0, l = Dash.log.length; i < l; i++) {
 			let e = Dash.log[i],
@@ -105,20 +105,13 @@ var Dash = {
 
         let label = document.createElement("p"),
             day = document.createElement("div"),
-            q = Dash.time.convert(es)
+            q = Dash.time.convert(es),
+            aq = Aequirys.convert(new Date(q.getFullYear(), q.getMonth(), q.getDate()))
 
-        label.className = "f6 mon pb1 bb mb3"
+        label.className = "f6 mon pb1 bb mb3 bsb"
         day.className = "sh2 wf mb1"
 
-        label.innerHTML = Aequirys.shorter(
-          Aequirys.convert(
-            new Date(
-              q.getFullYear(),
-              q.getMonth(),
-              q.getDate()
-            )
-          )
-        )
+        label.innerHTML = aq.mn + aq.dt
 
         day.id = date
         v.appendChild(label)
@@ -144,6 +137,7 @@ var Dash = {
            if (e.c == "PHO") background = "#2e76c3"
       else if (e.c == "RES") background = "#83bd75"
       else if (e.c == "DSG") background = "#eb4e32"
+      else if (e.c == "ACA") background = "#ffd954"
 
       entry.className = "psr t0 bg-noir hf dib"
       entry.style.width = perc + "%"
