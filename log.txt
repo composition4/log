@@ -41,3 +41,4 @@
 59ce075b  59ce07ad  COD  Log  Fixing UI
 59ce0a3b  59ce0f68  COD  Memex  Updating site
 59ce106e  59ce1c03  DSG  Macian  Adding box shadows
+59ce1c82  59ce1fb1  DSG  Macian  Updating Codex design
