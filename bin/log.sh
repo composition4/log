@@ -1,18 +1,18 @@
 #!/bin/bash
 
-F=$HOME/Dropbox/Code/log
+COD=$HOME/Dropbox/Code
+F=$COD/log
 L=$F/log.js
 T=$F/log.txt
 TIME=$(date +"%H%M")
-N=$(date +"%y%m%d%H%M")
+N=$(date +"%s")
 D=$(printf '%x\n' $N)
 C=$F/temp/cache.txt
-
 R=$HOME/.config/rotonde/rotonde.json
-
-J=$HOME/Dropbox/Code/joshavanier.github.io/rotonde
-JI=$J/index.html
-JR=$J/rotonde.json
+JA=$COD/joshavanier.github.io
+RO=$JA/rotonde
+JI=$RO/index.html
+JR=$RO/rotonde.json
 
 addTime() {
   sed -i -e "s/undefined/$D/g" $1
@@ -24,16 +24,13 @@ cache() {
 
 rotonde() {
   echo "Uploading to Rotonde..."
-  cd $HOME/Dropbox/Code/rotonde-cli
+  cd $COD/rotonde-cli
   ./rotonde write "$1" > /dev/null
-
-  # Update Rotonde
-  cd $HOME/Dropbox/Code/joshavanier.github.io
+  cd $COD/joshavanier.github.io
   rm $JI
   rm $JR
   cat $R >> $JI
   cat $R >> $JR
-
   git add rotonde/index.html rotonde/rotonde.json > /dev/null
   git commit -m "Update Rotonde" > /dev/null
   git push -u origin master > /dev/null
@@ -44,8 +41,7 @@ if [ $1 = "e" ]; then
   addTime $L
   addTime $T
   echo "END: $TIME"
-  read -p "Have you accomplished what you set out to do? (y/n) " FIN
-  if [ $FIN = "y" ]; then
+  if [ $2 = "r" ]; then
     read -r TITLE < $C
     VERB=$(sed -n '2p' $C)
     WORD="$(echo $VERB | head -n1 | sed -e 's/\s.*$//')"
