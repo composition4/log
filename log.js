@@ -40,4 +40,5 @@ var log = [
 {"s":"59cde6f5","e":"59cdf228","c":"COD","t":"Heather","d":"Organising code"},
 {"s":"59cdf80d","e":"59ce072a","c":"COD","t":"Heather","d":"Implementing commands"},
 {"s":"59ce075b","e":"59ce07ad","c":"COD","t":"Log","d":"Fixing UI"},
+{"s":"59ce0a3b","e":"59ce0f68","c":"COD","t":"Memex","d":"Updating site"},
 ]
