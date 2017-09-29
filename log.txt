@@ -46,3 +46,4 @@
 59ce44a8  59ce4c5d  COD  Macian  Adding utility classes
 59ce4ed3  59ce547d  DSG  Log  Updating UI
 59ce57de  59ce5f25  PHO  Instagram  Preparing a post
+59ce6b2a  59ce6b78  COD  Macian  Fixing image scaling issue

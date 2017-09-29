@@ -47,4 +47,5 @@ var log = [
 {"s":"59ce44a8","e":"59ce4c5d","c":"COD","t":"Macian","d":"Adding utility classes"},
 {"s":"59ce4ed3","e":"59ce547d","c":"DSG","t":"Log","d":"Updating UI"},
 {"s":"59ce57de","e":"59ce5f25","c":"PHO","t":"Instagram","d":"Preparing a post"},
+{"s":"59ce6b2a","e":"59ce6b78","c":"COD","t":"Macian","d":"Fixing image scaling issue"},
 ]
