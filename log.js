@@ -41,4 +41,5 @@ var log = [
 {"s":"59cdf80d","e":"59ce072a","c":"COD","t":"Heather","d":"Implementing commands"},
 {"s":"59ce075b","e":"59ce07ad","c":"COD","t":"Log","d":"Fixing UI"},
 {"s":"59ce0a3b","e":"59ce0f68","c":"COD","t":"Memex","d":"Updating site"},
+{"s":"59ce106e","e":"59ce1c03","c":"DSG","t":"Macian","d":"Adding box shadows"},
 ]
