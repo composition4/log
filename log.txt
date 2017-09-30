@@ -57,3 +57,4 @@
 59cf6c71  59cf7648  DSG  Memex  Updating design
 59cf77b0  59cf827f  DSG  Memex  Updating design
 59cf8724  59cfa026  DSG  Memex  Updating design
+59cfa2b4  59cfa45b  DSG  Log  Adding colour legend

@@ -58,4 +58,5 @@ var log = [
 {"s":"59cf6c71","e":"59cf7648","c":"DSG","t":"Memex","d":"Updating design"},
 {"s":"59cf77b0","e":"59cf827f","c":"DSG","t":"Memex","d":"Updating design"},
 {"s":"59cf8724","e":"59cfa026","c":"DSG","t":"Memex","d":"Updating design"},
+{"s":"59cfa2b4","e":"59cfa45b","c":"DSG","t":"Log","d":"Adding colour legend"},
 ]
