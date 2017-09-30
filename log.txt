@@ -54,3 +54,4 @@
 59cf47ab  59cf5acc  COD  Macian  Expanding Codex contents
 59cf5bca  59cf6307  DSG  Macian  Designing a homepage
 59cf6a00  59cf6b8c  COD  Memex  Updating site
+59cf6c71  59cf7648  DSG  Memex  Updating design
