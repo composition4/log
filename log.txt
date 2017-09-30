@@ -50,3 +50,4 @@
 59ce6cb5  59ce6ea0  COD  Macian  Fixing image scaling issue
 59cf139b  59cf2a55  DSG  Memex  Updating site design
 59cf2bd1  59cf3a94  COD  Macian  Adding utility classes
+59cf422e  59cf4597  COD  Macian  Adding utility classes
