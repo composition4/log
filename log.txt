@@ -52,3 +52,4 @@
 59cf2bd1  59cf3a94  COD  Macian  Adding utility classes
 59cf422e  59cf4597  COD  Macian  Adding utility classes
 59cf47ab  59cf5acc  COD  Macian  Expanding Codex contents
+59cf5bca  59cf6307  DSG  Macian  Designing a homepage
