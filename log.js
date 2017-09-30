@@ -60,4 +60,5 @@ var log = [
 {"s":"59cf8724","e":"59cfa026","c":"DSG","t":"Memex","d":"Updating design"},
 {"s":"59cfa2b4","e":"59cfa45b","c":"DSG","t":"Log","d":"Adding colour legend"},
 {"s":"59cfab8b","e":"59cfaea4","c":"RES","t":"Sleep","d":"Researching sleep stuff"},
+{"s":"59cfaf5b","e":"59cfb421","c":"COD","t":"Somnus","d":"Creating a sleep tracker"},
 ]
