@@ -56,4 +56,5 @@ var log = [
 {"s":"59cf5bca","e":"59cf6307","c":"DSG","t":"Macian","d":"Designing a homepage"},
 {"s":"59cf6a00","e":"59cf6b8c","c":"COD","t":"Memex","d":"Updating site"},
 {"s":"59cf6c71","e":"59cf7648","c":"DSG","t":"Memex","d":"Updating design"},
+{"s":"59cf77b0","e":"59cf827f","c":"DSG","t":"Memex","d":"Updating design"},
 ]
