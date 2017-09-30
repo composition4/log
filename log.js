@@ -49,4 +49,5 @@ var log = [
 {"s":"59ce57de","e":"59ce5f25","c":"PHO","t":"Instagram","d":"Preparing a post"},
 {"s":"59ce6b2a","e":"59ce6b78","c":"COD","t":"Macian","d":"Fixing image scaling issue"},
 {"s":"59ce6cb5","e":"59ce6ea0","c":"COD","t":"Macian","d":"Fixing image scaling issue"},
+{"s":"59cf139b","e":"59cf2a55","c":"DSG","t":"Memex","d":"Updating site design"},
 ]
