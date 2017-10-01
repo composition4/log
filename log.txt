@@ -63,3 +63,4 @@
 59d05ae9  59d06953  COD  Somnus  Adding statistical information
 59d0772c  59d08b62  COD  Somnus  Adding statistical information
 59d08c60  59d0901a  COD  Log  Fixing overflow issue
+59d09e5e  59d0a4a7  COD  Log  Cleaning up code

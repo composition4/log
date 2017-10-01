@@ -64,4 +64,5 @@ var log = [
 {"s":"59d05ae9","e":"59d06953","c":"COD","t":"Somnus","d":"Adding statistical information"},
 {"s":"59d0772c","e":"59d08b62","c":"COD","t":"Somnus","d":"Adding statistical information"},
 {"s":"59d08c60","e":"59d0901a","c":"COD","t":"Log","d":"Fixing overflow issue"},
+{"s":"59d09e5e","e":"59d0a4a7","c":"COD","t":"Log","d":"Cleaning up code"},
 ]
