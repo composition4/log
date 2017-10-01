@@ -69,3 +69,4 @@
 59d0bac2  59d0c3ce  COD  Eau  Implementing log
 59d0c549  59d0c7f9  COD  Eau  Writing shellscript
 59d0c8d7  59d0c9a0  COD  Eau  Fixing shellscript
+59d0d9d9  59d0f0d1  ART  Inktober  Day 1 - Swift
