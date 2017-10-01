@@ -62,4 +62,5 @@ var log = [
 {"s":"59cfab8b","e":"59cfaea4","c":"RES","t":"Sleep","d":"Researching sleep stuff"},
 {"s":"59cfaf5b","e":"59cfb421","c":"COD","t":"Somnus","d":"Creating a sleep tracker"},
 {"s":"59d05ae9","e":"59d06953","c":"COD","t":"Somnus","d":"Adding statistical information"},
+{"s":"59d0772c","e":"59d08b62","c":"COD","t":"Somnus","d":"Adding statistical information"},
 ]
