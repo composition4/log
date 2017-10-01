@@ -1,58 +1,74 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Log</title><meta name="author" content="Josh Avanier"><meta name="description" content="A log and time-tracking system"><link href="https://joshavanier.github.io/macian/css/macian.css" rel="stylesheet"><style>td{white-space:nowrap}</style></head><body class="r p4 p5-l hf">
-
-<div class="c2 mb4">
-  <h1 class="mb4 f6 upc tk">Log</h1>
-  <div class="mb4 f6 mon">
-    <p class="dib db-l mr4"><span class="tk">LH<sub>T</sub>:</span> <span id="loggedToday"></span></p>
-    <p class="dib db-l mr4"><span class="tk">LP<sub>T</sub>:</span> <span id="logPercToday"></span></p>
-    <p class="dib db-l mr4"><span class="tk">LH<sub>H</sub>:</span> <span id="loggedHours"></span></p>
-    <p class="dib db-l mr4"><span class="tk">LP<sub>H</sub>:</span> <span id="logPerc"></span></p>
-    <p class="dib db-l mr4"><span class="tk">ASD</sub>:</span> <span id="ASD"></span></p>
-  </div>
-  <span id="status" class="db mb4 f6 upc tk">{Status}</span>
-  <ul class="lsn f6">
-    <li class="dib db-l mr4"><span class="mr2 f4">&#9632;</span> Code</li>
-    <li class="dib db-l mr4"><span class="mr2 f4 red">&#9632;</span> Design</li>
-    <li class="dib db-l mr4"><span class="mr2 f4 grn">&#9632;</span> Research</li>
-    <li class="dib db-l mr4"><span class="mr2 f4 blu">&#9632;</span> Photography</li>
-    <li class="dib db-l mr4"><span class="mr2 f4 ylw">&#9632;</span> Academia</li>
-  </ul>
-</div>
-
-<div class="ca hf">
-  <div class="mb4">
-    <span class="f6 mon upc tk bb c-pt mr2" onclick="Dash.openSect('charts')">Vis</span>
-    <span class="f6 mon upc tk bb c-pt" onclick="Dash.openSect('log')">Raw</span>
-  </div>
-  <div id="charts" class="sect bsit h9 p3">
-    <div id="vis" class="r pb3"></div>
-  </div>
-  <div id="log" class="sect bsit h9 oys" style="display:none">
-    <table id="logbook">
-      <thead>
-        <tr>
-          <th class="al" colspan="7">Log.table</th>
-        </tr>
-        <tr>
-          <th class="al">Date</th>
-          <th class="al">Start</th>
-          <th class="al">End</th>
-          <th class="al">Duration</th>
-          <th class="al">Sector</th>
-          <th class="al">Project</th>
-          <th class="al">Activity</th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-</div>
-
-<footer class="dn db-l psr psf-l b0 l0 ml5-l mb5-l">
-  <p class="f6 mon tk">&copy; <a class="noir" href="https://joshavanier.github.io/wiki/personal/josh/" title="Josh Avanier">JA</a></p>
-</footer>
-
-<script src="log.js"></script>
-<script src="js/aequirys.js"></script>
-<script src="js/dash.js"></script>
-<script>Dash.init()</script>
-</body></html>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale = 1.0, initial-scale = 1.0, maximum-scale = 5.0, user-scalable=yes">
+	<title>Log</title>
+	<meta name="author" content="Josh Avanier">
+	<meta name="description" content="A log and time-tracking system">
+	<meta name="twitter:site" content="@twitterHandleOfSite">
+	<meta name="twitter:creator" content="@joshavanier">
+	<meta name="twitter:title" content="Log">
+	<meta name="twitter:description" content="Josh Avanier's log and time-tracking system">
+	<link href="https://joshavanier.github.io/macian/css/macian.css" rel="stylesheet">
+	<style>
+		td {white-space: nowrap}
+	</style>
+</head>
+<body class="r p4 p5-l hf">
+	<div class="c2 mb4">
+		<h1 class="mb4 f6 upc tk">Log</h1>
+		<div class="mb4 f6 mon">
+			<p class="dib db-l mr4"><span class="tk">LH<sub>T</sub>:</span> <span id="loggedToday"></span></p>
+			<p class="dib db-l mr4"><span class="tk">LP<sub>T</sub>:</span> <span id="logPercToday"></span></p>
+			<p class="dib db-l mr4"><span class="tk">LH<sub>H</sub>:</span> <span id="loggedHours"></span></p>
+			<p class="dib db-l mr4"><span class="tk">LP<sub>H</sub>:</span> <span id="logPerc"></span></p>
+			<p class="dib db-l mr4"><span class="tk">ASD</sub>:</span> <span id="ASD"></span></p>
+		</div>
+		<span id="status" class="db mb4 f6 upc tk">{Status}</span>
+		<ul class="lsn f6">
+			<li class="dib db-l mr4"><span class="mr2 f4">&#9632;</span> Code</li>
+			<li class="dib db-l mr4"><span class="mr2 f4 red">&#9632;</span> Design</li>
+			<li class="dib db-l mr4"><span class="mr2 f4 grn">&#9632;</span> Research</li>
+			<li class="dib db-l mr4"><span class="mr2 f4 blu">&#9632;</span> Photography</li>
+			<li class="dib db-l mr4"><span class="mr2 f4 ylw">&#9632;</span> Academia</li>
+		</ul>
+	</div>
+	<div class="ca hf">
+		<div class="mb4">
+			<span class="f6 mon upc tk bb c-pt mr2" onclick="Dash.openSect('charts')">Vis</span>
+			<span class="f6 mon upc tk bb c-pt" onclick="Dash.openSect('log')">Raw</span>
+		</div>
+		<div id="charts" class="sect bsit h9 p3">
+			<div id="vis" class="r pb3"></div>
+		</div>
+		<div id="log" class="sect bsit h9 oya" style="display:none">
+			<table id="logbook">
+				<thead>
+					<tr>
+						<th class="al" colspan="7">Log.table</th>
+					</tr>
+					<tr>
+						<th class="al">Date</th>
+						<th class="al">Start</th>
+						<th class="al">End</th>
+						<th class="al">Duration</th>
+						<th class="al">Sector</th>
+						<th class="al">Project</th>
+						<th class="al">Activity</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+	<footer class="dn db-l psr psf-l b0 l0 ml5-l mb5-l">
+		<p class="f6 mon tk">&copy; <a class="noir" href="https://joshavanier.github.io/wiki/personal/josh/" title="Josh Avanier">JA</a></p>
+	</footer>
+	<script src="log.js"></script>
+	<script src="js/aequirys.js"></script>
+	<script src="js/dash.min.js"></script>
+	<script>
+		Dash.init()
+	</script>
+</body>
+</html>
