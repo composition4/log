@@ -60,3 +60,4 @@
 59cfa2b4  59cfa45b  DSG  Log  Adding colour legend
 59cfab8b  59cfaea4  RES  Sleep  Researching sleep stuff
 59cfaf5b  59cfb421  COD  Somnus  Creating a sleep tracker
+59d05ae9  59d06953  COD  Somnus  Adding statistical information
