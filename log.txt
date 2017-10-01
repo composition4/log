@@ -71,3 +71,4 @@
 59d0c8d7  59d0c9a0  COD  Eau  Fixing shellscript
 59d0d9d9  59d0f0d1  ART  Inktober  Day 1 - Swift
 59d0f273  59d0f4d1  PHO  Instagram  Editing post
+59d10a19  59d10d58  COD  Log  Cleaning up code

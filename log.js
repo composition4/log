@@ -72,4 +72,5 @@ var log = [
 {"s":"59d0c8d7","e":"59d0c9a0","c":"COD","t":"Eau","d":"Fixing shellscript"},
 {"s":"59d0d9d9","e":"59d0f0d1","c":"ART","t":"Inktober","d":"Day 1 - Swift"},
 {"s":"59d0f273","e":"59d0f4d1","c":"PHO","t":"Instagram","d":"Editing post"},
+{"s":"59d10a19","e":"59d10d58","c":"COD","t":"Log","d":"Cleaning up code"},
 ]
