@@ -101,101 +101,87 @@ var Dash = {
           end = Dash.time.date(ee)
 
       if (date !== end) {
-        console.log(ee)
-
-        // cut the entries into two
-
-        if (document.getElementById(date) === null)
-          newRow(es, date)
+        if (document.getElementById(date) === null) newRow(es, date)
 
         let a = Dash.time.convert(es),
-            y = a.getFullYear(),
-            m = a.getMonth(),
-            d = a.getDate(),
-            eDate = new Date(y, m, d, 23, 59).getTime() / 1000
 
-            let parseDate = (+eDate).toString(16)
+            eDate = new Date(
+              a.getFullYear(),
+              a.getMonth(),
+              a.getDate(),
+              23,
+              59
+            ).getTime() / 1000,
 
-  			let result = calculate(Dash.time.parse((+eDate).toString(16)), es),
+            result = calculate(
+              Dash.time.parse((+eDate).toString(16)), es
+            ),
+
             entry = document.createElement("div"),
             background = ""
 
-        entry.className = "psr t0 bg-noir hf dib"
-        entry.style.width = result.perc + "%"
-        entry.style.margin = "0 0 0 " + result.margin + "%"
+        if (e.c == "PHO") background = "bg-blu"
+        else if (e.c == "RES") background = "bg-grn"
+        else if (e.c == "DSG") background = "bg-red"
+        else if (e.c == "ACA") background = "bg-ylw"
 
-        if (e.c == "PHO") background = "#2e76c3"
-        else if (e.c == "RES") background = "#83bd75"
-        else if (e.c == "DSG") background = "#eb4e32"
-        else if (e.c == "ACA") background = "#ffd954"
-
+        entry.className        = "psr t0 bg-noir hf dib"
+        entry.style.width      = result.perc + "%"
+        entry.style.margin     = "0 0 0 " + result.margin + "%"
         entry.style.background = background
-
-        console.log(result)
 
         document.getElementById(date).appendChild(entry)
 
-        // lw = 0
-        // lp = 0
-
-        //B
-
-        if (document.getElementById(end) === null)
-          newRow(es, end)
+        if (document.getElementById(end) === null) newRow(es, end)
 
         let ea = Dash.time.convert(ee),
-            ey = ea.getFullYear(),
-            em = ea.getMonth(),
-            ed = ea.getDate(),
-            eaDate = new Date(ey, em, ed, 00, 00).getTime() / 1000,
-            parseaDate = (+eaDate).toString(16)
 
-        let aresult = calculate(ee, Dash.time.parse((+eaDate).toString(16))),
+            eaDate = new Date(
+              ea.getFullYear(),
+              ea.getMonth(),
+              ea.getDate(),
+              00,
+              00
+            ).getTime() / 1000,
+
+            aresult = calculate(ee, Dash.time.parse((+eaDate).toString(16))),
+
             aentry = document.createElement("div"),
             abackground = ""
 
-        aentry.className = "psr t0 bg-noir hf dib"
+        if (e.c == "PHO") background = "bg-blu"
+        else if (e.c == "RES") background = "bg-grn"
+        else if (e.c == "DSG") background = "bg-red"
+        else if (e.c == "ACA") background = "bg-ylw"
+
+        aentry.className = "psr t0 bg-noir hf dib " + abackground
         aentry.style.width = aresult.perc + "%"
         aentry.style.margin = "0 0 0 " + aresult.margin + "%"
-
-        if (e.c == "PHO") abackground = "#2e76c3"
-        else if (e.c == "RES") abackground = "#83bd75"
-        else if (e.c == "DSG") abackground = "#eb4e32"
-        else if (e.c == "ACA") abackground = "#ffd954"
-
-        aentry.style.background = abackground
 
         document.getElementById(end).appendChild(aentry)
 
         lw = aresult.perc
         lp = aresult.dp
-
-      }
-
-      else {
-
-        if (document.getElementById(date) === null)
-          newRow(es, date)
+      } else {
+        if (document.getElementById(date) === null) newRow(es, date)
 
   			let result = calculate(ee, es),
             entry = document.createElement("div"),
             background = ""
 
-             if (e.c == "PHO") background = "#2e76c3"
-        else if (e.c == "RES") background = "#83bd75"
-        else if (e.c == "DSG") background = "#eb4e32"
-        else if (e.c == "ACA") background = "#ffd954"
+        if (e.c == "PHO") background = "bg-blu"
+        else if (e.c == "RES") background = "bg-grn"
+        else if (e.c == "DSG") background = "bg-red"
+        else if (e.c == "ACA") background = "bg-ylw"
 
-        entry.className = "psr t0 bg-noir hf dib"
+        entry.className = "psr t0 bg-noir hf dib " + background
         entry.style.width = result.perc + "%"
         entry.style.margin = "0 0 0 " + result.margin + "%"
-        entry.style.background = background
 
         document.getElementById(date).appendChild(entry)
 
         lw = result.perc
         lp = result.dp
-
       }
 
       function calculate(ee, es) {
@@ -215,7 +201,6 @@ var Dash = {
 
             margin = dp - (lw + lp)
 
-
         return {
           "dp": dp,
           "perc": perc,
@@ -224,7 +209,6 @@ var Dash = {
       }
 
       function newRow(es, date) {
-
         lw = 0
         lp = 0
 
@@ -241,9 +225,7 @@ var Dash = {
         day.id = date
         v.appendChild(label)
         v.appendChild(day)
-
       }
-
 		}
 	},
 
