@@ -140,8 +140,8 @@ var Dash = {
               ea.getFullYear(),
               ea.getMonth(),
               ea.getDate(),
-              00,
-              00
+              0,
+              0
             ).getTime() / 1000,
 
             aresult = calculate(ee, Dash.time.parse((+eaDate).toString(16))),
