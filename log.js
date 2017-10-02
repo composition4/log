@@ -89,4 +89,5 @@ var log = [
 {"s":"59d24335","e":"59d2490e","c":"PHO","t":"Instagram","d":"Editing a post"},
 {"s":"59d24c62","e":"59d260ab","c":"COD","t":"Memex","d":"Updating content"},
 {"s":"59d264dd","e":"59d2660f","c":"PHO","t":"Memex","d":"Editing header images"},
+{"s":"59d267f0","e":"59d26975","c":"DSG","t":"Memex","d":"Updating image design"},
 ]
