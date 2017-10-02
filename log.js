@@ -75,4 +75,5 @@ var log = [
 {"s":"59d10a19","e":"59d10d58","c":"COD","t":"Log","d":"Cleaning up code"},
 {"s":"59d10e7b","e":"59d10f5b","c":"COD","t":"Memex","d":"Cleaning up code"},
 {"s":"59d18f37","e":"59d18fd8","c":"COD","t":"Macian","d":"Updating classes"},
+{"s":"59d19075","e":"59d19108","c":"COD","t":"Mors","d":"Optimising script"},
 ]
