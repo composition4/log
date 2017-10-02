@@ -79,4 +79,5 @@ var log = [
 {"s":"59d195ab","e":"59d196ae","c":"COD","t":"Haiaku","d":"Optimising script"},
 {"s":"59d1b7a6","e":"59d1b9ef","c":"COD","t":"Eau","d":"Fixing vis issues"},
 {"s":"59d1ba82","e":"59d1bcf8","c":"COD","t":"Eau","d":"Cleaning up code"},
+{"s":"59d1bebf","e":"59d1c58f","c":"ACA","t":"MNGT337","d":"Doing homework"},
 ]
