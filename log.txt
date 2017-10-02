@@ -81,3 +81,5 @@
 59d1bebf  59d1c58f  ACA  MNGT337  Doing homework
 59d1ca50  59d1cfe6  COD  Heather  Working on commands
 59d1d17c  59d1d4d4  DSG  Somnus  Updating UI
+59d1f84d  59d203d6  COD  Log  Cleaning up code
+59d2029d  59d203d6  ART  Inktober  Day 2 - Divided

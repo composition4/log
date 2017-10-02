@@ -82,4 +82,6 @@ var log = [
 {"s":"59d1bebf","e":"59d1c58f","c":"ACA","t":"MNGT337","d":"Doing homework"},
 {"s":"59d1ca50","e":"59d1cfe6","c":"COD","t":"Heather","d":"Working on commands"},
 {"s":"59d1d17c","e":"59d1d4d4","c":"DSG","t":"Somnus","d":"Updating UI"},
+{"s":"59d1f84d","e":"59d203d6","c":"COD","t":"Log","d":"Cleaning up code"},
+{"s":"59d2029d","e":"59d203d6","c":"ART","t":"Inktober","d":"Day 2 - Divided"},
 ]
