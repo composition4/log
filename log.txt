@@ -73,3 +73,4 @@
 59d0f273  59d0f4d1  PHO  Instagram  Editing post
 59d10a19  59d10d58  COD  Log  Cleaning up code
 59d10e7b  59d10f5b  COD  Memex  Cleaning up code
+59d18f37  59d18fd8  COD  Macian  Updating classes
