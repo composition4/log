@@ -334,10 +334,8 @@ var Dash = {
             ctm = ct.getMonth(),
             ctd = ct.getDate()
 
-        if (y !== cty && m !== ctm && d !== ctd)
+        if (y == cty && m == ctm && d == ctd)
           lh += Number(Dash.time.duration(es, Dash.time.parse(e.e)))
-        else
-          continue
       }
 
       return lh
@@ -367,8 +365,6 @@ var Dash = {
 
         if (y == ty && m == tm && d == td) entriesToday.push(e)
       }
-
-      console.log(entriesToday)
 
       if (entriesToday.length == 0) {
         return 0
