@@ -89,3 +89,4 @@
 59d24c62  59d260ab  COD  Memex  Updating content
 59d264dd  59d2660f  PHO  Memex  Editing header images
 59d267f0  59d26975  DSG  Memex  Updating image design
+59d2ecc8  59d2efe3  COD  Log  Fixing stats
