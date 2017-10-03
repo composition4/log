@@ -93,4 +93,5 @@ var log = [
 {"s":"59d2ecc8","e":"59d2efe3","c":"COD","t":"Log","d":"Fixing stats"},
 {"s":"59d2f04c","e":"59d2f0f6","c":"COD","t":"Log","d":"Fixing stats"},
 {"s":"59d34ad4","e":"59d34cbd","c":"COD","t":"Log","d":"Experimenting with visualisations"},
+{"s":"59d34ccd","e":"59d34fb3","c":"COD","t":"Log","d":"Adding sector percentages"},
 ]
