@@ -94,8 +94,11 @@ var Dash = {
         lp = 0
 
 		for (let i = 0, l = Dash.log.length; i < l; i++) {
-      let e = Dash.log[i],
-          es = Dash.time.parse(e.s),
+      let e = Dash.log[i]
+
+      if (e.e == "undefined") continue
+
+      let es = Dash.time.parse(e.s),
           ee = Dash.time.parse(e.e)
 				  date = Dash.time.date(es),
           end = Dash.time.date(ee)
@@ -104,88 +107,54 @@ var Dash = {
         if (document.getElementById(date) === null) newRow(es, date)
 
         let a = Dash.time.convert(es),
-
             eDate = new Date(
               a.getFullYear(),
               a.getMonth(),
               a.getDate(),
               23,
               59
-            ).getTime() / 1000,
+            ).getTime() / 1000
 
-            result = calculate(
-              Dash.time.parse((+eDate).toString(16)), es
-            ),
-
-            entry = document.createElement("div"),
-            background = ""
-
-        if (e.c == "PHO") background = "bg-blu"
-        else if (e.c == "RES") background = "bg-grn"
-        else if (e.c == "DSG") background = "bg-red"
-        else if (e.c == "ACA") background = "bg-ylw"
-
-        entry.className        = "psr t0 bg-noir hf dib"
-        entry.style.width      = result.perc + "%"
-        entry.style.margin     = "0 0 0 " + result.margin + "%"
-        entry.style.background = background
-
-        document.getElementById(date).appendChild(entry)
+        addEntry(calc(Dash.time.parse((+eDate).toString(16)), es))
 
         if (document.getElementById(end) === null) newRow(es, end)
 
         let ea = Dash.time.convert(ee),
-
             eaDate = new Date(
               ea.getFullYear(),
               ea.getMonth(),
               ea.getDate(),
               0,
               0
-            ).getTime() / 1000,
+            ).getTime() / 1000
 
-            aresult = calculate(ee, Dash.time.parse((+eaDate).toString(16))),
-
-            aentry = document.createElement("div"),
-            abackground = ""
-
-        if (e.c == "PHO") background = "bg-blu"
-        else if (e.c == "RES") background = "bg-grn"
-        else if (e.c == "DSG") background = "bg-red"
-        else if (e.c == "ACA") background = "bg-ylw"
-
-        aentry.className = "psr t0 bg-noir hf dib " + abackground
-        aentry.style.width = aresult.perc + "%"
-        aentry.style.margin = "0 0 0 " + aresult.margin + "%"
-
-        document.getElementById(end).appendChild(aentry)
-
-        lw = aresult.perc
-        lp = aresult.dp
+        addEntry(calc(ee, Dash.time.parse((+eaDate).toString(16))))
       } else {
         if (document.getElementById(date) === null) newRow(es, date)
+        addEntry(calc(ee, es))
+      }
 
-  			let result = calculate(ee, es),
-            entry = document.createElement("div"),
-            background = ""
+      function addEntry(r) {
+        let entry = document.createElement("div"), bg = ""
 
-        if (e.c == "PHO") background = "bg-blu"
-        else if (e.c == "RES") background = "bg-grn"
-        else if (e.c == "DSG") background = "bg-red"
-        else if (e.c == "ACA") background = "bg-ylw"
+        if      (e.c == "PHO") bg = "bg-blu"
+        else if (e.c == "RES") bg = "bg-grn"
+        else if (e.c == "DSG") bg = "bg-red"
+        else if (e.c == "ACA") bg = "bg-ylw"
 
-        entry.className = "psr t0 bg-noir hf dib " + background
-        entry.style.width = result.perc + "%"
-        entry.style.margin = "0 0 0 " + result.margin + "%"
+        entry.className    = "psr t0 bg-noir hf dib " + bg
+        entry.style.width  = r.perc + "%"
+        entry.style.margin = "0 0 0 " + r.margin + "%"
 
         document.getElementById(date).appendChild(entry)
 
-        lw = result.perc
-        lp = result.dp
+        lw = r.perc
+        lp = r.dp
       }
 
-      function calculate(ee, es) {
+      function calc(ee, es) {
         let perc = (ee - es) / 86400 * 100,
+
             a = Dash.time.convert(es),
     				y = a.getFullYear(),
     				m = a.getMonth(),
@@ -212,18 +181,24 @@ var Dash = {
         lw = 0
         lp = 0
 
-        let label = document.createElement("p"),
+        let lbl = document.createElement("p"),
             day = document.createElement("div"),
             q = Dash.time.convert(es),
-            aq = Aequirys.convert(new Date(q.getFullYear(), q.getMonth(), q.getDate()))
+            aq = Aequirys.convert(
+              new Date(
+                q.getFullYear(),
+                q.getMonth(),
+                q.getDate()
+              )
+            )
 
-        label.className = "f6 mon pb1 bb mb3 bsb"
+        lbl.className = "f6 mon pb1 bb mb3 bsb"
+        lbl.innerHTML = aq.mn + aq.dt
+
         day.className = "sh2 wf mb1"
-
-        label.innerHTML = aq.mn + aq.dt
-
         day.id = date
-        v.appendChild(label)
+
+        v.appendChild(lbl)
         v.appendChild(day)
       }
 		}
@@ -298,6 +273,7 @@ var Dash = {
       let avg = 0, c = 0
       for (let i = 0, l = Dash.log.length; i < l; i++) {
         let e = Dash.log[i]
+        if (e.e == "undefined") continue
         avg += Number(Dash.time.duration(Dash.time.parse(e.s), Dash.time.parse(e.e)))
         c++
       }
@@ -313,6 +289,7 @@ var Dash = {
       let lh = 0
       for (let i = 0, l = Dash.log.length; i < l; i++) {
         let e = Dash.log[i]
+        if (e.e == "undefined") continue
         lh += Number(Dash.time.duration(Dash.time.parse(e.s), Dash.time.parse(e.e)))
       }
       return lh
@@ -341,19 +318,26 @@ var Dash = {
       let lh = 0
 
       for (let i = Dash.log.length - 1; i >= 0; i--) {
-        let e = Dash.log[i],
-            es = Dash.time.parse(e.s),
+        let e = Dash.log[i]
+
+        if (e.e == "undefined") continue
+
+        let es = Dash.time.parse(e.s),
+
             a = Dash.time.convert(es),
     				y = a.getFullYear(),
     				m = a.getMonth(),
     				d = a.getDate(),
+
             ct = new Date(),
             cty = ct.getFullYear(),
             ctm = ct.getMonth(),
             ctd = ct.getDate()
 
-        if (y == cty && m == ctm && ctd == d)
+        if (y !== cty && m !== ctm && d !== ctd)
           lh += Number(Dash.time.duration(es, Dash.time.parse(e.e)))
+        else
+          continue
       }
 
       return lh
@@ -368,8 +352,11 @@ var Dash = {
       let entriesToday = []
 
       for (let i = Dash.log.length - 1; i >= 0; i--) {
-        let e = Dash.log[i],
-            a = Dash.time.convert(Dash.time.parse(e.s)),
+        let e = Dash.log[i]
+
+        if (e.e == "undefined") continue
+
+        let a = Dash.time.convert(Dash.time.parse(e.s)),
     				y = a.getFullYear(),
     				m = a.getMonth(),
     				d = a.getDate(),
@@ -381,14 +368,20 @@ var Dash = {
         if (y == ty && m == tm && d == td) entriesToday.push(e)
       }
 
-      let h = Number(Dash.data.loggedToday()),
-          e = Dash.time.convert(Dash.time.parse(entriesToday[0].s)),
-          earliest = new Date(e.getFullYear(), e.getMonth(), e.getDate()),
-          d = new Date(),
-          today = new Date(d.getFullYear(), d.getMonth(), d.getDate()),
-          n = Math.ceil((today - earliest) / 8.64e7)
+      console.log(entriesToday)
 
-      return (h / 24) * 100
+      if (entriesToday.length == 0) {
+        return 0
+      } else {
+        let h = Number(Dash.data.loggedToday()),
+            e = Dash.time.convert(Dash.time.parse(entriesToday[0].s)),
+            earliest = new Date(e.getFullYear(), e.getMonth(), e.getDate()),
+            d = new Date(),
+            today = new Date(d.getFullYear(), d.getMonth(), d.getDate()),
+            n = Math.ceil((today - earliest) / 8.64e7)
+
+        return (h / 24) * 100
+      }
     }
   },
 
@@ -396,13 +389,10 @@ var Dash = {
    * Open a tab
    */
 
-	openSect: function(sect) {
+	openSect: function(s) {
 		let x = document.getElementsByClassName("sect")
-
-		for (let i = 0, l = x.length; i < l; i++)
-			x[i].style.display = "none"
-
-		document.getElementById(sect).style.display = "block"
+		for (let i = 0, l = x.length; i < l; i++) x[i].style.display = "none"
+		document.getElementById(s).style.display = "block"
 	},
 
 	init() {
