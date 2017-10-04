@@ -97,4 +97,5 @@ var log = [
 {"s":"59d36789","e":"59d3722e","c":"COD","t":"Log","d":"Optimising code"},
 {"s":"59d38eff","e":"59d39101","c":"PHO","t":"Instagram","d":"Editing a post"},
 {"s":"59d395f6","e":"59d3b670","c":"DSG","t":"Memex","d":"Working on UI"},
+{"s":"59d47509","e":"59d47d05","c":"DSG","t":"Memex","d":"Working on UI"},
 ]
