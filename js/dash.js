@@ -25,7 +25,7 @@ var Dash = {
 
 	display() {
 		let t = document.getElementById("logbook"),
-			  a = takeRight(Dash.log, 30)
+        time = Dash.time
 
 		t.className = "bn f6 mon"
 
@@ -39,9 +39,9 @@ var Dash = {
   				c5 = r.insertCell(4),
   				c6 = r.insertCell(5),
   				c7 = r.insertCell(6),
-          es = Dash.time.parse(e.s),
-          ee = Dash.time.parse(e.e),
-          q = Dash.time.convert(es)
+          es = time.parse(e.s),
+          ee = time.parse(e.e),
+          q = time.convert(es)
 
 			c1.innerHTML = Aequirys.shorter(
         Aequirys.convert(
@@ -53,34 +53,12 @@ var Dash = {
         )
       )
 
-      c2.innerHTML = Dash.time.stamp(es)
-      c3.innerHTML = Dash.time.stamp(ee)
-      c4.innerHTML = Dash.time.duration(es, ee).toFixed(2)
+      c2.innerHTML = time.stamp(es)
+      c3.innerHTML = time.stamp(ee)
+      c4.innerHTML = time.duration(es, ee).toFixed(2)
 			c5.innerHTML = e.c
 			c6.innerHTML = e.t
 			c7.innerHTML = e.d
-		}
-
-		function takeRight(a, n = 1) {
-			const l = a == null ? 0 : a.length
-			if (!l) return []
-			n = l - n
-			return slice(a, n < 0 ? 0 : n, l)
-			function slice(a, s, e) {
-				let l = a == null ? 0 : a.length
-				if (!l) return []
-				s = s == null ? 0 : s
-				e = e === undefined ? l : e
-				if (s < 0) s = -s > l ? 0 : (l + s)
-				e = e > l ? l : e
-				if (e < 0) e += l
-				l = s > e ? 0 : ((e - s) >>> 0)
-				s >>>= 0
-				let i = -1
-				const r = new Array(l) // result
-				while (++i < l) r[i] = a[i + s]
-				return r
-			}
 		}
 	},
 
@@ -153,27 +131,27 @@ var Dash = {
       }
 
       function calc(ee, es) {
-        let perc = (ee - es) / 86400 * 100,
-
-            a = Dash.time.convert(es),
-    				y = a.getFullYear(),
-    				m = a.getMonth(),
-    				d = a.getDate(),
-
-            ds = new Date(y, m, d).getTime() / 1000,
-            de = new Date(y, m, d, 23, 59, 59).getTime() / 1000,
-
-            x = Dash.time.convert(ee),
-            xt = new Date(y, m, d, x.getHours(), x.getMinutes(), x.getSeconds()).getTime() / 1000,
-            dt = new Date(y, m, d, a.getHours(), a.getMinutes(), a.getSeconds()).getTime() / 1000,
+        let p = (ee - es) / 86400 * 100,
+            s = Dash.time.convert(es),
+    				sy = s.getFullYear(),
+    				sm = s.getMonth(),
+    				sd = s.getDate(),
+            ds = new Date(sy, sm, sd).getTime() / 1000,
+            de = new Date(sy, sm, sd, 23, 59, 59).getTime() / 1000,
+            e = Dash.time.convert(ee),
+            et = new Date(
+              sy, sm, sd, e.getHours(), e.getMinutes(), e.getSeconds()
+            ).getTime() / 1000,
+            dt = new Date(
+              sy, sm, sd, s.getHours(), s.getMinutes(), s.getSeconds()
+            ).getTime() / 1000,
             dp = (dt - ds) / (de - ds) * 100,
-
-            margin = dp - (lw + lp)
+            m = dp - (lw + lp)
 
         return {
           "dp": dp,
-          "perc": perc,
-          "margin": margin
+          "perc": p,
+          "margin": m
         }
       }
 
@@ -181,8 +159,8 @@ var Dash = {
         lw = 0
         lp = 0
 
-        let lbl = document.createElement("p"),
-            day = document.createElement("div"),
+        let lb = document.createElement("p"),
+            dy = document.createElement("div"),
             q = Dash.time.convert(es),
             aq = Aequirys.convert(
               new Date(
@@ -192,17 +170,119 @@ var Dash = {
               )
             )
 
-        lbl.className = "f6 mon pb1 bb mb3 bsb"
-        lbl.innerHTML = aq.mn + aq.dt
+        lb.className = "f6 mon pb1 bb mb3"
+        lb.innerHTML = aq.mn + aq.dt
 
-        day.className = "sh2 wf mb1"
-        day.id = date
+        dy.className = "sh2 wf mb1"
+        dy.id = date
 
-        v.appendChild(lbl)
-        v.appendChild(day)
+        v.appendChild(lb)
+        v.appendChild(dy)
       }
 		}
 	},
+
+  barChart: function() {
+
+    let v = document.getElementById("weekChart"),
+        lw = 0
+
+		for (let i = 0, l = Dash.log.length; i < l; i++) {
+      let e = Dash.log[i]
+
+      if (e.e == "undefined") continue
+
+      let es = Dash.time.parse(e.s),
+          ee = Dash.time.parse(e.e)
+				  date = Dash.time.date(es),
+          end = Dash.time.date(ee)
+
+      if (date !== end) {
+        if (document.getElementById(date) === null) newCol(es, date)
+
+        let a = Dash.time.convert(es),
+            eDate = new Date(
+              a.getFullYear(),
+              a.getMonth(),
+              a.getDate(),
+              23,
+              59
+            ).getTime() / 1000
+
+        addEntry(calc(Dash.time.parse((+eDate).toString(16)), es))
+
+        if (document.getElementById(end) === null) newCol(es, end)
+
+        let ea = Dash.time.convert(ee),
+            eaDate = new Date(
+              ea.getFullYear(),
+              ea.getMonth(),
+              ea.getDate(),
+              0,
+              0
+            ).getTime() / 1000
+
+        addEntry(calc(ee, Dash.time.parse((+eaDate).toString(16))))
+      } else {
+        if (document.getElementById(date) === null) newCol(es, date)
+        addEntry(calc(ee, es))
+      }
+
+      function addEntry(r) {
+        let entry = document.createElement("div"), bg = ""
+
+        if      (e.c == "PHO") bg = "bg-blu"
+        else if (e.c == "RES") bg = "bg-grn"
+        else if (e.c == "DSG") bg = "bg-red"
+        else if (e.c == "ACA") bg = "bg-ylw"
+
+        entry.className    = "psa wf bg-noir fw " + bg
+        entry.style.height  = r.perc + "%"
+        entry.style.bottom = lw + "%"
+
+        document.getElementById(date).appendChild(entry)
+
+        lw += r.perc
+        // lp += r.dp
+      }
+
+      function calc(ee, es) {
+        let p = (ee - es) / 86400 * 100,
+            s = Dash.time.convert(es),
+    				sy = s.getFullYear(),
+    				sm = s.getMonth(),
+    				sd = s.getDate(),
+            ds = new Date(sy, sm, sd).getTime() / 1000,
+            de = new Date(sy, sm, sd, 23, 59, 59).getTime() / 1000,
+            e = Dash.time.convert(ee),
+            et = new Date(
+              sy, sm, sd, e.getHours(), e.getMinutes(), e.getSeconds()
+            ).getTime() / 1000,
+            dt = new Date(
+              sy, sm, sd, s.getHours(), s.getMinutes(), s.getSeconds()
+            ).getTime() / 1000,
+            dp = (dt - ds) / (de - ds) * 100,
+            m = dp - (lw)
+
+        return {
+          "dp": dp,
+          "perc": p,
+          "margin": m
+        }
+      }
+
+      function newCol(es, date) {
+        lw = 0
+
+        let dy = document.createElement("div")
+
+        dy.className = "dib w1 hf psr"
+        dy.id = date
+
+        v.appendChild(dy)
+      }
+		}
+  },
 
 	time: {
 
@@ -247,12 +327,8 @@ var Dash = {
      */
 
 		date: function(t) {
-			let a = Dash.time.convert(t),
-  				y = a.getFullYear(),
-  				m = a.getMonth(),
-  				d = a.getDate()
-
-			return y + '' + m + '' + d
+			let a = Dash.time.convert(t)
+			return a.getFullYear() + '' + a.getMonth() + '' + a.getDate()
 		},
 
     /**
@@ -304,7 +380,12 @@ var Dash = {
       let h = Number(Dash.data.loggedHours()),
           e = Dash.time.convert(Dash.time.parse(Dash.log[0].s)),
           d = new Date(),
-          n = Math.ceil(((new Date(d.getFullYear(), d.getMonth(), d.getDate())) - (new Date(e.getFullYear(), e.getMonth(), e.getDate()))) / 8.64e7)
+          n = Math.ceil((
+              new Date(
+                d.getFullYear(), d.getMonth(), d.getDate()
+              ) - new Date(
+                e.getFullYear(), e.getMonth(), e.getDate()
+              )) / 8.64e7)
 
       return (h / ((n + 1) * 24)) * 100
     },
@@ -378,6 +459,33 @@ var Dash = {
 
         return (h / 24) * 100
       }
+    },
+
+    /**
+     * Calculate sector hours
+     * @param {string} sector - sector
+     * @return {number} number of sector hours
+     */
+
+    sectorHours: function(sector) {
+      let lh = 0, time = Dash.time
+      for (let i = 0, l = Dash.log.length; i < l; i++) {
+        let e = Dash.log[i]
+        if (e.e == "undefined") continue
+        if (e.c == sector)
+          lh += Number(time.duration(time.parse(e.s), time.parse(e.e)))
+      }
+      return lh
+    },
+
+    /**
+     * Calculate sector percentage
+     * @param {string} sector - sector
+     * @return {number} sector percentage
+     */
+
+    sectorPercentage: function(sector) {
+      return Dash.data.sectorHours(sector) / Dash.data.loggedHours() * 100
     }
   },
 
@@ -392,20 +500,35 @@ var Dash = {
 	},
 
 	init() {
+    let data = Dash.data,
+        sp = data.sectorPercentage
+
 		Dash.log = log
-		Dash.display()
-		Dash.visualise()
 
-    dis("status", Dash.status())
-    dis("loggedHours",  (Dash.data.loggedHours().toFixed(2)        + " h"))
-    dis("loggedToday",  (Dash.data.loggedToday().toFixed(2)        + " h"))
-    dis("logPerc",      (Dash.data.logPercentage().toFixed(2)      +  "%"))
-    dis("logPercToday", (Dash.data.logPercentageToday().toFixed(2) +  "%"))
+    Dash.barChart()
 
-    dis("ASD", (Dash.data.average().toFixed(2) + " h"))
+    d("status", Dash.status())
+    d("LHH", f(data.loggedHours(),        " h"))
+    d("LHT", f(data.loggedToday(),        " h"))
+    d("LPH", f(data.logPercentage(),       "%"))
+    d("LPT", f(data.logPercentageToday(),  "%"))
+    d("ASD", f(data.average(),            " h"))
 
-    function dis(e, m) {
+    d("pCOD", f(sp("COD"), "%"))
+    d("pDSG", f(sp("DSG"), "%"))
+    d("pRES", f(sp("RES"), "%"))
+    d("pPHO", f(sp("PHO"), "%"))
+    d("pACA", f(sp("ACA"), "%"))
+
+    Dash.display()
+		// Dash.visualise()
+
+    function d(e, m) {
       document.getElementById(e).innerHTML = m
+    }
+
+    function f(a, b) {
+      return a.toFixed(2) + b
     }
 	}
 }
