@@ -1,12 +1,9 @@
 <!doctype html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
+<html lang="en"><head><meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, minimum-scale = 1.0, initial-scale = 1.0, maximum-scale = 5.0, user-scalable=yes">
 	<title>Log</title>
 	<meta name="author" content="Josh Avanier">
 	<meta name="description" content="A log and time-tracking system">
-	<meta name="twitter:site" content="@twitterHandleOfSite">
 	<meta name="twitter:creator" content="@joshavanier">
 	<meta name="twitter:title" content="Log">
 	<meta name="twitter:description" content="Josh Avanier's log and time-tracking system">
@@ -16,30 +13,74 @@
 	</style>
 </head>
 <body class="noselect r p4 p5-l hf">
-	<div class="c2 mb4">
-		<h1 class="mb4 f6 upc tk">Log</h1>
-		<div class="mb4 f6 mon">
-			<p class="dib db-l mr4"><span class="tk">LH<sub>T</sub>:</span> <span id="loggedToday"></span></p>
-			<p class="dib db-l mr4"><span class="tk">LP<sub>T</sub>:</span> <span id="logPercToday"></span></p>
-			<p class="dib db-l mr4"><span class="tk">LH<sub>H</sub>:</span> <span id="loggedHours"></span></p>
-			<p class="dib db-l mr4"><span class="tk">LP<sub>H</sub>:</span> <span id="logPerc"></span></p>
-			<p class="dib db-l mr4"><span class="tk">ASD</sub>:</span> <span id="ASD"></span></p>
+
+  <header class="mb4">
+    <h1 class="dib mr4 f6 upc tk">Log</h1>
+
+    <button class="f6 mon mr3" onclick="Dash.openSect('overview')">Overview</button>
+    <button class="f6 mon mr3" onclick="Dash.openSect('charts')">Visualisation</button>
+    <button class="f6 mon mr3" onclick="Dash.openSect('log')">Data Table</button>
+    <button class="f6 mon mr4" onclick="Dash.openSect('about')">About</button>
+
+    <span id="status" class="mb4 f6 upc tk">{Status}</span>
+
+  </header>
+	<div class="hf">
+    <div id="overview" class="sect h9">
+
+      <h2 class="mb3 f5">Overview</h2>
+      <ul class="mb3 lsn f6">
+  			<li class="dib mr4"><span class="mr2 f4">&#9632;</span> Code (<span id="pCOD"></span>)</li>
+  			<li class="dib mr4"><span class="mr2 f4 red">&#9632;</span> Design (<span id="pDSG"></span>)</li>
+  			<li class="dib mr4"><span class="mr2 f4 grn">&#9632;</span> Research (<span id="pRES"></span>)</li>
+  			<li class="dib mr4"><span class="mr2 f4 blu">&#9632;</span> Photography (<span id="pPHO"></span>)</li>
+  			<li class="dib mr4"><span class="mr2 f4 ylw">&#9632;</span> Academia (<span id="pACA"></span>)</li>
+  		</ul>
+      <div class="mb5 ba sh6 oxs oyh wf" id="weekChart"></div>
+
+      <h2 class="mb3 f5">Today</h2>
+      <ul class="mb5 pb4 lsn r">
+
+        <li class="c3 c6-m">
+          <p class="mb2 f6">LH<sub>T</sub></p>
+          <p class="f1 fwb" id="LHT"></p>
+        </li>
+
+        <li class="c3 c6-m">
+          <p class="mb2 f6">LH<sub>max</sub></p>
+          <p class="f1 fwb" id="LHX">2.45</p>
+        </li>
+
+        <li class="c3 c6-m">
+          <p class="mb2 f6">LH<sub>min</sub></p>
+          <p class="f1 fwb" id="LHN">2.45</p>
+        </li>
+
+        <li class="c3 c6-m">
+          <p class="mb2 f6">LP<sub>T</sub></p>
+          <p class="f1 fwb" id="LPT"></p>
+        </li>
+      </ul>
+
+      <h2 class="mb3 f5">All Time</h2>
+      <ul class="mb5 pb4 lsn r">
+        <li class="c3">
+          <p class="mb3 f6">LH<sub>H</sub></p>
+          <p class="f1" id="LHH"></p>
+        </li>
+        <li class="c3">
+          <p class="mb3 f6">LP<sub>H</sub></p>
+          <p class="f1" id="LPH"></p>
+        </li>
+        <li class="c3">
+          <p class="mb3 f6">ASD</p>
+          <p class="f1" id="ASD"></p>
+        </li>
+      </ul>
 		</div>
-		<span id="status" class="db mb4 f6 upc tk">{Status}</span>
-		<ul class="lsn f6">
-			<li class="dib db-l mr4"><span class="mr2 f4">&#9632;</span> Code</li>
-			<li class="dib db-l mr4"><span class="mr2 f4 red">&#9632;</span> Design</li>
-			<li class="dib db-l mr4"><span class="mr2 f4 grn">&#9632;</span> Research</li>
-			<li class="dib db-l mr4"><span class="mr2 f4 blu">&#9632;</span> Photography</li>
-			<li class="dib db-l mr4"><span class="mr2 f4 ylw">&#9632;</span> Academia</li>
-		</ul>
-	</div>
-	<div class="ca hf">
-		<div class="mb4">
-			<span class="f6 mon upc tk bb c-pt mr2" onclick="Dash.openSect('charts')">Vis</span>
-			<span class="f6 mon upc tk bb c-pt" onclick="Dash.openSect('log')">Raw</span>
-		</div>
-		<div id="charts" class="sect bsit h9 p3">
+
+		<div id="charts" class="sect h9" style="display:none">
+      <h2 class="mb3 f5">Week Summary</h2>
 			<div id="vis" class="r pb3"></div>
 		</div>
 		<div id="log" class="sect bsit h9 oya" style="display:none">
@@ -60,7 +101,15 @@
 				</thead>
 			</table>
 		</div>
-	</div>
+
+    <div id="about" class="sect h9" style="display:none">
+
+      <h2 class="mb3 f5">About</h2>
+			<p class="m">This is a log and time-tracking system by and of Josh Avanier. Logs started on the 16th of Decium 2017.</p>
+
+		</div>
+
+  </div>
 	<footer class="dn db-l psr psf-l b0 l0 ml5-l mb5-l">
 		<p class="f6 mon tk">&copy; <a class="noir" href="https://joshavanier.github.io/wiki/personal/josh/" title="Josh Avanier">JA</a></p>
 	</footer>
@@ -70,5 +119,4 @@
 	<script>
 		Dash.init()
 	</script>
-</body>
-</html>
+</body></html>
