@@ -100,4 +100,5 @@ var log = [
 {"s":"59d47509","e":"59d47d05","c":"DSG","t":"Memex","d":"Working on UI"},
 {"s":"59d4aee7","e":"59d4b0bb","c":"DSG","t":"Memex","d":"Updating content"},
 {"s":"59d4b2c5","e":"59d4b415","c":"DSG","t":"Memex","d":"Updating content"},
+{"s":"59d4b87a","e":"59d4ba52","c":"COD","t":"Memex","d":"Optimising code"},
 ]

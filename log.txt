@@ -99,3 +99,4 @@
 59d47509  59d47d05  DSG  Memex  Working on UI
 59d4aee7  59d4b0bb  DSG  Memex  Updating content
 59d4b2c5  59d4b415  DSG  Memex  Updating content
+59d4b87a  59d4ba52  COD  Memex  Optimising code
