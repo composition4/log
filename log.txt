@@ -107,3 +107,5 @@
 59d4f0d5  59d4f8bb  PHO  Instagram  Editing post
 59d4fe3f  59d508d6  COD  Log  Implementing bar chart
 59d5b192  59d5ba2b  COD  Log  Cleaning up code
+59d5f4d9  59d5f79a  COD  Log  Implementing bar chart
+59d602db  59d61208  COD  Log  Adding more charts
