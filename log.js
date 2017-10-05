@@ -110,4 +110,5 @@ var log = [
 {"s":"59d5b192","e":"59d5ba2b","c":"COD","t":"Log","d":"Cleaning up code"},
 {"s":"59d5f4d9","e":"59d5f79a","c":"COD","t":"Log","d":"Implementing bar chart"},
 {"s":"59d602db","e":"59d61208","c":"COD","t":"Log","d":"Adding more charts"},
+{"s":"59d62427","e":"59d625f3","c":"COD","t":"Log","d":"Adding LHmin and LHmax"},
 ]
