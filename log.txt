@@ -110,3 +110,4 @@
 59d5f4d9  59d5f79a  COD  Log  Implementing bar chart
 59d602db  59d61208  COD  Log  Adding more charts
 59d62427  59d625f3  COD  Log  Adding LHmin and LHmax
+59d63483  59d642d1  COD  Log  Working on charts
