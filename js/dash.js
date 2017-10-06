@@ -244,8 +244,8 @@ var Dash = {
 
         let dy = document.createElement("div")
 
-        dy.className = "dib sw2 hf psr"
-        // dy.style.width = (100 / 8) + "%"
+        dy.className = "dib hf psr"
+        dy.style.width = "1%"
         dy.id = date
 
         v.appendChild(dy)
@@ -314,7 +314,7 @@ var Dash = {
 
   data: {
 
-    lhmin: function(d) {
+    lsmin: function(d) {
       let m, time = Dash.time
       for (let i = 0, l = Dash.log.length; i < l; i++) {
         let e = Dash.log[i]
@@ -336,7 +336,7 @@ var Dash = {
       return m
     },
 
-    lhmax: function(d) {
+    lsmax: function(d) {
       let m, time = Dash.time
       for (let i = 0, l = Dash.log.length; i < l; i++) {
         let e = Dash.log[i]
@@ -512,10 +512,10 @@ var Dash = {
     d("LPH",  f(data.lp(),      "%"))
     d("LPT",  f(data.lp(n),     "%"))
     d("ASD",  f(data.asd(),    " h"))
-    d("LHN",  f(data.lhmin(n), " h"))
-    d("LHX",  f(data.lhmax(n), " h"))
-    d("LHNH", f(data.lhmin(),  " h"))
-    d("LHXH", f(data.lhmax(),  " h"))
+    d("LSN",  f(data.lsmin(n), " h"))
+    d("LSX",  f(data.lsmax(n), " h"))
+    d("LSNH", f(data.lsmin(),  " h"))
+    d("LSXH", f(data.lsmax(),  " h"))
 
     d("pCOD", f(sp("COD"), "%"))
     d("pDSG", f(sp("DSG"), "%"))
