@@ -120,7 +120,7 @@ var Dash = {
         else if (e.c == "DSG") bg = "bg-red"
         else if (e.c == "ACA") bg = "bg-ylw"
 
-        entry.className    = "psr t0 bg-noir hf dib " + bg
+        entry.className    = "psr t0 bg-blanc sh2 mb2 lf " + bg
         entry.style.width  = r.perc + "%"
         entry.style.margin = "0 0 0 " + r.margin + "%"
 
@@ -162,10 +162,10 @@ var Dash = {
               )
             )
 
-        lb.className = "f6 mon pb1 bb mb3"
-        lb.innerHTML = aq.mn + aq.dt
+        // lb.className = "dn dib-m dib-l w1 f6 mon mb3"
+        // lb.innerHTML = aq.mn + aq.dt
 
-        dy.className = "sh2 wf mb1"
+        dy.className = "db wf pt2 pb3"
         dy.id = "v" + date
 
         v.appendChild(lb)
@@ -315,7 +315,7 @@ var Dash = {
   data: {
 
     lhmin: function(d) {
-      let m = 1, time = Dash.time
+      let m, time = Dash.time
       for (let i = 0, l = Dash.log.length; i < l; i++) {
         let e = Dash.log[i]
         if (e.e == "undefined") continue
@@ -330,14 +330,14 @@ var Dash = {
         } else check()
         function check() {
           let n = Number(time.duration(time.parse(e.s), time.parse(e.e)))
-          if (n < m) m = n
+          if (n < m || m == undefined) m = n
         }
       }
       return m
     },
 
     lhmax: function(d) {
-      let m = 1, time = Dash.time
+      let m, time = Dash.time
       for (let i = 0, l = Dash.log.length; i < l; i++) {
         let e = Dash.log[i]
         if (e.e == "undefined") continue
@@ -352,7 +352,7 @@ var Dash = {
         } else check()
         function check() {
           let n = Number(time.duration(time.parse(e.s), time.parse(e.e)))
-          if (n > m) m = n
+          if (n > m || m == undefined) m = n
         }
       }
       return m
