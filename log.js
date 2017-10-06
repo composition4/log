@@ -113,4 +113,5 @@ var log = [
 {"s":"59d62427","e":"59d625f3","c":"COD","t":"Log","d":"Adding LHmin and LHmax"},
 {"s":"59d63483","e":"59d642d1","c":"COD","t":"Log","d":"Working on charts"},
 {"s":"59d64ae9","e":"59d65a4d","c":"DSG","t":"Log","d":"Updating UI"},
+{"s":"59d6d649","e":"59d6e641","c":"ACA","t":"MATH235","d":"Studying probability distributions"},
 ]
