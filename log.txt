@@ -113,3 +113,4 @@
 59d63483  59d642d1  COD  Log  Working on charts
 59d64ae9  59d65a4d  DSG  Log  Updating UI
 59d6d649  59d6e641  ACA  MATH235  Studying probability distributions
+59d77083  59d77340  COD  Log  Updating interface
