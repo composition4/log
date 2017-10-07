@@ -16,7 +16,7 @@ var Dash = {
    */
 
   status () {
-    return Dash.log[Dash.log.length - 1].e == "undefined" ? "Active" : "Idle"
+    return Dash.log[Dash.log.length - 1].e == "undefined" ? "grn" : "red"
   },
 
   /**
@@ -104,8 +104,9 @@ var Dash = {
             else if (e.c == "RES") bg = "bg-grn"
             else if (e.c == "DSG") bg = "bg-red"
             else if (e.c == "ACA") bg = "bg-ylw"
+            else bg = "bg-blanc"
 
-            entry.className    = "psr t0 bg-blanc sh2 mb2 lf " + bg
+            entry.className    = `psr t0 sh2 mb2 lf ${bg}`
             entry.style.width  = r.p + "%"
             entry.style.margin = "0 0 0 " + r.m + "%"
 
@@ -140,14 +141,10 @@ var Dash = {
                 dy = document.createElement("div"),
                 q = Dash.time.convert(es),
                 aq = Aequirys.convert(
-                  new Date(
-                    q.getFullYear(),
-                    q.getMonth(),
-                    q.getDate()
-                  )
+                  new Date(q.getFullYear(), q.getMonth(), q.getDate())
                 )
 
-            dy.className = "db wf pt2 pb3"
+            dy.className = "db wf sh2 mt2 mb3 bsia bg-111 br1"
             dy.id = "v" + date
 
             v.appendChild(lb)
@@ -516,9 +513,12 @@ var Dash = {
    */
 
 	openSect(s) {
-		let x = document.getElementsByClassName("sect")
+		let x = document.getElementsByClassName("sect"),
+        b = document.getElementsByClassName("tab")
 		for (let i = 0, l = x.length; i < l; i++) x[i].style.display = "none"
+    for (let i = 0, l = b.length; i < l; i++) b[i].className = "pv1 tab on bg-noir blanc f6 mon tk mr3"
 		document.getElementById(s).style.display = "block"
+    document.getElementById(`b-${s}`).className = "pv1 tab on bg-noir blanc f6 mon tk mr3 bb"
 	},
 
 	init() {
@@ -536,7 +536,7 @@ var Dash = {
 
     Dash.barChart()
 
-    d("status", Dash.status())
+    document.getElementById("status").className = `rf mb4 f6 ${Dash.status()}`
 
     d("LHH",  f(data.lh(),     " h"))
     d("LHT",  f(data.lh(n),    " h"))

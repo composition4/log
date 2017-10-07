@@ -7,56 +7,55 @@
 	<meta name="twitter:creator" content="@joshavanier">
 	<meta name="twitter:title" content="Log">
 	<meta name="twitter:description" content="Josh Avanier's log and time-tracking system">
-	<link href="../macian/css/macian.css" rel="stylesheet">
+	<link rel="stylesheet" href="../macian/css/macian.css">
 	<style>
 		td {white-space: nowrap}
 		body {max-width: 1500px}
 	</style>
-</head><body class="noselect r p4 p5-l hf cn">
+</head><body class="noselect bg-noir blanc r p4 p5-l hf cn">
 
 	<header class="mb4">
 		<h1 class="dib mr4 f6 upc tk">Log</h1>
-		<button class="f6 mon mr3" onclick="Dash.openSect('overview')">Overview</button>
-		<button id="visSection" class="f6 mon mr3" onclick="Dash.openSect('charts')">Visualisation</button>
-		<button class="f6 mon mr3" onclick="Dash.openSect('log')">Data Table</button>
-		<button class="f6 mon mr4" onclick="Dash.openSect('about')">About</button>
-		<span id="status" class="mb4 f6 upc tk">{Status}</span>
+		<button id="b-overview" class="pv1 bb tab on bg-noir blanc f6 mon tk mr3" title="Overview" onclick="Dash.openSect('overview')">OVW</button>
+		<button id="b-charts" class="pv1 tab on bg-noir blanc f6 mon tk mr3" title="Visualisation" onclick="Dash.openSect('charts')">VIS</button>
+		<button id="b-log" class="pv1 tab on bg-noir blanc f6 mon tk mr3" title="Data Table" onclick="Dash.openSect('log')">TAB</button>
+		<button id="b-about" class="pv1 tab on bg-noir blanc f6 mon tk mr4" title="About" onclick="Dash.openSect('about')">ABT</button>
+		<span id="status" class="rf mb4 f6">	&#11042;</span>
 	</header>
 
 	<div class="hf">
 		<div id="overview" class="sect h9">
-
       <div class="f6 mon">
-        <span class="f6">161017</span>
-        <span class="f6 rf ar">020118</span>
+        <span class="f6">K16&#183;17</span>
+        <span class="f6 rf ar">A02&#183;18</span>
       </div>
 
-			<div class="mb2 sh6 wf bsia" id="weekChart"></div>
+			<div class="bg-blanc blanc ba mb2 sh6 wf bsia" id="weekChart"></div>
       <ul class="mb5 lsn f6">
-				<li class="dib mr4"><span class="mr1 f4">&#9632;</span> COD <span id="pCOD"></span></li>
-				<li class="dib mr4"><span class="mr1 f4 red">&#9632;</span> DSG <span id="pDSG"></span></li>
-				<li class="dib mr4"><span class="mr1 f4 grn">&#9632;</span> RES <span id="pRES"></span></li>
-				<li class="dib mr4"><span class="mr1 f4 blu">&#9632;</span> PHO <span id="pPHO"></span></li>
-				<li class="dib"><span class="mr1 f4 ylw">&#9632;</span> ACA <span id="pACA"></span></li>
+				<li class="dib mr4"><span class="mr1 f4 a1">&#9632;</span> <span class="tk">COD</span> <span id="pCOD"></span></li>
+				<li class="dib mr4"><span class="mr1 f4 red">&#9632;</span> <span class="tk">DSG</span> <span id="pDSG"></span></li>
+				<li class="dib mr4"><span class="mr1 f4 grn">&#9632;</span> <span class="tk">RES</span> <span id="pRES"></span></li>
+				<li class="dib mr4"><span class="mr1 f4 blu">&#9632;</span> <span class="tk">PHO</span> <span id="pPHO"></span></li>
+				<li class="dib"><span class="mr1 f4 ylw">&#9632;</span> <span class="tk">ACA</span> <span id="pACA"></span></li>
 			</ul>
 
 			<h2 class="mb3 f5">Today</h2>
 			<ul class="lsn r">
 				<li class="mb5 c3 c6-m">
 					<p class="mb2 f6">LH<sub>T</sub></p>
-					<p class="f1 fwb" id="LHT"></p>
+					<p class="f2 fwb" id="LHT"></p>
 				</li>
 				<li class="mb5 c3 c6-m">
 					<p class="mb2 f6">LS<sub>min</sub></p>
-					<p class="f1 fwb" id="LSN"></p>
+					<p class="f2 fwb" id="LSN"></p>
 				</li>
         <li class="mb5 c3 c6-m">
 					<p class="mb2 f6">LS<sub>max</sub></p>
-					<p class="f1 fwb" id="LSX"></p>
+					<p class="f2 fwb" id="LSX"></p>
 				</li>
 				<li class="mb5 c3 c6-m">
 					<p class="mb2 f6">LP<sub>T</sub></p>
-					<p class="f1 fwb" id="LPT"></p>
+					<p class="f2 fwb" id="LPT"></p>
 				</li>
 			</ul>
 
@@ -64,33 +63,34 @@
 			<ul class="mb5 pb4 lsn r">
 				<li class="mb5 c3 c6-m">
 					<p class="mb3 f6">LH<sub>H</sub></p>
-					<p class="f1 fwb" id="LHH"></p>
+					<p class="f2 fwb" id="LHH"></p>
 				</li>
 				<li class="mb5 c3 c6-m">
 					<p class="mb2 f6">LS<sub>Hmin</sub></p>
-					<p class="f1 fwb" id="LSNH"></p>
+					<p class="f2 fwb" id="LSNH"></p>
 				</li>
 				<li class="mb5 c3 c6-m">
 					<p class="mb2 f6">LS<sub>Hmax</sub></p>
-					<p class="f1 fwb" id="LSXH"></p>
+					<p class="f2 fwb" id="LSXH"></p>
 				</li>
 				<li class="mb5 c3 c6-m">
 					<p class="mb3 f6">LP<sub>H</sub></p>
-					<p class="f1 fwb" id="LPH"></p>
+					<p class="f2 fwb" id="LPH"></p>
 				</li>
-				<li class="mb5 c3 c6-m">
+				<li class="dn mb5 c3 c6-m">
 					<p class="mb3 f6">ASD</p>
-					<p class="f1 fwb" id="ASD"></p>
+					<p class="f2 fwb" id="ASD"></p>
 				</li>
 			</ul>
 		</div>
 
 		<div id="charts" class="sect h9" style="display:none">
-      <div class="f6 mon">
-        <span class="f6">00:00</span>
-        <span class="f6 rf ar">23:59</span>
+    	<div id="vis" class="r pv1 hf bg-noir blanc bt">
+        <div class="f6 mon">
+          <span class="f6">00&#183;00&#183;00</span>
+          <span class="f6 rf ar">23&#183;59&#183;59</span>
+        </div>
       </div>
-			<div id="vis" class="r p3 hf bg-noir"></div>
 		</div>
 
 		<div id="log" class="sect bg-noir blanc bsit h9 oya" style="display:none">
@@ -113,12 +113,12 @@
 		</div>
 
 		<div id="about" class="sect h9" style="display:none">
-			<h2 class="mb3 f5">About</h2>
-			<p class="m">This is a log and time-tracking system by and of Josh Avanier. Logs started on the 16th of Decium 2017.</p>
+			<h2 class="mt2 mb3 f5">About</h2>
+			<p class="m">This is a log and time-tracking system by and of Josh Avanier. Logs started on K-16 2017.</p>
 		</div>
 	</div>
 	<footer class="dn db-l psr psf-l b0 l0 ml5-l mb5-l">
-		<p class="f6 mon tk">&copy; <a class="noir" href="https://joshavanier.github.io/wiki/personal/josh/" title="Josh Avanier">JA</a></p>
+		<p class="f6 mon tk">&copy; <a class="blanc" href="https://joshavanier.github.io/wiki/personal/josh/" title="Josh Avanier">JA</a></p>
 	</footer>
 	<script src="log.js"></script>
 	<script src="js/aequirys.js"></script>
