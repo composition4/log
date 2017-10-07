@@ -121,4 +121,5 @@ var log = [
 {"s":"59d84c7d","e":"59d84dca","c":"COD","t":"Aequirys","d":"Cleaning up code"},
 {"s":"59d84f31","e":"59d84fd0","c":"COD","t":"Aequirys","d":"Cleaning up code"},
 {"s":"59d85232","e":"59d853b2","c":"COD","t":"Aequirys","d":"Cleaning up code"},
+{"s":"59d854d5","e":"59d85808","c":"COD","t":"Log","d":"Updating to ES6"},
 ]

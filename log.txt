@@ -120,3 +120,4 @@
 59d84c7d  59d84dca  COD  Aequirys  Cleaning up code
 59d84f31  59d84fd0  COD  Aequirys  Cleaning up code
 59d85232  59d853b2  COD  Aequirys  Cleaning up code
+59d854d5  59d85808  COD  Log  Updating to ES6
