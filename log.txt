@@ -123,3 +123,4 @@ Start     End       Cat  Project      Description
 59d84f31  59d84fd0  COD  Aequirys     Cleaning up code
 59d85232  59d853b2  COD  Aequirys     Cleaning up code
 59d854d5  59d85808  COD  Log          Updating to ES6
+59d85e99  59d85f93  COD  Somnus  Updating to ES6
