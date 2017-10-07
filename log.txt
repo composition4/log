@@ -130,3 +130,4 @@ Start     End       Cat  Project      Description
 59d8a51a  59d8b5d5  COD  Log  Working on updates
 59d8b6c1  59d8b7ad  COD  MONOCAL  Updating to ES6
 59d8b8d6  59d8ba25  COD  Haiaku  Updating to ES6
+59d8c3fb  59d8ccca  DSG  MONOCAL  Redesigning UI
