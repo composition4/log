@@ -1,123 +1,125 @@
-59ca2198  59ca2272  COD  Log  Creating a new system
-59ca243e  59ca564a  COD  Log  Working on data visualisation
+Start     End       Cat  Project      Description
+
+59ca2198  59ca2272  COD  Log          Creating a new system
+59ca243e  59ca564a  COD  Log          Working on data visualisation
 59ca5ba6  59ca6073  PHO  Photography  Editing a moon photo
 59ca613b  59ca6308  PHO  Photography  Editing plant photos
-59ca66b4  59ca67ab  COD  Log  Fixing vis for IE
-59cad5bc  59cae402  COD  Log  Updating interface
-59cae4b4  59cae4f9  COD  Log  Fixing vis issue
-59cb0930  59cb1048  COD  Log  Adding analytical information
-59cb40de  59cb4f97  RES  Twitter  Researching Twitter API
-59cb54de  59cb5b73  COD  Log  Adding more analytical information
-59cb6fb3  59cb8218  COD  Log  Cleaning up code
-59cb88fd  59cb8b11  COD  Log  Cleaning up code
-59cb9856  59cb99fb  PHO  Instagram  Editing a post
-59cba14b  59cbaa86  DSG  Karasu  Designing a Twitter client
-59cbc112  59cbcba3  DSG  Heather  Designing UI
-59cbcdfe  59cbd1cf  COD  Log  Simplifying UI
-59cbec67  59cbee57  COD  Mors  Adding progress bar
-59cc5a0b  59cc5ccd  COD  Log  Adding log status indicator
-59cc5d53  59cc5e79  COD  Log  Adding colour coding
-59cc60e5  59cc6519  COD  Log  Optimising things
-59cc7a9d  59cc7c2a  COD  Log  Cleaning up code
-59cc8b99  59cc985e  MNT  Castle  Optimising living space
-59ccba8f  59ccbdb9  COD  Log  Adding more analytical information
-59ccc9b5  59ccd514  DSG  Log  Updating design
-59ccd70e  59ccd832  COD  Log  Fixing tab issue with mobile browsers
-59ccdb22  59ccdc5e  COD  Log  Removing tabs
-59ccfdac  59cd0928  ACA  ACCT131  Doing homework
-59cd0c44  59cd0ca2  COD  Log  Updating colour coding
-59cd0cdf  59cd0f01  ACA  ACCT131  Doing homework
-59cd110c  59cd1a21  ACA  ACCT131  Doing homework
-59cd1d18  59cd277c  DSG  Heather  Designing UI
-59cd2b49  59cd30f8  DSG  Heather  Designing UI
-59cd3b94  59cd42dc  DSG  Heather  Designing UI
-59cd9910  59cd9e25  DSG  Heather  Designing UI
-59cd9e53  59cdac76  COD  Heather  Writing API functions
-59cdaf20  59cdb0ef  DSG  Arachne  Designing UI
-59cdb7ed  59cdbd79  COD  Heather  Writing API functions
-59cdc43c  59cdcb09  COD  Heather  Organising code
-59cde6f5  59cdf228  COD  Heather  Organising code
-59cdf80d  59ce072a  COD  Heather  Implementing commands
-59ce075b  59ce07ad  COD  Log  Fixing UI
-59ce0a3b  59ce0f68  COD  Memex  Updating site
-59ce106e  59ce1c03  DSG  Macian  Adding box shadows
-59ce1c82  59ce1fb1  DSG  Macian  Updating Codex design
-59ce2f2b  59ce317c  COD  Log  Streamlining log script
-59ce44a8  59ce4c5d  COD  Macian  Adding utility classes
-59ce4ed3  59ce547d  DSG  Log  Updating UI
-59ce57de  59ce5f25  PHO  Instagram  Preparing a post
-59ce6b2a  59ce6b78  COD  Macian  Fixing image scaling issue
-59ce6cb5  59ce6ea0  COD  Macian  Fixing image scaling issue
-59cf139b  59cf2a55  DSG  Memex  Updating site design
-59cf2bd1  59cf3a94  COD  Macian  Adding utility classes
-59cf422e  59cf4597  COD  Macian  Adding utility classes
-59cf47ab  59cf5acc  COD  Macian  Expanding Codex contents
-59cf5bca  59cf6307  DSG  Macian  Designing a homepage
-59cf6a00  59cf6b8c  COD  Memex  Updating site
-59cf6c71  59cf7648  DSG  Memex  Updating design
-59cf77b0  59cf827f  DSG  Memex  Updating design
-59cf8724  59cfa026  DSG  Memex  Updating design
-59cfa2b4  59cfa45b  DSG  Log  Adding colour legend
-59cfab8b  59cfaea4  RES  Sleep  Researching sleep stuff
-59cfaf5b  59cfb421  COD  Somnus  Creating a sleep tracker
-59d05ae9  59d06953  COD  Somnus  Adding statistical information
-59d0772c  59d08b62  COD  Somnus  Adding statistical information
-59d08c60  59d0901a  COD  Log  Fixing overflow issue
-59d09e5e  59d0a4a7  COD  Log  Cleaning up code
-59d0a5a1  59d0a9e0  COD  Somnus  Cleaning up code
-59d0b1b0  59d0b463  COD  Eau  Implementing log
-59d0bac2  59d0c3ce  COD  Eau  Implementing log
-59d0c549  59d0c7f9  COD  Eau  Writing shellscript
-59d0c8d7  59d0c9a0  COD  Eau  Fixing shellscript
-59d0d9d9  59d0f0d1  ART  Inktober  Day 1 - Swift
-59d0f273  59d0f4d1  PHO  Instagram  Editing post
-59d10a19  59d10d58  COD  Log  Cleaning up code
-59d10e7b  59d10f5b  COD  Memex  Cleaning up code
-59d18f37  59d18fd8  COD  Macian  Updating classes
-59d19075  59d19108  COD  Mors  Optimising script
-59d195ab  59d196ae  COD  Haiaku  Optimising script
-59d1b7a6  59d1b9ef  COD  Eau  Fixing vis issues
-59d1ba82  59d1bcf8  COD  Eau  Cleaning up code
-59d1bebf  59d1c58f  ACA  MNGT337  Doing homework
-59d1ca50  59d1cfe6  COD  Heather  Working on commands
-59d1d17c  59d1d4d4  DSG  Somnus  Updating UI
-59d1f84d  59d203d6  COD  Log  Cleaning up code
-59d2029d  59d203d6  ART  Inktober  Day 2 - Divided
-59d20cad  59d2135a  ART  Inktober  Day 2 - Divided
-59d215b1  59d22469  DSG  Memex  Updating design
-59d24335  59d2490e  PHO  Instagram  Editing a post
-59d24c62  59d260ab  COD  Memex  Updating content
-59d264dd  59d2660f  PHO  Memex  Editing header images
-59d267f0  59d26975  DSG  Memex  Updating image design
-59d2ecc8  59d2efe3  COD  Log  Fixing stats
-59d2f04c  59d2f0f6  COD  Log  Fixing stats
-59d34ad4  59d34cbd  COD  Log  Experimenting with visualisations
-59d34ccd  59d34fb3  COD  Log  Adding sector percentages
-59d36789  59d3722e  COD  Log  Optimising code
-59d38eff  59d39101  PHO  Instagram  Editing a post
-59d395f6  59d3b670  DSG  Memex  Working on UI
-59d47509  59d47d05  DSG  Memex  Working on UI
-59d4aee7  59d4b0bb  DSG  Memex  Updating content
-59d4b2c5  59d4b415  DSG  Memex  Updating content
-59d4b87a  59d4ba52  COD  Memex  Optimising code
-59d4bca5  59d4cb50  COD  Memex  Optimising code
-59d4cc78  59d4cd1b  WRT  Memex  Editing content
-59d4cd34  59d4ce65  COD  Log  Salvaging archives
-59d4cf18  59d4e38d  DSG  Log  Updating dashboard
-59d4f0d5  59d4f8bb  PHO  Instagram  Editing post
-59d4fe3f  59d508d6  COD  Log  Implementing bar chart
-59d5b192  59d5ba2b  COD  Log  Cleaning up code
-59d5f4d9  59d5f79a  COD  Log  Implementing bar chart
-59d602db  59d61208  COD  Log  Adding more charts
-59d62427  59d625f3  COD  Log  Adding LHmin and LHmax
-59d63483  59d642d1  COD  Log  Working on charts
-59d64ae9  59d65a4d  DSG  Log  Updating UI
-59d6d649  59d6e641  ACA  MATH235  Studying probability distributions
-59d77083  59d77340  COD  Log  Updating interface
-59d774fa  59d77cd6  DSG  Log  Polishing design
-59d82ce3  59d8322d  COD  Somnus  Updating interface
-59d8387c  59d84ba7  COD  Aequirys  Updating calendar
-59d84c7d  59d84dca  COD  Aequirys  Cleaning up code
-59d84f31  59d84fd0  COD  Aequirys  Cleaning up code
-59d85232  59d853b2  COD  Aequirys  Cleaning up code
-59d854d5  59d85808  COD  Log  Updating to ES6
+59ca66b4  59ca67ab  COD  Log          Fixing vis for IE
+59cad5bc  59cae402  COD  Log          Updating interface
+59cae4b4  59cae4f9  COD  Log          Fixing vis issue
+59cb0930  59cb1048  COD  Log          Adding analytical information
+59cb40de  59cb4f97  RES  Twitter      Researching Twitter API
+59cb54de  59cb5b73  COD  Log          Adding more analytical information
+59cb6fb3  59cb8218  COD  Log          Cleaning up code
+59cb88fd  59cb8b11  COD  Log          Cleaning up code
+59cb9856  59cb99fb  PHO  Instagram    Editing a post
+59cba14b  59cbaa86  DSG  Karasu       Designing a Twitter client
+59cbc112  59cbcba3  DSG  Heather      Designing UI
+59cbcdfe  59cbd1cf  COD  Log          Simplifying UI
+59cbec67  59cbee57  COD  Mors         Adding progress bar
+59cc5a0b  59cc5ccd  COD  Log          Adding log status indicator
+59cc5d53  59cc5e79  COD  Log          Adding colour coding
+59cc60e5  59cc6519  COD  Log          Optimising things
+59cc7a9d  59cc7c2a  COD  Log          Cleaning up code
+59cc8b99  59cc985e  MNT  Castle       Optimising living space
+59ccba8f  59ccbdb9  COD  Log          Adding more analytical information
+59ccc9b5  59ccd514  DSG  Log          Updating design
+59ccd70e  59ccd832  COD  Log          Fixing tab issue with mobile browsers
+59ccdb22  59ccdc5e  COD  Log          Removing tabs
+59ccfdac  59cd0928  ACA  ACCT131      Doing homework
+59cd0c44  59cd0ca2  COD  Log          Updating colour coding
+59cd0cdf  59cd0f01  ACA  ACCT131      Doing homework
+59cd110c  59cd1a21  ACA  ACCT131      Doing homework
+59cd1d18  59cd277c  DSG  Heather      Designing UI
+59cd2b49  59cd30f8  DSG  Heather      Designing UI
+59cd3b94  59cd42dc  DSG  Heather      Designing UI
+59cd9910  59cd9e25  DSG  Heather      Designing UI
+59cd9e53  59cdac76  COD  Heather      Writing API functions
+59cdaf20  59cdb0ef  DSG  Arachne      Designing UI
+59cdb7ed  59cdbd79  COD  Heather      Writing API functions
+59cdc43c  59cdcb09  COD  Heather      Organising code
+59cde6f5  59cdf228  COD  Heather      Organising code
+59cdf80d  59ce072a  COD  Heather      Implementing commands
+59ce075b  59ce07ad  COD  Log          Fixing UI
+59ce0a3b  59ce0f68  COD  Memex        Updating site
+59ce106e  59ce1c03  DSG  Macian       Adding box shadows
+59ce1c82  59ce1fb1  DSG  Macian       Updating Codex design
+59ce2f2b  59ce317c  COD  Log          Streamlining log script
+59ce44a8  59ce4c5d  COD  Macian       Adding utility classes
+59ce4ed3  59ce547d  DSG  Log          Updating UI
+59ce57de  59ce5f25  PHO  Instagram    Preparing a post
+59ce6b2a  59ce6b78  COD  Macian       Fixing image scaling issue
+59ce6cb5  59ce6ea0  COD  Macian       Fixing image scaling issue
+59cf139b  59cf2a55  DSG  Memex        Updating site design
+59cf2bd1  59cf3a94  COD  Macian       Adding utility classes
+59cf422e  59cf4597  COD  Macian       Adding utility classes
+59cf47ab  59cf5acc  COD  Macian       Expanding Codex contents
+59cf5bca  59cf6307  DSG  Macian       Designing a homepage
+59cf6a00  59cf6b8c  COD  Memex        Updating site
+59cf6c71  59cf7648  DSG  Memex        Updating design
+59cf77b0  59cf827f  DSG  Memex        Updating design
+59cf8724  59cfa026  DSG  Memex        Updating design
+59cfa2b4  59cfa45b  DSG  Log          Adding colour legend
+59cfab8b  59cfaea4  RES  Sleep        Researching sleep stuff
+59cfaf5b  59cfb421  COD  Somnus       Creating a sleep tracker
+59d05ae9  59d06953  COD  Somnus       Adding statistical information
+59d0772c  59d08b62  COD  Somnus       Adding statistical information
+59d08c60  59d0901a  COD  Log          Fixing overflow issue
+59d09e5e  59d0a4a7  COD  Log          Cleaning up code
+59d0a5a1  59d0a9e0  COD  Somnus       Cleaning up code
+59d0b1b0  59d0b463  COD  Eau          Implementing log
+59d0bac2  59d0c3ce  COD  Eau          Implementing log
+59d0c549  59d0c7f9  COD  Eau          Writing shellscript
+59d0c8d7  59d0c9a0  COD  Eau          Fixing shellscript
+59d0d9d9  59d0f0d1  ART  Inktober     Day 1 - Swift
+59d0f273  59d0f4d1  PHO  Instagram    Editing post
+59d10a19  59d10d58  COD  Log          Cleaning up code
+59d10e7b  59d10f5b  COD  Memex        Cleaning up code
+59d18f37  59d18fd8  COD  Macian       Updating classes
+59d19075  59d19108  COD  Mors         Optimising script
+59d195ab  59d196ae  COD  Haiaku       Optimising script
+59d1b7a6  59d1b9ef  COD  Eau          Fixing vis issues
+59d1ba82  59d1bcf8  COD  Eau          Cleaning up code
+59d1bebf  59d1c58f  ACA  MNGT337      Doing homework
+59d1ca50  59d1cfe6  COD  Heather      Working on commands
+59d1d17c  59d1d4d4  DSG  Somnus       Updating UI
+59d1f84d  59d203d6  COD  Log          Cleaning up code
+59d2029d  59d203d6  ART  Inktober     Day 2 - Divided
+59d20cad  59d2135a  ART  Inktober     Day 2 - Divided
+59d215b1  59d22469  DSG  Memex        Updating design
+59d24335  59d2490e  PHO  Instagram    Editing a post
+59d24c62  59d260ab  COD  Memex        Updating content
+59d264dd  59d2660f  PHO  Memex        Editing header images
+59d267f0  59d26975  DSG  Memex        Updating image design
+59d2ecc8  59d2efe3  COD  Log          Fixing stats
+59d2f04c  59d2f0f6  COD  Log          Fixing stats
+59d34ad4  59d34cbd  COD  Log          Experimenting with visualisations
+59d34ccd  59d34fb3  COD  Log          Adding sector percentages
+59d36789  59d3722e  COD  Log          Optimising code
+59d38eff  59d39101  PHO  Instagram    Editing a post
+59d395f6  59d3b670  DSG  Memex        Working on UI
+59d47509  59d47d05  DSG  Memex        Working on UI
+59d4aee7  59d4b0bb  DSG  Memex        Updating content
+59d4b2c5  59d4b415  DSG  Memex        Updating content
+59d4b87a  59d4ba52  COD  Memex        Optimising code
+59d4bca5  59d4cb50  COD  Memex        Optimising code
+59d4cc78  59d4cd1b  WRT  Memex        Editing content
+59d4cd34  59d4ce65  COD  Log          Salvaging archives
+59d4cf18  59d4e38d  DSG  Log          Updating dashboard
+59d4f0d5  59d4f8bb  PHO  Instagram    Editing post
+59d4fe3f  59d508d6  COD  Log          Implementing bar chart
+59d5b192  59d5ba2b  COD  Log          Cleaning up code
+59d5f4d9  59d5f79a  COD  Log          Implementing bar chart
+59d602db  59d61208  COD  Log          Adding more charts
+59d62427  59d625f3  COD  Log          Adding LHmin and LHmax
+59d63483  59d642d1  COD  Log          Working on charts
+59d64ae9  59d65a4d  DSG  Log          Updating UI
+59d6d649  59d6e641  ACA  MATH235      Studying probability distributions
+59d77083  59d77340  COD  Log          Updating interface
+59d774fa  59d77cd6  DSG  Log          Polishing design
+59d82ce3  59d8322d  COD  Somnus       Updating interface
+59d8387c  59d84ba7  COD  Aequirys     Updating calendar
+59d84c7d  59d84dca  COD  Aequirys     Cleaning up code
+59d84f31  59d84fd0  COD  Aequirys     Cleaning up code
+59d85232  59d853b2  COD  Aequirys     Cleaning up code
+59d854d5  59d85808  COD  Log          Updating to ES6
