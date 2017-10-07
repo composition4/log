@@ -15,7 +15,7 @@ var Dash = {
    * @return {string} log status
    */
 
-  status() {
+  status () {
     return Dash.log[Dash.log.length - 1].e == "undefined" ? "Active" : "Idle"
   },
 
@@ -26,12 +26,13 @@ var Dash = {
 	display() {
 		let v = document.getElementById("logbook"),
         t = Dash.time,
-        a = Aequirys
+        a = Aequirys,
+        b = takeRight(Dash.log, 30)
 
 		v.className = "bn f6 mon"
 
-		for (let i = 0, l = Dash.log.length; i < l; i++) {
-			let e = Dash.log[i],
+		for (let i = 0, l = b.length; i < l; i++) {
+			let e = b[i],
           r = v.insertRow(i + 2),
   				c1 = r.insertCell(0),
   				c2 = r.insertCell(1),
@@ -58,6 +59,28 @@ var Dash = {
       ih(c5, e.c)
       ih(c6, e.t)
       ih(c7, e.d)
+		}
+
+    function takeRight(a, n = 1) {
+			const l = a == null ? 0 : a.length
+			if (!l) return []
+			n = l - n
+			return slice(a, n < 0 ? 0 : n, l)
+			function slice(a, s, e) {
+				let l = a == null ? 0 : a.length
+				if (!l) return []
+				s = s == null ? 0 : s
+				e = e === undefined ? l : e
+				if (s < 0) s = -s > l ? 0 : (l + s)
+				e = e > l ? l : e
+				if (e < 0) e += l
+				l = s > e ? 0 : ((e - s) >>> 0)
+				s >>>= 0
+				let i = -1
+				const r = new Array(l) // result
+				while (++i < l) r[i] = a[i + s]
+				return r
+			}
 		}
 	},
 
@@ -186,8 +209,9 @@ var Dash = {
             else if (e.c == "RES") bg = "bg-grn"
             else if (e.c == "DSG") bg = "bg-red"
             else if (e.c == "ACA") bg = "bg-ylw"
+            else bg = "bg-noir"
 
-            entry.className    = "psa wf bg-noir fw " + bg
+            entry.className    = `psa wf fw ${bg}`
             entry.style.height = r + "%"
             entry.style.bottom = lw + "%"
 
