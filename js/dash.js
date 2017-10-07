@@ -15,7 +15,7 @@ var Dash = {
    * @return {string} log status
    */
 
-  status: function() {
+  status() {
     return Dash.log[Dash.log.length - 1].e == "undefined" ? "Active" : "Idle"
   },
 
@@ -42,7 +42,11 @@ var Dash = {
   				c7 = r.insertCell(6),
           es = t.parse(e.s),
           ee = t.parse(e.e),
-          q = t.convert(es)
+          q = t.convert(es),
+
+          ih = (e, c) => {
+            e.innerHTML = c
+          }
 
       ih(c1, a.shorter(
         a.convert(new Date(q.getFullYear(), q.getMonth(), q.getDate()))
@@ -54,10 +58,6 @@ var Dash = {
       ih(c5, e.c)
       ih(c6, e.t)
       ih(c7, e.d)
-
-      function ih(e, c) {
-        e.innerHTML = c
-      }
 		}
 	},
 
@@ -65,14 +65,71 @@ var Dash = {
    * Draw data visualisation
    */
 
-	visualise: function() {
+	visualise() {
 		let v = document.getElementById("vis"),
         lw = 0,
         lp = 0
 
 		for (let i = 0, l = Dash.log.length; i < l; i++) {
       let e = Dash.log[i],
-          time = Dash.time
+          time = Dash.time,
+
+          addEntry = r => {
+            let entry = document.createElement("div"), bg = ""
+
+            if      (e.c == "PHO") bg = "bg-blu"
+            else if (e.c == "RES") bg = "bg-grn"
+            else if (e.c == "DSG") bg = "bg-red"
+            else if (e.c == "ACA") bg = "bg-ylw"
+
+            entry.className    = "psr t0 bg-blanc sh2 mb2 lf " + bg
+            entry.style.width  = r.p + "%"
+            entry.style.margin = "0 0 0 " + r.m + "%"
+
+            document.getElementById("v" + date).appendChild(entry)
+
+            lw = r.p
+            lp = r.dp
+          },
+
+          calc = (ee, es) => {
+            let p = (ee - es) / 86400 * 100,
+                s = time.convert(es),
+                sy = s.getFullYear(),
+                sm = s.getMonth(),
+                sd = s.getDate(),
+                ds = new Date(sy, sm, sd).getTime() / 1000,
+                de = new Date(sy, sm, sd, 23, 59, 59).getTime() / 1000,
+                dt = new Date(
+                  sy, sm, sd, s.getHours(), s.getMinutes(), s.getSeconds()
+                ).getTime() / 1000,
+                dp = (dt - ds) / (de - ds) * 100,
+                m = dp - (lw + lp)
+
+            return {dp, p, m}
+          },
+
+          newRow = (es, date) => {
+            lw = 0
+            lp = 0
+
+            let lb = document.createElement("p"),
+                dy = document.createElement("div"),
+                q = Dash.time.convert(es),
+                aq = Aequirys.convert(
+                  new Date(
+                    q.getFullYear(),
+                    q.getMonth(),
+                    q.getDate()
+                  )
+                )
+
+            dy.className = "db wf pt2 pb3"
+            dy.id = "v" + date
+
+            v.appendChild(lb)
+            v.appendChild(dy)
+          }
 
       if (e.e == "undefined") continue
 
@@ -111,76 +168,47 @@ var Dash = {
         if (document.getElementById("v" + date) === null) newRow(es, date)
         addEntry(calc(ee, es))
       }
-
-      function addEntry(r) {
-        let entry = document.createElement("div"), bg = ""
-
-        if      (e.c == "PHO") bg = "bg-blu"
-        else if (e.c == "RES") bg = "bg-grn"
-        else if (e.c == "DSG") bg = "bg-red"
-        else if (e.c == "ACA") bg = "bg-ylw"
-
-        entry.className    = "psr t0 bg-blanc sh2 mb2 lf " + bg
-        entry.style.width  = r.perc + "%"
-        entry.style.margin = "0 0 0 " + r.margin + "%"
-
-        document.getElementById("v" + date).appendChild(entry)
-
-        lw = r.perc
-        lp = r.dp
-      }
-
-      function calc(ee, es) {
-        let p = (ee - es) / 86400 * 100,
-            s = time.convert(es),
-    				sy = s.getFullYear(),
-    				sm = s.getMonth(),
-    				sd = s.getDate(),
-            ds = new Date(sy, sm, sd).getTime() / 1000,
-            de = new Date(sy, sm, sd, 23, 59, 59).getTime() / 1000,
-            dt = new Date(
-              sy, sm, sd, s.getHours(), s.getMinutes(), s.getSeconds()
-            ).getTime() / 1000,
-            dp = (dt - ds) / (de - ds) * 100,
-            m = dp - (lw + lp)
-
-        return {"dp": dp, "perc": p, "margin": m}
-      }
-
-      function newRow(es, date) {
-        lw = 0
-        lp = 0
-
-        let lb = document.createElement("p"),
-            dy = document.createElement("div"),
-            q = Dash.time.convert(es),
-            aq = Aequirys.convert(
-              new Date(
-                q.getFullYear(),
-                q.getMonth(),
-                q.getDate()
-              )
-            )
-
-        // lb.className = "dn dib-m dib-l w1 f6 mon mb3"
-        // lb.innerHTML = aq.mn + aq.dt
-
-        dy.className = "db wf pt2 pb3"
-        dy.id = "v" + date
-
-        v.appendChild(lb)
-        v.appendChild(dy)
-      }
 		}
 	},
 
-  barChart: function() {
+  barChart() {
     let v = document.getElementById("weekChart"),
         lw = 0,
         time = Dash.time
 
 		for (let i = 0, l = Dash.log.length; i < l; i++) {
-      let e = Dash.log[i]
+      let e = Dash.log[i],
+
+          addEntry = r => {
+            let entry = document.createElement("div"), bg = ""
+
+            if      (e.c == "PHO") bg = "bg-blu"
+            else if (e.c == "RES") bg = "bg-grn"
+            else if (e.c == "DSG") bg = "bg-red"
+            else if (e.c == "ACA") bg = "bg-ylw"
+
+            entry.className    = "psa wf bg-noir fw " + bg
+            entry.style.height = r + "%"
+            entry.style.bottom = lw + "%"
+
+            document.getElementById(date).appendChild(entry)
+
+            lw += r
+          },
+
+          calc = (ee, es) => (ee - es) / 86400 * 100,
+
+          newCol = (es, date) => {
+            lw = 0
+
+            let dy = document.createElement("div")
+
+            dy.className = "dib hf psr"
+            dy.style.width = "1%"
+            dy.id = date
+
+            v.appendChild(dy)
+          }
 
       if (e.e == "undefined") continue
 
@@ -217,39 +245,6 @@ var Dash = {
         if (document.getElementById(date) === null) newCol(es, date)
         addEntry(calc(ee, es))
       }
-
-      function addEntry(r) {
-        let entry = document.createElement("div"), bg = ""
-
-        if      (e.c == "PHO") bg = "bg-blu"
-        else if (e.c == "RES") bg = "bg-grn"
-        else if (e.c == "DSG") bg = "bg-red"
-        else if (e.c == "ACA") bg = "bg-ylw"
-
-        entry.className    = "psa wf bg-noir fw " + bg
-        entry.style.height = r + "%"
-        entry.style.bottom = lw + "%"
-
-        document.getElementById(date).appendChild(entry)
-
-        lw += r
-      }
-
-      function calc(ee, es) {
-        return (ee - es) / 86400 * 100
-      }
-
-      function newCol(es, date) {
-        lw = 0
-
-        let dy = document.createElement("div")
-
-        dy.className = "dib hf psr"
-        dy.style.width = "1%"
-        dy.id = date
-
-        v.appendChild(dy)
-      }
 		}
   },
 
@@ -261,7 +256,7 @@ var Dash = {
      * @return {number} decimal
      */
 
-		parse: function(s) {
+		parse(s) {
 			return parseInt(s, 16)
 		},
 
@@ -270,7 +265,7 @@ var Dash = {
      * @param {number} t - Unix time
      */
 
-		convert: function(t) {
+		convert(t) {
 			return new Date(t * 1000)
 		},
 
@@ -280,7 +275,7 @@ var Dash = {
      * @return {string} timestamp
      */
 
-		stamp: function(t) {
+		stamp(t) {
 			let d = Dash.time.convert(t),
   				h = "0" + d.getHours(),
   				m = "0" + d.getMinutes(),
@@ -295,7 +290,7 @@ var Dash = {
      * @return {string} year, month, day
      */
 
-		date: function(t) {
+		date(t) {
 			let a = Dash.time.convert(t)
 			return a.getFullYear() + '' + a.getMonth() + '' + a.getDate()
 		},
@@ -307,17 +302,23 @@ var Dash = {
      * @return {number} duration
      */
 
-		duration: function(a, b) {
+		duration(a, b) {
 			return (b - a) / 3600
 		}
 	},
 
   data: {
 
-    lsmin: function(d) {
+    lsmin(d) {
       let m, time = Dash.time
       for (let i = 0, l = Dash.log.length; i < l; i++) {
-        let e = Dash.log[i]
+        let e = Dash.log[i],
+
+            check = _ => {
+              let n = Number(time.duration(time.parse(e.s), time.parse(e.e)))
+              if (n < m || m == undefined) m = n
+            }
+
         if (e.e == "undefined") continue
         if (d !== undefined) {
           let es = time.parse(e.s),
@@ -328,18 +329,20 @@ var Dash = {
               a.getDate() == d.getDate())
             check()
         } else check()
-        function check() {
-          let n = Number(time.duration(time.parse(e.s), time.parse(e.e)))
-          if (n < m || m == undefined) m = n
-        }
       }
       return m
     },
 
-    lsmax: function(d) {
+    lsmax(d) {
       let m, time = Dash.time
       for (let i = 0, l = Dash.log.length; i < l; i++) {
-        let e = Dash.log[i]
+        let e = Dash.log[i],
+
+            check = _ => {
+              let n = Number(time.duration(time.parse(e.s), time.parse(e.e)))
+              if (n > m || m == undefined) m = n
+            }
+
         if (e.e == "undefined") continue
         if (d !== undefined) {
           let es = time.parse(e.s),
@@ -350,10 +353,6 @@ var Dash = {
               a.getDate() == d.getDate())
             check()
         } else check()
-        function check() {
-          let n = Number(time.duration(time.parse(e.s), time.parse(e.e)))
-          if (n > m || m == undefined) m = n
-        }
       }
       return m
     },
@@ -363,7 +362,7 @@ var Dash = {
      * @return {number} ASD
      */
 
-    asd: function() {
+    asd() {
       let a = 0, c = 0, time = Dash.time
 
       for (let i = 0, l = Dash.log.length; i < l; i++) {
@@ -381,10 +380,15 @@ var Dash = {
      * @return {number} total logged hours
      */
 
-    lh: function(d) {
+    lh(d) {
       let h = 0, t = Dash.time
       for (let i = 0, l = Dash.log.length; i < l; i++) {
-        let e = Dash.log[i]
+        let e = Dash.log[i],
+
+            add = _ => {
+              h += Number(t.duration(t.parse(e.s), t.parse(e.e)))
+            }
+
         if (e.e == "undefined") continue
 
         if (d !== undefined) {
@@ -396,9 +400,6 @@ var Dash = {
               a.getDate() == d.getDate())
             add()
         } else add()
-        function add() {
-          h += Number(t.duration(t.parse(e.s), t.parse(e.e)))
-        }
       }
       return h
     },
@@ -408,7 +409,7 @@ var Dash = {
      * @return {number} log percentage
      */
 
-    lp: function(date) {
+    lp(date) {
       if (date !== undefined) {
         let entriesToday = [], time = Dash.time
 
@@ -462,7 +463,7 @@ var Dash = {
      * @return {number} number of sector hours
      */
 
-    sh: function(s) {
+    sh(s) {
       let h = 0, time = Dash.time
 
       for (let i = 0, l = Dash.log.length; i < l; i++) {
@@ -481,7 +482,7 @@ var Dash = {
      * @return {number} sector percentage
      */
 
-    sp: function(s) {
+    sp(s) {
       return Dash.data.sh(s) / Dash.data.lh() * 100
     }
   },
@@ -490,7 +491,7 @@ var Dash = {
    * Open a tab
    */
 
-	openSect: function(s) {
+	openSect(s) {
 		let x = document.getElementsByClassName("sect")
 		for (let i = 0, l = x.length; i < l; i++) x[i].style.display = "none"
 		document.getElementById(s).style.display = "block"
@@ -499,7 +500,13 @@ var Dash = {
 	init() {
     let data = Dash.data,
         sp = data.sp,
-        n = new Date()
+        n = new Date(),
+
+        d = (e, m) => {
+          document.getElementById(e).innerHTML = m
+        }
+
+        f = (a, b) => a.toFixed(2) + b
 
 		Dash.log = log
 
@@ -525,13 +532,5 @@ var Dash = {
 
     Dash.display()
     Dash.visualise()
-
-    function d(e, m) {
-      document.getElementById(e).innerHTML = m
-    }
-
-    function f(a, b) {
-      return a.toFixed(2) + b
-    }
 	}
 }
