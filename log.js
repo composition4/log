@@ -134,4 +134,5 @@ var log = [
 {"s":"59d8ee33","e":"59d8f468","c":"DSG","t":"Log","d":"Working on UI"},
 {"s":"59d986da","e":"59d98870","c":"COD","t":"Log","d":"Fixing stats"},
 {"s":"59d988db","e":"59d99fcf","c":"COD","t":"Log","d":"Clarifying code"},
+{"s":"59d9a468","e":"59d9a639","c":"COD","t":"Mors","d":"Updating to ES6"},
 ]
