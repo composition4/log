@@ -538,8 +538,7 @@ var Log = {
         sp = ld.sp,
         n = new Date(),
 
-        d = (e, m) => { document.getElementById(e).innerHTML = m },
-        f = (a, b) => a.toFixed(2) + b
+        d = (e, m) => { document.getElementById(e).innerHTML = m.toFixed(2) }
 
     Log.log = log
     Log.barChart()
@@ -549,21 +548,21 @@ var Log = {
     let h = " h",
       p = "%"
 
-    d("LHH", f(ld.lh(), h))
-    d("LHT", f(ld.lh(n), h))
-    d("LPH", f(ld.lp(), p))
-    d("LPT", f(ld.lp(n), p))
-    d("ASD", f(ld.asd(), h))
-    d("LSN", f(ld.lsmin(n), h))
-    d("LSX", f(ld.lsmax(n), h))
-    d("LSNH", f(ld.lsmin(), h))
-    d("LSXH", f(ld.lsmax(), h))
+    d("LHH", ld.lh())
+    d("LHT", ld.lh(n))
+    d("LPH", ld.lp())
+    d("LPT", ld.lp(n))
+    d("ASD", ld.asd())
+    d("LSN", ld.lsmin(n))
+    d("LSX", ld.lsmax(n))
+    d("LSNH", ld.lsmin())
+    d("LSXH", ld.lsmax())
 
-    d("pCOD", f(sp("COD"), p))
-    d("pDSG", f(sp("DSG"), p))
-    d("pRES", f(sp("RES"), p))
-    d("pPHO", f(sp("PHO"), p))
-    d("pACA", f(sp("ACA"), p))
+    d("pCOD", sp("COD"))
+    d("pDSG", sp("DSG"))
+    d("pRES", sp("RES"))
+    d("pPHO", sp("PHO"))
+    d("pACA", sp("ACA"))
 
     Log.display()
     Log.visualise()
