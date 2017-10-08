@@ -6,7 +6,7 @@
 
 */
 
-var Dash = {
+var Log = {
 
 	log: [],
 
@@ -16,7 +16,7 @@ var Dash = {
    */
 
   status () {
-    return Dash.log[Dash.log.length - 1].e == "undefined" ? "grn" : "red"
+    return Log.log[Log.log.length - 1].e == "undefined" ? "grn" : "red"
   },
 
   /**
@@ -25,9 +25,9 @@ var Dash = {
 
 	display() {
 		let v = document.getElementById("logbook"),
-        t = Dash.time,
+        t = Log.time,
         a = Aequirys,
-        b = takeRight(Dash.log, 30)
+        b = takeRight(Log.log, 30)
 
 		v.className = "bn f6 mon"
 
@@ -93,9 +93,9 @@ var Dash = {
         lw = 0,
         lp = 0
 
-		for (let i = 0, l = Dash.log.length; i < l; i++) {
-      let e = Dash.log[i],
-          time = Dash.time,
+		for (let i = 0, l = Log.log.length; i < l; i++) {
+      let e = Log.log[i],
+          time = Log.time,
 
           addEntry = r => {
             let entry = document.createElement("div"), bg = ""
@@ -139,7 +139,7 @@ var Dash = {
 
             let lb = document.createElement("p"),
                 dy = document.createElement("div"),
-                q = Dash.time.convert(es),
+                q = Log.time.convert(es),
                 aq = Aequirys.convert(
                   new Date(q.getFullYear(), q.getMonth(), q.getDate())
                 )
@@ -194,10 +194,10 @@ var Dash = {
   barChart() {
     let v = document.getElementById("weekChart"),
         lw = 0,
-        time = Dash.time
+        time = Log.time
 
-		for (let i = 0, l = Dash.log.length; i < l; i++) {
-      let e = Dash.log[i],
+		for (let i = 0, l = Log.log.length; i < l; i++) {
+      let e = Log.log[i],
 
           addEntry = r => {
             let entry = document.createElement("div"), bg = ""
@@ -297,7 +297,7 @@ var Dash = {
      */
 
 		stamp(t) {
-			let d = Dash.time.convert(t),
+			let d = Log.time.convert(t),
   				h = "0" + d.getHours(),
   				m = "0" + d.getMinutes(),
   				s = "0" + d.getSeconds()
@@ -312,7 +312,7 @@ var Dash = {
      */
 
 		date(t) {
-			let a = Dash.time.convert(t)
+			let a = Log.time.convert(t)
 			return a.getFullYear() + '' + a.getMonth() + '' + a.getDate()
 		},
 
@@ -331,9 +331,9 @@ var Dash = {
   data: {
 
     lsmin(d) {
-      let m, time = Dash.time
-      for (let i = 0, l = Dash.log.length; i < l; i++) {
-        let e = Dash.log[i],
+      let m, time = Log.time
+      for (let i = 0, l = Log.log.length; i < l; i++) {
+        let e = Log.log[i],
 
             check = _ => {
               let n = Number(time.duration(time.parse(e.s), time.parse(e.e)))
@@ -359,9 +359,9 @@ var Dash = {
     },
 
     lsmax(d) {
-      let m, time = Dash.time
-      for (let i = 0, l = Dash.log.length; i < l; i++) {
-        let e = Dash.log[i],
+      let m, time = Log.time
+      for (let i = 0, l = Log.log.length; i < l; i++) {
+        let e = Log.log[i],
 
             check = _ => {
               let n = Number(time.duration(time.parse(e.s), time.parse(e.e)))
@@ -374,7 +374,7 @@ var Dash = {
 						m = 0
 						continue
 					}
-					
+
           let es = time.parse(e.s),
               a = time.convert(es)
 
@@ -393,10 +393,10 @@ var Dash = {
      */
 
     asd() {
-      let a = 0, c = 0, time = Dash.time
+      let a = 0, c = 0, time = Log.time
 
-      for (let i = 0, l = Dash.log.length; i < l; i++) {
-        let e = Dash.log[i]
+      for (let i = 0, l = Log.log.length; i < l; i++) {
+        let e = Log.log[i]
         if (e.e == "undefined") continue
         a += Number(time.duration(time.parse(e.s), time.parse(e.e)))
         c++
@@ -411,9 +411,9 @@ var Dash = {
      */
 
     lh(d) {
-      let h = 0, t = Dash.time
-      for (let i = 0, l = Dash.log.length; i < l; i++) {
-        let e = Dash.log[i],
+      let h = 0, t = Log.time
+      for (let i = 0, l = Log.log.length; i < l; i++) {
+        let e = Log.log[i],
 
             add = _ => {
               h += Number(t.duration(t.parse(e.s), t.parse(e.e)))
@@ -441,10 +441,10 @@ var Dash = {
 
     lp(date) {
       if (date !== undefined) {
-        let entriesToday = [], time = Dash.time
+        let entriesToday = [], time = Log.time
 
-        for (let i = Dash.log.length - 1; i >= 0; i--) {
-          let e = Dash.log[i]
+        for (let i = Log.log.length - 1; i >= 0; i--) {
+          let e = Log.log[i]
 
           if (e.e == "undefined") continue
 
@@ -463,7 +463,7 @@ var Dash = {
 
         if (entriesToday.length == 0) return 0
         else {
-          let h = Number(Dash.data.lh(new Date())),
+          let h = Number(Log.data.lh(new Date())),
               e = time.convert(time.parse(entriesToday[0].s)),
               earliest = new Date(e.getFullYear(), e.getMonth(), e.getDate()),
               d = new Date(),
@@ -473,8 +473,8 @@ var Dash = {
           return (h / 24) * 100
         }
       } else {
-        let h = Number(Dash.data.lh()),
-            e = Dash.time.convert(Dash.time.parse(Dash.log[0].s)),
+        let h = Number(Log.data.lh()),
+            e = Log.time.convert(Log.time.parse(Log.log[0].s)),
             d = new Date(),
             n = Math.ceil((
                 new Date(
@@ -494,10 +494,10 @@ var Dash = {
      */
 
     sh(s) {
-      let h = 0, time = Dash.time
+      let h = 0, time = Log.time
 
-      for (let i = 0, l = Dash.log.length; i < l; i++) {
-        let e = Dash.log[i]
+      for (let i = 0, l = Log.log.length; i < l; i++) {
+        let e = Log.log[i]
         if (e.e == "undefined") continue
         if (e.c == s)
           h += Number(time.duration(time.parse(e.s), time.parse(e.e)))
@@ -513,7 +513,7 @@ var Dash = {
      */
 
     sp(s) {
-      return Dash.data.sh(s) / Dash.data.lh() * 100
+      return Log.data.sh(s) / Log.data.lh() * 100
     }
   },
 
@@ -531,7 +531,7 @@ var Dash = {
 	},
 
 	init() {
-    let data = Dash.data,
+    let data = Log.data,
         sp = data.sp,
         n = new Date(),
 
@@ -541,11 +541,11 @@ var Dash = {
 
         f = (a, b) => a.toFixed(2) + b
 
-		Dash.log = log
+		Log.log = log
 
-    Dash.barChart()
+    Log.barChart()
 
-    document.getElementById("status").className = `rf mb4 f6 ${Dash.status()}`
+    document.getElementById("status").className = `rf mb4 f6 ${Log.status()}`
 
     d("LHH",  f(data.lh(),     " h"))
     d("LHT",  f(data.lh(n),    " h"))
@@ -563,7 +563,7 @@ var Dash = {
     d("pPHO", f(sp("PHO"), "%"))
     d("pACA", f(sp("ACA"), "%"))
 
-    Dash.display()
-    Dash.visualise()
+    Log.display()
+    Log.visualise()
 	}
 }

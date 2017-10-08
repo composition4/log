@@ -12,14 +12,19 @@
 		td {white-space: nowrap}
 		body {max-width: 1500px}
 	</style>
+
+	<script async src="log.js"></script>
+	<script async src="js/aequirys.js"></script>
+	<script async src="js/log.js"></script>
+
 </head><body class="noselect bg-noir blanc r p4 p5-l hf cn">
 
 	<header class="mb4">
 		<h1 class="dib mr4 f6 upc tk">Log</h1>
-		<button id="b-overview" class="pv1 bb tab on bg-noir blanc f6 mon tk mr3" title="Overview" onclick="Dash.openSect('overview')">OVW</button>
-		<button id="b-charts" class="pv1 tab on bg-noir blanc f6 mon tk mr3" title="Visualisation" onclick="Dash.openSect('charts')">VIS</button>
-		<button id="b-log" class="pv1 tab on bg-noir blanc f6 mon tk mr3" title="Data Table" onclick="Dash.openSect('log')">TAB</button>
-		<button id="b-about" class="pv1 tab on bg-noir blanc f6 mon tk mr4" title="About" onclick="Dash.openSect('about')">ABT</button>
+		<button id="b-overview" class="pv1 bb tab on bg-noir blanc f6 mon tk mr3" title="Overview" onclick="Log.openSect('overview')">OVW</button>
+		<button id="b-charts" class="pv1 tab on bg-noir blanc f6 mon tk mr3" title="Visualisation" onclick="Log.openSect('charts')">VIS</button>
+		<button id="b-log" class="pv1 tab on bg-noir blanc f6 mon tk mr3" title="Data Table" onclick="Log.openSect('log')">TAB</button>
+		<button id="b-about" class="pv1 tab on bg-noir blanc f6 mon tk mr4" title="About" onclick="Log.openSect('about')">ABT</button>
 		<span id="status" class="rf mb4 f6">	&#11042;</span>
 	</header>
 
@@ -120,10 +125,7 @@
 	<footer class="dn db-l psr psf-l b0 l0 ml5-l mb5-l">
 		<p class="f6 mon tk">&copy; <a class="blanc" href="https://joshavanier.github.io/wiki/personal/josh/" title="Josh Avanier">JA</a></p>
 	</footer>
-	<script src="log.js"></script>
-	<script src="js/aequirys.js"></script>
-	<script src="js/dash.js"></script>
 	<script>
-		Dash.init()
+		Log.init()
 	</script>
 </body></html>
