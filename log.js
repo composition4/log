@@ -136,4 +136,5 @@ var log = [
 {"s":"59d988db","e":"59d99fcf","c":"COD","t":"Log","d":"Clarifying code"},
 {"s":"59d9a468","e":"59d9a639","c":"COD","t":"Mors","d":"Updating to ES6"},
 {"s":"59d9aa11","e":"59d9aa51","c":"COD","t":"Log","d":"Fixing Aequirys"},
+{"s":"59d9af52","e":"59d9b4f0","c":"RES","t":"Horology","d":"Reverse-engineering a clock"},
 ]
