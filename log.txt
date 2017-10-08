@@ -136,3 +136,4 @@ Start     End       Cat  Project      Description
 59d986da  59d98870  COD  Log  Fixing stats
 59d988db  59d99fcf  COD  Log  Clarifying code
 59d9a468  59d9a639  COD  Mors  Updating to ES6
+59d9aa11  59d9aa51  COD  Log  Fixing Aequirys
