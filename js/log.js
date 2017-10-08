@@ -25,8 +25,8 @@ var Log = {
 
   display() {
     let v = document.getElementById("logbook"),
-	      t = Log.time,
-	      a = Aequirys,
+        t = Log.time,
+        a = Aequirys,
 
       // From lodash
 
@@ -56,21 +56,21 @@ var Log = {
 
     for (var b = takeRight(Log.log, 30), i = 0, l = b.length; i < l; i++) {
       let e = b[i],
-	        r = v.insertRow(i + 2),
-	        c1 = r.insertCell(0),
-	        c2 = r.insertCell(1),
-	        c3 = r.insertCell(2),
-	        c4 = r.insertCell(3),
-	        c5 = r.insertCell(4),
-	        c6 = r.insertCell(5),
-	        c7 = r.insertCell(6),
-	        es = t.parse(e.s),
-	        ee = t.parse(e.e),
-	        q = t.convert(es),
+          r = v.insertRow(i + 2),
+          c1 = r.insertCell(0),
+          c2 = r.insertCell(1),
+          c3 = r.insertCell(2),
+          c4 = r.insertCell(3),
+          c5 = r.insertCell(4),
+          c6 = r.insertCell(5),
+          c7 = r.insertCell(6),
+          es = t.parse(e.s),
+          ee = t.parse(e.e),
+          q = t.convert(es),
 
-	        ih = (e, c) => {
-	          e.innerHTML = c
-	        }
+          ih = (e, c) => {
+            e.innerHTML = c
+          }
 
       ih(c1, a.shorter(
         a.convert(new Date(q.getFullYear(), q.getMonth(), q.getDate()))
@@ -91,16 +91,16 @@ var Log = {
 
   visualise() {
     let v = document.getElementById("vis"),
-	      lw = 0,
-	      lp = 0
+        lw = 0,
+        lp = 0
 
     for (let i = 0, l = Log.log.length; i < l; i++) {
       let e = Log.log[i],
-        	time = Log.time,
+          time = Log.time,
 
         addEntry = r => {
           let entry = document.createElement("div"),
-            	bg = ""
+              bg = ""
 
           if (e.c == "PHO") bg = "bg-blu"
           else if (e.c == "RES") bg = "bg-grn"
@@ -120,17 +120,17 @@ var Log = {
 
         calc = (ee, es) => {
           let p = (ee - es) / 86400 * 100,
-	            s = time.convert(es),
-	            sy = s.getFullYear(),
-	            sm = s.getMonth(),
-	            sd = s.getDate(),
-	            ds = new Date(sy, sm, sd).getTime() / 1000,
-	            de = new Date(sy, sm, sd, 23, 59, 59).getTime() / 1000,
-	            dt = new Date(
-	              sy, sm, sd, s.getHours(), s.getMinutes(), s.getSeconds()
-	            ).getTime() / 1000,
-	            dp = (dt - ds) / (de - ds) * 100,
-	            m = dp - (lw + lp)
+              s = time.convert(es),
+              sy = s.getFullYear(),
+              sm = s.getMonth(),
+              sd = s.getDate(),
+              ds = new Date(sy, sm, sd).getTime() / 1000,
+              de = new Date(sy, sm, sd, 23, 59, 59).getTime() / 1000,
+              dt = new Date(
+                sy, sm, sd, s.getHours(), s.getMinutes(), s.getSeconds()
+              ).getTime() / 1000,
+              dp = (dt - ds) / (de - ds) * 100,
+              m = dp - (lw + lp)
 
           return {
             dp,
@@ -144,11 +144,11 @@ var Log = {
           lp = 0
 
           let lb = document.createElement("p"),
-	            dy = document.createElement("div"),
-	            q = Log.time.convert(es),
-	            aq = Aequirys.convert(
-	              new Date(q.getFullYear(), q.getMonth(), q.getDate())
-	            )
+              dy = document.createElement("div"),
+              q = Log.time.convert(es),
+              aq = Aequirys.convert(
+                new Date(q.getFullYear(), q.getMonth(), q.getDate())
+              )
 
           dy.className = "db wf sh2 mt2 mb3 bsia bg-111 br1"
           dy.id = "v" + date
@@ -160,34 +160,34 @@ var Log = {
       if (e.e == "undefined") continue
 
       let es = time.parse(e.s),
-	        ee = time.parse(e.e),
-		      date = time.date(es),
-	        end = time.date(ee)
+          ee = time.parse(e.e),
+          date = time.date(es),
+          end = time.date(ee)
 
       if (date !== end) {
         if (document.getElementById("v" + date) === null) newRow(es, date)
 
         let a = time.convert(es),
-	          eDate = new Date(
-	            a.getFullYear(),
-	            a.getMonth(),
-	            a.getDate(),
-	            23,
-	            59
-	          ).getTime() / 1000
+            eDate = new Date(
+              a.getFullYear(),
+              a.getMonth(),
+              a.getDate(),
+              23,
+              59
+            ).getTime() / 1000
 
         addEntry(calc(time.parse((+eDate).toString(16)), es))
 
         if (document.getElementById("v" + end) === null) newRow(es, end)
 
         let ea = time.convert(ee),
-	          eaDate = new Date(
-	            ea.getFullYear(),
-	            ea.getMonth(),
-	            ea.getDate(),
-	            0,
-	            0
-	          ).getTime() / 1000
+            eaDate = new Date(
+              ea.getFullYear(),
+              ea.getMonth(),
+              ea.getDate(),
+              0,
+              0
+            ).getTime() / 1000
 
         addEntry(calc(ee, time.parse((+eaDate).toString(16))))
       } else {
@@ -337,86 +337,86 @@ var Log = {
 
   data: {
 
-		/**
-		 * Get entries
-		 * @param {Date} d - a specific date
-		 * @return {[]} entries
-		 */
+    /**
+     * Get entries
+     * @param {Date} d - a specific date
+     * @return {[]} entries
+     */
 
-		getEntries(d) {
-			let ent = [], t = Log.time
+    getEntries(d) {
+      let ent = [], t = Log.time
 
-			if (d == undefined) {
-				for (let i = 0, l = Log.log.length; i < l; i++) {
-	        let e = Log.log[i]
-	        if (e.e != "undefined") ent.push(e)
-	      }
+      if (d == undefined) {
+        for (let i = 0, l = Log.log.length; i < l; i++) {
+          let e = Log.log[i]
+          if (e.e != "undefined") ent.push(e)
+        }
 
-				return ent
-			} else {
-				for (let i = 0, l = Log.log.length; i < l; i++) {
-	        let e = Log.log[i]
+        return ent
+      } else {
+        for (let i = 0, l = Log.log.length; i < l; i++) {
+          let e = Log.log[i]
 
-	        if (e.e != "undefined") {
-	          let a = t.convert(t.parse(e.s))
+          if (e.e != "undefined") {
+            let a = t.convert(t.parse(e.s))
 
-	          a.getFullYear() == d.getFullYear() &&
+            a.getFullYear() == d.getFullYear() &&
             a.getMonth() == d.getMonth() &&
             a.getDate() == d.getDate() &&
-						ent.push(e)
-					}
-	      }
+            ent.push(e)
+          }
+        }
 
-				return ent
-			}
-		},
+        return ent
+      }
+    },
 
-		/**
-		 * Calculate shortest log session
-		 * @param {Date} d - of a specific date
-		 * @return {number} shortest log session
-		 */
+    /**
+     * Calculate shortest log session
+     * @param {Date} d - of a specific date
+     * @return {number} shortest log session
+     */
 
     lsmin(d) {
-			let m, lt = Log.time,
+      let m, lt = Log.time,
 
-					check = e => {
+          check = e => {
             let n = Number(lt.duration(lt.parse(e.s), lt.parse(e.e)))
             if (n < m || m == undefined) m = n
           }
 
-			if (d != undefined) {
-				let entD = Log.data.getEntries(d)
-				for (let i = 0, l = entD.length; i < l; i++) check(entD[i])
-			} else {
-				let entH = Log.data.getEntries()
-				for (let i = 0, l = entH.length; i < l; i++) check(entH[i])
-			}
+      if (d != undefined) {
+        let entD = Log.data.getEntries(d)
+        for (let i = 0, l = entD.length; i < l; i++) check(entD[i])
+      } else {
+        let entH = Log.data.getEntries()
+        for (let i = 0, l = entH.length; i < l; i++) check(entH[i])
+      }
 
       return m
     },
 
-		/**
-		 * Calculate longest log session
-		 * @param {Date} d - of a specific date
-		 * @return {number} longest log session
-		 */
+    /**
+     * Calculate longest log session
+     * @param {Date} d - of a specific date
+     * @return {number} longest log session
+     */
 
     lsmax(d) {
-			let m, lt = Log.time,
+      let m, lt = Log.time,
 
-					check = e => {
+          check = e => {
             let n = Number(lt.duration(lt.parse(e.s), lt.parse(e.e)))
             if (n > m || m == undefined) m = n
           }
 
-			if (d != undefined) {
-				let entD = Log.data.getEntries(d)
-				for (let i = 0, l = entD.length; i < l; i++) check(entD[i])
-			} else {
-				let entH = Log.data.getEntries()
-				for (let i = 0, l = entH.length; i < l; i++) check(entH[i])
-			}
+      if (d != undefined) {
+        let entD = Log.data.getEntries(d)
+        for (let i = 0, l = entD.length; i < l; i++) check(entD[i])
+      } else {
+        let entH = Log.data.getEntries()
+        for (let i = 0, l = entH.length; i < l; i++) check(entH[i])
+      }
 
       return m
     },
@@ -432,9 +432,9 @@ var Log = {
       for (let i = 0, l = Log.log.length; i < l; i++) {
         let e = Log.log[i]
         if (e.e != "undefined") {
-					a += Number(lt.duration(lt.parse(e.s), lt.parse(e.e)))
-	        c++
-				}
+          a += Number(lt.duration(lt.parse(e.s), lt.parse(e.e)))
+          c++
+        }
       }
 
       return a / c
@@ -447,16 +447,16 @@ var Log = {
 
     lh(d) {
       let h = 0,
-        	lt = Log.time,
-					dur = e => Number(lt.duration(lt.parse(e.s), lt.parse(e.e)))
+          lt = Log.time,
+          dur = e => Number(lt.duration(lt.parse(e.s), lt.parse(e.e)))
 
-			if (d != undefined) {
-				let entD = Log.data.getEntries(d)
-				for (let i = 0, l = entD.length; i < l; i++) h += dur(entD[i])
-			} else {
-				let entH = Log.data.getEntries()
-				for (let i = 0, l = entH.length; i < l; i++) h += dur(entH[i])
-			}
+      if (d != undefined) {
+        let entD = Log.data.getEntries(d)
+        for (let i = 0, l = entD.length; i < l; i++) h += dur(entD[i])
+      } else {
+        let entH = Log.data.getEntries()
+        for (let i = 0, l = entH.length; i < l; i++) h += dur(entH[i])
+      }
 
       return h
     },
@@ -468,19 +468,19 @@ var Log = {
      */
 
     lp(d) {
-			let n = 0, h = 0, lt = Log.time
+      let n = 0, h = 0, lt = Log.time
 
-			if (d != undefined) {
-				h = Log.data.getEntries(d).length == 0 ? 0 : Log.data.lh(new Date())
-			} else {
-				let e = lt.convert(lt.parse(Log.log[0].s)),
-	          d = new Date()
+      if (d != undefined) {
+        h = Log.data.getEntries(d).length == 0 ? 0 : Log.data.lh(new Date())
+      } else {
+        let e = lt.convert(lt.parse(Log.log[0].s)),
+            d = new Date()
 
-				h = Number(Log.data.lh())
-     		n = Math.ceil((
-	          new Date(d.getFullYear(), d.getMonth(), d.getDate()) -
-						new Date(e.getFullYear(), e.getMonth(), e.getDate())) / 8.64e7)
-			}
+        h = Number(Log.data.lh())
+         n = Math.ceil((
+            new Date(d.getFullYear(), d.getMonth(), d.getDate()) -
+            new Date(e.getFullYear(), e.getMonth(), e.getDate())) / 8.64e7)
+      }
 
       return h / (24 * (n + 1)) * 100
     },
@@ -524,10 +524,10 @@ var Log = {
       b = document.getElementsByClassName("tab")
 
     for (let i = 0, l = x.length; i < l; i++)
-			x[i].style.display = "none"
+      x[i].style.display = "none"
 
     for (let i = 0, l = b.length; i < l; i++)
-			b[i].className = "pv1 tab on bg-noir blanc f6 mon tk mr3"
+      b[i].className = "pv1 tab on bg-noir blanc f6 mon tk mr3"
 
     document.getElementById(s).style.display = "block"
     document.getElementById(`b-${s}`).className = "pv1 tab on bg-noir blanc f6 mon tk mr3 bb"
@@ -535,11 +535,11 @@ var Log = {
 
   init() {
     let ld = Log.data,
-	      sp = ld.sp,
-	      n = new Date(),
+        sp = ld.sp,
+        n = new Date(),
 
-	      d = (e, m) => { document.getElementById(e).innerHTML = m },
-				f = (a, b) => a.toFixed(2) + b
+        d = (e, m) => { document.getElementById(e).innerHTML = m },
+        f = (a, b) => a.toFixed(2) + b
 
     Log.log = log
     Log.barChart()
