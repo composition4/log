@@ -342,6 +342,10 @@ var Dash = {
 
         if (e.e == "undefined") continue
         if (d !== undefined) {
+					if (e.s !== undefined) {
+						m = 0
+						continue
+					}
           let es = time.parse(e.s),
               a = time.convert(es)
 
@@ -366,6 +370,11 @@ var Dash = {
 
         if (e.e == "undefined") continue
         if (d !== undefined) {
+					if (e.s !== undefined) {
+						m = 0
+						continue
+					}
+					
           let es = time.parse(e.s),
               a = time.convert(es)
 
