@@ -150,4 +150,5 @@ var log = [
 {"s":"59dad90c","e":"59dada34","c":"COD","t":"Brainfuck","d":"Updating to ES6"},
 {"s":"59dadaa1","e":"59dadb87","c":"COD","t":"Log","d":"Updating Aequirys"},
 {"s":"59dadb90","e":"59dade06","c":"COD","t":"Aequirys","d":"Fixing month issue"},
+{"s":"59daeb26","e":"59daed47","c":"COD","t":"Log","d":"Cleaning up code"},
 ]

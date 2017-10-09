@@ -151,3 +151,4 @@ Start     End       Cat  Project      Description
 59dad90c  59dada34  COD  Brainfuck  Updating to ES6
 59dadaa1  59dadb87  COD  Log  Updating Aequirys
 59dadb90  59dade06  COD  Aequirys  Fixing month issue
+59daeb26  59daed47  COD  Log  Cleaning up code
