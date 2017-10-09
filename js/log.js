@@ -1,6 +1,7 @@
 /*
 
-  Dashboard
+  Log
+  Log & time-tracker
 
   Josh Avanier
 
@@ -28,29 +29,27 @@ var Log = {
         t = Log.time,
         a = Aequirys,
 
-      // From lodash
-
-      takeRight = (a, n = 1) => {
-        const l = a == null ? 0 : a.length
-        let slice = (a, s, e) => {
-          let l = a == null ? 0 : a.length
+        takeRight = (a, n = 1) => {
+          const l = a == null ? 0 : a.length
+          let slice = (a, s, e) => {
+            let l = a == null ? 0 : a.length
+            if (!l) return []
+            s = s == null ? 0 : s
+            e = e === undefined ? l : e
+            if (s < 0) s = -s > l ? 0 : (l + s)
+            e = e > l ? l : e
+            if (e < 0) e += l
+            l = s > e ? 0 : ((e - s) >>> 0)
+            s >>>= 0
+            let i = -1
+            const r = new Array(l)
+            while (++i < l) r[i] = a[i + s]
+            return r
+          }
           if (!l) return []
-          s = s == null ? 0 : s
-          e = e === undefined ? l : e
-          if (s < 0) s = -s > l ? 0 : (l + s)
-          e = e > l ? l : e
-          if (e < 0) e += l
-          l = s > e ? 0 : ((e - s) >>> 0)
-          s >>>= 0
-          let i = -1
-          const r = new Array(l)
-          while (++i < l) r[i] = a[i + s]
-          return r
+          n = l - n
+          return slice(a, n < 0 ? 0 : n, l)
         }
-        if (!l) return []
-        n = l - n
-        return slice(a, n < 0 ? 0 : n, l)
-      }
 
     v.className = "bn f6 mon"
 
@@ -68,9 +67,7 @@ var Log = {
           ee = t.parse(e.e),
           q = t.convert(es),
 
-          ih = (e, c) => {
-            e.innerHTML = c
-          }
+          ih = (e, c) => { e.innerHTML = c }
 
       ih(c1, a.dis(
         a.con(new Date(q.getFullYear(), q.getMonth(), q.getDate()))
@@ -144,11 +141,7 @@ var Log = {
           lp = 0
 
           let lb = document.createElement("p"),
-              dy = document.createElement("div"),
-              q = Log.time.convert(es),
-              aq = Aequirys.con(
-                new Date(q.getFullYear(), q.getMonth(), q.getDate())
-              )
+              dy = document.createElement("div")
 
           dy.className = "db wf sh2 mt2 mb3 bsia bg-111 br1"
           dy.id = "v" + date
@@ -199,15 +192,15 @@ var Log = {
 
   barChart() {
     let v = document.getElementById("weekChart"),
-      lw = 0,
-      time = Log.time
+        lw = 0,
+        time = Log.time
 
     for (let i = 0, l = Log.log.length; i < l; i++) {
       let e = Log.log[i],
 
         addEntry = r => {
           let entry = document.createElement("div"),
-            bg = ""
+              bg = ""
 
           if (e.c == "PHO") bg = "bg-blu"
           else if (e.c == "RES") bg = "bg-grn"
@@ -241,32 +234,32 @@ var Log = {
       if (e.e == "undefined") continue
 
       let es = time.parse(e.s),
-        ee = time.parse(e.e)
-      date = time.date(es),
-        end = time.date(ee)
+          ee = time.parse(e.e),
+          date = time.date(es),
+          end = time.date(ee)
 
       if (date !== end) {
         if (document.getElementById(date) === null) newCol(es, date)
         let a = time.convert(es),
-          eDate = new Date(
-            a.getFullYear(),
-            a.getMonth(),
-            a.getDate(),
-            23,
-            59
-          ).getTime() / 1000
+            eDate = new Date(
+              a.getFullYear(),
+              a.getMonth(),
+              a.getDate(),
+              23,
+              59
+            ).getTime() / 1000
 
         addEntry(calc(time.parse((+eDate).toString(16)), es))
 
         if (document.getElementById(end) === null) newCol(es, end)
         let ea = time.convert(ee),
-          eaDate = new Date(
-            ea.getFullYear(),
-            ea.getMonth(),
-            ea.getDate(),
-            0,
-            0
-          ).getTime() / 1000
+            eaDate = new Date(
+              ea.getFullYear(),
+              ea.getMonth(),
+              ea.getDate(),
+              0,
+              0
+            ).getTime() / 1000
 
         addEntry(calc(ee, time.parse((+eaDate).toString(16))))
       } else {
