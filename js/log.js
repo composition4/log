@@ -72,8 +72,8 @@ var Log = {
             e.innerHTML = c
           }
 
-      ih(c1, a.shorter(
-        a.convert(new Date(q.getFullYear(), q.getMonth(), q.getDate()))
+      ih(c1, a.dis(
+        a.con(new Date(q.getFullYear(), q.getMonth(), q.getDate()))
       ))
 
       ih(c2, t.stamp(es))
@@ -146,7 +146,7 @@ var Log = {
           let lb = document.createElement("p"),
               dy = document.createElement("div"),
               q = Log.time.convert(es),
-              aq = Aequirys.convert(
+              aq = Aequirys.con(
                 new Date(q.getFullYear(), q.getMonth(), q.getDate())
               )
 
