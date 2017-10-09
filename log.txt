@@ -150,3 +150,4 @@ Start     End       Cat  Project      Description
 59dad3a5  59dad760  COD  Aequirys  Updating calendar
 59dad90c  59dada34  COD  Brainfuck  Updating to ES6
 59dadaa1  59dadb87  COD  Log  Updating Aequirys
+59dadb90  59dade06  COD  Aequirys  Fixing month issue
