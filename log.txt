@@ -148,3 +148,4 @@ Start     End       Cat  Project      Description
 59dacac8  59dacc7f  COD  Aequirys  Cleaning up code
 59dacc9a  59dad05e  DSG  Aequirys  Updating UI
 59dad3a5  59dad760  COD  Aequirys  Updating calendar
+59dad90c  59dada34  COD  Brainfuck  Updating to ES6
