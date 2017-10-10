@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale = 1.0, initial-scale = 1.0, maximum-scale = 5.0, user-scalable=yes">
@@ -14,13 +13,11 @@
   <style>
     body {max-width: 1500px}
     td {white-space: nowrap}
-
     .bg-828282 {background-color: #828282}
     .bg-969696 {background-color: #969696}
     .bg-a9a9a9 {background-color: #a9a9a9}
     .bg-bdbdbd {background-color: #bdbdbd}
-
-    .line {border-right: 1px solid #161616}
+    .line {border-right: 1px solid #202020}
   </style>
   <script src="https://joshavanier.github.io/aequirys/aequirys.min.js"></script>
 </head>
@@ -38,17 +35,13 @@
 
   <div class="hf">
     <div id="ovw" class="sect h9">
-
-      <div class="mb4 r">
-
-        <div class="c4 pr4-l">
+      <div class="mb3 r">
+        <div class="c4 mb4 pr4-l">
           <div class="f6 mon">
             <span class="f6">K16&#183;17</span>
             <span class="f6 rf ar">A02&#183;18</span>
           </div>
-
-          <div class="mb2 bg-111 sh6 wf bsit" id="weekChart"></div>
-
+          <div class="mb2 sh6 wf bb" id="weekChart"></div>
           <ul class="dn mb5 lsn f6">
             <li class="dib mr4 f6">
               <span class="mr1 f4 a1">&#9632;</span>
@@ -78,37 +71,29 @@
           </ul>
         </div>
 
-        <div class="c4">
+        <div class="c4 c6-m pr4-m mb4 ph4-l">
           <div class="f6 mon">
             <span class="f6 tk">SUN</span>
             <span class="f6 rf ar tk">SAT</span>
           </div>
-
-          <div class="mb2 bg-111 sh6 wf bsit" id="peakDaysChart"></div>
+          <div class="mb2 sh6 wf bb" id="peakDaysChart"></div>
         </div>
 
-        <div class="c4 pl4-l">
+        <div class="c4 c6-m pl4-m mb4 pl4-l">
           <div class="f6 mon">
             <span class="f6">00</span>
             <span class="f6 rf ar">23</span>
           </div>
-
-          <div class="mb2 bg-111 sh6 wf bsit" id="peakTimesChart"></div>
+          <div class="mb2 sh6 wf bb" id="peakTimesChart"></div>
         </div>
-
       </div>
-
-
 
       <div class="mb5 r">
 
         <div class="c8 pr4-l">
           <h2 class="mb4 f6 fwn upc tk">Today</h2>
 
-          <div class="wf sh2 mb2 bsia bg-noir">
-            <!-- <div class="psr t0 hf lf w9 bg-red"></div>
-            <div class="psr t0 hf lf w1 bg-blu"></div> -->
-          </div>
+          <div id="dayChart" class="wf sh2 mb2 bg-noir bsia"></div>
 
           <div class="mb4 f6 mon">
             <span class="f6 ">00&#183;00&#183;00</span>
@@ -161,10 +146,7 @@
         <div class="mb4 c4 pl4-l">
           <h2 class="mb4 f6 fwn upc tk">Sectors</h2>
 
-          <div class="wf sh2 mb2 bg-111">
-            <div class="psr t0 hf lf w9 bg-red"></div>
-            <div class="psr t0 hf lf w1 bg-blu"></div>
-          </div>
+          <div class="wf sh2 mb2 bg-111"></div>
 
           <ul class="mb5 lsn f6">
             <li class="dib mr4 f6">
@@ -241,7 +223,7 @@
   </footer>
 
   <script src="log.js"></script>
-  <script src="js/log.js"></script>
+  <script src="js/log.min.js"></script>
 
   <script>
     Log.init()
