@@ -370,7 +370,7 @@ var Log = {
               v.appendChild(dy)
 
               let en = document.createElement("div"), bg = ""
-              bg = i == (new Date).getHours() ? "bg-blanc" : "bg-828282"
+              bg = i == (new Date).getDay() ? "bg-blanc" : "bg-828282"
 
               en.className = `psa wf fw ${bg}`
               en.style.height = (days[i] / max * 100) + "%"
