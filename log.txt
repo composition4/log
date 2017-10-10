@@ -158,3 +158,4 @@ Start     End       Cat  Project      Description
 59db95a3  59dbaac7  COD  ACCT131  Creating accounting software
 59dbac29  59dbb334  COD  ACCT131  Creating accounting software
 59dc81d1  59dc89f1  DSG  Log  Updating UI
+59dcad86  59dcaef1  DSG  Log  Updating colour palette
