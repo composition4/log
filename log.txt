@@ -163,3 +163,4 @@ Start     End       Cat  Project      Description
 59dcb2b3  59dcbe71  COD  Log  Adding peak statistics
 59dcc14c  59dcc8f9  DSG  Log  Updating UI
 59dcd540  59dcd7f5  COD  Log  Adding day chart
+59dcd874  59dce30c  COD  Log  Optimising code
