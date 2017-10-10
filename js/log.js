@@ -99,13 +99,13 @@ var Log = {
           let entry = document.createElement("div"),
               bg = ""
 
-          if (e.c == "PHO") bg = "bg-blu"
-          else if (e.c == "RES") bg = "bg-grn"
-          else if (e.c == "DSG") bg = "bg-red"
-          else if (e.c == "ACA") bg = "bg-ylw"
+          if (e.c == "PHO") bg = "bg-6e6e6e"
+          else if (e.c == "RES") bg = "bg-5b5b5b"
+          else if (e.c == "DSG") bg = "bg-474747"
+          else if (e.c == "ACA") bg = "bg-3434343"
           else bg = "bg-blanc"
 
-          entry.className = `psr t0 sh2 mb2 lf ${bg}`
+          entry.className = `psr t0 sh1 mb2 lf ${bg}`
           entry.style.width = r.p + "%"
           entry.style.margin = "0 0 0 " + r.m + "%"
 
@@ -143,7 +143,7 @@ var Log = {
           let lb = document.createElement("p"),
               dy = document.createElement("div")
 
-          dy.className = "db wf sh2 mt2 mb3 bsia bg-111 br1"
+          dy.className = "db wf sh1 mt2 mb3 bsia bg-noir br1"
           dy.id = "v" + date
 
           v.appendChild(lb)
@@ -202,10 +202,10 @@ var Log = {
           let entry = document.createElement("div"),
               bg = ""
 
-          if (e.c == "PHO") bg = "bg-blu"
-          else if (e.c == "RES") bg = "bg-grn"
-          else if (e.c == "DSG") bg = "bg-red"
-          else if (e.c == "ACA") bg = "bg-ylw"
+          if (e.c == "PHO") bg = "bg-343434"
+          else if (e.c == "RES") bg = "bg-474747"
+          else if (e.c == "DSG") bg = "bg-5b5b5b"
+          else if (e.c == "ACA") bg = "bg-6e6e6e"
           else bg = "bg-noir"
 
           entry.className = `psa wf fw ${bg}`
@@ -225,7 +225,7 @@ var Log = {
           let dy = document.createElement("div")
 
           dy.className = "dib hf psr"
-          dy.style.width = "1%"
+          dy.style.width = `1%`
           dy.id = date
 
           v.appendChild(dy)
@@ -365,6 +365,56 @@ var Log = {
     },
 
     /**
+     * List projects
+     * @param {Date} d - a specific date
+     * @return {[]} list of projects
+     */
+
+    listProjects(d) {
+      let p = [], lt = Log.time
+
+      for (let i = 0, l = Log.log.length; i < l; i++) {
+        let e = Log.log[i],
+            t = e.t,
+            c = (e.e != "undefined" && p.indexOf(t) == -1)
+
+        if (d == undefined && c) p.push(t)
+        else if (d != undefined && c) {
+          let a = lt.convert(lt.parse(e.s))
+          a.getFullYear() == d.getFullYear() && a.getMonth() == d.getMonth() &&
+          a.getDate() == d.getDate() && p.push(t)
+        }
+      }
+
+      return p
+    },
+
+    /**
+     * List sectors
+     * @param {Date} d - a specific date
+     * @return {[]} list of sectors
+     */
+
+    listSectors(d) {
+      let p = [], lt = Log.time
+
+      for (let i = 0, l = Log.log.length; i < l; i++) {
+        let e = Log.log[i],
+            t = e.c,
+            c = (e.e != "undefined" && p.indexOf(t) == -1)
+
+        if (d == undefined && c) p.push(t)
+        else if (d != undefined && c) {
+          let a = lt.convert(lt.parse(e.s))
+          a.getFullYear() == d.getFullYear() && a.getMonth() == d.getMonth() &&
+          a.getDate() == d.getDate() && p.push(t)
+        }
+      }
+
+      return p
+    },
+
+    /**
      * Calculate shortest log session
      * @param {Date} d - of a specific date
      * @return {number} shortest log session
@@ -470,7 +520,7 @@ var Log = {
             d = new Date()
 
         h = Number(Log.data.lh())
-         n = Math.ceil((
+        n = Math.ceil((
             new Date(d.getFullYear(), d.getMonth(), d.getDate()) -
             new Date(e.getFullYear(), e.getMonth(), e.getDate())) / 8.64e7)
       }
@@ -486,7 +536,7 @@ var Log = {
 
     sh(s) {
       let h = 0,
-        t = Log.time
+          t = Log.time
 
       for (let i = 0, l = Log.log.length; i < l; i++) {
         let e = Log.log[i]
@@ -514,7 +564,7 @@ var Log = {
 
   openSect(s) {
     let x = document.getElementsByClassName("sect"),
-      b = document.getElementsByClassName("tab")
+        b = document.getElementsByClassName("tab")
 
     for (let i = 0, l = x.length; i < l; i++)
       x[i].style.display = "none"
@@ -537,9 +587,6 @@ var Log = {
     Log.barChart()
 
     document.getElementById("status").className = `rf mb4 f6 ${Log.status()}`
-
-    let h = " h",
-      p = "%"
 
     d("LHH", ld.lh())
     d("LHT", ld.lh(n))

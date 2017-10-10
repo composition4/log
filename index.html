@@ -14,6 +14,11 @@
   <style>
     body {max-width: 1500px}
     td {white-space: nowrap}
+
+    .bg-343434 {background-color: #343434}
+    .bg-474747 {background-color: #474747}
+    .bg-5b5b5b {background-color: #5b5b5b}
+    .bg-6e6e6e {background-color: #6e6e6e}
   </style>
   <script src="https://joshavanier.github.io/aequirys/aequirys.min.js"></script>
 </head>
@@ -39,82 +44,132 @@
       <div class="bg-blanc blanc ba mb2 sh6 wf bsia" id="weekChart"></div>
 
       <ul class="mb5 lsn f6">
-        <li class="dib mr4">
+        <li class="dib mr4 f6">
           <span class="mr1 f4 a1">&#9632;</span>
           <span class="tk">C<span class="dn di-m di-l">OD</span></span>
           <span id="pCOD"></span>%
         </li>
-        <li class="dib mr4">
+        <li class="dib mr4 f6">
           <span class="mr1 f4 red">&#9632;</span>
           <span class="tk">D<span class="dn di-m di-l">SG</span></span>
           <span id="pDSG"></span>%
         </li>
-        <li class="dib mr4">
+        <li class="dib mr4 f6">
           <span class="mr1 f4 grn">&#9632;</span>
           <span class="tk">R<span class="dn di-m di-l">ES</span></span>
           <span id="pRES"></span>%
         </li>
-        <li class="dib mr4">
+        <li class="dib mr4 f6">
           <span class="mr1 f4 blu">&#9632;</span>
           <span class="tk">P<span class="dn di-m di-l">HO</span></span>
           <span id="pPHO"></span>%
         </li>
-        <li class="dib">
+        <li class="dib f6">
           <span class="mr1 f4 ylw">&#9632;</span>
           <span class="tk">A<span class="dn di-m di-l">CA</span></span>
           <span id="pACA"></span>%
         </li>
       </ul>
 
-      <div class="r">
+      <div class="mb5 r">
 
-        <div class="mb5 c6 pr5-l">
-          <h2 class="mb3 f6 fwn upc tk bb">Today</h2>
-          <ul class="lsn r">
-            <li class="mb4 c4 c3-m c4-l">
+        <div class="c8 pr4-l">
+          <h2 class="mb4 f6 fwn upc tk">Today</h2>
+
+          <div class="wf sh2 mb2 bsia bg-noir">
+            <!-- <div class="psr t0 hf lf w9 bg-red"></div>
+            <div class="psr t0 hf lf w1 bg-blu"></div> -->
+          </div>
+
+          <div class="mb4 f6 mon">
+            <span class="f6 ">00&#183;00&#183;00</span>
+            <span class="f6 rf">23&#183;59&#183;59</span>
+          </div>
+
+          <ul class="mb4 lsn r">
+            <li class="mb4 c4 c3-m c3-l">
               <p class="mb2 f6">LH<sub>T</sub></p>
               <p class="f3 f2-l fwb" id="LHT"></p>
             </li>
-            <li class="mb4 c4 c3-m c4-l">
+            <li class="mb4 c4 c3-m c3-l">
               <p class="mb2 f6">LS<sub>min</sub></p>
               <p class="f3 f2-l fwb" id="LSN"></p>
             </li>
-            <li class="mb4 c4 c3-m c4-l">
+            <li class="mb4 c4 c3-m c3-l">
               <p class="mb2 f6">LS<sub>max</sub></p>
               <p class="f3 f2-l fwb" id="LSX"></p>
             </li>
-            <li class="mb4 c4 c3-m c4-l">
+            <li class="mb4 c4 c3-m c3-l">
               <p class="mb2 f6">LP<sub>T</sub></p>
               <p class="f3 f2-l fwb" id="LPT"></p>
             </li>
           </ul>
-        </div>
 
-        <div class="c6 pl5-l">
-          <h2 class="mb3 f6 fwn upc tk bb">Histoire</h2>
-          <ul class="mb5 pb4 lsn r">
-            <li class="mb4 c4 c3-m c4-l">
+          <ul class="lsn r">
+            <li class="mb4 c4 c3-m c3-l">
               <p class="mb2 f6">LH<sub>H</sub></p>
               <p class="f3 f2-l fwb" id="LHH"></p>
             </li>
-            <li class="mb4 c4 c3-m c4-l">
+            <li class="mb4 c4 c3-m c3-l">
               <p class="mb2 f6">LS<sub>Hmin</sub></p>
               <p class="f3 f2-l fwb" id="LSNH"></p>
             </li>
-            <li class="mb4 c4 c3-m c4-l">
+            <li class="mb4 c4 c3-m c3-l">
               <p class="mb2 f6">LS<sub>Hmax</sub></p>
               <p class="f3 f2-l fwb" id="LSXH"></p>
             </li>
-            <li class="mb4 c4 c3-m c4-l">
+            <li class="mb4 c4 c3-m c3-l">
               <p class="mb3 f6">LP<sub>H</sub></p>
               <p class="f3 f2-l fwb" id="LPH"></p>
             </li>
-            <li class="mb4 c4 c4-m">
+            <li class="mb4 c4 c4-m c3-l">
               <p class="mb3 f6">ASD</p>
               <p class="f3 f2-l fwb" id="ASD"></p>
             </li>
           </ul>
         </div>
+
+        <div class="mb4 c4 pl4-l">
+          <h2 class="mb4 f6 fwn upc tk">Sectors</h2>
+
+          <div class="wf sh2 mb2 bg-111">
+            <div class="psr t0 hf lf w9 bg-red"></div>
+            <div class="psr t0 hf lf w1 bg-blu"></div>
+          </div>
+
+          <ul class="mb5 lsn f6">
+            <li class="dib mr4 f6">
+              <span class="mr1 f4 red">&#9632;</span>
+              <span id="pDSG">8</span>%
+            </li>
+            <li class="dib mr4 f6">
+              <span class="mr1 f4 blu">&#9632;</span>
+              <span id="pPHO">8</span>%
+            </li>
+          </ul>
+
+          <h2 class="mb3 f6 fwn upc tk">Projects</h2>
+          <ul class="lsn">
+            <li class="mb4 f6">
+              <span class="f6 mb2 mon upc tk">Memex</span>
+              <span class="f6 rf">ASD: 0.4 h &#183; LH: 2.13 h</span>
+              <div class="wf sh2 mb3 bg-111">
+                <div class="psr t0 hf lf w9 bg-red"></div>
+                <div class="psr t0 hf lf w1 bg-blu"></div>
+              </div>
+            </li>
+            <li class="mb4 f6">
+              <span class="mb2 f6 mon upc tk">Macian</span>
+              <span class="f6 rf">ASD: 0.4 h &#183; LH: 2.13 h</span>
+              <div class="wf sh2 mb3 bg-111">
+                <div class="psr t0 hf lf w9 bg-red"></div>
+                <div class="psr t0 hf lf w1 bg-blu"></div>
+              </div>
+            </li>
+          </ul>
+
+        </div>
+
       </div>
     </div>
 
@@ -157,7 +212,7 @@
   </footer>
 
   <script src="log.js"></script>
-  <script src="js/log.min.js"></script>
+  <script src="js/log.js"></script>
 
   <script>
     Log.init()
