@@ -161,3 +161,4 @@ Start     End       Cat  Project      Description
 59dcad86  59dcaef1  DSG  Log  Updating colour palette
 59dcaf00  59dcb295  DSG  Log  Updating UI
 59dcb2b3  59dcbe71  COD  Log  Adding peak statistics
+59dcc14c  59dcc8f9  DSG  Log  Updating UI
