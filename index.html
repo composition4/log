@@ -15,10 +15,12 @@
     body {max-width: 1500px}
     td {white-space: nowrap}
 
-    .bg-343434 {background-color: #343434}
-    .bg-474747 {background-color: #474747}
-    .bg-5b5b5b {background-color: #5b5b5b}
-    .bg-6e6e6e {background-color: #6e6e6e}
+    .bg-828282 {background-color: #828282}
+    .bg-969696 {background-color: #969696}
+    .bg-a9a9a9 {background-color: #a9a9a9}
+    .bg-bdbdbd {background-color: #bdbdbd}
+
+    .line {border-right: 1px solid #161616}
   </style>
   <script src="https://joshavanier.github.io/aequirys/aequirys.min.js"></script>
 </head>
@@ -36,40 +38,67 @@
 
   <div class="hf">
     <div id="ovw" class="sect h9">
-      <div class="f6 mon">
-        <span class="f6">K16&#183;17</span>
-        <span class="f6 rf ar">A02&#183;18</span>
+
+      <div class="mb4 r">
+
+        <div class="c4 pr4-l">
+          <div class="f6 mon">
+            <span class="f6">K16&#183;17</span>
+            <span class="f6 rf ar">A02&#183;18</span>
+          </div>
+
+          <div class="mb2 bg-111 sh6 wf bsit" id="weekChart"></div>
+
+          <ul class="dn mb5 lsn f6">
+            <li class="dib mr4 f6">
+              <span class="mr1 f4 a1">&#9632;</span>
+              <span class="tk">C<span class="dn di-m di-l">OD</span></span>
+              <span id="pCOD"></span>%
+            </li>
+            <li class="dib mr4 f6">
+              <span class="mr1 f4 red">&#9632;</span>
+              <span class="tk">D<span class="dn di-m di-l">SG</span></span>
+              <span id="pDSG"></span>%
+            </li>
+            <li class="dib mr4 f6">
+              <span class="mr1 f4 grn">&#9632;</span>
+              <span class="tk">R<span class="dn di-m di-l">ES</span></span>
+              <span id="pRES"></span>%
+            </li>
+            <li class="dib mr4 f6">
+              <span class="mr1 f4 blu">&#9632;</span>
+              <span class="tk">P<span class="dn di-m di-l">HO</span></span>
+              <span id="pPHO"></span>%
+            </li>
+            <li class="dib f6">
+              <span class="mr1 f4 ylw">&#9632;</span>
+              <span class="tk">A<span class="dn di-m di-l">CA</span></span>
+              <span id="pACA"></span>%
+            </li>
+          </ul>
+        </div>
+
+        <div class="c4">
+          <div class="f6 mon">
+            <span class="f6 tk">SUN</span>
+            <span class="f6 rf ar tk">SAT</span>
+          </div>
+
+          <div class="mb2 bg-111 sh6 wf bsit" id="peakDaysChart"></div>
+        </div>
+
+        <div class="c4 pl4-l">
+          <div class="f6 mon">
+            <span class="f6">00</span>
+            <span class="f6 rf ar">23</span>
+          </div>
+
+          <div class="mb2 bg-111 sh6 wf bsit" id="peakTimesChart"></div>
+        </div>
+
       </div>
 
-      <div class="bg-blanc blanc ba mb2 sh6 wf bsia" id="weekChart"></div>
 
-      <ul class="mb5 lsn f6">
-        <li class="dib mr4 f6">
-          <span class="mr1 f4 a1">&#9632;</span>
-          <span class="tk">C<span class="dn di-m di-l">OD</span></span>
-          <span id="pCOD"></span>%
-        </li>
-        <li class="dib mr4 f6">
-          <span class="mr1 f4 red">&#9632;</span>
-          <span class="tk">D<span class="dn di-m di-l">SG</span></span>
-          <span id="pDSG"></span>%
-        </li>
-        <li class="dib mr4 f6">
-          <span class="mr1 f4 grn">&#9632;</span>
-          <span class="tk">R<span class="dn di-m di-l">ES</span></span>
-          <span id="pRES"></span>%
-        </li>
-        <li class="dib mr4 f6">
-          <span class="mr1 f4 blu">&#9632;</span>
-          <span class="tk">P<span class="dn di-m di-l">HO</span></span>
-          <span id="pPHO"></span>%
-        </li>
-        <li class="dib f6">
-          <span class="mr1 f4 ylw">&#9632;</span>
-          <span class="tk">A<span class="dn di-m di-l">CA</span></span>
-          <span id="pACA"></span>%
-        </li>
-      </ul>
 
       <div class="mb5 r">
 

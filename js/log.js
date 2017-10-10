@@ -99,10 +99,10 @@ var Log = {
           let entry = document.createElement("div"),
               bg = ""
 
-          if (e.c == "PHO") bg = "bg-6e6e6e"
-          else if (e.c == "RES") bg = "bg-5b5b5b"
-          else if (e.c == "DSG") bg = "bg-474747"
-          else if (e.c == "ACA") bg = "bg-3434343"
+          if (e.c == "PHO") bg = "bg-bdbdbd"
+          else if (e.c == "RES") bg = "bg-a9a9a9"
+          else if (e.c == "DSG") bg = "bg-969696"
+          else if (e.c == "ACA") bg = "bg-828282"
           else bg = "bg-blanc"
 
           entry.className = `psr t0 sh1 mb2 lf ${bg}`
@@ -202,11 +202,11 @@ var Log = {
           let entry = document.createElement("div"),
               bg = ""
 
-          if (e.c == "PHO") bg = "bg-343434"
-          else if (e.c == "RES") bg = "bg-474747"
-          else if (e.c == "DSG") bg = "bg-5b5b5b"
-          else if (e.c == "ACA") bg = "bg-6e6e6e"
-          else bg = "bg-noir"
+          if (e.c == "PHO") bg = "bg-bdbdbd"
+          else if (e.c == "RES") bg = "bg-a9a9a9"
+          else if (e.c == "DSG") bg = "bg-969696"
+          else if (e.c == "ACA") bg = "bg-828282"
+          else bg = "bg-blanc"
 
           entry.className = `psa wf fw ${bg}`
           entry.style.height = r + "%"
@@ -269,6 +269,100 @@ var Log = {
     }
   },
 
+  vis: {
+
+    peakTimes() {
+      let v = document.getElementById("peakTimesChart"),
+          hours = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+      for (let i = 0, l = Log.log.length; i < l; i++) {
+        let e = Log.log[i]
+        if (e.e == "undefined") continue
+        let d = Log.time.convert(Log.time.parse(e.s))
+        hours[d.getHours()]++
+      }
+
+      let max = hours.reduce(function(a, b) {
+        return Math.max(a, b)
+      })
+
+      for (let i = 0, l = hours.length; i < l; i++) {
+        let e = Log.log[i]
+
+          addEntry = _ => {
+
+            let dy = document.createElement("div")
+
+            dy.className = "dib hf psr line"
+            dy.style.width = `${100 / 24}%`
+            dy.id = "peak-"+i
+
+            v.appendChild(dy)
+
+            let entry = document.createElement("div"),
+                bg = ""
+
+            if (i == (new Date).getHours()) bg = "bg-blanc"
+            else bg = "bg-828282"
+
+            entry.className = `psa wf fw ${bg}`
+            entry.style.height = (hours[i] / max * 100) + "%"
+            entry.style.bottom = "0"
+
+            document.getElementById("peak-"+i).appendChild(entry)
+          }
+
+        addEntry()
+      }
+    },
+
+    peakDays() {
+      let v = document.getElementById("peakDaysChart"),
+          days = [0, 0, 0, 0, 0, 0, 0]
+
+      for (let i = 0, l = Log.log.length; i < l; i++) {
+        let e = Log.log[i]
+        if (e.e == "undefined") continue
+        let d = Log.time.convert(Log.time.parse(e.s))
+        days[d.getDay()]++
+      }
+
+      let max = days.reduce(function(a, b) {
+        return Math.max(a, b)
+      })
+
+      for (let i = 0, l = days.length; i < l; i++) {
+        let e = Log.log[i]
+
+          addEntry = _ => {
+
+            let dy = document.createElement("div")
+
+            dy.className = "dib hf psr line"
+            dy.style.width = `${100 / 7}%`
+            dy.id = "peakday-"+i
+
+            v.appendChild(dy)
+
+            let entry = document.createElement("div"),
+                bg = ""
+
+            if (i == (new Date).getDay()) bg = "bg-blanc"
+            else bg = "bg-828282"
+
+            entry.className = `psa wf fw ${bg}`
+            entry.style.height = (days[i] / max * 100) + "%"
+            entry.style.bottom = "0"
+
+            document.getElementById("peakday-"+i).appendChild(entry)
+          }
+
+        addEntry()
+      }
+    }
+
+  },
+
   time: {
 
     /**
@@ -298,9 +392,9 @@ var Log = {
 
     stamp(t) {
       let d = Log.time.convert(t),
-        h = `0${d.getHours()}`,
-        m = `0${d.getMinutes()}`,
-        s = `0${d.getSeconds()}`
+          h = `0${d.getHours()}`,
+          m = `0${d.getMinutes()}`,
+          s = `0${d.getSeconds()}`
 
       return `${h.substr(-2)}:${m.substr(-2)}:${s.substr(-2)}`
     },
@@ -585,6 +679,8 @@ var Log = {
 
     Log.log = log
     Log.barChart()
+    Log.vis.peakTimes()
+    Log.vis.peakDays()
 
     document.getElementById("status").className = `rf mb4 f6 ${Log.status()}`
 
