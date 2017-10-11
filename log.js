@@ -163,4 +163,5 @@ var log = [
 {"s":"59dcc14c","e":"59dcc8f9","c":"DSG","t":"Log","d":"Updating UI"},
 {"s":"59dcd540","e":"59dcd7f5","c":"COD","t":"Log","d":"Adding day chart"},
 {"s":"59dcd874","e":"59dce30c","c":"COD","t":"Log","d":"Optimising code"},
+{"s":"59ddfc54","e":"59ddfe91","c":"COD","t":"Log","d":"Updating peak statistics"},
 ]
