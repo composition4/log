@@ -303,15 +303,20 @@ var Log = {
       }
     },
 
-    peakH() {
+    peakH(day) {
       let v = document.getElementById("peakTimesChart"),
           hours = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
       for (let i = 0, l = Log.log.length; i < l; i++) {
         let e = Log.log[i]
         if (e.e == "undefined") continue
-        let d = Log.time.convert(Log.time.parse(e.s))
-        hours[d.getHours()]++
+        if (day != undefined) {
+          let d = Log.time.convert(Log.time.parse(e.s))
+          if (day == d.getDay()) hours[d.getHours()]++
+        } else {
+          let d = Log.time.convert(Log.time.parse(e.s))
+          hours[d.getHours()]++
+        }
       }
 
       let max = hours.reduce(function(a, b) {
@@ -496,8 +501,10 @@ var Log = {
         if (d == undefined && c) p.push(t)
         else if (d != undefined && c) {
           let a = lt.convert(lt.parse(e.s))
-          a.getFullYear() == d.getFullYear() && a.getMonth() == d.getMonth() &&
-          a.getDate() == d.getDate() && p.push(t)
+          a.getFullYear() == d.getFullYear() &&
+          a.getMonth() == d.getMonth() &&
+          a.getDate() == d.getDate() &&
+          p.push(t)
         }
       }
 
@@ -633,7 +640,7 @@ var Log = {
       let n = 0, h = 0, lt = Log.time
 
       if (d != undefined) {
-        h = Log.data.getEntries(d).length == 0 ? 0 : Log.data.lh(new Date())
+        h = Log.data.getEntries(d).length == 0 ? 0 : Log.data.lh(d)
       } else {
         let e = lt.convert(lt.parse(Log.log[0].s)),
             d = new Date()
@@ -673,6 +680,10 @@ var Log = {
 
     sp(s) {
       return Log.data.sh(s) / Log.data.lh() * 100
+    },
+
+    trend(a, b) {
+      return (a - b) / b
     }
   },
 
@@ -698,8 +709,13 @@ var Log = {
     let ld = Log.data,
         sp = ld.sp,
         n = new Date(),
+        y = new Date(n),
 
-        d = (e, m) => { document.getElementById(e).innerHTML = m.toFixed(2) }
+        d = (e, m) => { document.getElementById(e).innerHTML = m.toFixed(2) },
+
+        s = (e, c) => { document.getElementById(e).className = c }
+
+    y.setDate(n.getDate() - 1)
 
     Log.log = log
     Log.vis.bar(Log.log, "weekChart")
@@ -709,15 +725,44 @@ var Log = {
 
     document.getElementById("status").className = `rf mb4 f6 ${Log.status()}`
 
-    d("LHH", ld.lh())
-    d("LHT", ld.lh(n))
-    d("LPH", ld.lp())
-    d("LPT", ld.lp(n))
-    d("ASD", ld.asd())
-    d("LSN", ld.lsmin(n))
-    d("LSX", ld.lsmax(n))
-    d("LSNH", ld.lsmin())
-    d("LSXH", ld.lsmax())
+    let lhh = ld.lh(),
+        lht = ld.lh(n),
+        lph = ld.lp(),
+        lpt = ld.lp(n),
+        asd = ld.asd(),
+        lsn = ld.lsmin(n),
+        lsx = ld.lsmax(n),
+        lsnh = ld.lsmin(),
+        lsxh = ld.lsmax(),
+
+        lhtt = ld.trend(lht, ld.lh(y)),
+        lptt = ld.trend(lpt, ld.lp(y)),
+        lsnt = ld.trend(lsn, ld.lsmin(y)),
+        lsxt = ld.trend(lsx, ld.lsmax(y))
+
+        console.log(ld.lp(n))
+        console.log(ld.lp(y))
+
+    if (lhtt < 0) s("lhtt", "red")
+    if (lptt < 0) s("lptt", "red")
+    if (lsnt < 0) s("lsnt", "red")
+    if (lsxt < 0) s("lsxt", "red")
+
+    d("LHH", lhh)
+    d("LHT", lht)
+
+    d("lhtt", lhtt)
+
+    d("LPH", lph)
+    d("LPT", lpt)
+    d("lptt", lptt)
+    d("ASD", asd)
+    d("LSN", lsn)
+    d("lsnt", lsnt)
+    d("LSX", lsx)
+    d("lsxt", lsxt)
+    d("LSNH", lsnh)
+    d("LSXH", lsxh)
 
     d("pCOD", sp("COD"))
     d("pDSG", sp("DSG"))
