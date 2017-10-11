@@ -84,13 +84,13 @@ var Log = {
 
   vis: {
 
-    line(set, con) {
+    line(a = Log.log, con) {
       let v = document.getElementById(con),
           lw = 0,
           lp = 0
 
-      for (let i = 0, l = set.length; i < l; i++) {
-        let e = set[i],
+      for (let i = 0, l = a.length; i < l; i++) {
+        let e = a[i],
             lt = Log.time,
 
           addEntry = r => {
@@ -247,9 +247,9 @@ var Log = {
       }
     },
 
-    day() {
+    day(d = new Date()) {
       let v = document.getElementById("daychart"),
-          a = Log.data.getEntries(new Date()),
+          a = Log.data.getEntries(d),
           lw = 0,
           lp = 0
 
@@ -309,13 +309,10 @@ var Log = {
 
       for (let i = 0, l = Log.log.length; i < l; i++) {
         let e = Log.log[i]
-        if (e.e == "undefined") continue
-        if (day != undefined) {
+        if (e.e != "undefined") {
           let d = Log.time.convert(Log.time.parse(e.s))
-          if (day == d.getDay()) hours[d.getHours()]++
-        } else {
-          let d = Log.time.convert(Log.time.parse(e.s))
-          hours[d.getHours()]++
+          if (day != undefined && day == d.getDay()) hours[d.getHours()]++
+          else hours[d.getHours()]++
         }
       }
 
@@ -324,36 +321,35 @@ var Log = {
       })
 
       for (let i = 0, l = hours.length; i < l; i++) {
-        let e = Log.log[i],
-            addEntry = _ => {
-              let dy = document.createElement("div")
+        let addEntry = _ => {
+          let dy = document.createElement("div")
 
-              dy.className   = "dib hf psr line"
-              dy.style.width = `${100 / 24}%`
-              dy.id          = "peak-"+i
+          dy.className   = "dib hf psr line"
+          dy.style.width = `${100 / 24}%`
+          dy.id          = "peak-"+i
 
-              v.appendChild(dy)
+          v.appendChild(dy)
 
-              let en = document.createElement("div"), bg = ""
-              bg = i == (new Date).getHours() ? "bg-blanc" : "bg-828282"
+          let en = document.createElement("div"), bg = ""
+          bg = i == (new Date).getHours() ? "bg-blanc" : "bg-828282"
 
-              en.className    = `psa wf fw ${bg}`
-              en.style.height = (hours[i] / max * 100) + "%"
-              en.style.bottom = "0"
+          en.className    = `psa wf fw ${bg}`
+          en.style.height = (hours[i] / max * 100) + "%"
+          en.style.bottom = "0"
 
-              document.getElementById("peak-"+i).appendChild(en)
-            }
+          document.getElementById("peak-"+i).appendChild(en)
+        }
 
         addEntry()
       }
     },
 
-    peakD() {
+    peakD(a = Log.log) {
       let v = document.getElementById("peakDaysChart"),
           days = [0, 0, 0, 0, 0, 0, 0]
 
-      for (let i = 0, l = Log.log.length; i < l; i++) {
-        let e = Log.log[i]
+      for (let i = 0, l = a.length; i < l; i++) {
+        let e = a[i]
         if (e.e == "undefined") continue
         let d = Log.time.convert(Log.time.parse(e.s))
         days[d.getDay()]++
@@ -364,28 +360,31 @@ var Log = {
       })
 
       for (let i = 0, l = days.length; i < l; i++) {
-        let e = Log.log[i],
-            addEntry = _ => {
-              let dy = document.createElement("div")
+        let addEntry = _ => {
+          let dy = document.createElement("div")
 
-              dy.className   = "dib hf psr line"
-              dy.style.width = `${100 / 7}%`
-              dy.id          = "peakday-"+i
+          dy.className   = "dib hf psr line"
+          dy.style.width = `${100 / 7}%`
+          dy.id          = "peakday-"+i
 
-              v.appendChild(dy)
+          v.appendChild(dy)
 
-              let en = document.createElement("div"), bg = ""
-              bg = i == (new Date).getDay() ? "bg-blanc" : "bg-828282"
+          let en = document.createElement("div"), bg = ""
+          bg = i == (new Date).getDay() ? "bg-blanc" : "bg-828282"
 
-              en.className = `psa wf fw ${bg}`
-              en.style.height = (days[i] / max * 100) + "%"
-              en.style.bottom = "0"
+          en.className = `psa wf fw ${bg}`
+          en.style.height = (days[i] / max * 100) + "%"
+          en.style.bottom = "0"
 
-              document.getElementById("peakday-"+i).appendChild(en)
-            }
+          document.getElementById("peakday-"+i).appendChild(en)
+        }
 
         addEntry()
       }
+    },
+
+    sectorBar(a = Log.log) {
+
     }
   },
 
@@ -464,8 +463,6 @@ var Log = {
           let e = Log.log[i]
           if (e.e != "undefined") ent.push(e)
         }
-
-        return ent
       } else {
         for (let i = 0, l = Log.log.length; i < l; i++) {
           let e = Log.log[i]
@@ -479,33 +476,22 @@ var Log = {
             ent.push(e)
           }
         }
-
-        return ent
       }
+      return ent
     },
 
     /**
      * List projects
-     * @param {Date} d - a specific date
+     * @param {[]} a - array of entries
      * @return {[]} list of projects
      */
 
-    listProjects(d) {
+    listProjects(a = Log.log) {
       let p = [], lt = Log.time
 
-      for (let i = 0, l = Log.log.length; i < l; i++) {
-        let e = Log.log[i],
-            t = e.t,
-            c = (e.e != "undefined" && p.indexOf(t) == -1)
-
-        if (d == undefined && c) p.push(t)
-        else if (d != undefined && c) {
-          let a = lt.convert(lt.parse(e.s))
-          a.getFullYear() == d.getFullYear() &&
-          a.getMonth() == d.getMonth() &&
-          a.getDate() == d.getDate() &&
-          p.push(t)
-        }
+      for (let i = 0, l = a.length; i < l; i++) {
+        let e = a[i], t = e.t
+        if (e.e != "undefined" && p.indexOf(t) == -1) p.push(t)
       }
 
       return p
@@ -513,24 +499,19 @@ var Log = {
 
     /**
      * List sectors
-     * @param {Date} d - a specific date
+     * @param {[]} a - array of entries
      * @return {[]} list of sectors
      */
 
-    listSectors(d) {
+    listSectors(a = Log.log) {
       let p = [], lt = Log.time
 
-      for (let i = 0, l = Log.log.length; i < l; i++) {
-        let e = Log.log[i],
+      for (let i = 0, l = a.length; i < l; i++) {
+        let e = a[i],
             t = e.c,
             c = (e.e != "undefined" && p.indexOf(t) == -1)
 
-        if (d == undefined && c) p.push(t)
-        else if (d != undefined && c) {
-          let a = lt.convert(lt.parse(e.s))
-          a.getFullYear() == d.getFullYear() && a.getMonth() == d.getMonth() &&
-          a.getDate() == d.getDate() && p.push(t)
-        }
+        if (c) p.push(t)
       }
 
       return p
@@ -538,11 +519,11 @@ var Log = {
 
     /**
      * Calculate shortest log session
-     * @param {Date} d - of a specific date
+     * @param {[]} a - array of entries
      * @return {number} shortest log session
      */
 
-    lsmin(d) {
+    lsmin(a = Log.log) {
       let m, lt = Log.time,
 
           check = e => {
@@ -550,26 +531,19 @@ var Log = {
             if (n < m || m == undefined) m = n
           }
 
-      if (d != undefined) {
-        let entD = Log.data.getEntries(d)
-        if (entD.length == 0) return 0
-        for (let i = 0, l = entD.length; i < l; i++) check(entD[i])
-      } else {
-        let entH = Log.data.getEntries()
-        if (entH.length == 0) return 0
-        for (let i = 0, l = entH.length; i < l; i++) check(entH[i])
-      }
+      if (a.length == 0) return 0
+      for (let i = 0, l = a.length; i < l; i++) check(a[i])
 
       return m
     },
 
     /**
      * Calculate longest log session
-     * @param {Date} d - of a specific date
+     * @param {[]} a - array of entries
      * @return {number} longest log session
      */
 
-    lsmax(d) {
+    lsmax(a = Log.log) {
       let m, lt = Log.time,
 
           check = e => {
@@ -577,15 +551,8 @@ var Log = {
             if (n > m || m == undefined) m = n
           }
 
-      if (d != undefined) {
-        let entD = Log.data.getEntries(d)
-        if (entD.length == 0) return 0
-        for (let i = 0, l = entD.length; i < l; i++) check(entD[i])
-      } else {
-        let entH = Log.data.getEntries()
-        if (entH.length == 0) return 0
-        for (let i = 0, l = entH.length; i < l; i++) check(entH[i])
-      }
+      if (a.length == 0) return 0
+      for (let i = 0, l = a.length; i < l; i++) check(a[i])
 
       return m
     },
@@ -614,18 +581,12 @@ var Log = {
      * @return {number} total logged hours
      */
 
-    lh(d) {
+    lh(a = Log.log) {
       let h = 0,
           lt = Log.time,
           dur = e => Number(lt.duration(lt.parse(e.s), lt.parse(e.e)))
 
-      if (d != undefined) {
-        let entD = Log.data.getEntries(d)
-        for (let i = 0, l = entD.length; i < l; i++) h += dur(entD[i])
-      } else {
-        let entH = Log.data.getEntries()
-        for (let i = 0, l = entH.length; i < l; i++) h += dur(entH[i])
-      }
+      for (let i = 0, l = a.length - 1; i < l; i++) h += dur(a[i])
 
       return h
     },
@@ -636,35 +597,32 @@ var Log = {
      * @return {number} log percentage
      */
 
-    lp(d) {
+    lp(a = Log.log) {
       let n = 0, h = 0, lt = Log.time
 
-      if (d != undefined) {
-        h = Log.data.getEntries(d).length == 0 ? 0 : Log.data.lh(d)
-      } else {
-        let e = lt.convert(lt.parse(Log.log[0].s)),
-            d = new Date()
+      let e = lt.convert(lt.parse(a[0].s)),
+          d = lt.convert(lt.parse(a[a.length - 1].s))
 
-        h = Number(Log.data.lh())
-        n = Math.ceil((
-            new Date(d.getFullYear(), d.getMonth(), d.getDate()) -
-            new Date(e.getFullYear(), e.getMonth(), e.getDate())) / 8.64e7)
-      }
+      h = Number(Log.data.lh(a))
+      n = Math.ceil((
+          new Date(d.getFullYear(), d.getMonth(), d.getDate()) -
+          new Date(e.getFullYear(), e.getMonth(), e.getDate())) / 8.64e7)
 
       return h / (24 * (n + 1)) * 100
     },
 
     /**
      * Calculate sector hours
+     * @param {[]} a - array of entries
      * @param {string} s - sector
      * @return {number} number of sector hours
      */
 
-    sh(s) {
+    sh(a, s) {
       let h = 0, t = Log.time
 
-      for (let i = 0, l = Log.log.length; i < l; i++) {
-        let e = Log.log[i]
+      for (let i = 0, l = a.length; i < l; i++) {
+        let e = a[i]
         if (e.e == "undefined") continue
         if (e.c == s) h += Number(t.duration(t.parse(e.s), t.parse(e.e)))
       }
@@ -674,12 +632,13 @@ var Log = {
 
     /**
      * Calculate sector percentage
+     * @param {[]} a - array of entries
      * @param {string} s - sector
      * @return {number} sector percentage
      */
 
-    sp(s) {
-      return Log.data.sh(s) / Log.data.lh() * 100
+    sp(a = Log.log, s) {
+      return Log.data.sh(a, s) / Log.data.lh(a) * 100
     },
 
     trend(a, b) {
@@ -706,6 +665,9 @@ var Log = {
   },
 
   init() {
+
+    Log.log = log
+
     let ld = Log.data,
         sp = ld.sp,
         n = new Date(),
@@ -717,7 +679,9 @@ var Log = {
 
     y.setDate(n.getDate() - 1)
 
-    Log.log = log
+    let en = Log.data.getEntries(new Date()),
+        ey = Log.data.getEntries(y)
+
     Log.vis.bar(Log.log, "weekChart")
     Log.vis.peakH()
     Log.vis.peakD()
@@ -726,22 +690,19 @@ var Log = {
     document.getElementById("status").className = `rf mb4 f6 ${Log.status()}`
 
     let lhh = ld.lh(),
-        lht = ld.lh(n),
+        lht = ld.lh(en),
         lph = ld.lp(),
-        lpt = ld.lp(n),
+        lpt = ld.lp(en),
         asd = ld.asd(),
-        lsn = ld.lsmin(n),
-        lsx = ld.lsmax(n),
+        lsn = ld.lsmin(en),
+        lsx = ld.lsmax(en),
         lsnh = ld.lsmin(),
         lsxh = ld.lsmax(),
 
-        lhtt = ld.trend(lht, ld.lh(y)),
-        lptt = ld.trend(lpt, ld.lp(y)),
-        lsnt = ld.trend(lsn, ld.lsmin(y)),
-        lsxt = ld.trend(lsx, ld.lsmax(y))
-
-        console.log(ld.lp(n))
-        console.log(ld.lp(y))
+        lhtt = ld.trend(lht, ld.lh(ey)),
+        lptt = ld.trend(lpt, ld.lp(ey)),
+        lsnt = ld.trend(lsn, ld.lsmin(ey)),
+        lsxt = ld.trend(lsx, ld.lsmax(ey))
 
     if (lhtt < 0) s("lhtt", "red")
     if (lptt < 0) s("lptt", "red")
@@ -764,11 +725,13 @@ var Log = {
     d("LSNH", lsnh)
     d("LSXH", lsxh)
 
-    d("pCOD", sp("COD"))
-    d("pDSG", sp("DSG"))
-    d("pRES", sp("RES"))
-    d("pPHO", sp("PHO"))
-    d("pACA", sp("ACA"))
+    Log.vis.sectorBar()
+
+    d("pCOD", sp(Log.log, "COD"))
+    d("pDSG", sp(Log.log, "DSG"))
+    d("pRES", sp(Log.log, "RES"))
+    d("pPHO", sp(Log.log, "PHO"))
+    d("pACA", sp(Log.log, "ACA"))
 
     Log.vis.line(Log.log, "vis")
     Log.display()
