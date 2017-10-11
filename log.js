@@ -166,4 +166,5 @@ var log = [
 {"s":"59ddfc54","e":"59ddfe91","c":"COD","t":"Log","d":"Updating peak statistics"},
 {"s":"59de057c","e":"59de0676","c":"COD","t":"Log","d":"Adding trends"},
 {"s":"59de1b56","e":"59de24a2","c":"COD","t":"Log","d":"Adding trends"},
+{"s":"59de2568","e":"59de2685","c":"COD","t":"Log","d":"Fixing log percentage"},
 ]

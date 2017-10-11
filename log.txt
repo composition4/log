@@ -167,3 +167,4 @@ Start     End       Cat  Project      Description
 59ddfc54  59ddfe91  COD  Log  Updating peak statistics
 59de057c  59de0676  COD  Log  Adding trends
 59de1b56  59de24a2  COD  Log  Adding trends
+59de2568  59de2685  COD  Log  Fixing log percentage
