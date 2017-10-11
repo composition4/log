@@ -169,3 +169,4 @@ Start     End       Cat  Project      Description
 59de1b56  59de24a2  COD  Log  Adding trends
 59de2568  59de2685  COD  Log  Fixing log percentage
 59de26f3  59de2ff4  COD  Log  Adding sector percentages
+59de306e  59de356e  COD  Log  Optimising code
