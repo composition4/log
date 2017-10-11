@@ -164,4 +164,6 @@ var log = [
 {"s":"59dcd540","e":"59dcd7f5","c":"COD","t":"Log","d":"Adding day chart"},
 {"s":"59dcd874","e":"59dce30c","c":"COD","t":"Log","d":"Optimising code"},
 {"s":"59ddfc54","e":"59ddfe91","c":"COD","t":"Log","d":"Updating peak statistics"},
+{"s":"59de057c","e":"59de0676","c":"COD","t":"Log","d":"Adding trends"},
+{"s":"59de1b56","e":"59de24a2","c":"COD","t":"Log","d":"Adding trends"},
 ]
