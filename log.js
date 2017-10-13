@@ -176,4 +176,5 @@ var log = [
 {"s":"59e02861","e":"59e03039","c":"COD","t":"Somnus","d":"Updating logs"},
 {"s":"59e03056","e":"59e0336e","c":"COD","t":"Eau","d":"Updating logs"},
 {"s":"59e03419","e":"59e03640","c":"DSG","t":"Somnus","d":"Updating UI"},
+{"s":"59e0366b","e":"59e03cc6","c":"COD","t":"Somnus","d":"Optimising code"},
 ]

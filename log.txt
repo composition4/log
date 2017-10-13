@@ -177,3 +177,4 @@ Start     End       Cat  Project      Description
 59e02861  59e03039  COD  Somnus  Updating logs
 59e03056  59e0336e  COD  Eau  Updating logs
 59e03419  59e03640  DSG  Somnus  Updating UI
+59e0366b  59e03cc6  COD  Somnus  Optimising code
