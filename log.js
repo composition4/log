@@ -183,4 +183,5 @@ var log = [
 {"s":"59e06408","e":"59e06a49","c":"COD","t":"Log","d":"Cleaning up code"},
 {"s":"59e081a6","e":"59e08b93","c":"DSG","t":"Log","d":"Adding projects section"},
 {"s":"59e09255","e":"59e09829","c":"RES","t":"npm","d":"Learning how to use npm"},
+{"s":"59e0c083","e":"59e0ca40","c":"COD","t":"Log","d":"Adding web console"},
 ]
