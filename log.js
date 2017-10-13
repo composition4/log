@@ -173,4 +173,5 @@ var log = [
 {"s":"59df7dcd","e":"59df87f8","c":"COD","t":"Log","d":"Optimising code"},
 {"s":"59df8d99","e":"59df8f1e","c":"COD","t":"Log","d":"Optimising code"},
 {"s":"59e0260d","e":"59e027bb","c":"COD","t":"Twig","d":"Creating a log input utility"},
+{"s":"59e02861","e":"59e03039","c":"COD","t":"Somnus","d":"Updating logs"},
 ]
