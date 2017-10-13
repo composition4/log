@@ -144,29 +144,29 @@ var Log = {
       for (let i = 0, l = a.length; i < l; i++) {
         let e = a[i]
 
-        if (e.e == "undefined") continue
+        if (e.e != "undefined") {
+          let es = lt.parse(e.s),
+              ee = lt.parse(e.e),
+              date = lt.date(es),
+              end = lt.date(ee),
+              id = con + date
 
-        let es = lt.parse(e.s),
-            ee = lt.parse(e.e),
-            date = lt.date(es),
-            end = lt.date(ee),
-            id = con + date
+          if (date !== end) {
+            if (check(id)) newRow(date)
 
-        if (date !== end) {
-          if (check(id)) newRow(date)
+            let a = lt.convert(es)
 
-          let a = lt.convert(es)
+            addEntry(e, (calc(lt.parse((+(new Date(a.getFullYear(), a.getMonth(), a.getDate(), 23, 59).getTime() / 1000)).toString(16)), es)))
 
-          addEntry(e, (calc(lt.parse((+(new Date(a.getFullYear(), a.getMonth(), a.getDate(), 23, 59).getTime() / 1000)).toString(16)), es)))
+            if (check(con + end)) newRow(end)
 
-          if (check(con + end)) newRow(end)
+            let ea = lt.convert(ee)
 
-          let ea = lt.convert(ee)
-
-          addEntry(e, (calc(ee, lt.parse((+(new Date(ea.getFullYear(), ea.getMonth(), ea.getDate(), 0, 0).getTime() / 1000)).toString(16)))))
-        } else {
-          if (check(id)) newRow(date)
-          addEntry(e, (calc(ee, es)))
+            addEntry(e, (calc(ee, lt.parse((+(new Date(ea.getFullYear(), ea.getMonth(), ea.getDate(), 0, 0).getTime() / 1000)).toString(16)))))
+          } else {
+            if (check(id)) newRow(date)
+            addEntry(e, (calc(ee, es)))
+          }
         }
       }
     },
@@ -174,12 +174,9 @@ var Log = {
     bar(set, con) {
       let v = document.getElementById(con),
           lw = 0,
-          lt = Log.time
+          lt = Log.time,
 
-      for (let i = 0, l = set.length; i < l; i++) {
-        let e = set[i],
-
-          addEntry = r => {
+          addEntry = (e, r) => {
             let d = document.createElement("div"),
                 b = ""
 
@@ -193,7 +190,7 @@ var Log = {
             d.style.height = `${r}%`
             d.style.bottom = `${lw}%`
 
-            document.getElementById(date).appendChild(d)
+            document.getElementById(lt.date(lt.parse(e.s))).appendChild(d)
 
             lw += r
           },
@@ -214,24 +211,27 @@ var Log = {
 
           check = e => (document.getElementById(e) == null)
 
-        if (e.e == "undefined") continue
+      for (let i = 0, l = set.length; i < l; i++) {
+        let e = set[i]
 
-        let es   = lt.parse(e.s),
-            ee   = lt.parse(e.e),
-            date = lt.date(es),
-            end  = lt.date(ee)
+        if (e.e != "undefined") {
+          let es   = lt.parse(e.s),
+              ee   = lt.parse(e.e),
+              date = lt.date(es),
+              end  = lt.date(ee)
 
-        if (date !== end) {
-          if (check(date)) newCol(date)
-          let a = lt.convert(es)
-          addEntry(calc(lt.parse((+(new Date(a.getFullYear(), a.getMonth(), a.getDate(), 23, 59).getTime() / 1000)).toString(16)), es))
+          if (date !== end) {
+            if (check(date)) newCol(date)
+            let a = lt.convert(es)
+            addEntry(e, (calc(lt.parse((+(new Date(a.getFullYear(), a.getMonth(), a.getDate(), 23, 59).getTime() / 1000)).toString(16)), es)))
 
-          if (check(end)) newCol(end)
-          let b = lt.convert(ee)
-          addEntry(calc(ee, lt.parse((+(new Date(b.getFullYear(), b.getMonth(), b.getDate(), 0, 0).getTime() / 1000)).toString(16))))
-        } else {
-          if (check(date)) newCol(date)
-          addEntry(calc(ee, es))
+            if (check(end)) newCol(end)
+            let b = lt.convert(ee)
+            addEntry(e, (calc(ee, lt.parse((+(new Date(b.getFullYear(), b.getMonth(), b.getDate(), 0, 0).getTime() / 1000)).toString(16)))))
+          } else {
+            if (check(date)) newCol(date)
+            addEntry(e, (calc(ee, es)))
+          }
         }
       }
     },
@@ -239,14 +239,11 @@ var Log = {
     day(d = new Date()) {
       let v = document.getElementById("daychart"),
           a = Log.data.getEntries(d),
+          lt = Log.time,
           lw = 0,
-          lp = 0
+          lp = 0,
 
-      for (let i = 0, l = a.length; i < l; i++) {
-        let e = a[i],
-            lt = Log.time,
-
-          addEntry = r => {
+          addEntry = (e, r) => {
             let en = document.createElement("div"),
                 bg = ""
 
@@ -281,41 +278,40 @@ var Log = {
             return {dp, p, m}
           }
 
-        if (e.e == "undefined") continue
+      for (let i = 0, l = a.length; i < l; i++) {
+        let e = a[i]
 
-        addEntry(calc(lt.parse(e.e), lt.parse(e.s)))
+        if (e.e != "undefined")
+          addEntry(e, (calc(lt.parse(e.e), lt.parse(e.s))))
       }
     },
 
     peakH(a = Log.log) {
       let v = document.getElementById("peakTimesChart"),
           h = Log.data.peakHours(a),
-          m = Log.utils.getMax(h)
+          m = Log.utils.getMax(h),
 
-      for (let i = 0, l = h.length; i < l; i++) {
-        let addEntry = _ => {
-          let d = document.createElement("div"),
-              e = document.createElement("div"),
-              t = `peak-${i}`,
-              b = ""
+          addEntry = i => {
+            let d = document.createElement("div"),
+                e = document.createElement("div"),
+                t = `peak-${i}`,
+                b = ""
 
-          b = i == (new Date).getHours() ? "bg-blanc" : "bg-828282"
+            b = i == (new Date).getHours() ? "bg-blanc" : "bg-828282"
 
-          d.className    = "dib hf psr line"
-          d.style.width  = `4.166666666666667%`
-          d.id           = t
+            d.className    = "dib hf psr line"
+            d.style.width  = `4.166666666666667%`
+            d.id           = t
 
-          e.className    = `psa wf fw ${b}`
-          e.style.height = `${h[i] / m * 100}%`
-          e.style.bottom = "0"
+            e.className    = `psa b0 wf fw ${b}`
+            e.style.height = `${h[i] / m * 100}%`
 
-          v.appendChild(d)
+            v.appendChild(d)
 
-          document.getElementById(t).appendChild(e)
-        }
+            document.getElementById(t).appendChild(e)
+          }
 
-        addEntry()
-      }
+      for (let i = 0, l = h.length; i < l; i++) addEntry(i)
     },
 
     /**
@@ -326,88 +322,85 @@ var Log = {
     peakD(a = Log.log) {
       let v = document.getElementById("peakDaysChart"),
           d = Log.data.peakDays(a),
-          m = Log.utils.getMax(d)
+          m = Log.utils.getMax(d),
 
-      for (let i = 0, l = d.length; i < l; i++) {
-        let addEntry = _ => {
-          let c = document.createElement("div"),
-              e = document.createElement("div"),
-              t = `peakday-${i}`,
-              b = ""
+          addEntry = i => {
+            let c = document.createElement("div"),
+                e = document.createElement("div"),
+                t = `peakday-${i}`,
+                b = ""
 
-          b = i == (new Date).getDay() ? "bg-blanc" : "bg-828282"
+            b = i == (new Date).getDay() ? "bg-blanc" : "bg-828282"
 
-          c.className    = "dib hf psr line"
-          c.style.width  = `14.285714285714286%`
-          c.id           = t
+            c.className    = "dib hf psr line"
+            c.style.width  = `14.285714285714286%`
+            c.id           = t
 
-          e.className    = `psa wf fw ${b}`
-          e.style.height = `${d[i] / m * 100}%`
-          e.style.bottom = "0"
+            e.className    = `psa b0 wf fw ${b}`
+            e.style.height = `${d[i] / m * 100}%`
 
-          v.appendChild(c)
+            v.appendChild(c)
 
-          document.getElementById(t).appendChild(e)
-        }
+            document.getElementById(t).appendChild(e)
+          }
 
-        addEntry()
-      }
+      for (let i = 0, l = d.length; i < l; i++) addEntry(i)
     },
 
     sectorBar(a = Log.log, con) {
-      let s = Log.data.listSectors(a).sort()
-      let total = Log.data.lh(a)
+      let s = Log.data.listSectors(a).sort(),
 
-      for (let i = 0, l = s.length; i < l; i++) {
-        let sh = Log.data.sh(a, s[i]),
-            d = document.createElement("div"),
-            b = ""
+          add = s => {
+            let sh = Log.data.sh(a, s),
+                d = document.createElement("div"),
+                b = ""
 
-        if      (s[i] == "PHO") b = "bg-bdbdbd"
-        else if (s[i] == "RES") b = "bg-a9a9a9"
-        else if (s[i] == "DSG") b = "bg-969696"
-        else if (s[i] == "ACA") b = "bg-828282"
-        else                    b = "bg-blanc"
+            if      (s == "PHO") b = "bg-bdbdbd"
+            else if (s == "RES") b = "bg-a9a9a9"
+            else if (s == "DSG") b = "bg-969696"
+            else if (s == "ACA") b = "bg-828282"
+            else                 b = "bg-blanc"
 
-        d.className    = `psr t0 hf mb2 lf ${b}`
-        d.style.width = `${(sh / total * 100)}%`
-        d.style.margin = `0`
+            d.className   = `psr t0 hf mb2 lf ${b}`
+            d.style.width = `${Log.data.sp(a, s)}%`
 
-        document.getElementById(con).appendChild(d)
-      }
+            document.getElementById(con).appendChild(d)
+          }
+
+      for (let i = 0, l = s.length; i < l; i++) add(s[i])
     },
 
     projectBars(a = Log.log, con) {
-      let s = Log.data.listProjects(a).sort()
-      let total = Log.data.lh(a)
+      let s = Log.data.listProjects(a).sort(),
 
-      for (let i = 0, l = s.length; i < l; i++) {
-        let sh = Log.data.ph(a, s[i]),
-            li = document.createElement("li"),
-            tl = document.createElement("span"),
-            st = document.createElement("span"),
-            br = document.createElement("div"),
-            dt = document.createElement("div")
+          add = p => {
+            let sh = Log.data.ph(a, p),
+                li = document.createElement("li"),
+                tl = document.createElement("span"),
+                st = document.createElement("span"),
+                br = document.createElement("div"),
+                dt = document.createElement("div")
 
-        li.className = "mb4 f6"
-        tl.className = "f6 mb2 mon upc tk"
-        st.className = "f6 rf"
-        br.className = "wf sh2 mb3 bg-111"
+            li.className   = "mb4 f6"
+            tl.className   = "f6 mb2 mon upc tk"
+            st.className   = "f6 rf"
+            br.className   = "wf sh2 mb3 bg-111"
 
-        dt.className = `psr t0 hf lf bg-blanc`
-        dt.style.width = `${(sh / total * 100)}%`
-        dt.style.margin = `0`
+            dt.className   = `psr t0 hf lf bg-blanc`
+            dt.style.width = `${(Log.data.pp(a, p))}%`
 
-        tl.innerHTML = s[i]
-        st.innerHTML = `LH: ${sh.toFixed(2)}`
+            tl.innerHTML   = p
+            st.innerHTML   = `LH: ${sh.toFixed(2)}`
 
-        br.appendChild(dt)
-        li.appendChild(tl)
-        li.appendChild(st)
-        li.appendChild(br)
+            br.appendChild(dt)
+            li.appendChild(tl)
+            li.appendChild(st)
+            li.appendChild(br)
 
-        document.getElementById(con).appendChild(li)
-      }
+            document.getElementById(con).appendChild(li)
+          }
+
+      for (let i = 0, l = s.length; i < l; i++) add(s[i])
     }
   },
 
@@ -501,6 +494,7 @@ var Log = {
           }
         }
       }
+
       return ent
     },
 
@@ -546,37 +540,30 @@ var Log = {
      */
 
     peakDays(a = Log.log) {
-      let days = [0,0,0,0,0,0,0]
+      let d = [0,0,0,0,0,0,0]
 
       for (let i = 0, l = a.length; i < l; i++) {
         let e = a[i]
-        if (e.e != "undefined"){
-          let d = Log.time.convert(Log.time.parse(e.s))
-          days[d.getDay()]++
-        }
+        if (e.e != "undefined")
+          d[(Log.time.convert(Log.time.parse(e.s))).getDay()]++
       }
 
-      return days
+      return d
     },
 
     /**
      * Get peak hours
      * @param {[]} a - entries
-     * @param {number} day - day
      * @return {[]} peak hours
      */
 
-    peakHours(a = Log.log, d) {
+    peakHours(a = Log.log) {
       let h = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
           t = Log.time
 
       for (let i = 0, l = a.length; i < l; i++) {
         let e = a[i]
-        if (e.e != "undefined") {
-          let x = t.convert(t.parse(e.s))
-          if (d != undefined && d == x.getDay()) h[x.getHours()]++
-          else h[x.getHours()]++
-        }
+        if (e.e != "undefined") h[(t.convert(t.parse(e.s))).getHours()]++
       }
 
       return h
@@ -653,10 +640,8 @@ var Log = {
       let h = 0, lt = Log.time,
           dur = e => Number(lt.duration(lt.parse(e.s), lt.parse(e.e)))
 
-      for (let i = 0, l = a.length; i < l; i++) {
-        if (a[i].e == "undefined") continue
-        h += dur(a[i])
-      }
+      for (let i = 0, l = a.length; i < l; i++)
+        if (a[i].e != "undefined") h += dur(a[i])
 
       return h
     },
@@ -670,14 +655,14 @@ var Log = {
     lp(a = Log.log) {
       if (a.length == 0) return 0
 
-      let n = 0, h = 0, lt = Log.time,
+      let lt = Log.time,
           e = lt.convert(lt.parse(a[0].s)),
-          d = lt.convert(lt.parse(a[a.length - 1].s))
-
-      h = Number(Log.data.lh(a))
-      n = Math.ceil((
-          new Date(d.getFullYear(), d.getMonth(), d.getDate()) -
-          new Date(e.getFullYear(), e.getMonth(), e.getDate())) / 8.64e7)
+          d = lt.convert(lt.parse(a[a.length - 1].s)),
+          h = Number(Log.data.lh(a)),
+          n = Math.ceil((
+            new Date(d.getFullYear(), d.getMonth(), d.getDate()) -
+            new Date(e.getFullYear(), e.getMonth(), e.getDate())
+          ) / 8.64e7)
 
       return h / (24 * (n + 1)) * 100
     },
@@ -694,8 +679,8 @@ var Log = {
 
       for (let i = 0, l = a.length; i < l; i++) {
         let e = a[i]
-        if (e.e == "undefined") continue
-        if (e.c == s) h += Number(t.duration(t.parse(e.s), t.parse(e.e)))
+        if (e.e != "undefined" && e.c == s)
+          h += Number(t.duration(t.parse(e.s), t.parse(e.e)))
       }
 
       return h
@@ -724,8 +709,8 @@ var Log = {
 
       for (let i = 0, l = a.length; i < l; i++) {
         let e = a[i]
-        if (e.e == "undefined") continue
-        if (e.t == p) h += Number(t.duration(t.parse(e.s), t.parse(e.e)))
+        if (e.e != "undefined" && e.t == p)
+          h += Number(t.duration(t.parse(e.s), t.parse(e.e)))
       }
 
       return h
