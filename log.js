@@ -178,4 +178,5 @@ var log = [
 {"s":"59e03419","e":"59e03640","c":"DSG","t":"Somnus","d":"Updating UI"},
 {"s":"59e0366b","e":"59e03cc6","c":"COD","t":"Somnus","d":"Optimising code"},
 {"s":"59e0411d","e":"59e04607","c":"COD","t":"Somnus","d":"Optimising code"},
+{"s":"59e046b4","e":"59e050b0","c":"COD","t":"Log","d":"Adding sector stats"},
 ]
