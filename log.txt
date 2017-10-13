@@ -185,3 +185,4 @@ Start     End       Cat  Project      Description
 59e081a6  59e08b93  DSG  Log  Adding projects section
 59e09255  59e09829  RES  npm  Learning how to use npm
 59e0c083  59e0ca40  COD  Log  Adding web console
+59e0cad6  59e0d328  COD  Log  Adding web console
