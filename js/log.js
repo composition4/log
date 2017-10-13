@@ -49,7 +49,9 @@ var Log = {
           if (!l) return []
           n = l - n
           return slice(a, n < 0 ? 0 : n, l)
-        }
+        },
+
+        ih = (e, c) => { e.innerHTML = c }
 
     for (var b = takeRight(a, 30), i = 0, l = b.length; i < l; i++) {
       let e = b[i],
@@ -63,9 +65,7 @@ var Log = {
           c7 = r.insertCell(6),
           es = t.parse(e.s),
           ee = t.parse(e.e),
-          q = t.convert(es),
-
-          ih = (e, c) => { e.innerHTML = c }
+          q = t.convert(es)
 
       ih(c1, aq.dis(
         aq.con(new Date(q.getFullYear(), q.getMonth(), q.getDate()))
@@ -85,63 +85,64 @@ var Log = {
     line(a = Log.log, con) {
       let v = document.getElementById(con),
           lw = 0,
+          lp = 0,
+
+          lt = Log.time,
+
+        addEntry = (e, r) => {
+          let en = document.createElement("div"), bg = ""
+
+          if      (e.c == "PHO") bg = "bg-bdbdbd"
+          else if (e.c == "RES") bg = "bg-a9a9a9"
+          else if (e.c == "DSG") bg = "bg-969696"
+          else if (e.c == "ACA") bg = "bg-828282"
+          else                   bg = "bg-blanc"
+
+          en.className    = `psr t0 sh1 mb2 lf ${bg}`
+          en.style.width  = `${r.p}%`
+          en.style.margin = `0 0 0 ${r.m}%`
+
+          document.getElementById(con + lt.date(lt.parse(e.s))).appendChild(en)
+
+          lw = r.p
+          lp = r.dp
+        },
+
+        calc = (ee, es) => {
+          let p = (ee - es) / 86400 * 100,
+              s = lt.convert(es),
+              sy = s.getFullYear(),
+              sm = s.getMonth(),
+              sd = s.getDate(),
+              ds = new Date(sy, sm, sd).getTime() / 1000,
+
+              dp = (
+                (new Date(sy, sm, sd, s.getHours(), s.getMinutes(), s.getSeconds()).getTime() / 1000) - ds
+              ) / (
+                (new Date(sy, sm, sd, 23, 59, 59).getTime() / 1000) - ds
+              ) * 100,
+
+              m = dp - (lw + lp)
+
+          return {dp, p, m}
+        },
+
+        newRow = d => {
+          lw = 0
           lp = 0
 
+          let en = document.createElement("div")
+
+          en.className = "db wf sh1 mt2 mb3 bsia bg-noir br1"
+          en.id = con + d
+
+          v.appendChild(en)
+        },
+
+        check = e => (document.getElementById(e) == null)
+
       for (let i = 0, l = a.length; i < l; i++) {
-        let e = a[i],
-            lt = Log.time,
-
-          addEntry = r => {
-            let en = document.createElement("div"), bg = ""
-
-            if      (e.c == "PHO") bg = "bg-bdbdbd"
-            else if (e.c == "RES") bg = "bg-a9a9a9"
-            else if (e.c == "DSG") bg = "bg-969696"
-            else if (e.c == "ACA") bg = "bg-828282"
-            else                   bg = "bg-blanc"
-
-            en.className    = `psr t0 sh1 mb2 lf ${bg}`
-            en.style.width  = `${r.p}%`
-            en.style.margin = `0 0 0 ${r.m}%`
-
-            document.getElementById(con + date).appendChild(en)
-
-            lw = r.p
-            lp = r.dp
-          },
-
-          calc = (ee, es) => {
-            let p = (ee - es) / 86400 * 100,
-                s = lt.convert(es),
-                sy = s.getFullYear(),
-                sm = s.getMonth(),
-                sd = s.getDate(),
-                ds = new Date(sy, sm, sd).getTime() / 1000,
-
-                dp = (
-                  (new Date(sy, sm, sd, s.getHours(), s.getMinutes(), s.getSeconds()).getTime() / 1000) - ds
-                ) / (
-                  (new Date(sy, sm, sd, 23, 59, 59).getTime() / 1000) - ds
-                ) * 100,
-
-                m = dp - (lw + lp)
-
-            return {dp, p, m}
-          },
-
-          newRow = d => {
-            lw = 0
-            lp = 0
-
-            let en = document.createElement("div")
-
-            en.className = "db wf sh1 mt2 mb3 bsia bg-noir br1"
-            en.id = con + d
-
-            v.appendChild(en)
-          },
-
-          check = e => (document.getElementById(e) == null)
+        let e = a[i]
 
         if (e.e == "undefined") continue
 
@@ -156,16 +157,16 @@ var Log = {
 
           let a = lt.convert(es)
 
-          addEntry(calc(lt.parse((+(new Date(a.getFullYear(), a.getMonth(), a.getDate(), 23, 59).getTime() / 1000)).toString(16)), es))
+          addEntry(e, (calc(lt.parse((+(new Date(a.getFullYear(), a.getMonth(), a.getDate(), 23, 59).getTime() / 1000)).toString(16)), es)))
 
           if (check(con + end)) newRow(end)
 
           let ea = lt.convert(ee)
 
-          addEntry(calc(ee, lt.parse((+(new Date(ea.getFullYear(), ea.getMonth(), ea.getDate(), 0, 0).getTime() / 1000)).toString(16))))
+          addEntry(e, (calc(ee, lt.parse((+(new Date(ea.getFullYear(), ea.getMonth(), ea.getDate(), 0, 0).getTime() / 1000)).toString(16)))))
         } else {
           if (check(id)) newRow(date)
-          addEntry(calc(ee, es))
+          addEntry(e, (calc(ee, es)))
         }
       }
     },
@@ -353,8 +354,60 @@ var Log = {
       }
     },
 
-    sectorBar(a = Log.log) {
+    sectorBar(a = Log.log, con) {
+      let s = Log.data.listSectors(a).sort()
+      let total = Log.data.lh(a)
 
+      for (let i = 0, l = s.length; i < l; i++) {
+        let sh = Log.data.sh(a, s[i]),
+            d = document.createElement("div"),
+            b = ""
+
+        if      (s[i] == "PHO") b = "bg-bdbdbd"
+        else if (s[i] == "RES") b = "bg-a9a9a9"
+        else if (s[i] == "DSG") b = "bg-969696"
+        else if (s[i] == "ACA") b = "bg-828282"
+        else                    b = "bg-blanc"
+
+        d.className    = `psr t0 hf mb2 lf ${b}`
+        d.style.width = `${(sh / total * 100)}%`
+        d.style.margin = `0`
+
+        document.getElementById(con).appendChild(d)
+      }
+    },
+
+    projectBars(a = Log.log, con) {
+      let s = Log.data.listProjects(a).sort()
+      let total = Log.data.lh(a)
+
+      for (let i = 0, l = s.length; i < l; i++) {
+        let sh = Log.data.ph(a, s[i]),
+            li = document.createElement("li"),
+            tl = document.createElement("span"),
+            st = document.createElement("span"),
+            br = document.createElement("div"),
+            dt = document.createElement("div")
+
+        li.className = "mb4 f6"
+        tl.className = "f6 mb2 mon upc tk"
+        st.className = "f6 rf"
+        br.className = "wf sh2 mb3 bg-111"
+
+        dt.className = `psr t0 hf lf bg-blanc`
+        dt.style.width = `${(sh / total * 100)}%`
+        dt.style.margin = `0`
+
+        tl.innerHTML = s[i]
+        st.innerHTML = `LH: ${sh.toFixed(2)}`
+
+        br.appendChild(dt)
+        li.appendChild(tl)
+        li.appendChild(st)
+        li.appendChild(br)
+
+        document.getElementById(con).appendChild(li)
+      }
     }
   },
 
@@ -402,7 +455,7 @@ var Log = {
 
     date(t) {
       let a = Log.time.convert(t)
-      return a.getFullYear() + '' + a.getMonth() + '' + a.getDate()
+      return `${a.getFullYear()}${a.getMonth()}${a.getDate()}`
     },
 
     /**
@@ -659,6 +712,36 @@ var Log = {
       return Log.data.sh(a, s) / Log.data.lh(a) * 100
     },
 
+    /**
+     * Calculate project hours
+     * @param {[]} a - array of entries
+     * @param {string} p - sector
+     * @return {number} number of sector hours
+     */
+
+    ph(a, p) {
+      let h = 0, t = Log.time
+
+      for (let i = 0, l = a.length; i < l; i++) {
+        let e = a[i]
+        if (e.e == "undefined") continue
+        if (e.t == p) h += Number(t.duration(t.parse(e.s), t.parse(e.e)))
+      }
+
+      return h
+    },
+
+    /**
+     * Calculate project percentage
+     * @param {[]} a - array of entries
+     * @param {string} p - sector
+     * @return {number} sector percentage
+     */
+
+    pp(a = Log.log, p) {
+      return Log.data.ph(a, p) / Log.data.lh(a) * 100
+    },
+
     trend(a, b) {
       return (a - b) / b
     }
@@ -757,7 +840,8 @@ var Log = {
     for (let i = 0, l = tels.length; i < l; i++)
       t(tels[i], tval[i])
 
-    Log.vis.sectorBar()
+    Log.vis.sectorBar(en, "sectorBar")
+    Log.vis.projectBars(en, "projectStats")
 
     d("pCOD", sp(Log.log, "COD"))
     d("pDSG", sp(Log.log, "DSG"))
