@@ -182,3 +182,4 @@ Start     End       Cat  Project      Description
 59e046b4  59e050b0  COD  Log  Adding sector stats
 59e05b48  59e061f6  COD  Rotonde  Setting up Beaker
 59e06408  59e06a49  COD  Log  Cleaning up code
+59e081a6  59e08b93  DSG  Log  Adding projects section
