@@ -55,7 +55,7 @@ var Log = {
 
     for (var b = takeRight(a, 30), i = 0, l = b.length; i < l; i++) {
       let e = b[i],
-          r = v.insertRow(i + 2),
+          r = v.insertRow(i),
           c1 = r.insertCell(0),
           c2 = r.insertCell(1),
           c3 = r.insertCell(2),
@@ -67,8 +67,8 @@ var Log = {
           ee = t.parse(e.e),
           q = t.convert(es)
 
-      ih(c1, aq.dis(
-        aq.con(new Date(q.getFullYear(), q.getMonth(), q.getDate()))
+      ih(c1, aq.display(
+        aq.convert(new Date(q.getFullYear(), q.getMonth(), q.getDate()))
       ))
 
       ih(c2, t.stamp(es))
@@ -384,7 +384,7 @@ var Log = {
             li.className   = "mb4 f6"
             tl.className   = "f6 mb2 mon upc tk"
             st.className   = "f6 rf"
-            br.className   = "wf sh2 mb3 bg-111"
+            br.className   = "wf sh2 mb3 bg-noir bsia"
 
             dt.className   = `psr t0 hf lf bg-blanc`
             dt.style.width = `${(Log.data.pp(a, p))}%`
@@ -834,7 +834,5 @@ var Log = {
     d("pPHO", sp(Log.log, "PHO"))
     d("pACA", sp(Log.log, "ACA"))
 
-    Log.vis.line(Log.log, "vis")
-    Log.display(Log.log, "logbook")
   }
 }
