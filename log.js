@@ -199,4 +199,5 @@ var log = [
 {"s":"59e21e47","e":"59e223a1","c":"DSG","t":"Memex","d":"Updating UI"},
 {"s":"59e26d32","e":"59e27574","c":"COD","t":"Aequirys","d":"Cleaning up code"},
 {"s":"59e27644","e":"59e27cb0","c":"COD","t":"Aequirys","d":"Redesigning code structure"},
+{"s":"59e27cf0","e":"59e280d3","c":"COD","t":"Aequirys","d":"Optimising CSS"},
 ]
