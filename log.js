@@ -197,4 +197,5 @@ var log = [
 {"s":"59e213bf","e":"59e214bd","c":"COD","t":"Log","d":"Adding project report functions"},
 {"s":"59e21572","e":"59e21d43","c":"COD","t":"Memex","d":"Implementing Log stats"},
 {"s":"59e21e47","e":"59e223a1","c":"DSG","t":"Memex","d":"Updating UI"},
+{"s":"59e26d32","e":"59e27574","c":"COD","t":"Aequirys","d":"Cleaning up code"},
 ]

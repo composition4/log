@@ -198,3 +198,4 @@ Start     End       Cat  Project      Description
 59e213bf  59e214bd  COD  Log  Adding project report functions
 59e21572  59e21d43  COD  Memex  Implementing Log stats
 59e21e47  59e223a1  DSG  Memex  Updating UI
+59e26d32  59e27574  COD  Aequirys  Cleaning up code
