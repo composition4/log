@@ -186,3 +186,4 @@ Start     End       Cat  Project      Description
 59e09255  59e09829  RES  npm  Learning how to use npm
 59e0c083  59e0ca40  COD  Log  Adding web console
 59e0cad6  59e0d328  COD  Log  Adding web console
+59e16e69  59e1782e  COD  Rotonde  Setting up Rotonde/Beaker

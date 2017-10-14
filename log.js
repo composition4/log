@@ -185,4 +185,5 @@ var log = [
 {"s":"59e09255","e":"59e09829","c":"RES","t":"npm","d":"Learning how to use npm"},
 {"s":"59e0c083","e":"59e0ca40","c":"COD","t":"Log","d":"Adding web console"},
 {"s":"59e0cad6","e":"59e0d328","c":"COD","t":"Log","d":"Adding web console"},
+{"s":"59e16e69","e":"59e1782e","c":"COD","t":"Rotonde","d":"Setting up Rotonde/Beaker"},
 ]
