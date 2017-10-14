@@ -202,3 +202,4 @@ Start     End       Cat  Project      Description
 59e27644  59e27cb0  COD  Aequirys  Redesigning code structure
 59e27cf0  59e280d3  COD  Aequirys  Optimising CSS
 59e281dc  59e2827d  COD  Memex  Fixing Aequirys
+59e2829f  59e2836f  COD  Log  Fixing Aequirys
