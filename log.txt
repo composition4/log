@@ -189,3 +189,4 @@ Start     End       Cat  Project      Description
 59e16e69  59e1782e  COD  Rotonde  Setting up Rotonde/Beaker
 59e18263  59e183ad  COD  Rotonde  Mirroring to Hashbase
 59e1892d  59e18c7b  COD  Rotonde  Fixing time issue
+59e18d90  59e18e87  COD  Rotonde  Fixing PR errors
