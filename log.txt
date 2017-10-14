@@ -192,3 +192,4 @@ Start     End       Cat  Project      Description
 59e18d90  59e18e87  COD  Rotonde  Fixing PR errors
 59e1a140  59e1b67e  DSG  Heather  Updating UI
 59e1d5e9  59e1d9a0  COD  Macian  Expanding colour palette
+59e1daca  59e1e53a  COD  Macian  Decluttering styles
