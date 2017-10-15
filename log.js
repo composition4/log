@@ -209,4 +209,5 @@ var log = [
 {"s":"59e31d4a","e":"59e3225f","c":"COD","t":"Haiaku","d":"Cleaning up code"},
 {"s":"59e323ec","e":"59e327e5","c":"COD","t":"Twig","d":"Uploading to GitHub"},
 {"s":"59e355a8","e":"59e35ce6","c":"RES","t":"Typography","d":"Researching typography principles"},
+{"s":"59e3d5be","e":"59e3e8a9","c":"ACA","t":"BUAD331","d":"Creating presentation"},
 ]
