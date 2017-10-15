@@ -209,3 +209,4 @@ Start     End       Cat  Project      Description
 59e2e78f  59e2f48c  DSG  Rotonde  Creating themes
 59e31d4a  59e3225f  COD  Haiaku  Cleaning up code
 59e323ec  59e327e5  COD  Twig  Uploading to GitHub
+59e355a8  59e35ce6  RES  Typography  Researching typography principles
