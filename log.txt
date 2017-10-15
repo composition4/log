@@ -207,3 +207,4 @@ Start     End       Cat  Project      Description
 59e2b52b  59e2b92e  DSG  Rotonde  Creating themes
 59e2c57f  59e2c96a  DSG  Rotonde  Creating themes
 59e2e78f  59e2f48c  DSG  Rotonde  Creating themes
+59e31d4a  59e3225f  COD  Haiaku  Cleaning up code
