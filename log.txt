@@ -211,3 +211,4 @@ Start     End       Cat  Project      Description
 59e323ec  59e327e5  COD  Twig  Uploading to GitHub
 59e355a8  59e35ce6  RES  Typography  Researching typography principles
 59e3d5be  59e3e8a9  ACA  BUAD331  Creating presentation
+59e3efb7  59e3f536  ACA  BUAD331  Writing field trip report
