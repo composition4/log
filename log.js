@@ -212,4 +212,5 @@ var log = [
 {"s":"59e3d5be","e":"59e3e8a9","c":"ACA","t":"BUAD331","d":"Creating presentation"},
 {"s":"59e3efb7","e":"59e3f536","c":"ACA","t":"BUAD331","d":"Writing field trip report"},
 {"s":"59e409fe","e":"59e41100","c":"DSG","t":"Rotonde","d":"Designing a concept"},
+{"s":"59e442de","e":"59e44ff3","c":"ACA","t":"MNGT337","d":"Doing homework"},
 ]
