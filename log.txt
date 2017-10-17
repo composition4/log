@@ -225,3 +225,4 @@ Start     End       Cat  Project      Description
 59e5ca42  59e5e093  DSG  Log  Redesigning dashboard
 59e5e12b  59e5e5fa  COD  Log  Adding session timer
 59e5e6d3  59e5e85d  COD  Log  Optimising code
+59e61506  59e61d6d  DSG  Rotonde  Designing Rotonde Avanier
