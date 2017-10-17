@@ -221,3 +221,4 @@ Start     End       Cat  Project      Description
 59e565cf  59e56c3e  ACA  ACCT131  Doing homework
 59e573c0  59e57dba  COD  Log  Writing forecast algorithms
 59e5900f  59e59323  COD  Log  Updating activity sector percentages
+59e5bd10  59e5c21e  DSG  Log  Redesigning dashboard
