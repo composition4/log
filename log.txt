@@ -123,112 +123,113 @@ Start     End       Cat  Project      Description
 59d84f31  59d84fd0  COD  Aequirys     Cleaning up code
 59d85232  59d853b2  COD  Aequirys     Cleaning up code
 59d854d5  59d85808  COD  Log          Updating to ES6
-59d85e99  59d85f93  COD  Somnus  Updating to ES6
-59d86055  59d86108  COD  Log  Fixing log table
-59d86383  59d8668e  COD  Heather  Updating to ES6
-59d86a9b  59d870ea  COD  Heather  Updating to ES6
-59d8a51a  59d8b5d5  COD  Log  Working on updates
-59d8b6c1  59d8b7ad  COD  MONOCAL  Updating to ES6
-59d8b8d6  59d8ba25  COD  Haiaku  Updating to ES6
-59d8c3fb  59d8ccca  DSG  MONOCAL  Redesigning UI
-59d8d75a  59d8e751  DSG  Log  Working on UI
-59d8ee33  59d8f468  DSG  Log  Working on UI
-59d986da  59d98870  COD  Log  Fixing stats
-59d988db  59d99fcf  COD  Log  Clarifying code
-59d9a468  59d9a639  COD  Mors  Updating to ES6
-59d9aa11  59d9aa51  COD  Log  Fixing Aequirys
-59d9af52  59d9b4f0  RES  Horology  Reverse-engineering a clock
-59d9c94a  59d9db97  DSG  Log  Updating UI
-59d9fdd0  59da0a62  ACA  ACCT131  Doing homework
-59da10cc  59da174f  ACA  ACCT131  Doing homework
-59da3337  59da37d5  MUS  Piano  Practicing piano
-59da3f55  59da40b8  DSG  Macian  Updating Codex
-59da438a  59da4a4f  COD  Macian  Merging modules
-59da4b05  59da4c46  COD  Memex  Updating Macian
-59dacac8  59dacc7f  COD  Aequirys  Cleaning up code
-59dacc9a  59dad05e  DSG  Aequirys  Updating UI
-59dad3a5  59dad760  COD  Aequirys  Updating calendar
-59dad90c  59dada34  COD  Brainfuck  Updating to ES6
-59dadaa1  59dadb87  COD  Log  Updating Aequirys
-59dadb90  59dade06  COD  Aequirys  Fixing month issue
-59daeb26  59daed47  COD  Log  Cleaning up code
-59db4840  59db4968  DSG  Log  Updating UI
-59db497e  59db5891  COD  Log  Writing filter functions
-59db5903  59db632a  DSG  Log  Updating UI
-59db95a3  59dbaac7  COD  ACCT131  Creating accounting software
-59dbac29  59dbb334  COD  ACCT131  Creating accounting software
-59dc81d1  59dc89f1  DSG  Log  Updating UI
-59dcad86  59dcaef1  DSG  Log  Updating colour palette
-59dcaf00  59dcb295  DSG  Log  Updating UI
-59dcb2b3  59dcbe71  COD  Log  Adding peak statistics
-59dcc14c  59dcc8f9  DSG  Log  Updating UI
-59dcd540  59dcd7f5  COD  Log  Adding day chart
-59dcd874  59dce30c  COD  Log  Optimising code
-59ddfc54  59ddfe91  COD  Log  Updating peak statistics
-59de057c  59de0676  COD  Log  Adding trends
-59de1b56  59de24a2  COD  Log  Adding trends
-59de2568  59de2685  COD  Log  Fixing log percentage
-59de26f3  59de2ff4  COD  Log  Adding sector percentages
-59de306e  59de356e  COD  Log  Optimising code
-59df5d5e  59df68fe  COD  Log  Optimising code
-59df7dcd  59df87f8  COD  Log  Optimising code
-59df8d99  59df8f1e  COD  Log  Optimising code
-59e0260d  59e027bb  COD  Twig  Creating a log input utility
-59e02861  59e03039  COD  Somnus  Updating logs
-59e03056  59e0336e  COD  Eau  Updating logs
-59e03419  59e03640  DSG  Somnus  Updating UI
-59e0366b  59e03cc6  COD  Somnus  Optimising code
-59e0411d  59e04607  COD  Somnus  Optimising code
-59e046b4  59e050b0  COD  Log  Adding sector stats
-59e05b48  59e061f6  COD  Rotonde  Setting up Beaker
-59e06408  59e06a49  COD  Log  Cleaning up code
-59e081a6  59e08b93  DSG  Log  Adding projects section
-59e09255  59e09829  RES  npm  Learning how to use npm
-59e0c083  59e0ca40  COD  Log  Adding web console
-59e0cad6  59e0d328  COD  Log  Adding web console
-59e16e69  59e1782e  COD  Rotonde  Setting up Rotonde/Beaker
-59e18263  59e183ad  COD  Rotonde  Mirroring to Hashbase
-59e1892d  59e18c7b  COD  Rotonde  Fixing time issue
-59e18d90  59e18e87  COD  Rotonde  Fixing PR errors
-59e1a140  59e1b67e  DSG  Heather  Updating UI
-59e1d5e9  59e1d9a0  COD  Macian  Expanding colour palette
-59e1daca  59e1e53a  COD  Macian  Decluttering styles
-59e1e62c  59e1eac7  DSG  Memex  Updating UI
-59e210f5  59e213af  COD  Memex  Implementing Log stats
-59e213bf  59e214bd  COD  Log  Adding project report functions
-59e21572  59e21d43  COD  Memex  Implementing Log stats
-59e21e47  59e223a1  DSG  Memex  Updating UI
-59e26d32  59e27574  COD  Aequirys  Cleaning up code
-59e27644  59e27cb0  COD  Aequirys  Redesigning code structure
-59e27cf0  59e280d3  COD  Aequirys  Optimising CSS
-59e281dc  59e2827d  COD  Memex  Fixing Aequirys
-59e2829f  59e2836f  COD  Log  Fixing Aequirys
-59e2b225  59e2b402  COD  Rotonde  Updating profile
-59e2b52b  59e2b92e  DSG  Rotonde  Creating themes
-59e2c57f  59e2c96a  DSG  Rotonde  Creating themes
-59e2e78f  59e2f48c  DSG  Rotonde  Creating themes
-59e31d4a  59e3225f  COD  Haiaku  Cleaning up code
-59e323ec  59e327e5  COD  Twig  Uploading to GitHub
-59e355a8  59e35ce6  RES  Typography  Researching typography principles
-59e3d5be  59e3e8a9  ACA  BUAD331  Creating presentation
-59e3efb7  59e3f536  ACA  BUAD331  Writing field trip report
-59e409fe  59e41100  DSG  Rotonde  Designing a concept
-59e442de  59e44ff3  ACA  MNGT337  Doing homework
-59e47405  59e4978d  DSG  Macian  Updating Codex
-59e4b030  59e4b82b  DSG  Log  Redesigning dashboard
-59e4b927  59e4ce5c  DSG  Log  Redesigning dashboard
-59e4d6b5  59e4dcf7  DSG  Log  Redesigning dashboard
-59e565cf  59e56c3e  ACA  ACCT131  Doing homework
-59e573c0  59e57dba  COD  Log  Writing forecast algorithms
-59e5900f  59e59323  COD  Log  Updating activity sector percentages
-59e5bd10  59e5c21e  DSG  Log  Redesigning dashboard
-59e5ca42  59e5e093  DSG  Log  Redesigning dashboard
-59e5e12b  59e5e5fa  COD  Log  Adding session timer
-59e5e6d3  59e5e85d  COD  Log  Optimising code
-59e61506  59e61d6d  DSG  Rotonde  Designing Rotonde Avanier
-59e61eb2  59e6362b  DSG  Rotonde  Designing Rotonde Avanier
-59e637ad  59e645b1  DSG  Rotonde  Designing Rotonde Avanier
-59e6ba3e  59e6be43  COD  Rotonde  Restructuring code
-59e6f500  59e6fe20  ACA  MNGT337  Preparing for a test
-59e7348d  59e740fb  DSG  Log  Updating dashboard
-59e74192  59e74990  COD  Log  Cleaning up code
+59d85e99  59d85f93  COD  Somnus       Updating to ES6
+59d86055  59d86108  COD  Log          Fixing log table
+59d86383  59d8668e  COD  Heather      Updating to ES6
+59d86a9b  59d870ea  COD  Heather      Updating to ES6
+59d8a51a  59d8b5d5  COD  Log          Working on updates
+59d8b6c1  59d8b7ad  COD  MONOCAL      Updating to ES6
+59d8b8d6  59d8ba25  COD  Haiaku       Updating to ES6
+59d8c3fb  59d8ccca  DSG  MONOCAL      Redesigning UI
+59d8d75a  59d8e751  DSG  Log          Working on UI
+59d8ee33  59d8f468  DSG  Log          Working on UI
+59d986da  59d98870  COD  Log          Fixing stats
+59d988db  59d99fcf  COD  Log          Clarifying code
+59d9a468  59d9a639  COD  Mors         Updating to ES6
+59d9aa11  59d9aa51  COD  Log          Fixing Aequirys
+59d9af52  59d9b4f0  RES  Horology     Reverse-engineering a clock
+59d9c94a  59d9db97  DSG  Log          Updating UI
+59d9fdd0  59da0a62  ACA  ACCT131      Doing homework
+59da10cc  59da174f  ACA  ACCT131      Doing homework
+59da3337  59da37d5  MUS  Piano        Practicing piano
+59da3f55  59da40b8  DSG  Macian       Updating Codex
+59da438a  59da4a4f  COD  Macian       Merging modules
+59da4b05  59da4c46  COD  Memex        Updating Macian
+59dacac8  59dacc7f  COD  Aequirys     Cleaning up code
+59dacc9a  59dad05e  DSG  Aequirys     Updating UI
+59dad3a5  59dad760  COD  Aequirys     Updating calendar
+59dad90c  59dada34  COD  Brainfuck    Updating to ES6
+59dadaa1  59dadb87  COD  Log          Updating Aequirys
+59dadb90  59dade06  COD  Aequirys     Fixing month issue
+59daeb26  59daed47  COD  Log          Cleaning up code
+59db4840  59db4968  DSG  Log          Updating UI
+59db497e  59db5891  COD  Log          Writing filter functions
+59db5903  59db632a  DSG  Log          Updating UI
+59db95a3  59dbaac7  COD  ACCT131      Creating accounting software
+59dbac29  59dbb334  COD  ACCT131      Creating accounting software
+59dc81d1  59dc89f1  DSG  Log          Updating UI
+59dcad86  59dcaef1  DSG  Log          Updating colour palette
+59dcaf00  59dcb295  DSG  Log          Updating UI
+59dcb2b3  59dcbe71  COD  Log          Adding peak statistics
+59dcc14c  59dcc8f9  DSG  Log          Updating UI
+59dcd540  59dcd7f5  COD  Log          Adding day chart
+59dcd874  59dce30c  COD  Log          Optimising code
+59ddfc54  59ddfe91  COD  Log          Updating peak statistics
+59de057c  59de0676  COD  Log          Adding trends
+59de1b56  59de24a2  COD  Log          Adding trends
+59de2568  59de2685  COD  Log          Fixing log percentage
+59de26f3  59de2ff4  COD  Log          Adding sector percentages
+59de306e  59de356e  COD  Log          Optimising code
+59df5d5e  59df68fe  COD  Log          Optimising code
+59df7dcd  59df87f8  COD  Log          Optimising code
+59df8d99  59df8f1e  COD  Log          Optimising code
+59e0260d  59e027bb  COD  Twig         Creating a log input utility
+59e02861  59e03039  COD  Somnus       Updating logs
+59e03056  59e0336e  COD  Eau          Updating logs
+59e03419  59e03640  DSG  Somnus       Updating UI
+59e0366b  59e03cc6  COD  Somnus       Optimising code
+59e0411d  59e04607  COD  Somnus       Optimising code
+59e046b4  59e050b0  COD  Log          Adding sector stats
+59e05b48  59e061f6  COD  Rotonde      Setting up Beaker
+59e06408  59e06a49  COD  Log          Cleaning up code
+59e081a6  59e08b93  DSG  Log          Adding projects section
+59e09255  59e09829  RES  npm          Learning how to use npm
+59e0c083  59e0ca40  COD  Log          Adding web console
+59e0cad6  59e0d328  COD  Log          Adding web console
+59e16e69  59e1782e  COD  Rotonde      Setting up Rotonde/Beaker
+59e18263  59e183ad  COD  Rotonde      Mirroring to Hashbase
+59e1892d  59e18c7b  COD  Rotonde      Fixing time issue
+59e18d90  59e18e87  COD  Rotonde      Fixing PR errors
+59e1a140  59e1b67e  DSG  Heather      Updating UI
+59e1d5e9  59e1d9a0  COD  Macian       Expanding colour palette
+59e1daca  59e1e53a  COD  Macian       Decluttering styles
+59e1e62c  59e1eac7  DSG  Memex        Updating UI
+59e210f5  59e213af  COD  Memex        Implementing Log stats
+59e213bf  59e214bd  COD  Log          Adding project report functions
+59e21572  59e21d43  COD  Memex        Implementing Log stats
+59e21e47  59e223a1  DSG  Memex        Updating UI
+59e26d32  59e27574  COD  Aequirys     Cleaning up code
+59e27644  59e27cb0  COD  Aequirys     Redesigning code structure
+59e27cf0  59e280d3  COD  Aequirys     Optimising CSS
+59e281dc  59e2827d  COD  Memex        Fixing Aequirys
+59e2829f  59e2836f  COD  Log          Fixing Aequirys
+59e2b225  59e2b402  COD  Rotonde      Updating profile
+59e2b52b  59e2b92e  DSG  Rotonde      Creating themes
+59e2c57f  59e2c96a  DSG  Rotonde      Creating themes
+59e2e78f  59e2f48c  DSG  Rotonde      Creating themes
+59e31d4a  59e3225f  COD  Haiaku       Cleaning up code
+59e323ec  59e327e5  COD  Twig         Uploading to GitHub
+59e355a8  59e35ce6  RES  Typography   Researching typography principles
+59e3d5be  59e3e8a9  ACA  BUAD331      Creating presentation
+59e3efb7  59e3f536  ACA  BUAD331      Writing field trip report
+59e409fe  59e41100  DSG  Rotonde      Designing a concept
+59e442de  59e44ff3  ACA  MNGT337      Doing homework
+59e47405  59e4978d  DSG  Macian       Updating Codex
+59e4b030  59e4b82b  DSG  Log          Redesigning dashboard
+59e4b927  59e4ce5c  DSG  Log          Redesigning dashboard
+59e4d6b5  59e4dcf7  DSG  Log          Redesigning dashboard
+59e565cf  59e56c3e  ACA  ACCT131      Doing homework
+59e573c0  59e57dba  COD  Log          Writing forecast algorithms
+59e5900f  59e59323  COD  Log          Updating activity sector percentages
+59e5bd10  59e5c21e  DSG  Log          Redesigning dashboard
+59e5ca42  59e5e093  DSG  Log          Redesigning dashboard
+59e5e12b  59e5e5fa  COD  Log          Adding session timer
+59e5e6d3  59e5e85d  COD  Log          Optimising code
+59e61506  59e61d6d  DSG  Rotonde      Designing Rotonde Avanier
+59e61eb2  59e6362b  DSG  Rotonde      Designing Rotonde Avanier
+59e637ad  59e645b1  DSG  Rotonde      Designing Rotonde Avanier
+59e6ba3e  59e6be43  COD  Rotonde      Restructuring code
+59e6f500  59e6fe20  ACA  MNGT337      Preparing for a test
+59e7348d  59e740fb  DSG  Log          Updating dashboard
+59e74192  59e74990  COD  Log          Cleaning up code
+59e774c9  59e7854a  COD  Log          Cleaning up code
