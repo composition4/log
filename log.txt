@@ -235,3 +235,4 @@ Start     End       Cat  Project      Description
 59e774c9  59e7854a  COD  Log          Cleaning up code
 59e793c0  59e7969e  DSG  Log  Updating dashboard
 59e796d2  59e79ede  DSG  Log  Adding UI runes
+59e7a742  59e7a929  DSG  Log  Animating status indicator
