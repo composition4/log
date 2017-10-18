@@ -65,7 +65,7 @@ else
   DSC="$3"
   echo "$D  undefined  $1  $2  $DSC" >> $T
   sed -i '$d' $L
-  printf "{\"s\":\"$D\",\"e\":\"undefined\",\"c\":\"$1\",\"t\":\"$2\",\"d\":\"$DSC\"},\n]" >> $L
+  printf "{s:\"$D\",e:\"undefined\",c:\"$1\",t:\"$2\",d:\"$DSC\"},\n]" >> $L
   cache "$2"
   cache "$DSC"
   echo "START: $TIME"
