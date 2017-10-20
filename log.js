@@ -240,4 +240,5 @@ var log = [
 {s:"59e99597",e:"59e9a0e0",c:"DSG",t:"Eau",d:"Updating UI"},
 {s:"59e9a331",e:"59e9a82b",c:"COD",t:"Eau",d:"Fixing line visualisation"},
 {s:"59e9bd9e",e:"59e9c275",c:"COD",t:"Eau",d:"Fixing bar charts"},
+{s:"59e9c503",e:"59e9c6f9",c:"COD",t:"Eau",d:"Adding day chart"},
 ]
