@@ -243,4 +243,5 @@ var log = [
 {s:"59e9c503",e:"59e9c6f9",c:"COD",t:"Eau",d:"Adding day chart"},
 {s:"59e9c73b",e:"59e9c839",c:"DSG",t:"Eau",d:"Updating UI"},
 {s:"59e9c88e",e:"59e9ca60",c:"COD",t:"Log",d:"Optimising code"},
+{s:"59e9d045",e:"59e9d4c6",c:"DSG",t:"Somnus",d:"Updating UI"},
 ]
