@@ -247,3 +247,4 @@ Start     End       Cat  Project      Description
 59e9d045  59e9d4c6  DSG  Somnus  Updating UI
 59e9d61b  59e9db46  COD  Somnus  Writing log parse function
 59e9db97  59e9deb3  DSG  Somnus  Improving charts
+59e9dec8  59e9e4ac  COD  Somnus  Updating logs
