@@ -240,3 +240,4 @@ Start     End       Cat  Project      Description
 59e8b65c  59e8bfd5  DSG  Eau  Updating UI
 59e99597  59e9a0e0  DSG  Eau  Updating UI
 59e9a331  59e9a82b  COD  Eau  Fixing line visualisation
+59e9bd9e  59e9c275  COD  Eau  Fixing bar charts
