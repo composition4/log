@@ -252,4 +252,5 @@ var log = [
 {s:"59e9fb52",e:"59ea0053",c:"DSG",t:"Eau",d:"Updating UI"},
 {s:"59ea0115",e:"59ea07b2",c:"COD",t:"Eau",d:"Adding statistics"},
 {s:"59ea090a",e:"59ea0cb3",c:"COD",t:"Eau",d:"Optimising code"},
+{s:"59ea138c",e:"59ea1798",c:"COD",t:"Eau",d:"Fixing bar chart"},
 ]
