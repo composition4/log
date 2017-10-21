@@ -263,3 +263,4 @@ Start     End       Cat  Project      Description
 59eae8e2  59eaf2ef  DSG  Log  Improving charts
 59eaf41a  59eb03d6  DSG  Log  Updating UI
 59eb2234  59eb246a  COD  Eau  Updating shellscript
+59eb2c31  59eb2e6e  DSG  Primaire  Updating Squarespace site design

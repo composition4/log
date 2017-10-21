@@ -262,4 +262,5 @@ var log = [
 {s:"59eae8e2",e:"59eaf2ef",c:"DSG",t:"Log",d:"Improving charts"},
 {s:"59eaf41a",e:"59eb03d6",c:"DSG",t:"Log",d:"Updating UI"},
 {s:"59eb2234",e:"59eb246a",c:"COD",t:"Eau",d:"Updating shellscript"},
+{"s":"59eb2c31","e":"59eb2e6e","c":"DSG","t":"Primaire","d":"Updating Squarespace site design"},
 ]
