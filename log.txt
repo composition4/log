@@ -262,3 +262,4 @@ Start     End       Cat  Project      Description
 59ead5ed  59ead7a8  COD  Macian  Improving numeral typography
 59eae8e2  59eaf2ef  DSG  Log  Improving charts
 59eaf41a  59eb03d6  DSG  Log  Updating UI
+59eb2234  59eb246a  COD  Eau  Updating shellscript
