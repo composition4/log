@@ -259,3 +259,4 @@ Start     End       Cat  Project      Description
 59ea9620  59ea9b75  DSG  Somnus  Improving charts
 59eaaad0  59eab45a  COD  Eau  Optimising code
 59eab57c  59eab94f  MUS  Piano  Practising piano
+59ead5ed  59ead7a8  COD  Macian  Improving numeral typography
