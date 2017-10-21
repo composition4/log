@@ -254,4 +254,5 @@ var log = [
 {s:"59ea090a",e:"59ea0cb3",c:"COD",t:"Eau",d:"Optimising code"},
 {s:"59ea138c",e:"59ea1798",c:"COD",t:"Eau",d:"Fixing bar chart"},
 {s:"59ea84ec",e:"59ea867a",c:"COD",t:"Somnus",d:"Optimising code"},
+{s:"59ea8686",e:"59ea9283",c:"DSG",t:"Somnus",d:"Updating UI"},
 ]
