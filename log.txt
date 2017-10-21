@@ -256,3 +256,4 @@ Start     End       Cat  Project      Description
 59ea138c  59ea1798  COD  Eau  Fixing bar chart
 59ea84ec  59ea867a  COD  Somnus  Optimising code
 59ea8686  59ea9283  DSG  Somnus  Updating UI
+59ea9620  59ea9b75  DSG  Somnus  Improving charts
