@@ -259,4 +259,5 @@ var log = [
 {s:"59eaaad0",e:"59eab45a",c:"COD",t:"Eau",d:"Optimising code"},
 {s:"59eab57c",e:"59eab94f",c:"MUS",t:"Piano",d:"Practising piano"},
 {s:"59ead5ed",e:"59ead7a8",c:"COD",t:"Macian",d:"Improving numeral typography"},
+{s:"59eae8e2",e:"59eaf2ef",c:"DSG",t:"Log",d:"Improving charts"},
 ]
