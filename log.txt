@@ -265,3 +265,4 @@ Start     End       Cat  Project      Description
 59eb2234  59eb246a  COD  Eau  Updating shellscript
 59eb2c31  59eb2e6e  DSG  Primaire  Updating Squarespace site design
 59eb3647  59eb392b  DSG  Primaire  Updating Squarespace site design
+59ebff3c  59ebffd2  COD  Twig  Optimising code
