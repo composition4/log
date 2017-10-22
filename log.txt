@@ -275,3 +275,4 @@ Start     End       Cat  Project      Description
 59ec60a9  59ec64f6  COD  Eau  Cleaning up code
 59ec673e  59ec6777  COD  Eau  Fixing timer
 59ec6824  59ec6bd4  COD  Texte  Restructuring code
+59ec6e6f  59ec7060  DSG  Somnus  Updating UI
