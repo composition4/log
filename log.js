@@ -266,4 +266,5 @@ var log = [
 {"s":"59eb3647","e":"59eb392b","c":"DSG","t":"Primaire","d":"Updating Squarespace site design"},
 {s:"59ebff3c",e:"59ebffd2",c:"COD",t:"Twig",d:"Optimising code"},
 {s:"59ec0210",e:"59ec02da",c:"COD",t:"Twig",d:"Optimising code"},
+{s:"59ec06de",e:"59ec1188",c:"DSG",t:"Oeuvre",d:"Creating project logos"},
 ]

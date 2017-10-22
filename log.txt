@@ -267,3 +267,4 @@ Start     End       Cat  Project      Description
 59eb3647  59eb392b  DSG  Primaire  Updating Squarespace site design
 59ebff3c  59ebffd2  COD  Twig  Optimising code
 59ec0210  59ec02da  COD  Twig  Optimising code
+59ec06de  59ec1188  DSG  Oeuvre  Creating project logos
