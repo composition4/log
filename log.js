@@ -267,4 +267,5 @@ var log = [
 {s:"59ebff3c",e:"59ebffd2",c:"COD",t:"Twig",d:"Optimising code"},
 {s:"59ec0210",e:"59ec02da",c:"COD",t:"Twig",d:"Optimising code"},
 {s:"59ec06de",e:"59ec1188",c:"DSG",t:"Oeuvre",d:"Creating project logos"},
+{s:"59ec12b9",e:"59ec2692",c:"COD",t:"Log",d:"Cleaning up code"},
 ]
