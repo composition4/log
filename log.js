@@ -279,4 +279,5 @@ var log = [
 {s:"59ecb704",e:"59ecb874",c:"COD",t:"Log",d:"Adding Mors"},
 {s:"59ed494b",e:"59ed499a",c:"COD",t:"Somnus",d:"Adding Mors"},
 {s:"59ed49d4",e:"59ed4f7e",c:"COD",t:"Eau",d:"Fixing overview chart"},
+{s:"59ed531f",e:"59ed5ccf",c:"DSG",t:"Eau",d:"Updating UI"},
 ]
