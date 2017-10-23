@@ -291,3 +291,4 @@ Start     End       Cat  Project      Description
 59edf165  59edf3f8  COD  Log  Cleaning up code
 59edf605  59edf906  DSG  Log  Updating day chart
 59edf977  59edfc99  DSG  Log  Updating month chart
+59ee0323  59ee05c8  COD  Log  Fixing month chart centering issue
