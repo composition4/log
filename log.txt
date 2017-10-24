@@ -295,3 +295,4 @@ Start     End       Cat  Project      Description
 59ee955b  59eea1e7  COD  Log  Cleaning up code
 59eea3a3  59eeaaf0  COD  Log  Fixing chart overflow
 59eeb71e  59eeb982  COD  Log  Cleaning up code
+59eebabe  59eec024  RES  Design  Researching UX/UI principles
