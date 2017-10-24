@@ -2,223 +2,216 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, minimum-scale = 1.0, initial-scale = 1.0, maximum-scale = 5.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>Log</title>
   <meta name="author" content="Josh Avanier">
   <meta name="description" content="A log and time-tracking system">
   <meta name="twitter:creator" content="@joshavanier">
   <meta name="twitter:title" content="Log">
   <meta name="twitter:description" content="A log and time-tracking system">
-  <link rel="stylesheet" href="https://joshavanier.github.io/macian/macian.min.css">
-  <style>
-    body {max-width: 1500px}
-    td {white-space: nowrap}
-    .bg-828282 {background-color: #828282}
-    .bg-969696 {background-color: #969696}
-    .bg-a9a9a9 {background-color: #a9a9a9}
-    .bg-bdbdbd {background-color: #bdbdbd}
-    .line {border-right: 1px solid #202020}
-  </style>
-  <script src="https://joshavanier.github.io/aequirys/aequirys.min.js"></script>
+  <link rel="stylesheet" href="css/log.css">
+  <script src="../mors/mors.min.js"></script>
+  <script src="../aequirys/aequirys.min.js"></script>
 </head>
-
 <body class="noselect bg-noir blanc r p4 p5-m p5-l hf cn">
 
   <header class="mb4">
     <h1 class="dib mr4 f6 upc tk">Log</h1>
-    <button id="b-ovw" class="pv1 bb tab on bg-noir blanc f6 mon tk mr3" onclick="Log.openSect('ovw')" title="Overview">O<span class="dn di-m di-l">VW</span></button>
-    <button id="b-tln" class="pv1 tab on bg-noir blanc f6 mon tk mr3" onclick="Log.openSect('tln')" title="Visualisation">V<span class="dn di-m di-l">IS</span></button>
-    <button id="b-tab" class="pv1 tab on bg-noir blanc f6 mon tk mr3" onclick="Log.openSect('tab')" title="Data Table">T<span class="dn di-m di-l">AB</span></button>
-    <button id="b-abt" class="pv1 tab on bg-noir blanc f6 mon tk mr4" onclick="Log.openSect('abt')" title="About">A<span class="dn di-m di-l">BT</span></button>
-    <span id="status" class="rf mb4 f6">&#11042;</span>
+
+    <button id="b-ovw" class="pv1 tab on bg-noir blanc f6 mon tk mr3" onclick="Log.openSect('ovw')" title="Overview">&#128902;</button>
+    <button id="b-lis" class="pv1 tab on bg-noir c-5 f6 mon tk mr3" onclick="Log.openSect('lis')" title="Details">&#9783;</button>
+    <button id="b-vis" class="pv1 tab on bg-noir c-5 f6 mon tk mr3" onclick="Log.openSect('vis')" title="Visualisation">&#9781;</button>
+    <button id="b-tab" class="pv1 tab on bg-noir c-5 f6 mon tk mr3" onclick="Log.openSect('tab')" title="Data Table">&#128911;</button>
+    <button id="b-abt" class="pv1 tab on bg-noir c-5 f6 mon tk mr3" onclick="Log.openSect('abt')" title="About">&#8505;</button>
+
+    <div class="rf mb4 f6">
+      <span id="mors" class="dib mr3" title="Mortem Progression">0.00%</span>
+      <span id="timer" class="dn di-m di-l mr3" title="Current Log Session Duration">00:00:00</span>
+      <span id="status" title="Log Status">&#9210;</span>
+    </div>
   </header>
 
-  <div class="hf">
-    <div id="ovw" class="sect h9">
-      <div class="mb3 r">
-        <div class="c4 mb4 pr4-l">
-          <div class="f6 mon">
-            <span class="f6">K16&#183;17</span>
-            <span class="f6 rf ar">A02&#183;18</span>
-          </div>
-          <div class="mb2 sh6 wf bb" id="weekChart"></div>
-          <ul class="dn mb5 lsn f6">
-            <li class="dib mr4 f6">
-              <span class="mr1 f4 a1">&#9632;</span>
-              <span class="tk">C<span class="dn di-m di-l">OD</span></span>
-              <span id="pCOD"></span>%
-            </li>
-            <li class="dib mr4 f6">
-              <span class="mr1 f4 red">&#9632;</span>
-              <span class="tk">D<span class="dn di-m di-l">SG</span></span>
-              <span id="pDSG"></span>%
-            </li>
-            <li class="dib mr4 f6">
-              <span class="mr1 f4 grn">&#9632;</span>
-              <span class="tk">R<span class="dn di-m di-l">ES</span></span>
-              <span id="pRES"></span>%
-            </li>
-            <li class="dib mr4 f6">
-              <span class="mr1 f4 blu">&#9632;</span>
-              <span class="tk">P<span class="dn di-m di-l">HO</span></span>
-              <span id="pPHO"></span>%
-            </li>
-            <li class="dib f6">
-              <span class="mr1 f4 ylw">&#9632;</span>
-              <span class="tk">A<span class="dn di-m di-l">CA</span></span>
-              <span id="pACA"></span>%
-            </li>
-          </ul>
-        </div>
+  <div id="ovw" class="sect h9">
+    <div class="c2 pr4-l mb4">
+      <h2 class="mb4 f6 fwn" title="Peak Times">&#9650;</h2>
 
-        <div class="c4 c6-m pr4-m mb4 ph4-l">
-          <div class="f6 mon">
-            <span class="f6 tk">SUN</span>
-            <span class="f6 rf ar tk">SAT</span>
-          </div>
-          <div class="mb2 sh6 wf bb" id="peakDaysChart"></div>
-        </div>
+      <div id="phc" class="mb4 sh5 wf"></div>
+      <div id="pdc" class="mb4 sh5 wf"></div>
 
-        <div class="c4 c6-m pl4-m mb4 pl4-l">
-          <div class="f6 mon">
-            <span class="f6">00</span>
-            <span class="f6 rf ar">23</span>
-          </div>
-          <div class="mb2 sh6 wf bb" id="peakTimesChart"></div>
-        </div>
-      </div>
+      <h2 class="mb3 f6 fwn" title="Today's Forecast">&#9670;</h2>
 
-      <div class="mb5 r">
-        <div class="c8 pr4-l">
-          <h2 class="mb4 f6 fwn upc tk">Today</h2>
-
-          <div id="dayChart" class="wf sh2 mb2 bg-noir bsia"></div>
-
-          <div class="mb4 f6 mon">
-            <span class="f6 ">00&#183;00&#183;00</span>
-            <span class="f6 rf">23&#183;59&#183;59</span>
-          </div>
-
-          <ul class="mb4 lsn r">
-            <li class="mb4 c4 c3-m c3-l">
-              <p class="mb2 f6">
-                <span class="mr2">LH<sub>T</sub></span>
-                <span id="lhtt" class="grn"></span>
-              </p>
-              <p class="f3 f2-l fwb" id="LHT"></p>
-            </li>
-            <li class="mb4 c4 c3-m c3-l">
-              <p class="mb2 f6">
-                <span class="mr2">LS<sub>min</sub></span>
-                <span id="lsnt" class="grn"></span>
-              </p>
-              <p class="f3 f2-l fwb" id="LSN"></p>
-            </li>
-            <li class="mb4 c4 c3-m c3-l">
-              <p class="mb2 f6">
-                <span class="mr2">LS<sub>max</sub></span>
-                <span id="lsxt" class="grn"></span>
-              </p>
-              <p class="f3 f2-l fwb" id="LSX"></p>
-            </li>
-            <li class="mb4 c4 c3-m c3-l">
-              <p class="mb2 f6">
-                <span class="mr2">LP<sub>T</sub></span>
-                <span id="lptt" class="grn"></span>
-              </p>
-              <p class="f3 f2-l fwb" id="LPT"></p>
-            </li>
-          </ul>
-
-          <ul class="lsn r">
-            <li class="mb4 c4 c3-m c3-l">
-              <p class="mb2 f6">LH<sub>H</sub></p>
-              <p class="f3 f2-l fwb" id="LHH"></p>
-            </li>
-            <li class="dn mb4 c4 c3-m c3-l">
-              <p class="mb2 f6">LS<sub>Hmin</sub></p>
-              <p class="f3 f2-l fwb" id="LSNH"></p>
-            </li>
-            <li class="mb4 c4 c3-m c3-l">
-              <p class="mb2 f6">LS<sub>Hmax</sub></p>
-              <p class="f3 f2-l fwb" id="LSXH"></p>
-            </li>
-            <li class="mb4 c4 c3-m c3-l">
-              <p class="mb2 f6">LP<sub>H</sub></p>
-              <p class="f3 f2-l fwb" id="LPH"></p>
-            </li>
-            <li class="mb4 c4 c4-m c3-l">
-              <p class="mb3 f6">ASD</p>
-              <p class="f3 f2-l fwb" id="ASD"></p>
-            </li>
-          </ul>
-        </div>
-
-        <div class="mb4 c4 pl4-l">
-          <h2 class="mb4 f6 fwn upc tk">Sectors</h2>
-
-          <div id="sectorBar" class="db wf sh2 mb2 bsia bg-111 br1"></div>
-
-          <ul class="mb5 lsn f6">
-            <li class="dib mr4 f6">
-              <span class="mr1 f4 red">&#9632;</span>
-              <span id="pDSG">8</span>%
-            </li>
-            <li class="dib mr4 f6">
-              <span class="mr1 f4 blu">&#9632;</span>
-              <span id="pPHO">8</span>%
-            </li>
-          </ul>
-
-          <h2 class="mb3 f6 fwn upc tk">Projects</h2>
-          <ul id="projectStats" class="lsn"></ul>
-        </div>
+      <div class="f6 mon r">
+        <p class="mb1 c3 c3-m cc-l">
+          <span class="c-9" title="Sector Focus">SF</span>
+          <span id="fsf">???</span>
+        </p>
+        <p class="mb1 c3 c3-m cc-l">
+          <span class="c-9" title="Project Focus">PF</span>
+          <span id="fpf">???</span>
+        </p>
+        <p class="mb1 c3 c3-m cc-l">
+          <span class="c-9" title="Peak Time">PT</span>
+          <span id="fpt">00:00</span>
+        </p>
+        <p class="mb1 c3 c3-m cc-l">
+          <span class="c-9" title="Session Duration">SD</span>
+          <span id="fsd">0.00 h</span>
+        </p>
       </div>
     </div>
+    <div class="c8 ph4-l hf-l bg-noir oya">
+      <h2 class="mb4 f6 fwn" title="Overview">&#128902;</h2>
 
-    <div id="tln" class="dn sect h9">
-      <div id="vis" class="r pv1 hf bg-noir blanc bt">
-        <div class="f6 mon">
-          <span class="f6">00&#183;00&#183;00</span>
-          <span class="f6 rf ar">23&#183;59&#183;59</span>
+      <div class="ph1">
+        <div class="mb3 psr wf sh2 c-9 bl br">
+          <div class="psa sh1 br o5" style="left:4.17%"></div>
+          <div class="psa hf br" style="left:8.33%"></div>
+          <div class="psa sh1 br o5" style="left:12.5%"></div>
+          <div class="psa hf br" style="left:16.67%"></div>
+          <div class="psa sh1 br o5" style="left:20.83%"></div>
+          <div class="psa hf br" style="left:25%"></div>
+          <div class="psa sh1 br o5" style="left:29.17%"></div>
+          <div class="psa hf br" style="left:33.33%"></div>
+          <div class="psa sh1 br o5" style="left:37.5%"></div>
+          <div class="psa hf br" style="left:41.67%"></div>
+          <div class="psa sh1 br o5" style="left:45.83%"></div>
+          <div class="psa hf br" style="left:50%"></div>
+          <div class="psa sh1 br o5" style="left:54.17%"></div>
+          <div class="psa hf br" style="left:58.33%"></div>
+          <div class="psa sh1 br o5" style="left:62.5%"></div>
+          <div class="psa hf br" style="left:66.67%"></div>
+          <div class="psa sh1 br o5" style="left:70.83%"></div>
+          <div class="psa hf br" style="left:75%"></div>
+          <div class="psa sh1 br o5" style="left:79.17%"></div>
+          <div class="psa hf br" style="left:83.33%"></div>
+          <div class="psa sh1 br o5" style="left:87.5%"></div>
+          <div class="psa hf br" style="left:91.67%"></div>
+          <div class="psa sh1 br o5" style="left:95.83%"></div>
         </div>
+
+        <div id="dayChart" class="mb3 psr wf sh2"></div>
       </div>
-    </div>
 
-    <div id="tab" class="dn sect bg-noir blanc bsit h9 oya">
-      <table id="logbook" class="bn f6 mon">
-        <thead>
-          <tr>
-            <th class="al" colspan="7">Log.table</th>
-          </tr>
-          <tr>
-            <th class="al tk">DAT</th>
-            <th class="al tk">STR</th>
-            <th class="al tk">END</th>
-            <th class="al tk">DUR</th>
-            <th class="al tk">SEC</th>
-            <th class="al tk">PRO</th>
-            <th class="al tk">ACT</th>
-          </tr>
-        </thead>
-      </table>
-    </div>
+      <div id="weekChart" class="vh3 mb5" title="Past Month (28 Days)"></div>
 
-    <div id="abt" class="dn sect h9">
-      <h2 class="mt2 mb3 f5">About</h2>
-      <p class="m">This is a log and time-tracking system of and by Josh Avanier. Logs started on J&#183;17&#183;17.</p>
+      <ul class="lsn f6 lhc">
+        <li class="mb4 w5 w2-m w2-l lf">
+          <p class="f3 fwb"><span id="LHT">0.00</span> h</p>
+          <p class="f6 c-9">
+            <span class="mr2" title="Logged Hours (Today)">LHt</span>
+            <span id="lhtt" class="grn">0.00</span>
+          </p>
+        </li>
+        <li class="mb4 w5 w2-m w2-l lf">
+          <p class="f3 fwb"><span id="ASDT">0.00</span> h</p>
+          <p class="f6 c-9">
+            <span class="mr2" title="Average Session Duration (Today)">ASDt</span>
+            <span id="asdtt" class="grn">0.00</span>
+          </p>
+        </li>
+        <li class="mb4 w5 w2-m w2-l lf">
+          <p class="f3 fwb"><span id="LSN">0.00</span> h</p>
+          <p class="f6 c-9">
+            <span class="mr2" title="Minimum Log Session">LSn</span>
+            <span id="lsnt" class="grn">0.00</span>
+          </p>
+        </li>
+        <li class="mb4 w5 w2-m w2-l lf">
+          <p class="f3 fwb"><span id="LSX">0.00</span> h</p>
+          <p class="f6 c-9">
+            <span class="mr2" title="Maximum Log Session">LSx</span>
+            <span id="lsxt" class="grn">0.00</span>
+          </p>
+        </li>
+        <li class="mb4 w5 w2-m w2-l lf">
+          <p class="f3 fwb"><span id="LPT">0.00</span>%</p>
+          <p class="f6 c-9">
+            <span class="mr2" title="Log Percentage (Today)">LPt</span>
+            <span id="lptt" class="grn">0.00</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <div class="mb4 mb5-m c2 pl4-l hf-l oya-l">
+      <h2 class="mb4 f6 fwn upc tk">&#11206;</h2>
+      <div id="sectorBar" class="db wf sh1 mb4 bsia bg-1"></div>
+      <ul id="projectBars" class="lsn"></ul>
     </div>
   </div>
 
-  <footer class="dn db-l psr psf-l b0 l0 ml5-l mb5-l">
-    <p class="f6 mon tk">&copy; <a class="blanc" href="https://joshavanier.github.io/wiki/personal/josh/" title="Josh Avanier">JA</a></p>
-  </footer>
+  <div id="lis" class="dn sect h9 r">
+
+    <div class="c3 pr4-l hf">
+      <h3 class="mb3 f6 fwn upc tk">&#11206;</h3>
+      <ul id="sectorsList" class="lsn h9 oya pr3 bg-noir"></ul>
+    </div>
+
+    <div class="c6 ph4-l">
+      <h3 class="mb4 f6 fwn upc tk">Statistics</h3>
+
+      <div class="mb5 vh3 wf" id="peakTimesHistory"></div>
+
+      <ul class="lsn r f6 lhc">
+        <li class="mb4 c4 c3-m c3-l">
+          <p id="LHH" class="f3 fwb">0.00</p>
+          <p class="f6">LHh</p>
+        </li>
+        <li class="dn mb4 c4 c3-m c3-l">
+          <p id="LSNH" class="f3 fwb">0.00</p>
+          <p class="f6">LShn</p>
+        </li>
+        <li class="mb4 c4 c3-m c3-l">
+          <p id="LSXH" class="f3 fwb">0.00</p>
+          <p class="f6">LShx</p>
+        </li>
+        <li class="mb4 c4 c3-m c3-l">
+          <p id="LPH" class="f3 fwb">0.00</p>
+          <p class="f6">LPh</p>
+        </li>
+        <li class="mb4 c4 c3-m c3-l">
+          <p id="ASD" class="f3 fwb">0.00</p>
+          <p class="f6">ASD</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="c3 pl4-l hf">
+      <h3 class="mb3 f6 fwn upc tk">&#9964;</h3>
+      <ul id="projectsList" class="lsn h9 oya pr3 bg-noir"></ul>
+    </div>
+  </div>
+
+  <div id="vis" class="dn sect h9 r bg-noir"></div>
+
+  <div id="tab" class="dn sect wf bg-noir blanc h9 oya">
+    <table class="bn mon wf">
+      <thead>
+        <tr class="f6">
+          <th class="al tk" title="Date">&#128710;</th>
+          <th class="al tk" title="Start">&#9210;</th>
+          <th class="al tk" title="End">&#9209;</th>
+          <th class="al tk" title="Duration">&#11118;</th>
+          <th class="al tk" title="Sector">&#11206;</th>
+          <th class="al tk" title="Project">&#9964;</th>
+          <th class="al tk" title="Activity">&#11042;</th>
+        </tr>
+      </thead>
+      <tbody id="logbook" class="f6"></tbody>
+    </table>
+  </div>
+
+  <div id="abt" class="dn sect h9">
+    <h2 class="mt2 mb3 f5">About</h2>
+    <p class="m">This is a log and time-tracking system of and by Josh Avanier. Logs started on J&#183;17&#183;17.</p>
+  </div>
 
   <script src="log.js"></script>
   <script src="js/log.js"></script>
 
   <script>
     Log.init()
+
+    document.getElementById("mors").innerHTML = Mors.pro(new Date(1997, 2, 17)).toFixed(2) + "%"
   </script>
 
 </body>
