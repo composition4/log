@@ -1147,7 +1147,7 @@ var Log = {
 
     Log.timer(status)
 
-    document.getElementById("status").className = status ? "rf mb4 f6 blanc pulse" : "rf mb4 f6 noir"
+    document.getElementById("status").className = status ? "rf mb4 f6 blanc pulse" : "rf mb4 f6 c-9"
 
     let lhh = ld.lh(),
         lht = ld.lh(en),
