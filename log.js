@@ -297,4 +297,5 @@ var log = [
 {s:"59eebabe",e:"59eec024",c:"RES",t:"Design",d:"Researching UX/UI principles"},
 {s:"59eec058",e:"59eec9fc",c:"DSG",t:"Log",d:"Improving design"},
 {s:"59eedd97",e:"59eee935",c:"VID",t:"Mithvaer",d:"Worldbuilding"},
+{s:"59eef8fe",e:"59eeffb4",c:"COD",t:"Log",d:"Optimising CSS"},
 ]
