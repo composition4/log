@@ -300,3 +300,4 @@ Start     End       Cat  Project      Description
 59eedd97  59eee935  VID  Mithvaer  Worldbuilding
 59eef8fe  59eeffb4  COD  Log  Optimising CSS
 59ef166a  59ef1f07  RES  Mithvaer  Researching conlangs
+59ef2dfc  59ef4cbb  COD  Log  Experimenting with Deuveir's log data

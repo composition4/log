@@ -299,4 +299,5 @@ var log = [
 {s:"59eedd97",e:"59eee935",c:"VID",t:"Mithvaer",d:"Worldbuilding"},
 {s:"59eef8fe",e:"59eeffb4",c:"COD",t:"Log",d:"Optimising CSS"},
 {s:"59ef166a",e:"59ef1f07",c:"RES",t:"Mithvaer",d:"Researching conlangs"},
+{s:"59ef2dfc",e:"59ef4cbb",c:"COD",t:"Log",d:"Experimenting with Deuveir's log data"},
 ]
