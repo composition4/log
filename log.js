@@ -310,4 +310,5 @@ var log = [
 {s:"59f03d56",e:"59f04c25",c:"DSG",t:"Primaire",d:"Updating site"},
 {s:"59f04f32",e:"59f050f6",c:"DSG",t:"Primaire",d:"Updating site"},
 {s:"59f05151",e:"59f06972",c:"PHO",t:"Photography",d:"Editing and curating photos"},
+{s:"59f08afc",e:"59f08c7c",c:"COD",t:"Arachne",d:"Updating search system"},
 ]
