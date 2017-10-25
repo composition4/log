@@ -310,3 +310,4 @@ Start     End       Cat  Project      Description
 59f02516  59f03753  DSG  Primaire  Updating site
 59f03d56  59f04c25  DSG  Primaire  Updating site
 59f04f32  59f050f6  DSG  Primaire  Updating site
+59f05151  59f06972  PHO  Photography  Editing and curating photos
