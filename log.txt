@@ -312,3 +312,4 @@ Start     End       Cat  Project      Description
 59f04f32  59f050f6  DSG  Primaire  Updating site
 59f05151  59f06972  PHO  Photography  Editing and curating photos
 59f08afc  59f08c7c  COD  Arachne  Updating search system
+59f08c8e  59f09ca7  DSG  Arachne  Designing UI
