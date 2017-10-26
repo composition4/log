@@ -315,3 +315,4 @@ Start     End       Cat  Project      Description
 59f08c8e  59f09ca7  DSG  Arachne  Designing UI
 59f13340  59f13bdb  COD  Arachne  Adding functionality
 59f13c19  59f13ed9  COD  Log  Writing summary function
+59f13f64  59f14933  COD  Arachne  Working on greeting interface

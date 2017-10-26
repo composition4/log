@@ -314,4 +314,5 @@ var log = [
 {s:"59f08c8e",e:"59f09ca7",c:"DSG",t:"Arachne",d:"Designing UI"},
 {s:"59f13340",e:"59f13bdb",c:"COD",t:"Arachne",d:"Adding functionality"},
 {s:"59f13c19",e:"59f13ed9",c:"COD",t:"Log",d:"Writing summary function"},
+{s:"59f13f64",e:"59f14933",c:"COD",t:"Arachne",d:"Working on greeting interface"},
 ]
