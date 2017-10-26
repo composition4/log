@@ -320,4 +320,5 @@ var log = [
 {s:"59f1624f",e:"59f166fd",c:"COD",t:"Arachne",d:"Adding text animations"},
 {s:"59f198ef",e:"59f19c55",c:"COD",t:"Chateau",d:"Updating code"},
 {s:"59f19cf7",e:"59f1a2c8",c:"COD",t:"Log",d:"Reconstructing code"},
+{s:"59f1a47a",e:"59f1adae",c:"COD",t:"Log",d:"Building a version for users"},
 ]
