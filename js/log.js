@@ -10,7 +10,7 @@
 "use strict";
 
 var shell = require("shelljs");
-// shell.touch("./data/log.js")
+shell.touch(__dirname + "/data/test.js")
 
 var Log = {
 
@@ -104,7 +104,7 @@ var Log = {
 
       let entry = `{s:"${start}",e:"undefined",c:"${sect}",t:"${proj}",d:"${desc}"},\n]`
 
-      shell.sed('-i', ']', `${entry}`, "./data/log.js")
+      shell.sed('-i', ']', `${entry}`, (__dirname + "/data/log.js"))
 
       log.push({
         s: start,
@@ -122,7 +122,7 @@ var Log = {
           end = (new Date(time.getFullYear(), time.getMonth(), time.getDate(), time.getHours(), time.getMinutes(), time.getSeconds()).getTime() / 1E3).toString(16)
 
       // sed -i -e "s/undefined/$D/g" $1
-      shell.sed('-i', 'undefined', end, "./data/log.js")
+      shell.sed('-i', 'undefined', end, (__dirname + "/data/log.js"))
 
       log[log.length - 1].e = `${end}`
 
@@ -138,6 +138,7 @@ var Log = {
    */
 
   status() {
+    if (Log.log.length == 0) return
     return Log.log[Log.log.length - 1].e == "undefined" ? true : false
   },
 
