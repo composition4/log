@@ -326,4 +326,5 @@ var log = [
 {s:"59f1e338",e:"59f1ec0e",c:"COD",t:"Log",d:"Adding custom settings"},
 {s:"59f285f5",e:"59f2955a",c:"COD",t:"Log",d:"Working on console"},
 {s:"59f2a73c",e:"59f2ad6f",c:"COD",t:"Log",d:"Implementing shelljs"},
+{s:"59f2b1c4",e:"59f2c2b6",c:"COD",t:"Log",d:"Implementing console commands"},
 ]
