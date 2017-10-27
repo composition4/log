@@ -1360,10 +1360,7 @@ var Log = {
       t(tels[i], tval[i])}
 
     document.getElementById("cmd").addEventListener("submit", function() {
-      console.log("Something happened")
-      console.log(document.getElementById("console").value)
       Log.console.parse(document.getElementById("console").value)
-
       document.getElementById("console").value = ""
     })
 
