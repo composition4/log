@@ -326,3 +326,4 @@ Start     End       Cat  Project      Description
 59f1dd51  59f1e303  COD  Log  Adding Log.console
 59f1e338  59f1ec0e  COD  Log  Adding custom settings
 59f285f5  59f2955a  COD  Log  Working on console
+59f2a73c  59f2ad6f  COD  Log  Implementing shelljs
