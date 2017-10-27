@@ -1,0 +1,19 @@
+{
+  "name": "Log",
+  "version": "0.1.0",
+  "description": "A log and time-tracking system",
+  "repository": "https://github.com/joshavanier/log",
+  "main": "./main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^1.7.5",
+    "electron-prebuilt": "^1.4.13"
+  },
+  "dependencies": {
+    "electron-packager": "^8.4.0",
+    "shelljs": "0.7.8"
+  }
+}

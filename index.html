@@ -10,7 +10,10 @@
   <meta name="twitter:title" content="Log">
   <meta name="twitter:description" content="A log and time-tracking system">
   <link rel="stylesheet" href="css/log.css">
-  <script src="https://joshavanier.github.io/mors/mors.min.js"></script>
+  <style>
+    .on {outline: none}
+  </style>
+  <!-- <script src="https://joshavanier.github.io/mors/mors.min.js"></script> -->
   <script src="https://joshavanier.github.io/aequirys/aequirys.min.js"></script>
 </head>
 <body class="noselect bg-noir blanc r p4 p5-m p5-l hf cn">
@@ -18,14 +21,14 @@
   <header class="mb4">
     <h1 class="dib mr4 f6 upc tk">Log</h1>
 
-    <button id="b-ovw" class="pv1 tab on bg-noir blanc f6 mon tk mr3" onclick="Log.openSect('ovw')" title="Overview">&#128902;</button>
-    <button id="b-lis" class="pv1 tab on bg-noir c-5 f6 mon tk mr3" onclick="Log.openSect('lis')" title="Details">&#9783;</button>
-    <button id="b-vis" class="pv1 tab on bg-noir c-5 f6 mon tk mr3" onclick="Log.openSect('vis')" title="Visualisation">&#9781;</button>
-    <button id="b-tab" class="pv1 tab on bg-noir c-5 f6 mon tk mr3" onclick="Log.openSect('tab')" title="Data Table">&#128911;</button>
-    <button id="b-abt" class="pv1 tab on bg-noir c-5 f6 mon tk mr3" onclick="Log.openSect('abt')" title="About">&#8505;</button>
+    <button id="b-ovw" class="pv1 tab on bg-noir blanc f6 mr3" onclick="Log.openSect('ovw')" title="Overview">&#128902;</button>
+    <button id="b-lis" class="pv1 tab on bg-noir c-5 f6 mr3" onclick="Log.openSect('lis')" title="Details">&#9783;</button>
+    <button id="b-vis" class="pv1 tab on bg-noir c-5 f6 mr3" onclick="Log.openSect('vis')" title="Visualisation">&#9781;</button>
+    <button id="b-tab" class="pv1 tab on bg-noir c-5 f6 mr3" onclick="Log.openSect('tab')" title="Data Table">&#128911;</button>
+    <button id="b-set" class="pv1 tab on bg-noir c-5 f6 mr3" onclick="Log.openSect('set')" title="Guide">?</button>
 
     <div class="rf mb4 f6">
-      <span id="mors" class="dib mr3" title="Mortem Progression">0.00%</span>
+      <!-- <span id="mors" class="dib mr3" title="Mortem Progression">0.00%</span> -->
       <span id="timer" class="dn di-m di-l mr3" title="Current Log Session Duration">00:00:00</span>
       <span id="status" title="Log Status">&#9210;</span>
     </div>
@@ -135,8 +138,13 @@
     <div class="mb4 mb5-m c2 pl4-l hf-l oya-l">
       <h2 class="mb4 f6 fwn upc tk">&#11206;</h2>
       <div id="sectorBar" class="db wf sh1 mb4 bsia bg-1"></div>
-      <ul id="projectBars" class="lsn"></ul>
+      <ul id="projectBars" class="lsn bg-noir"></ul>
     </div>
+
+    <form id="cmd" class="psf bg-1 b0 l0 wf f6 bst" action="#" onsubmit="return false;" autocomplete="off" spellcheck="false">
+      <input type="text" class="wf bg-1 blanc on bn p4" id="console" autofocus="autofocus" placeholder="> Log.console" />
+    </form>
+
   </div>
 
   <div id="lis" class="dn sect h9 r">
@@ -147,7 +155,7 @@
     </div>
 
     <div class="c6 ph4-l">
-      <h3 class="mb4 f6 fwn upc tk">Statistics</h3>
+      <h3 class="mb4 f6 fwn upc tk">&#9650;</h3>
 
       <div class="mb5 vh3 wf" id="peakTimesHistory"></div>
 
@@ -200,18 +208,32 @@
     </table>
   </div>
 
-  <div id="abt" class="dn sect h9">
-    <h2 class="mt2 mb3 f5">About</h2>
-    <p class="m">This is a log and time-tracking system of and by Josh Avanier. Logs started on J&#183;17&#183;17.</p>
+  <div id="set" class="dn sect wf h9 f6 lhc oya">
+    <h2 class="mb3 f5 upc tk">About + Guide</h2>
+
+    <p class="mb5 m">The Log is a log and time-tracking system created by Josh Avanier. Its primary purpose is to provide insight to how one's time is spent &mdash; insight that can then be used to optimise personal productivity and better manage time.</p>
+
+    <h3 class="mb3 f5 upc tk">Usage</h3>
+    <p class="mb3 m">Use the console to enter commands:</p>
+    <p class="mb2 m">To start a log: <span class="db mon">start "Sector" "Project Name" "A description of what you're doing"</p>
+    <p class="mb5">To end a log: <span class="db mon">end</p>
+
+    <h3 class="mb3 f5 upc tk">Contribution</h3>
+    <p class="mb2 m">This project is open-source and the source code is available under the MIT License. If you found any bugs or would like to contribute to the development of this project, submit pull requests on GitHub:</p>
+    <p class="mb5 m">https://github.com/joshavanier/log/</p>
+
+    <p class="mb2 m">If you have any thoughts, comments, suggestions, questions, or if you simply want to say hello:</p>
+    <p class="mb5 m">Twitter: @joshavanier</p>
+
   </div>
 
-  <script src="log.js"></script>
+  <script src="data/log.js"></script>
   <script src="js/log.js"></script>
 
   <script>
     Log.init()
 
-    document.getElementById("mors").innerHTML = Mors.pro(new Date(1997, 2, 17)).toFixed(2) + "%"
+    // document.getElementById("mors").innerHTML = Mors.pro(new Date(1997, 2, 17)).toFixed(2) + "%"
   </script>
 
 </body>

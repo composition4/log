@@ -9,9 +9,128 @@
 
 "use strict";
 
+var shell = require("shelljs");
+// shell.touch("./data/log.js")
+
 var Log = {
 
   log: [],
+  clock: {},
+
+  options: {
+
+    preferences: {}, // holds user's preferences
+
+    /**
+     * Set interface theme
+     * @param {string=} theme - The theme (noir, blanc)
+     */
+
+    setTheme(theme = "noir") {
+      Log.options.preferences.theme = theme
+    },
+
+    /**
+     * Set interface font family
+     * @param {string} font - The font family (sans-serif, serif, monospace)
+     */
+
+    setFont(font = "sans") {
+      Log.options.preferences.font = font
+    },
+
+    /**
+     * Set calendrical system
+     * @param {string=} cal - The calendrical system
+     */
+
+    setCalendar(cal = "gregorian") {
+
+    },
+
+  },
+
+  console: {
+
+    commands: [
+      "start", "end", "delete", "set"
+    ],
+
+    parse(input) {
+      let i = Log.console.commands.indexOf(input.split(" ")[0].toLowerCase())
+
+      if (i != -1) {
+
+        switch (i) {
+          case 0:
+            Log.console.startLog(input);
+            break;
+          case 1:
+            Log.console.endLog();
+            break;
+          case 2:
+            console.log("delete");
+            break;
+          case 3:
+            console.log("set");
+            break;
+        }
+
+      } else return
+
+    },
+
+    /**
+     * Start a log entry
+     * @param {Object[]} s - Input array
+     */
+
+    startLog(s) {
+      let ch = s.split(""),
+          indices = []
+
+      for (let i = 0, l = ch.length; i < l; i++)
+        if (ch[i] === "\"") indices.push(i)
+
+      let time = new Date(),
+          start = (new Date(time.getFullYear(), time.getMonth(), time.getDate(), time.getHours(), time.getMinutes(), time.getSeconds()).getTime() / 1E3).toString(16),
+          sect = "",
+          proj = "",
+          desc = ""
+
+      for (let i = indices[0] + 1, l = indices[1]; i < l; i++) sect += ch[i]
+      for (let i = indices[2] + 1, l = indices[3]; i < l; i++) proj += ch[i]
+      for (let i = indices[4] + 1, l = indices[5]; i < l; i++) desc += ch[i]
+
+      let entry = `{s:"${start}",e:"undefined",c:"${sect}",t:"${proj}",d:"${desc}"},\n]`
+
+      shell.sed('-i', ']', `${entry}`, "./data/log.js")
+
+      log.push({
+        s: start,
+        e: "undefined",
+        c: sect,
+        t: proj,
+        d: desc
+      })
+
+      Log.refresh()
+    },
+
+    endLog() {
+      let time = new Date(),
+          end = (new Date(time.getFullYear(), time.getMonth(), time.getDate(), time.getHours(), time.getMinutes(), time.getSeconds()).getTime() / 1E3).toString(16)
+
+      // sed -i -e "s/undefined/$D/g" $1
+      shell.sed('-i', 'undefined', end, "./data/log.js")
+
+      log[log.length - 1].e = `${end}`
+
+      clearInterval(timer)
+      Log.refresh()
+
+    }
+  },
 
   /**
    * Get log status; true means a session is in progress
@@ -43,9 +162,9 @@ var Log = {
         s %= 60
 
         document.getElementById("timer").innerHTML = `${`0${h}`.substr(-2)}:${`0${m}`.substr(-2)}:${`0${s}`.substr(-2)}`
-      },
+      }
 
-      t = setInterval(function() { tick() }, 1E3)
+      Log.clock = setInterval(function() { tick() }, 1E3)
     } else return
   },
 
@@ -637,6 +756,26 @@ var Log = {
   data: {
 
     /**
+     * Get a summary of Log data
+     * @returns {Object} A summary
+     */
+
+    summary() {
+
+      Log.log = log
+
+      let today = Log.data.getEntries(new Date()),
+          lh = Log.data.lh(today),
+          status = Log.status()
+
+      return {
+        lh: lh,
+        status: status
+      }
+
+    },
+
+    /**
      * Get entries
      * @param {Object} d - A date
      * @returns {Object[]} Log entries
@@ -1094,6 +1233,49 @@ var Log = {
     document.getElementById(`b-${s}`).className = "pv1 tab on bg-noir blanc f6 mon tk mr3"
   },
 
+  refresh() {
+    Log.reset()
+    Log.init()
+  },
+
+  reset() {
+
+    clearInterval(Log.clock)
+    document.getElementById("timer").innerHTML = "00:00:00"
+
+    document.getElementById("fsf").innerHTML = "???"
+    document.getElementById("fpf").innerHTML = "???"
+    document.getElementById("fpt").innerHTML = "00:00"
+    document.getElementById("fsd").innerHTML = "0.00 h"
+
+    document.getElementById("phc").innerHTML = ""
+    document.getElementById("pdc").innerHTML = ""
+    document.getElementById("dayChart").innerHTML = ""
+    document.getElementById("weekChart").innerHTML = ""
+
+    "LHH", "LHT", "LPH", "LPT", "ASD", "ASDT", "LSN", "LSX", "LSNH", "LSXH"
+
+    document.getElementById("LHH").innerHTML = ""
+    document.getElementById("LHT").innerHTML = ""
+    document.getElementById("LPH").innerHTML = ""
+    document.getElementById("LPT").innerHTML = ""
+    document.getElementById("ASD").innerHTML = ""
+    document.getElementById("ASDT").innerHTML = ""
+    document.getElementById("LSN").innerHTML = ""
+    document.getElementById("LSX").innerHTML = ""
+    document.getElementById("LSNH").innerHTML = ""
+    document.getElementById("LSXH").innerHTML = ""
+
+    document.getElementById("peakTimesHistory").innerHTML = ""
+
+    document.getElementById("sectorBar").innerHTML = ""
+    document.getElementById("projectBars").innerHTML = ""
+    document.getElementById("sectorsList").innerHTML = ""
+    document.getElementById("projectsList").innerHTML = ""
+    document.getElementById("vis").innerHTML = ""
+    document.getElementById("logbook").innerHTML = ""
+  },
+
   /**
    * Initialise
    */
@@ -1174,8 +1356,16 @@ var Log = {
     for (let i = 0, l = els.length; i < l; i++)
       document.getElementById(els[i]).innerHTML = val[i].toFixed(2)
 
-    for (let i = 0, l = tels.length; i < l; i++)
-      t(tels[i], tval[i])
+    for (let i = 0, l = tels.length; i < l; i++) {
+      t(tels[i], tval[i])}
+
+    document.getElementById("cmd").addEventListener("submit", function() {
+      console.log("Something happened")
+      console.log(document.getElementById("console").value)
+      Log.console.parse(document.getElementById("console").value)
+
+      document.getElementById("console").value = ""
+    })
 
     Log.vis.peakH(undefined, "peakTimesHistory")
     Log.vis.sectorBar(en)
