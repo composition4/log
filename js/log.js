@@ -9,25 +9,63 @@
 
 "use strict";
 
-var shell = require("shelljs");
-shell.touch(__dirname + "/data/test.js")
+var shell = require("shelljs")
+
+shell.cd()
+const HOME = shell.pwd()
+shell.cd(__dirname)
 
 var Log = {
 
-  log: [],
-  clock: {},
+  log: [], // holds user's logs
+  config: {}, // holds user's preferences
+  clock: {}, // holds timer interval
+
+  /**
+   * Save
+   */
+
+  save: {
+
+    /**
+     * Save log file
+     */
+
+    log() {
+      shell.cp(`${__dirname}/data/log.js`, `${HOME}/.log-data/log.js`)
+    },
+
+    /**
+     * Save config file
+     */
+
+    config() {
+      shell.cp(`${__dirname}/data/config.js`, `${HOME}/.log-data/config.js`)
+    }
+  },
 
   options: {
 
-    preferences: {}, // holds user's preferences
-
     /**
-     * Set interface theme
-     * @param {string=} theme - The theme (noir, blanc)
+     * Set background colour
+     * @param {string} colour - The colour
      */
 
-    setTheme(theme = "noir") {
-      Log.options.preferences.theme = theme
+    setBG(colour) {
+      shell.sed("-i", /^.*bg:.*$/, `\t\tbg: "${colour}",`, "data/config.js")
+      Log.config.ui.bg = colour
+      document.getElementById("app").style.backgroundColor = colour
+    },
+
+    /**
+     * Set text colour
+     * @param {string} colour - The colour
+     */
+
+    setColour(colour) {
+      shell.sed("-i", /^.*colour:.*$/, `\t\tcolour: "${colour}",`, "data/config.js")
+      Log.config.ui.colour = colour
+      document.getElementById("app").style.color = colour
     },
 
     /**
@@ -35,32 +73,58 @@ var Log = {
      * @param {string} font - The font family (sans-serif, serif, monospace)
      */
 
-    setFont(font = "sans") {
-      Log.options.preferences.font = font
+    setFont(font) {
+      shell.sed("-i", /^.*font:.*$/, `\t\tfont: "${font}",`, "data/config.js")
+      Log.config.ui.font = font
+      document.getElementById("app").style.fontFamily = font
+    },
+
+    setIcons(a) {
+      shell.sed("-i", /^.*icons:.*$/, `\t\ticons: ${a},`, "data/config.js")
+      Log.config.ui.icons = a
+      Log.refresh()
+    },
+
+    setView(n) {
+      shell.sed("-i", /^.*view:.*$/, `\t\tview: ${n},`, "data/config.js")
+      Log.config.ui.view = n
+      Log.refresh()
     },
 
     /**
      * Set calendrical system
-     * @param {string=} cal - The calendrical system
+     * @param {string} cal - The calendrical system
      */
 
-    setCalendar(cal = "gregorian") {
-
+    setCalendar(cal) {
+      shell.sed("-i", /^.*calendar:.*$/, `\t\tcalendar: "${cal}",`, "data/config.js")
+      Log.config.system.calendar = cal
+      Log.refresh()
     },
 
+    setTimeFormat(format) {
+      shell.sed("-i", /^.*timeFormat:.*$/, `\t\ttimeFormat: "${format}",`, "data/config.js")
+      Log.config.system.timeFormat = format
+      Log.refresh()
+    },
+
+    setWeekStart(start) {
+      shell.sed("-i", /^.*weekStart:.*$/, `\t\tweekStart: "${start}",`, "data/config.js")
+      Log.config.system.weekStart = start
+      Log.refresh()
+    }
   },
 
   console: {
 
     commands: [
-      "start", "end", "delete", "set"
+      "start", "end", "delete", "set", "import"
     ],
 
     parse(input) {
       let i = Log.console.commands.indexOf(input.split(" ")[0].toLowerCase())
 
       if (i != -1) {
-
         switch (i) {
           case 0:
             Log.console.startLog(input);
@@ -72,12 +136,37 @@ var Log = {
             console.log("delete");
             break;
           case 3:
-            console.log("set");
+            Log.console.set(input);
+            break;
+          case 4:
+            Log.console.importUser(input);
             break;
         }
-
       } else return
+    },
 
+    importUser: {
+
+      log(loc) {
+        shell.cat(loc).to(`${__dirname}/data/config.js`)
+      },
+
+      config(loc) {
+        shell.cat(loc).to(`${__dirname}/data/config.js`)
+      }
+
+    },
+
+    importUser(input) {
+      let s = input.split(" ")
+
+      if (s[1].substr(-1) === '/') s[1].substr(0, s[1].length - 1)
+
+      if (shell.test("-f", `${s[1]}/config.js`))
+        shell.cat(`${s[1]}/config.js`).to(`${__dirname}/data/config.js`)
+
+      if (shell.test("-f", `${s[1]}/log.js`))
+        shell.cat(`${s[1]}/log.js`).to(`${__dirname}/data/log.js`)
     },
 
     /**
@@ -105,6 +194,9 @@ var Log = {
       let entry = `{s:"${start}",e:"undefined",c:"${sect}",t:"${proj}",d:"${desc}"},\n]`
 
       shell.sed('-i', ']', `${entry}`, (__dirname + "/data/log.js"))
+      shell.cd()
+      shell.sed('-i', ']', entry, ".log-data/log.js")
+      shell.cd(__dirname)
 
       log.push({
         s: start,
@@ -123,13 +215,59 @@ var Log = {
 
       // sed -i -e "s/undefined/$D/g" $1
       shell.sed('-i', 'undefined', end, (__dirname + "/data/log.js"))
+      shell.cd()
+      shell.sed('-i', 'undefined', end, ".log-data/log.js")
+      shell.cd(__dirname)
 
       log[log.length - 1].e = `${end}`
 
       clearInterval(timer)
       Log.refresh()
+    },
 
-    }
+    set(s) {
+      let c = s.split(" "),
+          a = c[1].toLowerCase()
+
+      if (a == "background" || a == "bg") {
+        Log.options.setBG(c[2])
+      } else if (a == "color" || a == "colour" || a == "text") {
+        Log.options.setColour(c[2])
+      } else if (a == "font" || a == "typeface" || a == "type") {
+        Log.options.setFont(c[2])
+      } else if (a == "icons" || a == "icon") {
+        if (c[2] == "true" || c[2] == "false")
+          Log.options.setIcons(c[2])
+      } else if (a == "view") {
+        Log.options.setView(c[2])
+      } else if (a == "cal" || a == "calendar") {
+        Log.options.setCalendar(c[2])
+      } else if (a == "timeformat" || a == "time") {
+        Log.options.setTimeFormat(c[2])
+      } else if (a == "dateformat" || a == "date") {
+        Log.options.setDateFormat(c[2])
+      } else if (a == "weekstart") {
+        Log.options.setWeekStart(c[2])
+      }
+    },
+
+    /**
+     * Import logs
+     * @param {string=} loc - File location
+     */
+
+    importLog(loc = `${HOME}/.log-data/log.js`) {
+      shell.cat(loc).to(`${__dirname}/data/log.js`)
+    },
+
+    /**
+     * Import user preferences
+     * @param {string=} config - File location
+     */
+
+    importConfig(config = `${HOME}/.log-data/config.js`) {
+      shell.cat(config).to(`${__dirname}/data/config.js`)
+    },
   },
 
   /**
@@ -208,22 +346,6 @@ var Log = {
     },
 
     /**
-     * Convert into an Aequiryean date
-     * @param {number} es - A (parsed) log entry's start time
-     * @return {string} An Aequiryean date
-     */
-
-    aq = es => {
-      let d = Log.time.convert(es)
-
-      return Aequirys.display(
-              Aequirys.convert(
-                new Date(d.getFullYear(), d.getMonth(), d.getDate())
-              )
-            )
-    },
-
-    /**
      * Create cells and store data
      * @param {Object} e - A Log entry
      * @param {number} i - The array position
@@ -243,7 +365,7 @@ var Log = {
           es = Log.time.parse(e.s),
           ee = Log.time.parse(e.e)
 
-      c1.innerHTML = aq(es)
+      c1.innerHTML = Log.time.displayDate(es)
       c2.innerHTML = Log.time.stamp(es)
       c3.innerHTML = Log.time.stamp(ee)
       c4.innerHTML = Log.time.duration(es, ee).toFixed(2)
@@ -290,6 +412,7 @@ var Log = {
         v.className    = `psr t0 sh1 mb2 lf ${b}`
         v.style.width  = `${width}%`
         v.style.margin = `0 0 0 ${margin}%`
+        v.style.backgroundColor = Log.config.ui.colour
 
         let id = con + Log.time.date(Log.time.parse(e.s))
         document.getElementById(id).appendChild(v)
@@ -309,7 +432,7 @@ var Log = {
 
         let e = document.createElement("div")
 
-        e.className = "db wf sh1 mt2 mb3 bsia bg-noir br1"
+        e.className = "db wf sh1 mt2 mb3"
         e.id        = con + id
 
         document.getElementById(con).appendChild(e)
@@ -392,6 +515,7 @@ var Log = {
         d.className    = `psa sw1 ${b}`
         d.style.height = `${w}%`
         d.style.bottom = `${lw}%`
+        d.style.backgroundColor = Log.config.ui.colour
 
         let id = Log.time.date(Log.time.parse(e.s))
         document.getElementById(id).appendChild(d)
@@ -411,7 +535,7 @@ var Log = {
             e = document.createElement("div")
 
         dy.className   = "dib hf psr"
-        dy.style.width = "3.57143%" // 100 / 28
+        dy.style.width = `${100 / Log.config.ui.view}%` // 100 / 28
 
         e.className = `sw1 hf cn`
         e.id = id
@@ -455,6 +579,7 @@ var Log = {
         d.className    = `psr t0 hf mb2 lf ${b}`
         d.style.width  = `${width}%`
         d.style.margin = `0 0 0 ${margin}%`
+        d.style.backgroundColor = Log.config.ui.colour
 
         document.getElementById(con).appendChild(d)
 
@@ -491,13 +616,14 @@ var Log = {
             e = document.createElement("div"),
             n = document.createElement("div"),
             t = `${con}-${i}`,
-            b = i == (new Date).getHours() ? "bg-blanc" : "bg-5"
+            b = i == (new Date).getHours() ? "of" : "o5"
 
         d.className = "dib hf psr"
         d.style.width = `4.166666666666667%`
         d.id = t
 
         n.className = `sw1 hf cn ${b}`
+        n.style.backgroundColor = Log.config.ui.colour
 
         e.className = "psa b0 wf"
         e.style.height = `${h[i] / m * 100}%`
@@ -526,13 +652,14 @@ var Log = {
             e = document.createElement("div"),
             n = document.createElement("div"),
             t = `${con}-${i}`,
-            b = i == (new Date).getDay() ? "bg-blanc" : "bg-5"
+            b = i == (new Date).getDay() ? "of" : "o5"
 
         v.className    = "dib hf psr"
         v.style.width  = "14.285714285714286%" // 100 / 7
         v.id           = t
 
         n.className    = `sw1 hf cn ${b}`
+        n.style.backgroundColor = Log.config.ui.colour
 
         e.className    = "psa b0 wf"
         e.style.height = `${d[i] / m * 100}%`
@@ -613,9 +740,10 @@ var Log = {
 
         tl.className = "f6 mb2 mon upc tk"
         st.className = "f6 rf"
-        br.className = "wf sh1 mb3 bg-noir bsia"
+        br.className = "wf sh1 mb3"
 
-        dt.className   = "psr t0 hf lf bg-blanc"
+        dt.className   = "psr t0 hf lf"
+        dt.style.backgroundColor = Log.config.ui.colour
         dt.style.width = `${(Log.data.sp(ent, sec))}%`
 
         tl.innerHTML = sec
@@ -671,8 +799,9 @@ var Log = {
         st.className   = "f6 rf"
         st.innerHTML   = `LH ${sh.toFixed(2)}`
 
-        br.className   = "wf sh1 mb3 bg-noir bsia"
-        dt.className   = "psr t0 hf lf bg-blanc"
+        br.className   = "wf sh1 mb3"
+        dt.className   = "psr t0 hf lf"
+        dt.style.backgroundColor = Log.config.ui.colour
         dt.style.width = `${(Log.data.pp(ent, pro))}%`
 
         br.appendChild(dt)
@@ -720,11 +849,36 @@ var Log = {
 
     stamp(t) {
       let d = Log.time.convert(t),
+          f = Log.config.system.timeFormat,
           h = `0${d.getHours()}`,
           m = `0${d.getMinutes()}`,
           s = `0${d.getSeconds()}`
 
-      return `${h.substr(-2)}:${m.substr(-2)}:${s.substr(-2)}`
+      if (f == "24")
+        return `${h.substr(-2)}:${m.substr(-2)}:${s.substr(-2)}`
+      else if (f == "12")
+        return Log.time.twelveHours(d)
+    },
+
+    /**
+     * Convert to 12-hour time
+     * @param {Object} d - Date and time
+     * @returns {string} 12-hour format
+     */
+
+    twelveHours(d) {
+      let h = d.getHours(),
+          m = d.getMinutes(),
+          s = d.getSeconds(),
+          x = h >= 12 ? "PM" : "AM"
+
+      h = h % 12
+      h = h ? h : 12
+      h = (`0${h}`).slice(-2)
+      m = (`0${m}`).slice(-2)
+      s = (`0${s}`).slice(-2)
+
+      return `${h}:${m}:${s} ${x}`
     },
 
     /**
@@ -736,6 +890,25 @@ var Log = {
     date(t) {
       let a = Log.time.convert(t)
       return `${a.getFullYear()}${a.getMonth()}${a.getDate()}`
+    },
+
+    /**
+     * Display a date
+     * @param {number} t - Unix time
+     */
+
+    displayDate(t) {
+      let a = Log.time.convert(t),
+          f = Log.config.system.calendar
+
+      if (f == "gregorian") {
+        return `${a.getFullYear()} ${a.getMonth()} ${a.getDate()}`
+      } else if (f == "monocal") {
+        return MONO.short(MONO.convert(a))
+      } else if (f == "aequirys") {
+        return Aequirys.display(Aequirys.convert(a))
+      }
+
     },
 
     /**
@@ -846,7 +1019,6 @@ var Log = {
      */
 
     getRecentEntries(n) {
-
       Date.prototype.subtractDays = function(days) {
         let date = new Date(this.valueOf())
         date.setDate(date.getDate() - days)
@@ -857,9 +1029,6 @@ var Log = {
           past = today.subtractDays(n)
 
       return Log.data.getEntriesByPeriod(past)
-
-      // return today.subtractDays(n)
-
     },
 
     /**
@@ -1220,7 +1389,7 @@ var Log = {
    * Open a tab
    */
 
-  openSect(s) {
+  tab(s) {
     let x = document.getElementsByClassName("sect"),
         b = document.getElementsByClassName("tab")
 
@@ -1228,10 +1397,42 @@ var Log = {
       x[i].style.display = "none"
 
     for (let i = 0, l = b.length; i < l; i++)
-      b[i].className = "pv1 tab on bg-noir c-5 f6 mon tk mr3"
+      b[i].className = "pv1 tab on bg-cl o5 mr3"
 
     document.getElementById(s).style.display = "block"
-    document.getElementById(`b-${s}`).className = "pv1 tab on bg-noir blanc f6 mon tk mr3"
+    document.getElementById(`b-${s}`).className = "pv1 tab on bg-cl of mr3"
+  },
+
+  build() {
+
+    let icon = Log.config.ui.icons
+
+    document.getElementById("b-ovw").innerHTML = icon ? "&#128902;" : "Overview"
+    document.getElementById("b-lis").innerHTML = icon ? "&#9783;" : "Details"
+    document.getElementById("b-vis").innerHTML = icon ? "&#9781;" : "Visualisation"
+    document.getElementById("b-tab").innerHTML = icon ? "&#128911;" : "Table"
+    document.getElementById("b-set").innerHTML = icon ? "?" : "Guide"
+
+    document.getElementById("peakTimesTitle").innerHTML = icon ? "&#9650;" : "Peak Times"
+    document.getElementById("forecastTitle").innerHTML = icon ? "&#9670;" : "Forecast"
+    document.getElementById("overviewTitle").innerHTML = icon ? "&#128902;" : "Overview"
+    document.getElementById("sectorsTodayTitle").innerHTML = icon ? "&#11206;" : "Sectors"
+    document.getElementById("sectorsTitle").innerHTML = icon ? "&#11206;" : "Sectors"
+    document.getElementById("statsTitle").innerHTML = icon ? "&#9650;" : "Statistics"
+    document.getElementById("projectsTitle").innerHTML = icon ? "&#9964;" : "Projects"
+
+    document.getElementById("tableDate").innerHTML = icon ? "&#128710;" : "Date"
+    document.getElementById("tableStart").innerHTML = icon ? "&#9210;" : "Start"
+    document.getElementById("tableEnd").innerHTML = icon ? "&#9209;" : "End"
+    document.getElementById("tableDuration").innerHTML = icon ? "&#11118;" : "Duration"
+    document.getElementById("tableSector").innerHTML = icon ? "&#11206;" : "Sector"
+    document.getElementById("tableProject").innerHTML = icon ? "&#9964;" : "Project"
+    document.getElementById("tableActivity").innerHTML = icon ? "&#11042;" : "Activity"
+
+
+    // document.getElementById("")
+
+
   },
 
   refresh() {
@@ -1239,37 +1440,48 @@ var Log = {
     Log.init()
   },
 
+  res: {
+
+    timer() {
+      clearInterval(Log.clock)
+      document.getElementById("timer").innerHTML = "00:00:00"
+    },
+
+    chart(con) {
+      document.getElementById(con).innerHTML = ""
+    },
+
+    forecast() {
+      document.getElementById("fsf").innerHTML = "???"
+      document.getElementById("fpf").innerHTML = "???"
+      document.getElementById("fpt").innerHTML = "00:00"
+      document.getElementById("fsd").innerHTML = "0.00 h"
+    },
+
+    stats() {
+      let e = "LHH LHT LPH LPT ASD ASDT LSN LSX LSNH LSXH".split(" "),
+          r = e => { document.getElementById(e).innerHTML = "0.00" }
+
+      for (let i = 0, l = e.length; i < l; i++) r(e[i])
+    },
+
+  },
+
   reset() {
 
-    clearInterval(Log.clock)
-    document.getElementById("timer").innerHTML = "00:00:00"
+    Log.res.timer()
 
-    document.getElementById("fsf").innerHTML = "???"
-    document.getElementById("fpf").innerHTML = "???"
-    document.getElementById("fpt").innerHTML = "00:00"
-    document.getElementById("fsd").innerHTML = "0.00 h"
+    Log.res.forecast()
 
-    document.getElementById("phc").innerHTML = ""
-    document.getElementById("pdc").innerHTML = ""
-    document.getElementById("dayChart").innerHTML = ""
-    document.getElementById("weekChart").innerHTML = ""
+    Log.res.chart("phc")
+    Log.res.chart("pdc")
+    Log.res.chart("dayChart")
+    Log.res.chart("weekChart")
 
-    "LHH", "LHT", "LPH", "LPT", "ASD", "ASDT", "LSN", "LSX", "LSNH", "LSXH"
+    Log.res.stats()
 
-    document.getElementById("LHH").innerHTML = ""
-    document.getElementById("LHT").innerHTML = ""
-    document.getElementById("LPH").innerHTML = ""
-    document.getElementById("LPT").innerHTML = ""
-    document.getElementById("ASD").innerHTML = ""
-    document.getElementById("ASDT").innerHTML = ""
-    document.getElementById("LSN").innerHTML = ""
-    document.getElementById("LSX").innerHTML = ""
-    document.getElementById("LSNH").innerHTML = ""
-    document.getElementById("LSXH").innerHTML = ""
+    Log.res.chart("peakTimesHistory")
 
-    document.getElementById("peakTimesHistory").innerHTML = ""
-
-    document.getElementById("sectorBar").innerHTML = ""
     document.getElementById("projectBars").innerHTML = ""
     document.getElementById("sectorsList").innerHTML = ""
     document.getElementById("projectsList").innerHTML = ""
@@ -1282,7 +1494,14 @@ var Log = {
    */
 
   init() {
+    Log.config = config
     Log.log = log
+
+    document.getElementById("app").style.backgroundColor = Log.config.ui.bg
+    document.getElementById("app").style.color = Log.config.ui.colour
+    document.getElementById("app").style.fontFamily = Log.config.ui.font
+
+    Log.build()
 
     let ld = Log.data,
         sp = ld.sp,
@@ -1301,18 +1520,17 @@ var Log = {
     t = (e, c) => {
       let s = "", r, d = document.getElementById(e)
 
-      c > 0 ? (s = `+${c.toFixed(2)}%`, r = "grn") :
-        (s = `${c.toFixed(2)}%`, r = "red")
+      c > 0 ? (s = `+${c.toFixed(2)}%`) :
+        (s = `${c.toFixed(2)}%`)
 
       d.innerHTML = s
-      d.className = r
     }
 
     y.setDate(n.getDate() - 1)
 
     let en = Log.data.getEntries(n),
         ey = Log.data.getEntries(y),
-        mn = Log.data.getRecentEntries(27)
+        mn = Log.data.getRecentEntries(Log.config.ui.view - 1)
 
     Log.vis.bar(mn, "weekChart")
     Log.vis.peakH(Log.data.getEntriesByDay(n.getDay()))
@@ -1330,7 +1548,7 @@ var Log = {
 
     Log.timer(status)
 
-    document.getElementById("status").className = status ? "rf mb4 f6 blanc pulse" : "rf mb4 f6 c-9"
+    document.getElementById("status").className = status ? "rf mb4 f6 pulse" : "rf mb4 f6"
 
     let lhh = ld.lh(),
         lht = ld.lh(en),
@@ -1357,16 +1575,28 @@ var Log = {
     for (let i = 0, l = els.length; i < l; i++)
       document.getElementById(els[i]).innerHTML = val[i].toFixed(2)
 
-    for (let i = 0, l = tels.length; i < l; i++) {
-      t(tels[i], tval[i])}
+    for (let i = 0, l = tels.length; i < l; i++)
+      t(tels[i], tval[i])
 
     document.getElementById("cmd").addEventListener("submit", function() {
       Log.console.parse(document.getElementById("console").value)
       document.getElementById("console").value = ""
     })
 
+    document.addEventListener("keydown", function(e) {
+      if (e.which >= 65 && e.which <= 90) {
+        document.getElementById("cmd").style.display = "block"
+        document.getElementById("console").focus()
+      } else if (e.key == "Escape") {
+        document.getElementById("console").value = ""
+        document.getElementById("cmd").style.display = "none"
+      }
+      return
+    })
+
     Log.vis.peakH(undefined, "peakTimesHistory")
-    Log.vis.sectorBar(en)
+    // Log.vis.sectorBar(en)
+    Log.vis.sectorBars(en)
     Log.vis.projectBars(en)
 
     Log.vis.sectorBars(undefined, "sectorsList")

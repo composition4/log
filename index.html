@@ -6,29 +6,28 @@
   <title>Log</title>
   <meta name="author" content="Josh Avanier">
   <meta name="description" content="A log and time-tracking system">
-  <meta name="twitter:creator" content="@joshavanier">
-  <meta name="twitter:title" content="Log">
-  <meta name="twitter:description" content="A log and time-tracking system">
-  <link rel="stylesheet" href="css/log.css">
+  <link rel="stylesheet" href="css/macian.min.css">
   <style>
+    button {color: inherit}
     .on {outline: none}
+    ::-webkit-scrollbar {display: none}
+    .pulse{animation-name:pulse;animation-duration:2.4s;animation-delay:0s;animation-iteration-count:infinite;animation-timing-function:ease-in-out;animation-direction:alternate}@keyframes pulse{from{opacity: .1}to{opacity:1}}
   </style>
-  <!-- <script src="https://joshavanier.github.io/mors/mors.min.js"></script> -->
-  <script src="https://joshavanier.github.io/aequirys/aequirys.min.js"></script>
+  <script src="utils/aequirys.min.js"></script>
+  <script src="utils/monocal.min.js"></script>
 </head>
-<body class="noselect bg-noir blanc r p4 p5-m p5-l hf cn">
+<body id="app" class="noselect r p4 p5-m p5-l hf cn">
 
-  <header class="mb4">
-    <h1 class="dib mr4 f6 upc tk">Log</h1>
+  <header class="mb4 f6">
+    <h1 class="dib mr4 f5 upc tk">Log</h1>
 
-    <button id="b-ovw" class="pv1 tab on bg-noir blanc f6 mr3" onclick="Log.openSect('ovw')" title="Overview">&#128902;</button>
-    <button id="b-lis" class="pv1 tab on bg-noir c-5 f6 mr3" onclick="Log.openSect('lis')" title="Details">&#9783;</button>
-    <button id="b-vis" class="pv1 tab on bg-noir c-5 f6 mr3" onclick="Log.openSect('vis')" title="Visualisation">&#9781;</button>
-    <button id="b-tab" class="pv1 tab on bg-noir c-5 f6 mr3" onclick="Log.openSect('tab')" title="Data Table">&#128911;</button>
-    <button id="b-set" class="pv1 tab on bg-noir c-5 f6 mr3" onclick="Log.openSect('set')" title="Guide">?</button>
+    <button id="b-ovw" class="pv1 tab on bg-cl of mr3" onclick="Log.tab('ovw')" title="Overview">&#128902;</button>
+    <button id="b-lis" class="pv1 tab on bg-cl o5 mr3" onclick="Log.tab('lis')" title="Details">&#9783;</button>
+    <button id="b-vis" class="pv1 tab on bg-cl o5 mr3" onclick="Log.tab('vis')" title="Visualisation">&#9781;</button>
+    <button id="b-tab" class="pv1 tab on bg-cl o5 mr3" onclick="Log.tab('tab')" title="Data Table">&#128911;</button>
+    <button id="b-set" class="pv1 tab on bg-cl o5 mr3" onclick="Log.tab('set')" title="Guide">?</button>
 
-    <div class="rf mb4 f6">
-      <!-- <span id="mors" class="dib mr3" title="Mortem Progression">0.00%</span> -->
+    <div class="rf f5">
       <span id="timer" class="dn di-m di-l mr3" title="Current Log Session Duration">00:00:00</span>
       <span id="status" title="Log Status">&#9210;</span>
     </div>
@@ -36,204 +35,269 @@
 
   <div id="ovw" class="sect h9">
     <div class="c2 pr4-l mb4">
-      <h2 class="mb4 f6 fwn" title="Peak Times">&#9650;</h2>
+      <h3 id="peakTimesTitle" class="mb4 f6 fwn" title="Peak Times">&#9650;</h3>
 
-      <div id="phc" class="mb4 sh5 wf"></div>
-      <div id="pdc" class="mb4 sh5 wf"></div>
+      <div id="phc" class="mb4 sh5 wf" title="Peak Hours"></div>
+      <div id="pdc" class="mb4 sh5 wf" title="Peak Days"></div>
 
-      <h2 class="mb3 f6 fwn" title="Today's Forecast">&#9670;</h2>
+      <h3 id="forecastTitle" class="mb3 f6 fwn" title="Today's Forecast">&#9670;</h3>
 
       <div class="f6 mon r">
         <p class="mb1 c3 c3-m cc-l">
-          <span class="c-9" title="Sector Focus">SF</span>
+          <span class="o7" title="Sector Focus">SF</span>
           <span id="fsf">???</span>
         </p>
         <p class="mb1 c3 c3-m cc-l">
-          <span class="c-9" title="Project Focus">PF</span>
+          <span class="o7" title="Project Focus">PF</span>
           <span id="fpf">???</span>
         </p>
         <p class="mb1 c3 c3-m cc-l">
-          <span class="c-9" title="Peak Time">PT</span>
+          <span class="o7" title="Peak Time">PT</span>
           <span id="fpt">00:00</span>
         </p>
         <p class="mb1 c3 c3-m cc-l">
-          <span class="c-9" title="Session Duration">SD</span>
+          <span class="o7" title="Session Duration">SD</span>
           <span id="fsd">0.00 h</span>
         </p>
       </div>
     </div>
-    <div class="c8 ph4-l hf-l bg-noir oya">
-      <h2 class="mb4 f6 fwn" title="Overview">&#128902;</h2>
+    <div class="c8 ph4-l hf-l oya-l">
+      <h3 id="overviewTitle" class="mb4 f6 fwn" title="Overview">&#128902;</h3>
 
       <div class="ph1">
-        <div class="mb3 psr wf sh2 c-9 bl br">
+        <div class="mb3 psr wf sh2 bl br">
           <div class="psa sh1 br o5" style="left:4.17%"></div>
-          <div class="psa hf br" style="left:8.33%"></div>
+          <div class="psa hf br o7" style="left:8.33%"></div>
           <div class="psa sh1 br o5" style="left:12.5%"></div>
-          <div class="psa hf br" style="left:16.67%"></div>
+          <div class="psa hf br o7" style="left:16.67%"></div>
           <div class="psa sh1 br o5" style="left:20.83%"></div>
-          <div class="psa hf br" style="left:25%"></div>
+          <div class="psa hf br o7" style="left:25%"></div>
           <div class="psa sh1 br o5" style="left:29.17%"></div>
-          <div class="psa hf br" style="left:33.33%"></div>
+          <div class="psa hf br o7" style="left:33.33%"></div>
           <div class="psa sh1 br o5" style="left:37.5%"></div>
-          <div class="psa hf br" style="left:41.67%"></div>
+          <div class="psa hf br o7" style="left:41.67%"></div>
           <div class="psa sh1 br o5" style="left:45.83%"></div>
-          <div class="psa hf br" style="left:50%"></div>
+          <div class="psa hf br o7" style="left:50%"></div>
           <div class="psa sh1 br o5" style="left:54.17%"></div>
-          <div class="psa hf br" style="left:58.33%"></div>
+          <div class="psa hf br o7" style="left:58.33%"></div>
           <div class="psa sh1 br o5" style="left:62.5%"></div>
-          <div class="psa hf br" style="left:66.67%"></div>
+          <div class="psa hf br o7" style="left:66.67%"></div>
           <div class="psa sh1 br o5" style="left:70.83%"></div>
-          <div class="psa hf br" style="left:75%"></div>
+          <div class="psa hf br o7" style="left:75%"></div>
           <div class="psa sh1 br o5" style="left:79.17%"></div>
-          <div class="psa hf br" style="left:83.33%"></div>
+          <div class="psa hf br o7" style="left:83.33%"></div>
           <div class="psa sh1 br o5" style="left:87.5%"></div>
-          <div class="psa hf br" style="left:91.67%"></div>
+          <div class="psa hf br o7" style="left:91.67%"></div>
           <div class="psa sh1 br o5" style="left:95.83%"></div>
         </div>
 
-        <div id="dayChart" class="mb3 psr wf sh2"></div>
+        <div id="dayChart" class="mb3 psr wf sh2" title="Today's Timeline"></div>
       </div>
 
-      <div id="weekChart" class="vh3 mb5" title="Past Month (28 Days)"></div>
+      <div id="weekChart" class="vh3 mb5"></div>
 
       <ul class="lsn f6 lhc">
         <li class="mb4 w5 w2-m w2-l lf">
           <p class="f3 fwb"><span id="LHT">0.00</span> h</p>
-          <p class="f6 c-9">
+          <p class="f6">
             <span class="mr2" title="Logged Hours (Today)">LHt</span>
-            <span id="lhtt" class="grn">0.00</span>
+            <span id="lhtt">0.00</span>
           </p>
         </li>
         <li class="mb4 w5 w2-m w2-l lf">
           <p class="f3 fwb"><span id="ASDT">0.00</span> h</p>
-          <p class="f6 c-9">
+          <p class="f6">
             <span class="mr2" title="Average Session Duration (Today)">ASDt</span>
-            <span id="asdtt" class="grn">0.00</span>
+            <span id="asdtt">0.00</span>
           </p>
         </li>
         <li class="mb4 w5 w2-m w2-l lf">
           <p class="f3 fwb"><span id="LSN">0.00</span> h</p>
-          <p class="f6 c-9">
-            <span class="mr2" title="Minimum Log Session">LSn</span>
-            <span id="lsnt" class="grn">0.00</span>
+          <p class="f6">
+            <span class="mr2" title="Shortest Log Session">LSn</span>
+            <span id="lsnt">0.00</span>
           </p>
         </li>
         <li class="mb4 w5 w2-m w2-l lf">
           <p class="f3 fwb"><span id="LSX">0.00</span> h</p>
-          <p class="f6 c-9">
-            <span class="mr2" title="Maximum Log Session">LSx</span>
-            <span id="lsxt" class="grn">0.00</span>
+          <p class="f6">
+            <span class="mr2" title="Longest Log Session">LSx</span>
+            <span id="lsxt">0.00</span>
           </p>
         </li>
         <li class="mb4 w5 w2-m w2-l lf">
           <p class="f3 fwb"><span id="LPT">0.00</span>%</p>
-          <p class="f6 c-9">
+          <p class="f6">
             <span class="mr2" title="Log Percentage (Today)">LPt</span>
-            <span id="lptt" class="grn">0.00</span>
+            <span id="lptt">0.00</span>
           </p>
         </li>
       </ul>
     </div>
-    <div class="mb4 mb5-m c2 pl4-l hf-l oya-l">
-      <h2 class="mb4 f6 fwn upc tk">&#11206;</h2>
-      <div id="sectorBar" class="db wf sh1 mb4 bsia bg-1"></div>
-      <ul id="projectBars" class="lsn bg-noir"></ul>
+    <div class="c2 pl4-l hf-l oya-l">
+      <h3 id="sectorsTodayTitle" class="mb4 f6 fwn"></h3>
+      <ul id="sectorBars" class="lsn mb4 h4-l oya-l"></ul>
+      <ul id="projectBars" class="lsn h4-l oya-l"></ul>
     </div>
-
-    <form id="cmd" class="psf bg-1 b0 l0 wf f6 bst" action="#" onsubmit="return false;" autocomplete="off" spellcheck="false">
-      <input type="text" class="wf bg-1 blanc on bn p4" id="console" autofocus="autofocus" placeholder="> Log.console" />
-    </form>
-
   </div>
 
   <div id="lis" class="dn sect h9 r">
 
-    <div class="c3 pr4-l hf">
-      <h3 class="mb3 f6 fwn upc tk">&#11206;</h3>
-      <ul id="sectorsList" class="lsn h9 oya pr3 bg-noir"></ul>
+    <div class="c3 pr4-l hf-l">
+      <h3 id="sectorsTitle" class="mb3 f6 fwn"></h3>
+      <ul id="sectorsList" class="lsn h9-l oya-l pr3"></ul>
     </div>
 
     <div class="c6 ph4-l">
-      <h3 class="mb4 f6 fwn upc tk">&#9650;</h3>
+      <h3 id="statsTitle" class="mb4 f6 fwn"></h3>
 
-      <div class="mb5 vh3 wf" id="peakTimesHistory"></div>
+      <div class="mb5 vh3 wf" id="peakTimesHistory" title="Peak Times: What your average day looks like"></div>
 
-      <ul class="lsn r f6 lhc">
-        <li class="mb4 c4 c3-m c3-l">
-          <p id="LHH" class="f3 fwb">0.00</p>
-          <p class="f6">LHh</p>
+      <ul class="lsn f6 lhc">
+        <li class="mb4 w5 w2-m w2-l lf">
+          <p class="f3 fwb"><span id="LHH">0.00</span> h</p>
+          <p class="f6" title="Logged Hours (History)">LHh</p>
         </li>
-        <li class="dn mb4 c4 c3-m c3-l">
-          <p id="LSNH" class="f3 fwb">0.00</p>
-          <p class="f6">LShn</p>
+        <li class="mb4 w5 w2-m w2-l lf">
+          <p class="f3 fwb"><span id="LSNH">0.00</span> h</p>
+          <p class="f6" title="Smallest Log Session (History)">LShn</p>
         </li>
-        <li class="mb4 c4 c3-m c3-l">
-          <p id="LSXH" class="f3 fwb">0.00</p>
-          <p class="f6">LShx</p>
+        <li class="mb4 w5 w2-m w2-l lf">
+          <p class="f3 fwb"<span id="LSXH">0.00</span> h</p>
+          <p class="f6" title="Longest Log Session (History)">LShx</p>
         </li>
-        <li class="mb4 c4 c3-m c3-l">
-          <p id="LPH" class="f3 fwb">0.00</p>
-          <p class="f6">LPh</p>
+        <li class="mb4 w5 w2-m w2-l lf">
+          <p class="f3 fwb"><span id="LPH">0.00</span>%</p>
+          <p class="f6" title="Log Percentage (History)">LPh</p>
         </li>
-        <li class="mb4 c4 c3-m c3-l">
-          <p id="ASD" class="f3 fwb">0.00</p>
-          <p class="f6">ASD</p>
+        <li class="mb4 w5 w2-m w2-l lf">
+          <p class="f3 fwb"><span id="ASD">0.00</span> h</p>
+          <p class="f6" title="Average Session Duration (History)">ASD</p>
         </li>
       </ul>
     </div>
 
-    <div class="c3 pl4-l hf">
-      <h3 class="mb3 f6 fwn upc tk">&#9964;</h3>
-      <ul id="projectsList" class="lsn h9 oya pr3 bg-noir"></ul>
+    <div class="c3 pl4-l hf-l">
+      <h3 id="projectsTitle" class="mb3 f6 fwn"></h3>
+      <ul id="projectsList" class="lsn h9-l oya-l pr3"></ul>
     </div>
   </div>
 
-  <div id="vis" class="dn sect h9 r bg-noir"></div>
+  <div id="vis" class="dn sect h9 r" title="Distribution of Time: Each row is a day and each bar is a log session."></div>
 
-  <div id="tab" class="dn sect wf bg-noir blanc h9 oya">
-    <table class="bn mon wf">
+  <div id="tab" class="dn sect wf h9 oya">
+    <table class="bn wf">
       <thead>
-        <tr class="f6">
-          <th class="al tk" title="Date">&#128710;</th>
-          <th class="al tk" title="Start">&#9210;</th>
-          <th class="al tk" title="End">&#9209;</th>
-          <th class="al tk" title="Duration">&#11118;</th>
-          <th class="al tk" title="Sector">&#11206;</th>
-          <th class="al tk" title="Project">&#9964;</th>
-          <th class="al tk" title="Activity">&#11042;</th>
+        <tr class="f6 al">
+          <th id="tableDate" title="Date"></th>
+          <th id="tableStart" title="Start"></th>
+          <th id="tableEnd" title="End"></th>
+          <th id="tableDuration" title="Duration"></th>
+          <th id="tableSector" title="Sector"></th>
+          <th id="tableProject" title="Project"></th>
+          <th id="tableActivity" title="Activity"></th>
         </tr>
       </thead>
       <tbody id="logbook" class="f6"></tbody>
     </table>
   </div>
 
-  <div id="set" class="dn sect wf h9 f6 lhc oya">
-    <h2 class="mb3 f5 upc tk">About + Guide</h2>
+  <div id="set" class="dn sect wf r h9-l f6 lhc oya">
 
-    <p class="mb5 m">The Log is a log and time-tracking system created by Josh Avanier. Its primary purpose is to provide insight to how one's time is spent &mdash; insight that can then be used to optimise personal productivity and better manage time.</p>
+    <div class="mb5 mb0-l c6 pr4-l hf-l oya-l">
+      <h2 class="mb3 f5">Guide</h2>
+      <p class="mb4">The Log is designed for single-tasking. When you start a log, focus on your activity; when you feel like stopping, simply end the log.
 
-    <h3 class="mb3 f5 upc tk">Usage</h3>
-    <p class="mb3 m">Use the console to enter commands:</p>
-    <p class="mb2 m">To start a log: <span class="db mon">start "Sector" "Project Name" "A description of what you're doing"</p>
-    <p class="mb5">To end a log: <span class="db mon">end</p>
+      <h3 class="mb3 f5">Console</h3>
+      <p class="mb4 m">Use the console to enter commands. The console is summoned when you start typing. Here are a list of available commands:</p>
 
-    <h3 class="mb3 f5 upc tk">Contribution</h3>
-    <p class="mb2 m">This project is open-source and the source code is available under the MIT License. If you found any bugs or would like to contribute to the development of this project, submit pull requests on GitHub:</p>
-    <p class="mb5 m">https://github.com/joshavanier/log/</p>
+      <p class="mb3 m">To start a log. Mind the quotes, please:</p>
+      <div class="mb4 bl pl3 m">
+        <p class="mb2">set background #aabbcc</p>
+        <p>start "Sector or Category" "Title" "A description"</p>
+      </div>
 
-    <p class="mb2 m">If you have any thoughts, comments, suggestions, questions, or if you simply want to say hello:</p>
-    <p class="mb5 m">Twitter: @joshavanier</p>
+      <p class="mb3 m">To end a log:</p>
+      <div class="mb4 bl pl3 m">
+        <p>end</p>
+      </div>
 
+      <p class="mb3 m">To change the interface's background colour, set a hexadecimal colour of your choice. HTML-friendly colour names are also accepted:</p>
+      <div class="mb4 bl pl3 m">
+        <p class="mb2">set background #aabbcc</p>
+        <p>set background aquamarine</p>
+      </div>
+
+      <p class="mb3 m">To change the interface's text colour, set a hexadecimal colour of your choice. HTML-friendly colour names are also accepted:</p>
+      <div class="mb4 bl pl3 m">
+        <p class="mb2 m">set color #112233</p>
+        <p>set color black</p>
+      </div>
+
+      <p class="mb3 m">Perhaps you don't find my arbitrary choice of icons to be useful. You may enable/disable them:</p>
+      <div class="mb4 bl pl3 m">
+        <p>set icons true/false</p>
+      </div>
+
+      <p class="mb3 m">To change the number of log days displayed in the overview chart, the visualisation section, and the log table:</p>
+      <div class="mb4 bl pl3 m">
+        <p class="mb2">set view 30 // shows only the last 30 days</p>
+        <p>set view 7 // shows only the last 7 days</p>
+      </div>
+
+      <p class="mb3 m">To change the calendar system used, choose between the Gregorian, MONOCAL, or Aequirys calendars. This does not affect your logs. It simply shows dates differently:</p>
+      <div class="mb4 bl pl3 m">
+        <p class="mb2">set calendar gregorian</p>
+        <p class="mb2">set calendar monocal</p>
+        <p>set calendar aequirys</p>
+      </div>
+
+      <p class="mb3 m">To change the time format, choose between 12-hours or 24-hours:</p>
+      <div class="mb4 bl pl3 m">
+        <p class="mb2">set time 12</p>
+        <p>set time 24</p>
+      </div>
+
+      <p class="mb3 m">To change the interface's text colour, set a hexadecimal colour of your choice. HTML-friendly colour names are also accepted:</p>
+      <div class="mb4 bl pl3 m">
+        <p class="mb2">set color #112233</p>
+        <p>set color black</p>
+      </div>
+
+      <p class="mb2 m">And lastly, if you have an existing log and/or config file, you may want to import them. You simply need to supply the location of the folder where your log.js and config.js is stored. You will also have to restart the Log.</p>
+      <p class="mb3 m">This will be the case for now but rest assured I will find a way to remedy this so you wouldn't have to import your data with every update.</p>
+      <div class="bl pl3 m">
+        <p>import /home/folder/location</p>
+      </div>
+
+    </div>
+
+    <div class="mb5 mb0-l c6 pl4-l">
+      <h2 class="mb3 f5">About</h2>
+      <p class="mb4 m">The Log is a log and time-tracking system created by Josh Avanier. Its primary purpose is to provide insight to how one's time is spent &mdash; insight that may then be used to optimise personal productivity and better manage time.</p>
+
+      <h3 class="mb3 f5">Contribution</h3>
+      <p class="mb3 m">This project is open-source and the source code is available on GitHub under the MIT License. If you found any bugs or would like to contribute to the development of this project, be my guest:</p>
+      <p class="bl pl3 mb4 m">https://github.com/joshavanier/log/</p>
+
+      <p class="mb3 m">If you have any thoughts, comments, suggestions, questions, or if you simply want to say hello:</p>
+      <p class="bl pl3 mb4 m">Twitter: @joshavanier</p>
+
+      <p>Thank you for taking the time to try this out.</p>
+    </div>
   </div>
 
+  <form id="cmd" class="dn psf b0 l0 wf f6 bst" action="#" onsubmit="return false;" autocomplete="off" spellcheck="false">
+    <input type="text" class="wf bg-1 blanc on bn p4" id="console" autofocus="autofocus" placeholder="> Log.console" />
+  </form>
+
+  <script src="data/config.js"></script>
   <script src="data/log.js"></script>
+
   <script src="js/log.js"></script>
 
   <script>
     Log.init()
-
-    // document.getElementById("mors").innerHTML = Mors.pro(new Date(1997, 2, 17)).toFixed(2) + "%"
   </script>
 
 </body>

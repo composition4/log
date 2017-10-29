@@ -2,10 +2,12 @@ const {app, BrowserWindow, webFrame} = require('electron')
 const path = require('path')
 const url = require('url')
 
+require('electron-reload')(__dirname)
+
 var win
 
 function createWindow () {
-  win = new BrowserWindow({width: 1000, height: 610, backgroundColor: '#f5f5f5', resizable:true, autoHideMenuBar: true})
+  win = new BrowserWindow({width: 1000, height: 610, backgroundColor: '#202020', resizable:true, autoHideMenuBar: true})
 
   win.loadURL('file://' + __dirname + '/index.html')
 
